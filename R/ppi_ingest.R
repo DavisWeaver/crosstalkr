@@ -1,0 +1,110 @@
+#' Prepare Stringdb for use in analyses
+#'
+#' @param cache A filepath to a folder downloaded files should be stored, inherits from user-available functions
+#' @param edb ensemble database object
+#' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+
+prep_stringdb <- function(cache = NULL, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79){
+
+  if(!file.exists(paste0(cache, "/stringdb.Rda"))) {
+    message("Downloading stringdb Homo Sapiens v11.0")
+    df <- readr::read_delim("https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz",
+                            delim = " ")
+
+    #Lets convert the ensemble_ids to gene_ids.
+    df <- dplyr::mutate(df,
+                        protein1 = ensembl_convert(protein1, edb = edb),
+                        protein2 = ensembl_convert(protein2, edb = edb))
+    #pivot to adjacency matrix
+    #fill in missing values with zero
+    adj_df <- tidyr::pivot_wider(df, names_from = protein2,
+                             values_from = combined_score,
+                             values_fn = max,
+                             values_fill = 0)
+
+    #Convert to igraph object
+    g  <- igraph::graph_from_data_frame(df, directed = FALSE)
+    g <-
+      igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
+
+    output <- list(g, adj_df)
+
+    if(!is.null(cache)) {
+      save(output, file = paste0(cache, "/stringdb.Rda"))
+    }
+  } else {
+    message("using cached version of stringdb Homo Sapeins v11.0")
+    load(file = paste0(cache, "/stringdb.Rda"))
+  }
+  return(output)
+}
+
+#' Prepare biogrid for use in analyses
+#'
+#' @inheritParams prep_stringdb
+#'
+#' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+
+prep_biogrid <- function(cache = NULL) {
+
+  if(!file.exists(paste0(cache, "/biogrid.Rda"))) {
+    tmp <- tempdir()
+
+    #Download most recent version of the biogrid
+    message("Downloading biogrid version 3.5.171")
+    download.file("https://downloads.thebiogrid.org/Download/BioGRID/Release-Archive/BIOGRID-3.5.171/BIOGRID-ORGANISM-3.5.171.tab2.zip",
+                  destfile = paste0(tmp, "/biogrid.zip"))
+
+    #Unzip only the homosapiens portion of the biogrid zip file and delete big zip file
+    unzip(paste0(tmp, './biogrid.zip'),
+          files = c("BIOGRID-ORGANISM-Homo_sapiens-3.5.171.tab2.txt"),
+          exdir = paste0(tmp, "/unzip"))
+    file.remove(paste0(tmp, "./biogrid.zip"))
+
+    #Read in biogrid file from temp directory.
+    biogrid <-
+      read.delim(
+        paste0(tmp, "/unzip/BIOGRID-ORGANISM-Homo_sapiens-3.5.171.tab2.txt"),
+        header = TRUE
+      )
+    biogrid <-
+      biogrid[, 8:9] # isolate Official Symbol Interactor A & B columns
+
+    #convert to graph class and simplify
+    g  <- igraph::graph_from_data_frame(biogrid, directed = FALSE)
+    g <-
+      igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
+
+    biogrid$adjacency <- 1
+
+    #Pivot to create an adjacency matrix
+    adj_df <- tidyr::pivot_wider(biogrid, names_from = Official.Symbol.Interactor.B,
+                             values_from = adjacency,
+                             values_fn = max,
+                             values_fill = 0)
+
+    output <- list(g, adj_df)
+
+    if(!is.null(cache)) {
+      save(output, file = paste0(cache, "/biogrid.Rda"))
+    }
+
+  } else {
+    message("using cached version of biogrid v3.5.171")
+    load(file = paste0(cache, "/biogrid.Rda"))
+  }
+  return(output)
+}
+
+#' Helper function for first-time use of crosstalkr package
+#'
+#' @inheritParams prep_stringdb
+#'
+#' @return directory on users computer containing the different adjacency matrices for future use.
+setup_init <- function(cache = NULL) {
+
+  #Functons are written to return a tibble - this use will ensure a df is not printed
+  tmp_var1 <- prep_biogrid(cache = cache)
+  tmp_var2 <- prep_stringdb(cache = cache)
+}
+

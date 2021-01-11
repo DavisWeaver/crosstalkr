@@ -1,2 +1,4 @@
 ^crosstalkr\.Rproj$
 ^\.Rproj\.user$
+[.]Rda$
+^\./seed_proteins\.R$
