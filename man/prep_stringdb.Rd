@@ -4,12 +4,18 @@
 \alias{prep_stringdb}
 \title{Prepare Stringdb for use in analyses}
 \usage{
-prep_stringdb(cache = NULL, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79)
+prep_stringdb(
+  cache = NULL,
+  edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79,
+  min_score = NULL
+)
 }
 \arguments{
 \item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
 
 \item{edb}{ensemble database object}
+
+\item{min_score}{minimum connectivity score for each edge in the network.}
 }
 \value{
 list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.

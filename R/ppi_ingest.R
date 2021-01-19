@@ -94,6 +94,9 @@ prep_biogrid <- function(cache = NULL) {
 #' @inheritParams prep_stringdb
 #'
 #' @return directory on users computer containing the different adjacency matrices for future use.
+#'
+#' @export
+#'
 setup_init <- function(cache = NULL) {
 
   #Functons are written to return a tibble - this use will ensure a df is not printed

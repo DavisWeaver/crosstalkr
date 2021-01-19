@@ -19,7 +19,7 @@
 #'
 #' @export
 
-bootstrap_null <- function(seed_proteins, ppi = "stringdb", n = 10000,
+bootstrap_null <- function(seed_proteins, g, n = 1000,
                            gamma=0.6, eps = 1e-10, tmax = 1000,
                            norm = TRUE, set_seed,
                            cache, seed_name = NULL,
@@ -29,15 +29,6 @@ bootstrap_null <- function(seed_proteins, ppi = "stringdb", n = 10000,
   if(file.exists(paste0(cache, "/", seed_name, "null_dist.Rda"))) {
     load(file = paste0(cache, "/", seed_name, "null_dist.Rda"))
   } else{
-
-    if(ppi == "biogrid") {
-      g <- prep_biogrid(cache = cache)
-    } else if (ppi == "stringdb") {
-      g <- prep_stringdb(cache = cache)
-    } else {
-      stop("ppi must be either 'biogrid' or 'stringdb'")
-    }
-
     w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.
 
     #generate list of degree-similar seed protein vectors.
@@ -62,7 +53,8 @@ bootstrap_null <- function(seed_proteins, ppi = "stringdb", n = 10000,
       null_dist <- dplyr::bind_rows(null_dist)
     }
 
-    null_dist <- dist_calc(null_dist, ncores = ncores)
+    null_dist <- dist_calc(null_dist, ncores = ncores,
+                           seed_proteins = seed_proteins)
 
     out <- list(null_dist, seed_proteins)
 
@@ -129,7 +121,7 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' @param df : numeric vector
 #' @return a 3-column dataframe (gene, )
 
-dist_calc <- function(df, ncores) {
+dist_calc <- function(df, ncores, seed_proteins) {
   if(ncores > 1){
     null_dist <- tidyr::pivot_longer(df, cols = -run_number, names_to = "gene_id", values_to = "p")
   } else {
@@ -139,8 +131,7 @@ dist_calc <- function(df, ncores) {
     dplyr::group_by(gene_id) %>%
     dplyr::summarise(mean_p = mean(p),
                      stdev_p = sd(p),
-                     nobs = dplyr::n())
-
+                     nobs = dplyr::n()) %>%
+    dplyr::mutate(seed = ifelse(gene_id %in% seed_proteins, "yes", "no"))
   return(null_dist)
-
 }

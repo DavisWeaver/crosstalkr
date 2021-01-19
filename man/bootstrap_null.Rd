@@ -5,15 +5,44 @@
 \title{Bootstrap null distribution for significance testing}
 \usage{
 bootstrap_null(
-  ppi = "biogrid",
-  n = 1000,
   seed_proteins,
-  gamma,
+  ppi = "stringdb",
+  n = 10000,
+  gamma = 0.6,
   eps = 1e-10,
   tmax = 1000,
-  norm = TRUE
+  norm = TRUE,
+  set_seed,
+  cache,
+  seed_name = NULL,
+  ncores = 1
 )
 }
+\arguments{
+\item{ppi}{specifies which protein-protein interaction network will be used - currently only "stringdb" is supported}
+
+\item{n}{number of random walks with repeats}
+
+\item{set_seed}{integer to set random number seed - for reproducibility}
+
+\item{seed_name}{Name to give the cached null distribution - must be a character string}
+
+\item{ncores}{= 1}
+
+\item{...}{
+  Arguments passed on to \code{\link[=sparseRWR]{sparseRWR}}, \code{\link[=setup_init]{setup_init}}
+  \describe{
+    \item{\code{seed_proteins}}{user defined seed proteins}
+    \item{\code{gamma}}{restart probability}
+    \item{\code{eps}}{maximum allowed difference between the computed probabilities at the steady state}
+    \item{\code{norm}}{if True, w is normalized by dividing each value by the column sum.}
+    \item{\code{tmax}}{the maximum number of iterations for the RWR}
+    \item{\code{cache}}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
+  }}
+}
 \description{
-Bootstrap null distribution for significance testing
+This function will generate a bootstrapped null distribution to identify
+signficant vertices in a PPI given a set of user-defined seed proteins.
+Bootstrapping is done by performing random walk with repeats repeatedly over "random"
+sets of seed proteins. Degree distribution of user-provided seeds is used to inform sampling.
 }
