@@ -2,9 +2,12 @@
 #'
 #' @param cache A filepath to a folder downloaded files should be stored, inherits from user-available functions
 #' @param edb ensemble database object
+#' @param min_score minimum connectivity score for each edge in the network.
 #' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
 
-prep_stringdb <- function(cache = NULL, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79){
+prep_stringdb <- function(cache = NULL,
+                          edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79,
+                          min_score = NULL){
 
   if(!file.exists(paste0(cache, "/stringdb.Rda"))) {
     message("Downloading stringdb Homo Sapiens v11.0")
@@ -15,28 +18,28 @@ prep_stringdb <- function(cache = NULL, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens
     df <- dplyr::mutate(df,
                         protein1 = ensembl_convert(protein1, edb = edb),
                         protein2 = ensembl_convert(protein2, edb = edb))
-    #pivot to adjacency matrix
-    #fill in missing values with zero
-    adj_df <- tidyr::pivot_wider(df, names_from = protein2,
-                             values_from = combined_score,
-                             values_fn = max,
-                             values_fill = 0)
+
+    #filter out nodes below a given min score
+    if(is.numeric(min_score)) {
+      df <- dplyr::filter(df, combined_score > min_score)
+    }
+
 
     #Convert to igraph object
     g  <- igraph::graph_from_data_frame(df, directed = FALSE)
     g <-
       igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
 
-    output <- list(g, adj_df)
+
 
     if(!is.null(cache)) {
-      save(output, file = paste0(cache, "/stringdb.Rda"))
+      save(g, file = paste0(cache, "/stringdb.Rda"))
     }
   } else {
     message("using cached version of stringdb Homo Sapeins v11.0")
     load(file = paste0(cache, "/stringdb.Rda"))
   }
-  return(output)
+  return(g)
 }
 
 #' Prepare biogrid for use in analyses
@@ -75,25 +78,15 @@ prep_biogrid <- function(cache = NULL) {
     g <-
       igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
 
-    biogrid$adjacency <- 1
-
-    #Pivot to create an adjacency matrix
-    adj_df <- tidyr::pivot_wider(biogrid, names_from = Official.Symbol.Interactor.B,
-                             values_from = adjacency,
-                             values_fn = max,
-                             values_fill = 0)
-
-    output <- list(g, adj_df)
-
     if(!is.null(cache)) {
-      save(output, file = paste0(cache, "/biogrid.Rda"))
+      save(g, file = paste0(cache, "/biogrid.Rda"))
     }
 
   } else {
     message("using cached version of biogrid v3.5.171")
     load(file = paste0(cache, "/biogrid.Rda"))
   }
-  return(output)
+  return(g)
 }
 
 #' Helper function for first-time use of crosstalkr package
@@ -107,4 +100,5 @@ setup_init <- function(cache = NULL) {
   tmp_var1 <- prep_biogrid(cache = cache)
   tmp_var2 <- prep_stringdb(cache = cache)
 }
+
 

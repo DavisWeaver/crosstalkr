@@ -1,10 +1,146 @@
 #' Bootstrap null distribution for significance testing
 #'
+#' This function will generate a bootstrapped null distribution to identify
+#' signficant vertices in a PPI given a set of user-defined seed proteins.
+#' Bootstrapping is done by performing random walk with repeats repeatedly over "random"
+#' sets of seed proteins. Degree distribution of user-provided seeds is used to inform sampling.
+#'
+#' @importFrom foreach %dopar%
+#'
+#'
+#' @param ppi specifies which protein-protein interaction network will be used - currently only "stringdb" is supported
+#' @param n number of random walks with repeats
+#' @param set_seed integer to set random number seed - for reproducibility
+#' @param ncores Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.
+#' @param seed_name Name to give the cached null distribution - must be a character string
+#'
+#' @inheritDotParams sparseRWR seed_proteins gamma tmax eps norm
+#' @inheritDotParams setup_init cache
+#'
+#' @export
 
-bootstrap_null <- function(ppi = "biogrid", n = 1000, seed_proteins, gamma,
-                           eps = 1e-10, tmax = 1000, norm = TRUE) {
-  if(ppi == "biogrid") {
+bootstrap_null <- function(seed_proteins, ppi = "stringdb", n = 10000,
+                           gamma=0.6, eps = 1e-10, tmax = 1000,
+                           norm = TRUE, set_seed,
+                           cache, seed_name = NULL,
+                           ncores = 1) {
 
+  #If file was cached from a previous run - use that- else go through the whole calculation
+  if(file.exists(paste0(cache, "/", seed_name, "null_dist.Rda"))) {
+    load(file = paste0(cache, "/", seed_name, "null_dist.Rda"))
+  } else{
+
+    if(ppi == "biogrid") {
+      g <- prep_biogrid(cache = cache)
+    } else if (ppi == "stringdb") {
+      g <- prep_stringdb(cache = cache)
+    } else {
+      stop("ppi must be either 'biogrid' or 'stringdb'")
+    }
+
+    w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.
+
+    #generate list of degree-similar seed protein vectors.
+    seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
+
+    if(ncores > 1) {
+      cl <- parallel::makeCluster(ncores)
+      doParallel::registerDoParallel(cl)
+      null_dist <-
+        foreach::foreach(i = 1:n, .combine = rbind) %dopar% {
+          seeds_i <- unlist(seeds[[i]])
+          crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i)[[1]]
+        }
+      parallel::stopCluster(cl)
+      null_dist <- tibble::as_tibble(null_dist, rownames = "run_number")
+    } else {
+      null_dist <- list()
+      for(i in 1:n) {
+        seeds_i <- unlist(seeds[[i]])
+        null_dist[[i]] <- sparseRWR(w = w, seed_proteins = seeds_i)[[1]]
+      }
+      null_dist <- dplyr::bind_rows(null_dist)
+    }
+
+    null_dist <- dist_calc(null_dist, ncores = ncores)
+
+    out <- list(null_dist, seed_proteins)
+
+    if(is.character(cache) & is.character(seed_name)) {
+      save(out, file = paste0(cache, "/", seed_name, "null_dist.Rda"))
+    } else {
+      message("Please provide character string designating a filepath and seed name if you would like to save these results to speed up future analysis.")
+    }
   }
+  return(out)
+}
+
+#' Identify random sets of seeds with similar degree distribution to parent seed proteins
+#'
+#' This function will generate n character vectors of seeds to be passed to sparseRWR
+#' as part of the construction of a boostrapped null distribution for significance testing.
+#' @param g igraph object representing the network under study. specified by "ppi" in bootstrap_null
+#'
+#' @inheritParams bootstrap_null
+#'
+
+match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
+  if(is.numeric(set_seed)) {
+    set.seed(set_seed)
+  }
+  num_seeds <- length(seed_proteins)
+
+  #Add degree as a character for each seed_protein.
+  degree_seeds <- (degree = igraph::degree(g, v = seed_proteins))
+  degree_bins <- ggplot2::cut_number(degree_seeds, num_seeds)
+
+  #Identify the single number breaks from degree_bins
+  bins <- levels(degree_bins)
+
+  #extract the first side of each bin to pass to cut
+  breaks <- base::as.numeric(stringr::str_extract(bins, "\\d*(?=\\.)|\\d*(?=,)"))
+  degree_all <- igraph::degree(g)
+
+  degree_all <- tibble::tibble(gene = names(degree_all),
+                               degree = degree_all,
+                               degree_bins = cut(degree_all, breaks = breaks))
+
+
+  #group by breaks
+  degree_grouped <- dplyr::group_by(degree_all, degree_bins)
+
+  sample_seeds <- list()
+
+  for(i in 1:n) {
+    samp <- dplyr::slice_sample(degree_grouped, n = 1) #n = 1 because the number of groups will always be equal to the number of seeds
+    sample_seeds[[i]] <- samp$gene
+  }
+
+  return(sample_seeds)
+
+}
+
+#' Internal function that computes the mean/stdev for each gene from a wide-format data frame.
+#'
+#' This function is called by the high-level function "bootstrap_null".
+#'
+#' @importFrom magrittr %>%
+#'
+#' @param df : numeric vector
+#' @return a 3-column dataframe (gene, )
+
+dist_calc <- function(df, ncores) {
+  if(ncores > 1){
+    null_dist <- tidyr::pivot_longer(df, cols = -run_number, names_to = "gene_id", values_to = "p")
+  } else {
+    null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "gene_id", values_to = "p")
+  }
+  null_dist <- null_dist %>%
+    dplyr::group_by(gene_id) %>%
+    dplyr::summarise(mean_p = mean(p),
+                     stdev_p = sd(p),
+                     nobs = dplyr::n())
+
+  return(null_dist)
 
 }
