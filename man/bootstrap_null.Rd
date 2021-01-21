@@ -6,8 +6,8 @@
 \usage{
 bootstrap_null(
   seed_proteins,
-  ppi = "stringdb",
-  n = 10000,
+  g,
+  n = 1000,
   gamma = 0.6,
   eps = 1e-10,
   tmax = 1000,
@@ -19,15 +19,15 @@ bootstrap_null(
 )
 }
 \arguments{
-\item{ppi}{specifies which protein-protein interaction network will be used - currently only "stringdb" is supported}
-
 \item{n}{number of random walks with repeats}
 
 \item{set_seed}{integer to set random number seed - for reproducibility}
 
 \item{seed_name}{Name to give the cached null distribution - must be a character string}
 
-\item{ncores}{= 1}
+\item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
+
+\item{ppi}{specifies which protein-protein interaction network will be used - currently only "stringdb" is supported}
 
 \item{...}{
   Arguments passed on to \code{\link[=sparseRWR]{sparseRWR}}, \code{\link[=setup_init]{setup_init}}

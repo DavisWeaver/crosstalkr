@@ -1,14 +1,17 @@
 Package: crosstalkr
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: A package for the identification of functionally relevant subnetworks from high-dimensional omics data.
+Version: 0.1.0.9000
 Authors@R: 
     person(given = "Davis",
            family = "Weaver",
            role = c("aut", "cre"),
            email = "davis.weaver@case.edu")
-Description: What the package does (one paragraph).
+Description: crosstalkr provides a key user function, \code{compute_crosstalk} 
+    as well as several additional functions that assist in setup and visualization 
+    (under development).
 License: `use_gpl3_license()`
 Imports: 
+  magrittr,
   readr,
   dplyr,
   stringr,
@@ -19,6 +22,7 @@ Imports:
   ensembldb,
   foreach,
   doParallel,
+  ggplot2,
   EnsDb.Hsapiens.v79
 Encoding: UTF-8
 LazyData: true

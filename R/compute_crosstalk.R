@@ -1,5 +1,18 @@
 #' Identify proteins with a statistically significant relationship to user-provided seeds.
 #'
+#' \code{compute_crosstalk} returns a dataframe of proteins that are significantly
+#' associated with user-defined seed proteins. These identified "crosstalkers"
+#' can be combined with the user-defined seed proteins to identify functionally
+#' relevant subnetworks. Affinity scores for every protein in the network are
+#' calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
+#' determined by comparing these affinity scores to a bootstrapped null distribution
+#' (see \code{bootstrap_null}).
+#'
+#' @param significance_level user-defined signficance level for hypothesis testing
+#' @param p_adjust adjustment method to correct for multiple hypothesis testing:
+#'     defaults to "bonferroni". see \code{\link{stats::p.adjust.methods}} for other potential
+#'     adjustment methods.
+#'
 #' @inheritParams bootstrap_null
 #'
 #' @inheritParams sparseRWR
@@ -49,7 +62,5 @@ compute_crosstalk <- function(seed_proteins, ppi = "stringdb", n = 1000,
   df <- dplyr::filter(df, adj_p_value < 1-significance_level)
 
   return(df)
-
-
 }
 

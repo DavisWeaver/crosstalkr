@@ -7,7 +7,7 @@
 compute_crosstalk(
   seed_proteins,
   ppi = "stringdb",
-  n = 10000,
+  n = 1000,
   gamma = 0.6,
   eps = 1e-10,
   tmax = 1000,
@@ -15,7 +15,9 @@ compute_crosstalk(
   set_seed,
   cache,
   seed_name = NULL,
-  ncores = 1
+  ncores = 1,
+  significance_level = 0.95,
+  p_adjust = "bonferroni"
 )
 }
 \arguments{
@@ -39,8 +41,20 @@ compute_crosstalk(
 
 \item{seed_name}{Name to give the cached null distribution - must be a character string}
 
-\item{ncores}{= 1}
+\item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
+
+\item{significance_level}{user-defined signficance level for hypothesis testing}
+
+\item{p_adjust}{adjustment method to correct for multiple hypothesis testing:
+defaults to "bonferroni". see \code{\link{stats::p.adjust.methods}} for other potential
+adjustment methods.}
 }
 \description{
-Identify proteins with a statistically significant relationship to user-provided seeds.
+\code{compute_crosstalk} returns a dataframe of proteins that are significantly
+associated with user-defined seed proteins. These identified "crosstalkers"
+can be combined with the user-defined seed proteins to identify functionally
+relevant subnetworks. Affinity scores for every protein in the network are
+calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
+determined by comparing these affinity scores to a bootstrapped null distribution
+(see \code{bootstrap_null}).
 }

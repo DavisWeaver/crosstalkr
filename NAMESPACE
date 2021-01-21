@@ -2,6 +2,7 @@
 
 export(bootstrap_null)
 export(compute_crosstalk)
+export(setup_init)
 export(sparseRWR)
 importFrom(foreach,"%dopar%")
 importFrom(magrittr,"%>%")

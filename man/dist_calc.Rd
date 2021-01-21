@@ -4,7 +4,7 @@
 \alias{dist_calc}
 \title{Internal function that computes the mean/stdev for each gene from a wide-format data frame.}
 \usage{
-dist_calc(df, ncores)
+dist_calc(df, ncores, seed_proteins)
 }
 \arguments{
 \item{df}{: numeric vector}
