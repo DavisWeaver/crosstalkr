@@ -6,6 +6,8 @@
 \usage{
 compute_crosstalk(
   seed_proteins,
+  g = NULL,
+  use_ppi = TRUE,
   ppi = "stringdb",
   n = 1000,
   gamma = 0.6,
@@ -14,6 +16,7 @@ compute_crosstalk(
   norm = TRUE,
   set_seed,
   cache,
+  min_score = 400,
   seed_name = NULL,
   ncores = 1,
   significance_level = 0.95,
@@ -22,6 +25,11 @@ compute_crosstalk(
 }
 \arguments{
 \item{seed_proteins}{user defined seed proteins}
+
+\item{g}{igraph network object.}
+
+\item{use_ppi}{should g be the human protein-protein interaction network. If
+false, user must provide an igraph object in \code{g}}
 
 \item{ppi}{specifies which protein-protein interaction network will be used - currently only "stringdb" is supported}
 
@@ -38,6 +46,8 @@ compute_crosstalk(
 \item{set_seed}{integer to set random number seed - for reproducibility}
 
 \item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
+
+\item{min_score}{minimum connectivity score for each edge in the network.}
 
 \item{seed_name}{Name to give the cached null distribution - must be a character string}
 

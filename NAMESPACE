@@ -2,6 +2,8 @@
 
 export(bootstrap_null)
 export(compute_crosstalk)
+export(crosstalk_subgraph)
+export(plot_ct)
 export(setup_init)
 export(sparseRWR)
 importFrom(foreach,"%dopar%")

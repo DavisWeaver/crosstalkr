@@ -1,17 +1,20 @@
 #' Identify proteins with a statistically significant relationship to user-provided seeds.
 #'
 #' \code{compute_crosstalk} returns a dataframe of proteins that are significantly
-#' associated with user-defined seed proteins. These identified "crosstalkers"
-#' can be combined with the user-defined seed proteins to identify functionally
-#' relevant subnetworks. Affinity scores for every protein in the network are
-#' calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
-#' determined by comparing these affinity scores to a bootstrapped null distribution
-#' (see \code{bootstrap_null}).
+#'     associated with user-defined seed proteins. These identified "crosstalkers"
+#'     can be combined with the user-defined seed proteins to identify functionally
+#'     relevant subnetworks. Affinity scores for every protein in the network are
+#'     calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
+#'     determined by comparing these affinity scores to a bootstrapped null distribution
+#'     (see \code{bootstrap_null}).
 #'
 #' @param significance_level user-defined signficance level for hypothesis testing
 #' @param p_adjust adjustment method to correct for multiple hypothesis testing:
 #'     defaults to "bonferroni". see \code{\link{stats::p.adjust.methods}} for other potential
 #'     adjustment methods.
+#' @param use_ppi should g be the human protein-protein interaction network. If
+#'     false, user must provide an igraph object in \code{g}
+#' @param g igraph network object.
 #'
 #' @inheritParams bootstrap_null
 #'
@@ -22,18 +25,27 @@
 #'
 #' @export
 
-compute_crosstalk <- function(seed_proteins, ppi = "stringdb", n = 1000,
+compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
+                              ppi = "stringdb", n = 1000,
                               gamma=0.6, eps = 1e-10, tmax = 1000,
                               norm = TRUE, set_seed,
-                              cache, seed_name = NULL,
+                              cache, min_score = 400, seed_name = NULL,
                               ncores = 1, significance_level = 0.95,
                               p_adjust = "bonferroni")  {
-  if(ppi == "biogrid") {
-    g <- prep_biogrid(cache = cache)
-  } else if (ppi == "stringdb") {
-    g <- prep_stringdb(cache = cache)
+
+  #check inputs
+  if(use_ppi == TRUE){
+    if(ppi == "biogrid") {
+      g <- prep_biogrid(cache = cache)
+    } else if (ppi == "stringdb") {
+      g <- prep_stringdb(cache = cache, min_score = min_score)
+    } else {
+      stop("ppi must be either 'biogrid' or 'stringdb'")
+    }
   } else {
-    stop("ppi must be either 'biogrid' or 'stringdb'")
+    if(!igraph::is.igraph(g)){
+      stop("g must be an igraph object")
+    }
   }
 
   w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.

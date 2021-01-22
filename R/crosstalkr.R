@@ -17,6 +17,7 @@
 #' \code{setup_init} manages download and storage of interactome data to
 #'  speed up future analysis
 #'
+#'
 #' @docType package
 #'
 #' @name crosstalkr

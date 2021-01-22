@@ -4,10 +4,12 @@
 \alias{setup_init}
 \title{Helper function for first-time use of crosstalkr package}
 \usage{
-setup_init(cache = NULL)
+setup_init(cache = NULL, min_score)
 }
 \arguments{
 \item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
+
+\item{min_score}{minimum connectivity score for each edge in the network.}
 }
 \value{
 directory on users computer containing the different adjacency matrices for future use.

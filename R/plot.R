@@ -1,0 +1,94 @@
+#' Plot subnetwork identified using the compute_crosstalk function
+#'
+#' Convenience function for plotting crosstalkers - if you want to make more
+#'     customized/dynamic figures, there are lots of packages that can facilitate that,
+#'     including: \code{visnetwork}, \code{ggraph}, and even the base R plotting library
+#'
+#' @param crosstalk_df a dataframe containing the results of \code{compute_crosstalk}
+#' @param label_prop Proportion of nodes to label - based on degree
+#' @inheritParams compute_crosstalk
+#'
+#' @export
+
+plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
+
+  #make sure g is an igraph object
+  if(!igraph::is.igraph(g)) {
+    stop("g must be an igraph object.")
+  }
+
+  #make sure input is valid compute_crosstalk output
+  check_crosstalk(crosstalk_df = crosstalk_df)
+
+  #generate vector of seeds
+  seeds_df <- dplyr::filter(crosstalk_df, seed == "yes")
+  seed_proteins <- seeds_df$gene_id
+
+  #make subgraph of g for a given crosstalk_df
+  g_ct <- crosstalk_subgraph(crosstalk_df = crosstalk_df, g = g,
+                             seed_proteins = seed_proteins)
+
+  #igraph::tkplot(g_ct)
+  ggraph::ggraph(g_ct) +
+    ggraph::geom_node_point(ggplot2::aes(size = degree,
+                                         color = seed_label)) +
+    ggraph::geom_edge_fan(alpha = 0.4, color = "blue") +
+    ggraph::geom_node_label(ggplot2::aes(label =
+                                           ifelse(degree_rank > 1-label_prop, name, "")),
+                            repel = TRUE, hjust = 2, size = 4)
+
+}
+
+
+#' Check to make sure incoming object is a valid crosstalk df.
+#'
+#' This function is a helper function for \code{plot_ct} that verifies the input is a valid output of compute_crosstalk
+#' @inheritParams plot_ct
+#'
+
+check_crosstalk <- function(crosstalk_df) {
+  #make sure it is a dataframe
+  if(!is.data.frame(crosstalk_df)) {
+    stop("crosstalk_df must be a valid output of compute_crosstalk")
+  }
+
+  #make sure columns match up
+  target_cols = c("gene_id", "mean_p", "stdev_p", "nobs", "seed", "p_test", "Z",
+                  "p_value", "adj_p_value")
+
+  if(!identical(target_cols, colnames(crosstalk_df))) {
+    stop("column names do not match what is expected")
+  }
+
+}
+
+#' Helper function to generate subgraph from crosstalk_df output of \code{compute_crosstalk}
+#'
+#' Useful if the user wants to carry out further analysis or design custom visualizations.
+#'
+#' @importFrom magrittr %>%
+#'
+#' @inheritParams plot_ct
+#'
+#' @return a tidygraph structure containing information about the crosstalkr subgraph
+#'
+#' @export
+
+crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {
+  #verify that crosstalk_df is a valid compute_crosstalk output
+  check_crosstalk(crosstalk_df = crosstalk_df)
+
+  #if g isn't an igraph object this will fly an error.
+  g <- igraph::induced_subgraph(g, v = crosstalk_df$gene_id)
+
+  #we only want to keep edges that attach to a seed protein
+  seed_edges <- igraph::E(g)[ from(seed_proteins) ]
+
+  g <- igraph::subgraph.edges(g, eids = seed_edges) %>%
+    tidygraph::as_tbl_graph() %>%
+    tidygraph::mutate(
+      degree = igraph::degree(.),
+      degree_rank = dplyr::percent_rank(degree),
+      seed_label = ifelse(name %in% seed_proteins, "seed", "crosstalker"))
+
+}

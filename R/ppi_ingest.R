@@ -97,11 +97,11 @@ prep_biogrid <- function(cache = NULL) {
 #'
 #' @export
 #'
-setup_init <- function(cache = NULL) {
+setup_init <- function(cache = NULL, min_score) {
 
   #Functons are written to return a tibble - this use will ensure a df is not printed
   tmp_var1 <- prep_biogrid(cache = cache)
-  tmp_var2 <- prep_stringdb(cache = cache)
+  tmp_var2 <- prep_stringdb(cache = cache, min_score = min_score)
 }
 
 
