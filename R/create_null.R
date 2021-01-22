@@ -31,6 +31,9 @@ bootstrap_null <- function(seed_proteins, g, n = 1000,
   } else{
     w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.
 
+    #normalize w once now so we don't have to do it repeatedly.
+    w <- norm_colsum(w)
+
     #generate list of degree-similar seed protein vectors.
     seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
 
@@ -40,7 +43,7 @@ bootstrap_null <- function(seed_proteins, g, n = 1000,
       null_dist <-
         foreach::foreach(i = 1:n, .combine = rbind) %dopar% {
           seeds_i <- unlist(seeds[[i]])
-          crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i)[[1]]
+          crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]] #norm=FALSE because we already did it.
         }
       parallel::stopCluster(cl)
       null_dist <- tibble::as_tibble(null_dist, rownames = "run_number")

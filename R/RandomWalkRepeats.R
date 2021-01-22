@@ -46,8 +46,7 @@ sparseRWR <- function(w, seed_proteins, gamma = 0.6, eps = 1e-10, tmax = 1000, n
 #' @inheritParams sparseRWR
 #'
 norm_colsum <- function(w) {
-  colsums <- Matrix::colSums(w)
-  w <- w/colsums
+  w <- sweep(w, MARGIN = 2, FUN = "/", STATS = Matrix::colSums(w))
   return(w)
 }
 
