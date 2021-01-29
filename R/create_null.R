@@ -8,14 +8,14 @@
 #' @importFrom foreach %dopar%
 #'
 #'
-#' @param ppi specifies which protein-protein interaction network will be used - currently only "stringdb" is supported
-#' @param n number of random walks with repeats
+#' @param g igraph object
+#' @param n number of random walks with repeats to create null distribution
 #' @param set_seed integer to set random number seed - for reproducibility
 #' @param ncores Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.
 #' @param seed_name Name to give the cached null distribution - must be a character string
 #'
-#' @inheritDotParams sparseRWR seed_proteins gamma tmax eps norm
-#' @inheritDotParams setup_init cache
+#' @inheritParams sparseRWR
+#' @inheritParams setup_init
 #'
 #' @export
 
@@ -41,21 +41,20 @@ bootstrap_null <- function(seed_proteins, g, n = 1000,
       cl <- parallel::makeCluster(ncores)
       doParallel::registerDoParallel(cl)
       null_dist <-
-        foreach::foreach(i = 1:n, .combine = rbind) %dopar% {
+        foreach::foreach(i = 1:n, .errorhandling = 'pass', .packages = "Matrix") %dopar% {
           seeds_i <- unlist(seeds[[i]])
           crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]] #norm=FALSE because we already did it.
         }
       parallel::stopCluster(cl)
-      null_dist <- tibble::as_tibble(null_dist, rownames = "run_number")
     } else {
       null_dist <- list()
       for(i in 1:n) {
         seeds_i <- unlist(seeds[[i]])
-        null_dist[[i]] <- sparseRWR(w = w, seed_proteins = seeds_i)[[1]]
+        null_dist[[i]] <- sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]]
       }
-      null_dist <- dplyr::bind_rows(null_dist)
     }
 
+    null_dist <- dplyr::bind_rows(null_dist)
     null_dist <- dist_calc(null_dist, ncores = ncores,
                            seed_proteins = seed_proteins)
 
@@ -80,20 +79,33 @@ bootstrap_null <- function(seed_proteins, g, n = 1000,
 #'
 
 match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
+
   if(is.numeric(set_seed)) {
+    oldseed <- .Random.seed
     set.seed(set_seed)
+    withr::defer(.Random.seed <- oldseed) #clean up so other functions relying on RNG are not affected.
   }
   num_seeds <- length(seed_proteins)
 
   #Add degree as a character for each seed_protein.
   degree_seeds <- (degree = igraph::degree(g, v = seed_proteins))
-  degree_bins <- ggplot2::cut_number(degree_seeds, num_seeds)
+
+
+  #make largest possible number of bins relating to the degree_seeds vector
+  for(i in seq_along(degree_seeds) - 1) {
+    degree_bins <- try(ggplot2::cut_number(degree_seeds, num_seeds - i),
+                       silent = TRUE)
+    if(!inherits(degree_bins, 'try-error')) {
+      break
+    }
+  }
+
 
   #Identify the single number breaks from degree_bins
   bins <- levels(degree_bins)
 
   #extract the first side of each bin to pass to cut
-  breaks <- base::as.numeric(stringr::str_extract(bins, "\\d*(?=\\.)|\\d*(?=,)"))
+  breaks <- base::as.numeric(stringr::str_extract(bins, "(?<=\\().*(?=\\,)|(?<=\\[).*(?=\\,)"))
   degree_all <- igraph::degree(g)
 
   degree_all <- tibble::tibble(gene = names(degree_all),
@@ -122,14 +134,14 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' @importFrom magrittr %>%
 #'
 #' @param df : numeric vector
+#' @inheritParams bootstrap_null
 #' @return a 3-column dataframe (gene, )
 
 dist_calc <- function(df, ncores, seed_proteins) {
-  if(ncores > 1){
-    null_dist <- tidyr::pivot_longer(df, cols = -run_number, names_to = "gene_id", values_to = "p")
-  } else {
-    null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "gene_id", values_to = "p")
-  }
+
+  #pivot longer to prep for summarise
+  null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "gene_id", values_to = "p")
+
   null_dist <- null_dist %>%
     dplyr::group_by(gene_id) %>%
     dplyr::summarise(mean_p = mean(p),

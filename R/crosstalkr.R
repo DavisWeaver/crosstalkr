@@ -32,7 +32,7 @@
 #' @docType package
 #'
 #' @name crosstalkr
-#' @
+#'
 #'
 NULL
 #>NULL

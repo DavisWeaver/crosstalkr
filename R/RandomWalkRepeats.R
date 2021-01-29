@@ -44,9 +44,10 @@ sparseRWR <- function(w, seed_proteins, gamma = 0.6, eps = 1e-10, tmax = 1000, n
 #' Function to normalize adjacency matrix by dividing each value by the colsum.
 #'
 #' @inheritParams sparseRWR
-#'
+#' @export
 norm_colsum <- function(w) {
-  w <- sweep(w, MARGIN = 2, FUN = "/", STATS = Matrix::colSums(w))
+  withr::defer(gc())
+  w <- Matrix::t(Matrix::t(w)/Matrix::colSums(w))
   return(w)
 }
 
@@ -57,6 +58,7 @@ norm_colsum <- function(w) {
 #'
 #' @param x : numeric vector
 #' @return a single real value (the norm1 of the input vector)
+#'
 norm1 <- function(x) {
   return(sum(abs(x)));
 }

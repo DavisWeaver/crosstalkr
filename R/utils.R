@@ -26,4 +26,12 @@ ensembl_convert <- function(x, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79) {
   return(y)
 }
 
+#' Determine which format of gene is used to specify by user-defined seed proteins
+#'
+#' @param x vector of gene symbols
+#'
+#' @return "gene_symbol", "entrez_id", "ensemble_id" or "other"
 
+detect_genetype <- function(x) {
+
+}

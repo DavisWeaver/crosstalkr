@@ -1,17 +1,18 @@
 Package: crosstalkr
-Title: A package for the identification of functionally relevant subnetworks from high-dimensional omics data.
-Version: 0.1.0.9000
+Title: A package for the identification of functionally relevant subnetworks from high-dimensional omics data
+Version: 0.1.0
 Authors@R: 
     person(given = "Davis",
            family = "Weaver",
            role = c("aut", "cre"),
            email = "davis.weaver@case.edu")
 Description: crosstalkr provides a key user function, \code{compute_crosstalk} 
-    as well as several additional functions that assist in setup and visualization 
-    (under development).
-License: `use_gpl3_license()`
+    as well as several additional functions that assist in setup and visualization. 
+License: GPL (>= 3)
 Imports: 
+  rlang,
   magrittr,
+  withr,
   readr,
   dplyr,
   stringr,
@@ -31,5 +32,8 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
-    testthat (>= 2.0.0)
+    testthat (>= 2.0.0),
+    knitr,
+    rmarkdown
 Config/testthat/edition: 2
+VignetteBuilder: knitr

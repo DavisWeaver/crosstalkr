@@ -10,10 +10,11 @@
 #'
 #' @param significance_level user-defined signficance level for hypothesis testing
 #' @param p_adjust adjustment method to correct for multiple hypothesis testing:
-#'     defaults to "bonferroni". see \code{\link{stats::p.adjust.methods}} for other potential
+#'     defaults to "bonferroni". see \code{\link{p.adjust.methods}} for other potential
 #'     adjustment methods.
 #' @param use_ppi should g be the human protein-protein interaction network. If
 #'     false, user must provide an igraph object in \code{g}
+#' @param ppi character string describing the ppi to use: currently only "stringdb" is supported.
 #' @param g igraph network object.
 #'
 #' @inheritParams bootstrap_null
@@ -22,6 +23,9 @@
 #'
 #' @inheritParams setup_init
 #'
+#' @importFrom stats p.adjust pnorm sd
+#' @importFrom utils download.file read.delim unzip
+#' @importFrom rlang .data
 #'
 #' @export
 
@@ -68,10 +72,10 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
   #compute the Z-score and p-value
   df <- dplyr::mutate(df,
-                      Z = (p_test - mean_p)/ stdev_p,
-                      p_value = 2*pnorm(-abs(Z)),
-                      adj_p_value = p.adjust(p_value, method = p_adjust))
-  df <- dplyr::filter(df, adj_p_value < 1-significance_level)
+                      Z = (.data$p_test - .data$mean_p)/ .data$stdev_p,
+                      p_value = 2*pnorm(-abs(.data$Z)),
+                      adj_p_value = p.adjust(.data$p_value, method = p_adjust))
+  df <- dplyr::filter(df, .data$adj_p_value < 1-significance_level)
 
   return(df)
 }

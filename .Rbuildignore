@@ -3,3 +3,6 @@
 [.]Rda$
 ^\./seed_proteins\.R$
 
+^vignettes/articles$
+^LICENSE\.md$
+^test_data$

@@ -9,7 +9,9 @@ match_seeds(g, seed_proteins, n, set_seed = NULL)
 \arguments{
 \item{g}{igraph object representing the network under study. specified by "ppi" in bootstrap_null}
 
-\item{n}{number of random walks with repeats}
+\item{seed_proteins}{user defined seed proteins}
+
+\item{n}{number of random walks with repeats to create null distribution}
 
 \item{set_seed}{integer to set random number seed - for reproducibility}
 }

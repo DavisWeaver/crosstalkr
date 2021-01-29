@@ -8,6 +8,10 @@ dist_calc(df, ncores, seed_proteins)
 }
 \arguments{
 \item{df}{: numeric vector}
+
+\item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
+
+\item{seed_proteins}{user defined seed proteins}
 }
 \value{
 a 3-column dataframe (gene, )

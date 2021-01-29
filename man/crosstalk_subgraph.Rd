@@ -10,6 +10,8 @@ crosstalk_subgraph(crosstalk_df, g, seed_proteins)
 \item{crosstalk_df}{a dataframe containing the results of \code{compute_crosstalk}}
 
 \item{g}{igraph network object.}
+
+\item{seed_proteins}{user defined seed proteins}
 }
 \value{
 a tidygraph structure containing information about the crosstalkr subgraph

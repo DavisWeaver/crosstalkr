@@ -1,3 +1,6 @@
+#I hate this but we're gonna make a call to globalVariables here to satisfy R cmd check.
+utils::globalVariables(c("from"))
+
 #' Plot subnetwork identified using the compute_crosstalk function
 #'
 #' Convenience function for plotting crosstalkers - if you want to make more
@@ -7,6 +10,8 @@
 #' @param crosstalk_df a dataframe containing the results of \code{compute_crosstalk}
 #' @param label_prop Proportion of nodes to label - based on degree
 #' @inheritParams compute_crosstalk
+#'
+#' @importFrom rlang .data
 #'
 #' @export
 
@@ -30,11 +35,11 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
 
   #igraph::tkplot(g_ct)
   ggraph::ggraph(g_ct) +
-    ggraph::geom_node_point(ggplot2::aes(size = degree,
-                                         color = seed_label)) +
+    ggraph::geom_node_point(ggplot2::aes(size = .data$degree,
+                                         color = .data$seed_label)) +
     ggraph::geom_edge_fan(alpha = 0.4, color = "blue") +
     ggraph::geom_node_label(ggplot2::aes(label =
-                                           ifelse(degree_rank > 1-label_prop, name, "")),
+                                           ifelse(.data$degree_rank > 1-label_prop, name, "")),
                             repel = TRUE, hjust = 2, size = 4)
 
 }
@@ -44,6 +49,7 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
 #'
 #' This function is a helper function for \code{plot_ct} that verifies the input is a valid output of compute_crosstalk
 #' @inheritParams plot_ct
+#' @inheritParams compute_crosstalk
 #'
 
 check_crosstalk <- function(crosstalk_df) {
@@ -69,6 +75,7 @@ check_crosstalk <- function(crosstalk_df) {
 #' @importFrom magrittr %>%
 #'
 #' @inheritParams plot_ct
+#' @inheritParams compute_crosstalk
 #'
 #' @return a tidygraph structure containing information about the crosstalkr subgraph
 #'
@@ -82,13 +89,13 @@ crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {
   g <- igraph::induced_subgraph(g, v = crosstalk_df$gene_id)
 
   #we only want to keep edges that attach to a seed protein
-  seed_edges <- igraph::E(g)[ from(seed_proteins) ]
+  seed_edges <- igraph::E(g)[ from(seed_proteins)]
 
   g <- igraph::subgraph.edges(g, eids = seed_edges) %>%
     tidygraph::as_tbl_graph() %>%
     tidygraph::mutate(
-      degree = igraph::degree(.),
-      degree_rank = dplyr::percent_rank(degree),
-      seed_label = ifelse(name %in% seed_proteins, "seed", "crosstalker"))
+      degree = igraph::degree(.data),
+      degree_rank = dplyr::percent_rank(.data$degree),
+      seed_label = ifelse(.data$name %in% seed_proteins, "seed", "crosstalker"))
 
 }

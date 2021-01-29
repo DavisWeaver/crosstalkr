@@ -1,5 +1,7 @@
 #' Prepare Stringdb for use in analyses
 #'
+#'
+#'
 #' @param cache A filepath to a folder downloaded files should be stored, inherits from user-available functions
 #' @param edb ensemble database object
 #' @param min_score minimum connectivity score for each edge in the network.
@@ -8,6 +10,7 @@
 prep_stringdb <- function(cache = NULL,
                           edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79,
                           min_score = NULL){
+  withr::defer(gc())
 
   if(!file.exists(paste0(cache, "/stringdb.Rda"))) {
     message("Downloading stringdb Homo Sapiens v11.0")
@@ -29,8 +32,6 @@ prep_stringdb <- function(cache = NULL,
     g  <- igraph::graph_from_data_frame(df, directed = FALSE)
     g <-
       igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
-
-
 
     if(!is.null(cache)) {
       save(g, file = paste0(cache, "/stringdb.Rda"))

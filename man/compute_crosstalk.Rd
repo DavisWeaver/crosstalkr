@@ -31,9 +31,9 @@ compute_crosstalk(
 \item{use_ppi}{should g be the human protein-protein interaction network. If
 false, user must provide an igraph object in \code{g}}
 
-\item{ppi}{specifies which protein-protein interaction network will be used - currently only "stringdb" is supported}
+\item{ppi}{character string describing the ppi to use: currently only "stringdb" is supported.}
 
-\item{n}{number of random walks with repeats}
+\item{n}{number of random walks with repeats to create null distribution}
 
 \item{gamma}{restart probability}
 
@@ -56,7 +56,7 @@ false, user must provide an igraph object in \code{g}}
 \item{significance_level}{user-defined signficance level for hypothesis testing}
 
 \item{p_adjust}{adjustment method to correct for multiple hypothesis testing:
-defaults to "bonferroni". see \code{\link{stats::p.adjust.methods}} for other potential
+defaults to "bonferroni". see \code{\link{p.adjust.methods}} for other potential
 adjustment methods.}
 }
 \description{

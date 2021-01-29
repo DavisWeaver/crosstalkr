@@ -19,26 +19,27 @@ bootstrap_null(
 )
 }
 \arguments{
-\item{n}{number of random walks with repeats}
+\item{seed_proteins}{user defined seed proteins}
+
+\item{g}{igraph object}
+
+\item{n}{number of random walks with repeats to create null distribution}
+
+\item{gamma}{restart probability}
+
+\item{eps}{maximum allowed difference between the computed probabilities at the steady state}
+
+\item{tmax}{the maximum number of iterations for the RWR}
+
+\item{norm}{if True, w is normalized by dividing each value by the column sum.}
 
 \item{set_seed}{integer to set random number seed - for reproducibility}
+
+\item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
 
 \item{seed_name}{Name to give the cached null distribution - must be a character string}
 
 \item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
-
-\item{ppi}{specifies which protein-protein interaction network will be used - currently only "stringdb" is supported}
-
-\item{...}{
-  Arguments passed on to \code{\link[=sparseRWR]{sparseRWR}}, \code{\link[=setup_init]{setup_init}}
-  \describe{
-    \item{\code{seed_proteins}}{user defined seed proteins}
-    \item{\code{gamma}}{restart probability}
-    \item{\code{eps}}{maximum allowed difference between the computed probabilities at the steady state}
-    \item{\code{norm}}{if True, w is normalized by dividing each value by the column sum.}
-    \item{\code{tmax}}{the maximum number of iterations for the RWR}
-    \item{\code{cache}}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
-  }}
 }
 \description{
 This function will generate a bootstrapped null distribution to identify
