@@ -32,24 +32,4 @@ test_that("sparseRWR output equals expected", {
   expect_lte(sum(sparseRWR(w, c(1,3))[[1]]), 1)
 })
 
-#Now need to make sure that it can be run in parallel
-#Previously we had a bug where it would fly an error for the first set of workers.
-library(foreach)
 
-m <- replicate(1000, sample(x = c(0,1), size = 1000, replace = TRUE))
-w <- Matrix::Matrix(m, sparse = TRUE)
-w <- Matrix::t(Matrix::t(w)/Matrix::colSums(w)) #normalize based on the column sum.
-seeds <- sample(1:nrow(w), size = 32)
-
-cl <- parallel::makeCluster(4)
-doParallel::registerDoParallel(cl)
-
-n = 8
-null_dist <-
-  foreach::foreach(i = 1:n, .errorhandling = 'pass', .packages = "Matrix") %dopar% {
-    crosstalkr::sparseRWR(w, seed_proteins = seeds, norm = FALSE)[[1]]
-  }
-
-test_that("parallel execution doesn't return an error", {
-  expect_true(is.numeric(null_dist[[1]]))
-})

@@ -132,6 +132,7 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' This function is called by the high-level function "bootstrap_null".
 #'
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @param df : numeric vector
 #' @inheritParams bootstrap_null
@@ -143,10 +144,10 @@ dist_calc <- function(df, ncores, seed_proteins) {
   null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "gene_id", values_to = "p")
 
   null_dist <- null_dist %>%
-    dplyr::group_by(gene_id) %>%
-    dplyr::summarise(mean_p = mean(p),
-                     stdev_p = sd(p),
+    dplyr::group_by(.data$gene_id) %>%
+    dplyr::summarise(mean_p = mean(.data$p),
+                     stdev_p = sd(.data$p),
                      nobs = dplyr::n()) %>%
-    dplyr::mutate(seed = ifelse(gene_id %in% seed_proteins, "yes", "no"))
+    dplyr::mutate(seed = ifelse(.data$gene_id %in% seed_proteins, "yes", "no"))
   return(null_dist)
 }

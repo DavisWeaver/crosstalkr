@@ -6,6 +6,9 @@
 #' @param edb ensemble database object
 #' @param min_score minimum connectivity score for each edge in the network.
 #' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+#'
+#' @importFrom rlang .data
+#' @export
 
 prep_stringdb <- function(cache = NULL,
                           edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79,
@@ -19,12 +22,12 @@ prep_stringdb <- function(cache = NULL,
 
     #Lets convert the ensemble_ids to gene_ids.
     df <- dplyr::mutate(df,
-                        protein1 = ensembl_convert(protein1, edb = edb),
-                        protein2 = ensembl_convert(protein2, edb = edb))
+                        protein1 = as_gene_symbol(.data$protein1, edb = edb),
+                        protein2 = as_gene_symbol(.data$protein2, edb = edb))
 
     #filter out nodes below a given min score
     if(is.numeric(min_score)) {
-      df <- dplyr::filter(df, combined_score > min_score)
+      df <- dplyr::filter(df, .data$combined_score > min_score)
     }
 
 
@@ -48,6 +51,8 @@ prep_stringdb <- function(cache = NULL,
 #' @inheritParams prep_stringdb
 #'
 #' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+#'
+#' @export
 
 prep_biogrid <- function(cache = NULL) {
 

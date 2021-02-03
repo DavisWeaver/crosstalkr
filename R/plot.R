@@ -26,7 +26,7 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
   check_crosstalk(crosstalk_df = crosstalk_df)
 
   #generate vector of seeds
-  seeds_df <- dplyr::filter(crosstalk_df, seed == "yes")
+  seeds_df <- dplyr::filter(crosstalk_df, .data$seed == "yes")
   seed_proteins <- seeds_df$gene_id
 
   #make subgraph of g for a given crosstalk_df
@@ -39,7 +39,7 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
                                          color = .data$seed_label)) +
     ggraph::geom_edge_fan(alpha = 0.4, color = "blue") +
     ggraph::geom_node_label(ggplot2::aes(label =
-                                           ifelse(.data$degree_rank > 1-label_prop, name, "")),
+                                           ifelse(.data$degree_rank > 1-label_prop, .data$name, "")),
                             repel = TRUE, hjust = 2, size = 4)
 
 }
