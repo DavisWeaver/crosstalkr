@@ -33,7 +33,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                               ppi = "stringdb", n = 1000,
                               gamma=0.6, eps = 1e-10, tmax = 1000,
                               norm = TRUE, set_seed,
-                              cache, min_score = 400, seed_name = NULL,
+                              cache = NULL, min_score = 400, seed_name = NULL,
                               ncores = 1, significance_level = 0.95,
                               p_adjust = "bonferroni")  {
 

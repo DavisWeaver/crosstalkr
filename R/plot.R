@@ -1,5 +1,5 @@
 #I hate this but we're gonna make a call to globalVariables here to satisfy R cmd check.
-utils::globalVariables(c("from"))
+utils::globalVariables(c("from", "."))
 
 #' Plot subnetwork identified using the compute_crosstalk function
 #'
@@ -94,7 +94,7 @@ crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {
   g <- igraph::subgraph.edges(g, eids = seed_edges) %>%
     tidygraph::as_tbl_graph() %>%
     tidygraph::mutate(
-      degree = igraph::degree(.data),
+      degree = igraph::degree(.),
       degree_rank = dplyr::percent_rank(.data$degree),
       seed_label = ifelse(.data$name %in% seed_proteins, "seed", "crosstalker"))
 

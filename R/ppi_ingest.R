@@ -15,7 +15,7 @@ prep_stringdb <- function(cache = NULL,
                           min_score = NULL){
   withr::defer(gc())
 
-  if(!file.exists(paste0(cache, "/stringdb.Rda"))) {
+  if(!file.exists(paste0("./", cache, "/stringdb.Rda"))) {
     message("Downloading stringdb Homo Sapiens v11.0")
     df <- readr::read_delim("https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz",
                             delim = " ")
@@ -37,11 +37,11 @@ prep_stringdb <- function(cache = NULL,
       igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
 
     if(!is.null(cache)) {
-      save(g, file = paste0(cache, "/stringdb.Rda"))
+      save(g, file = paste0("./", cache, "/stringdb.Rda"))
     }
   } else {
     message("using cached version of stringdb Homo Sapeins v11.0")
-    load(file = paste0(cache, "/stringdb.Rda"))
+    load(file = paste0("./", cache, "/stringdb.Rda"))
   }
   return(g)
 }
@@ -52,7 +52,7 @@ prep_stringdb <- function(cache = NULL,
 #'
 #' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
 #'
-#' @export
+#'
 
 prep_biogrid <- function(cache = NULL) {
 

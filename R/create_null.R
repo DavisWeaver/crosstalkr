@@ -22,50 +22,52 @@
 bootstrap_null <- function(seed_proteins, g, n = 1000,
                            gamma=0.6, eps = 1e-10, tmax = 1000,
                            norm = TRUE, set_seed,
-                           cache, seed_name = NULL,
+                           cache = NULL, seed_name = NULL,
                            ncores = 1) {
 
   #If file was cached from a previous run - use that- else go through the whole calculation
-  if(file.exists(paste0(cache, "/", seed_name, "null_dist.Rda"))) {
-    load(file = paste0(cache, "/", seed_name, "null_dist.Rda"))
-  } else{
-    w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.
-
-    #normalize w once now so we don't have to do it repeatedly.
-    w <- norm_colsum(w)
-
-    #generate list of degree-similar seed protein vectors.
-    seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
-
-    if(ncores > 1) {
-      cl <- parallel::makeCluster(ncores)
-      doParallel::registerDoParallel(cl)
-      null_dist <-
-        foreach::foreach(i = 1:n, .errorhandling = 'pass', .packages = "Matrix") %dopar% {
-          seeds_i <- unlist(seeds[[i]])
-          crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]] #norm=FALSE because we already did it.
-        }
-      parallel::stopCluster(cl)
-    } else {
-      null_dist <- list()
-      for(i in 1:n) {
-        seeds_i <- unlist(seeds[[i]])
-        null_dist[[i]] <- sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]]
-      }
-    }
-
-    null_dist <- dplyr::bind_rows(null_dist)
-    null_dist <- dist_calc(null_dist, ncores = ncores,
-                           seed_proteins = seed_proteins)
-
-    out <- list(null_dist, seed_proteins)
-
-    if(is.character(cache) & is.character(seed_name)) {
-      save(out, file = paste0(cache, "/", seed_name, "null_dist.Rda"))
-    } else {
-      message("Please provide character string designating a filepath and seed name if you would like to save these results to speed up future analysis.")
+  if(!is.null(cache)) {
+    if(file.exists(paste0(cache, "/", seed_name, "null_dist.Rda"))) {
+      load(file = paste0(cache, "/", seed_name, "null_dist.Rda"))
+      return(out)
     }
   }
+  w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.
+  #normalize w once now so we don't have to do it repeatedly.
+  w <- norm_colsum(w)
+
+  #generate list of degree-similar seed protein vectors.
+  seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
+
+  if(ncores > 1) {
+    cl <- parallel::makeCluster(ncores)
+    doParallel::registerDoParallel(cl)
+    null_dist <-
+      foreach::foreach(i = 1:n, .errorhandling = 'pass', .packages = "Matrix") %dopar% {
+        seeds_i <- unlist(seeds[[i]])
+        crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]] #norm=FALSE because we already did it.
+      }
+    parallel::stopCluster(cl)
+  } else {
+    null_dist <- list()
+    for(i in 1:n) {
+      seeds_i <- unlist(seeds[[i]])
+      null_dist[[i]] <- sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]]
+    }
+  }
+
+  null_dist <- dplyr::bind_rows(null_dist)
+  null_dist <- dist_calc(null_dist, ncores = ncores,
+                         seed_proteins = seed_proteins)
+
+  out <- list(null_dist, seed_proteins)
+
+  if(is.character(cache) & is.character(seed_name)) {
+    save(out, file = paste0(cache, "/", seed_name, "null_dist.Rda"))
+  } else {
+    message("Please provide character string designating a filepath and seed name if you would like to save these results to speed up future analysis.")
+  }
+
   return(out)
 }
 
