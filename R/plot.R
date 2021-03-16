@@ -59,10 +59,10 @@ check_crosstalk <- function(crosstalk_df) {
   }
 
   #make sure columns match up
-  target_cols = c("gene_id", "mean_p", "stdev_p", "nobs", "seed", "p_test", "Z",
-                  "p_value", "adj_p_value")
+  target_cols = c("gene_id", "mean_p", "stdev_p", "nobs", "seed",
+                  "affinity_score", "Z", "p_value", "adj_p_value")
 
-  if(!identical(target_cols, colnames(crosstalk_df))) {
+  if(!all(target_cols %in% colnames(crosstalk_df))) {
     stop("column names do not match what is expected")
   }
 

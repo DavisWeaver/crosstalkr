@@ -1,4 +1,4 @@
-#' Identify proteins with a statistically significant relationship to user-provided seeds.
+4#' Identify proteins with a statistically significant relationship to user-provided seeds.
 #'
 #' \code{compute_crosstalk} returns a dataframe of proteins that are significantly
 #'     associated with user-defined seed proteins. These identified "crosstalkers"
@@ -59,7 +59,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                       eps = eps, tmax = tmax, norm = norm)
   p_vec <- p_seed[[1]]
   p_df <- tibble::as_tibble(p_vec, rownames = "gene_id")
-  colnames(p_df)[colnames(p_df) == "value"] <- "p_test"
+  colnames(p_df)[colnames(p_df) == "value"] <- "affinity_score"
 
   #compute null distribution
   null_dist <- bootstrap_null(seed_proteins = seed_proteins, g = g, n = n,
@@ -72,7 +72,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
   #compute the Z-score and p-value
   df <- dplyr::mutate(df,
-                      Z = (.data$p_test - .data$mean_p)/ .data$stdev_p,
+                      Z = (.data$affinity_score - .data$mean_p)/ .data$stdev_p,
                       p_value = 2*pnorm(-abs(.data$Z)),
                       adj_p_value = p.adjust(.data$p_value, method = p_adjust))
   df <- dplyr::filter(df, .data$adj_p_value < 1-significance_level)

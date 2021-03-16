@@ -1,0 +1,3226 @@
+discovered package(s): 
+automatically exporting the following variables from the local environment:
+  seeds, seeds_i, w 
+explicitly exporting package(s): 
+numValues: 1000, numResults: 0, stopped: TRUE
+got results for task 1
+numValues: 1000, numResults: 1, stopped: TRUE
+returning status FALSE
+got results for task 2
+numValues: 1000, numResults: 2, stopped: TRUE
+returning status FALSE
+got results for task 3
+numValues: 1000, numResults: 3, stopped: TRUE
+returning status FALSE
+got results for task 4
+numValues: 1000, numResults: 4, stopped: TRUE
+returning status FALSE
+got results for task 5
+numValues: 1000, numResults: 5, stopped: TRUE
+returning status FALSE
+got results for task 6
+numValues: 1000, numResults: 6, stopped: TRUE
+returning status FALSE
+got results for task 7
+numValues: 1000, numResults: 7, stopped: TRUE
+returning status FALSE
+got results for task 8
+numValues: 1000, numResults: 8, stopped: TRUE
+returning status FALSE
+got results for task 9
+numValues: 1000, numResults: 9, stopped: TRUE
+returning status FALSE
+got results for task 10
+numValues: 1000, numResults: 10, stopped: TRUE
+returning status FALSE
+got results for task 11
+numValues: 1000, numResults: 11, stopped: TRUE
+returning status FALSE
+got results for task 12
+numValues: 1000, numResults: 12, stopped: TRUE
+returning status FALSE
+got results for task 13
+numValues: 1000, numResults: 13, stopped: TRUE
+returning status FALSE
+got results for task 14
+numValues: 1000, numResults: 14, stopped: TRUE
+returning status FALSE
+got results for task 15
+numValues: 1000, numResults: 15, stopped: TRUE
+returning status FALSE
+got results for task 16
+numValues: 1000, numResults: 16, stopped: TRUE
+returning status FALSE
+got results for task 17
+numValues: 1000, numResults: 17, stopped: TRUE
+returning status FALSE
+got results for task 18
+numValues: 1000, numResults: 18, stopped: TRUE
+returning status FALSE
+got results for task 19
+numValues: 1000, numResults: 19, stopped: TRUE
+returning status FALSE
+got results for task 20
+numValues: 1000, numResults: 20, stopped: TRUE
+returning status FALSE
+got results for task 21
+numValues: 1000, numResults: 21, stopped: TRUE
+returning status FALSE
+got results for task 22
+numValues: 1000, numResults: 22, stopped: TRUE
+returning status FALSE
+got results for task 23
+numValues: 1000, numResults: 23, stopped: TRUE
+returning status FALSE
+got results for task 24
+numValues: 1000, numResults: 24, stopped: TRUE
+returning status FALSE
+got results for task 25
+numValues: 1000, numResults: 25, stopped: TRUE
+returning status FALSE
+got results for task 26
+numValues: 1000, numResults: 26, stopped: TRUE
+returning status FALSE
+got results for task 27
+numValues: 1000, numResults: 27, stopped: TRUE
+returning status FALSE
+got results for task 28
+numValues: 1000, numResults: 28, stopped: TRUE
+returning status FALSE
+got results for task 29
+numValues: 1000, numResults: 29, stopped: TRUE
+returning status FALSE
+got results for task 30
+numValues: 1000, numResults: 30, stopped: TRUE
+returning status FALSE
+got results for task 31
+numValues: 1000, numResults: 31, stopped: TRUE
+returning status FALSE
+got results for task 32
+numValues: 1000, numResults: 32, stopped: TRUE
+returning status FALSE
+got results for task 33
+numValues: 1000, numResults: 33, stopped: TRUE
+returning status FALSE
+got results for task 34
+numValues: 1000, numResults: 34, stopped: TRUE
+returning status FALSE
+got results for task 35
+numValues: 1000, numResults: 35, stopped: TRUE
+returning status FALSE
+got results for task 36
+numValues: 1000, numResults: 36, stopped: TRUE
+returning status FALSE
+got results for task 37
+numValues: 1000, numResults: 37, stopped: TRUE
+returning status FALSE
+got results for task 38
+numValues: 1000, numResults: 38, stopped: TRUE
+returning status FALSE
+got results for task 39
+numValues: 1000, numResults: 39, stopped: TRUE
+returning status FALSE
+got results for task 40
+numValues: 1000, numResults: 40, stopped: TRUE
+returning status FALSE
+got results for task 41
+numValues: 1000, numResults: 41, stopped: TRUE
+returning status FALSE
+got results for task 42
+numValues: 1000, numResults: 42, stopped: TRUE
+returning status FALSE
+got results for task 43
+numValues: 1000, numResults: 43, stopped: TRUE
+returning status FALSE
+got results for task 44
+numValues: 1000, numResults: 44, stopped: TRUE
+returning status FALSE
+got results for task 45
+numValues: 1000, numResults: 45, stopped: TRUE
+returning status FALSE
+got results for task 46
+numValues: 1000, numResults: 46, stopped: TRUE
+returning status FALSE
+got results for task 47
+numValues: 1000, numResults: 47, stopped: TRUE
+returning status FALSE
+got results for task 48
+numValues: 1000, numResults: 48, stopped: TRUE
+returning status FALSE
+got results for task 49
+numValues: 1000, numResults: 49, stopped: TRUE
+returning status FALSE
+got results for task 50
+numValues: 1000, numResults: 50, stopped: TRUE
+returning status FALSE
+got results for task 51
+numValues: 1000, numResults: 51, stopped: TRUE
+returning status FALSE
+got results for task 52
+numValues: 1000, numResults: 52, stopped: TRUE
+returning status FALSE
+got results for task 53
+numValues: 1000, numResults: 53, stopped: TRUE
+returning status FALSE
+got results for task 54
+numValues: 1000, numResults: 54, stopped: TRUE
+returning status FALSE
+got results for task 55
+numValues: 1000, numResults: 55, stopped: TRUE
+returning status FALSE
+got results for task 56
+numValues: 1000, numResults: 56, stopped: TRUE
+returning status FALSE
+got results for task 57
+numValues: 1000, numResults: 57, stopped: TRUE
+returning status FALSE
+got results for task 58
+numValues: 1000, numResults: 58, stopped: TRUE
+returning status FALSE
+got results for task 59
+numValues: 1000, numResults: 59, stopped: TRUE
+returning status FALSE
+got results for task 60
+numValues: 1000, numResults: 60, stopped: TRUE
+returning status FALSE
+got results for task 61
+numValues: 1000, numResults: 61, stopped: TRUE
+returning status FALSE
+got results for task 62
+numValues: 1000, numResults: 62, stopped: TRUE
+returning status FALSE
+got results for task 63
+numValues: 1000, numResults: 63, stopped: TRUE
+returning status FALSE
+got results for task 64
+numValues: 1000, numResults: 64, stopped: TRUE
+returning status FALSE
+got results for task 65
+numValues: 1000, numResults: 65, stopped: TRUE
+returning status FALSE
+got results for task 66
+numValues: 1000, numResults: 66, stopped: TRUE
+returning status FALSE
+got results for task 67
+numValues: 1000, numResults: 67, stopped: TRUE
+returning status FALSE
+got results for task 68
+numValues: 1000, numResults: 68, stopped: TRUE
+returning status FALSE
+got results for task 69
+numValues: 1000, numResults: 69, stopped: TRUE
+returning status FALSE
+got results for task 70
+numValues: 1000, numResults: 70, stopped: TRUE
+returning status FALSE
+got results for task 71
+numValues: 1000, numResults: 71, stopped: TRUE
+returning status FALSE
+got results for task 72
+numValues: 1000, numResults: 72, stopped: TRUE
+returning status FALSE
+got results for task 73
+numValues: 1000, numResults: 73, stopped: TRUE
+returning status FALSE
+got results for task 74
+numValues: 1000, numResults: 74, stopped: TRUE
+returning status FALSE
+got results for task 75
+numValues: 1000, numResults: 75, stopped: TRUE
+returning status FALSE
+got results for task 76
+numValues: 1000, numResults: 76, stopped: TRUE
+returning status FALSE
+got results for task 77
+numValues: 1000, numResults: 77, stopped: TRUE
+returning status FALSE
+got results for task 78
+numValues: 1000, numResults: 78, stopped: TRUE
+returning status FALSE
+got results for task 79
+numValues: 1000, numResults: 79, stopped: TRUE
+returning status FALSE
+got results for task 80
+numValues: 1000, numResults: 80, stopped: TRUE
+returning status FALSE
+got results for task 81
+numValues: 1000, numResults: 81, stopped: TRUE
+returning status FALSE
+got results for task 82
+numValues: 1000, numResults: 82, stopped: TRUE
+returning status FALSE
+got results for task 83
+numValues: 1000, numResults: 83, stopped: TRUE
+returning status FALSE
+got results for task 84
+numValues: 1000, numResults: 84, stopped: TRUE
+returning status FALSE
+got results for task 85
+numValues: 1000, numResults: 85, stopped: TRUE
+returning status FALSE
+got results for task 86
+numValues: 1000, numResults: 86, stopped: TRUE
+returning status FALSE
+got results for task 87
+numValues: 1000, numResults: 87, stopped: TRUE
+returning status FALSE
+got results for task 88
+numValues: 1000, numResults: 88, stopped: TRUE
+returning status FALSE
+got results for task 89
+numValues: 1000, numResults: 89, stopped: TRUE
+returning status FALSE
+got results for task 90
+numValues: 1000, numResults: 90, stopped: TRUE
+returning status FALSE
+got results for task 91
+numValues: 1000, numResults: 91, stopped: TRUE
+returning status FALSE
+got results for task 92
+numValues: 1000, numResults: 92, stopped: TRUE
+returning status FALSE
+got results for task 93
+numValues: 1000, numResults: 93, stopped: TRUE
+returning status FALSE
+got results for task 94
+numValues: 1000, numResults: 94, stopped: TRUE
+returning status FALSE
+got results for task 95
+numValues: 1000, numResults: 95, stopped: TRUE
+returning status FALSE
+got results for task 96
+numValues: 1000, numResults: 96, stopped: TRUE
+returning status FALSE
+got results for task 97
+numValues: 1000, numResults: 97, stopped: TRUE
+returning status FALSE
+got results for task 98
+numValues: 1000, numResults: 98, stopped: TRUE
+returning status FALSE
+got results for task 99
+numValues: 1000, numResults: 99, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.1, result.2, result.3, result.4, result.5, 
+    result.6, result.7, result.8, result.9, result.10, result.11, 
+    result.12, result.13, result.14, result.15, result.16, result.17, 
+    result.18, result.19, result.20, result.21, result.22, result.23, 
+    result.24, result.25, result.26, result.27, result.28, result.29, 
+    result.30, result.31, result.32, result.33, result.34, result.35, 
+    result.36, result.37, result.38, result.39, result.40, result.41, 
+    result.42, result.43, result.44, result.45, result.46, result.47, 
+    result.48, result.49, result.50, result.51, result.52, result.53, 
+    result.54, result.55, result.56, result.57, result.58, result.59, 
+    result.60, result.61, result.62, result.63, result.64, result.65, 
+    result.66, result.67, result.68, result.69, result.70, result.71, 
+    result.72, result.73, result.74, result.75, result.76, result.77, 
+    result.78, result.79, result.80, result.81, result.82, result.83, 
+    result.84, result.85, result.86, result.87, result.88, result.89, 
+    result.90, result.91, result.92, result.93, result.94, result.95, 
+    result.96, result.97, result.98, result.99)
+returning status FALSE
+got results for task 100
+numValues: 1000, numResults: 100, stopped: TRUE
+returning status FALSE
+got results for task 101
+numValues: 1000, numResults: 101, stopped: TRUE
+returning status FALSE
+got results for task 102
+numValues: 1000, numResults: 102, stopped: TRUE
+returning status FALSE
+got results for task 103
+numValues: 1000, numResults: 103, stopped: TRUE
+returning status FALSE
+got results for task 104
+numValues: 1000, numResults: 104, stopped: TRUE
+returning status FALSE
+got results for task 105
+numValues: 1000, numResults: 105, stopped: TRUE
+returning status FALSE
+got results for task 106
+numValues: 1000, numResults: 106, stopped: TRUE
+returning status FALSE
+got results for task 107
+numValues: 1000, numResults: 107, stopped: TRUE
+returning status FALSE
+got results for task 108
+numValues: 1000, numResults: 108, stopped: TRUE
+returning status FALSE
+got results for task 109
+numValues: 1000, numResults: 109, stopped: TRUE
+returning status FALSE
+got results for task 110
+numValues: 1000, numResults: 110, stopped: TRUE
+returning status FALSE
+got results for task 111
+numValues: 1000, numResults: 111, stopped: TRUE
+returning status FALSE
+got results for task 112
+numValues: 1000, numResults: 112, stopped: TRUE
+returning status FALSE
+got results for task 113
+numValues: 1000, numResults: 113, stopped: TRUE
+returning status FALSE
+got results for task 114
+numValues: 1000, numResults: 114, stopped: TRUE
+returning status FALSE
+got results for task 115
+numValues: 1000, numResults: 115, stopped: TRUE
+returning status FALSE
+got results for task 116
+numValues: 1000, numResults: 116, stopped: TRUE
+returning status FALSE
+got results for task 117
+numValues: 1000, numResults: 117, stopped: TRUE
+returning status FALSE
+got results for task 118
+numValues: 1000, numResults: 118, stopped: TRUE
+returning status FALSE
+got results for task 119
+numValues: 1000, numResults: 119, stopped: TRUE
+returning status FALSE
+got results for task 120
+numValues: 1000, numResults: 120, stopped: TRUE
+returning status FALSE
+got results for task 121
+numValues: 1000, numResults: 121, stopped: TRUE
+returning status FALSE
+got results for task 122
+numValues: 1000, numResults: 122, stopped: TRUE
+returning status FALSE
+got results for task 123
+numValues: 1000, numResults: 123, stopped: TRUE
+returning status FALSE
+got results for task 124
+numValues: 1000, numResults: 124, stopped: TRUE
+returning status FALSE
+got results for task 125
+numValues: 1000, numResults: 125, stopped: TRUE
+returning status FALSE
+got results for task 126
+numValues: 1000, numResults: 126, stopped: TRUE
+returning status FALSE
+got results for task 127
+numValues: 1000, numResults: 127, stopped: TRUE
+returning status FALSE
+got results for task 128
+numValues: 1000, numResults: 128, stopped: TRUE
+returning status FALSE
+got results for task 129
+numValues: 1000, numResults: 129, stopped: TRUE
+returning status FALSE
+got results for task 130
+numValues: 1000, numResults: 130, stopped: TRUE
+returning status FALSE
+got results for task 131
+numValues: 1000, numResults: 131, stopped: TRUE
+returning status FALSE
+got results for task 132
+numValues: 1000, numResults: 132, stopped: TRUE
+returning status FALSE
+got results for task 133
+numValues: 1000, numResults: 133, stopped: TRUE
+returning status FALSE
+got results for task 134
+numValues: 1000, numResults: 134, stopped: TRUE
+returning status FALSE
+got results for task 135
+numValues: 1000, numResults: 135, stopped: TRUE
+returning status FALSE
+got results for task 136
+numValues: 1000, numResults: 136, stopped: TRUE
+returning status FALSE
+got results for task 137
+numValues: 1000, numResults: 137, stopped: TRUE
+returning status FALSE
+got results for task 138
+numValues: 1000, numResults: 138, stopped: TRUE
+returning status FALSE
+got results for task 139
+numValues: 1000, numResults: 139, stopped: TRUE
+returning status FALSE
+got results for task 140
+numValues: 1000, numResults: 140, stopped: TRUE
+returning status FALSE
+got results for task 141
+numValues: 1000, numResults: 141, stopped: TRUE
+returning status FALSE
+got results for task 142
+numValues: 1000, numResults: 142, stopped: TRUE
+returning status FALSE
+got results for task 143
+numValues: 1000, numResults: 143, stopped: TRUE
+returning status FALSE
+got results for task 144
+numValues: 1000, numResults: 144, stopped: TRUE
+returning status FALSE
+got results for task 145
+numValues: 1000, numResults: 145, stopped: TRUE
+returning status FALSE
+got results for task 146
+numValues: 1000, numResults: 146, stopped: TRUE
+returning status FALSE
+got results for task 147
+numValues: 1000, numResults: 147, stopped: TRUE
+returning status FALSE
+got results for task 148
+numValues: 1000, numResults: 148, stopped: TRUE
+returning status FALSE
+got results for task 149
+numValues: 1000, numResults: 149, stopped: TRUE
+returning status FALSE
+got results for task 150
+numValues: 1000, numResults: 150, stopped: TRUE
+returning status FALSE
+got results for task 151
+numValues: 1000, numResults: 151, stopped: TRUE
+returning status FALSE
+got results for task 152
+numValues: 1000, numResults: 152, stopped: TRUE
+returning status FALSE
+got results for task 153
+numValues: 1000, numResults: 153, stopped: TRUE
+returning status FALSE
+got results for task 154
+numValues: 1000, numResults: 154, stopped: TRUE
+returning status FALSE
+got results for task 155
+numValues: 1000, numResults: 155, stopped: TRUE
+returning status FALSE
+got results for task 156
+numValues: 1000, numResults: 156, stopped: TRUE
+returning status FALSE
+got results for task 157
+numValues: 1000, numResults: 157, stopped: TRUE
+returning status FALSE
+got results for task 158
+numValues: 1000, numResults: 158, stopped: TRUE
+returning status FALSE
+got results for task 159
+numValues: 1000, numResults: 159, stopped: TRUE
+returning status FALSE
+got results for task 160
+numValues: 1000, numResults: 160, stopped: TRUE
+returning status FALSE
+got results for task 161
+numValues: 1000, numResults: 161, stopped: TRUE
+returning status FALSE
+got results for task 162
+numValues: 1000, numResults: 162, stopped: TRUE
+returning status FALSE
+got results for task 163
+numValues: 1000, numResults: 163, stopped: TRUE
+returning status FALSE
+got results for task 164
+numValues: 1000, numResults: 164, stopped: TRUE
+returning status FALSE
+got results for task 165
+numValues: 1000, numResults: 165, stopped: TRUE
+returning status FALSE
+got results for task 166
+numValues: 1000, numResults: 166, stopped: TRUE
+returning status FALSE
+got results for task 167
+numValues: 1000, numResults: 167, stopped: TRUE
+returning status FALSE
+got results for task 168
+numValues: 1000, numResults: 168, stopped: TRUE
+returning status FALSE
+got results for task 169
+numValues: 1000, numResults: 169, stopped: TRUE
+returning status FALSE
+got results for task 170
+numValues: 1000, numResults: 170, stopped: TRUE
+returning status FALSE
+got results for task 171
+numValues: 1000, numResults: 171, stopped: TRUE
+returning status FALSE
+got results for task 172
+numValues: 1000, numResults: 172, stopped: TRUE
+returning status FALSE
+got results for task 173
+numValues: 1000, numResults: 173, stopped: TRUE
+returning status FALSE
+got results for task 174
+numValues: 1000, numResults: 174, stopped: TRUE
+returning status FALSE
+got results for task 175
+numValues: 1000, numResults: 175, stopped: TRUE
+returning status FALSE
+got results for task 176
+numValues: 1000, numResults: 176, stopped: TRUE
+returning status FALSE
+got results for task 177
+numValues: 1000, numResults: 177, stopped: TRUE
+returning status FALSE
+got results for task 178
+numValues: 1000, numResults: 178, stopped: TRUE
+returning status FALSE
+got results for task 179
+numValues: 1000, numResults: 179, stopped: TRUE
+returning status FALSE
+got results for task 180
+numValues: 1000, numResults: 180, stopped: TRUE
+returning status FALSE
+got results for task 181
+numValues: 1000, numResults: 181, stopped: TRUE
+returning status FALSE
+got results for task 182
+numValues: 1000, numResults: 182, stopped: TRUE
+returning status FALSE
+got results for task 183
+numValues: 1000, numResults: 183, stopped: TRUE
+returning status FALSE
+got results for task 184
+numValues: 1000, numResults: 184, stopped: TRUE
+returning status FALSE
+got results for task 185
+numValues: 1000, numResults: 185, stopped: TRUE
+returning status FALSE
+got results for task 186
+numValues: 1000, numResults: 186, stopped: TRUE
+returning status FALSE
+got results for task 187
+numValues: 1000, numResults: 187, stopped: TRUE
+returning status FALSE
+got results for task 188
+numValues: 1000, numResults: 188, stopped: TRUE
+returning status FALSE
+got results for task 189
+numValues: 1000, numResults: 189, stopped: TRUE
+returning status FALSE
+got results for task 190
+numValues: 1000, numResults: 190, stopped: TRUE
+returning status FALSE
+got results for task 191
+numValues: 1000, numResults: 191, stopped: TRUE
+returning status FALSE
+got results for task 192
+numValues: 1000, numResults: 192, stopped: TRUE
+returning status FALSE
+got results for task 193
+numValues: 1000, numResults: 193, stopped: TRUE
+returning status FALSE
+got results for task 194
+numValues: 1000, numResults: 194, stopped: TRUE
+returning status FALSE
+got results for task 195
+numValues: 1000, numResults: 195, stopped: TRUE
+returning status FALSE
+got results for task 196
+numValues: 1000, numResults: 196, stopped: TRUE
+returning status FALSE
+got results for task 197
+numValues: 1000, numResults: 197, stopped: TRUE
+returning status FALSE
+got results for task 198
+numValues: 1000, numResults: 198, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.100, result.101, result.102, result.103, result.104, 
+    result.105, result.106, result.107, result.108, result.109, 
+    result.110, result.111, result.112, result.113, result.114, 
+    result.115, result.116, result.117, result.118, result.119, 
+    result.120, result.121, result.122, result.123, result.124, 
+    result.125, result.126, result.127, result.128, result.129, 
+    result.130, result.131, result.132, result.133, result.134, 
+    result.135, result.136, result.137, result.138, result.139, 
+    result.140, result.141, result.142, result.143, result.144, 
+    result.145, result.146, result.147, result.148, result.149, 
+    result.150, result.151, result.152, result.153, result.154, 
+    result.155, result.156, result.157, result.158, result.159, 
+    result.160, result.161, result.162, result.163, result.164, 
+    result.165, result.166, result.167, result.168, result.169, 
+    result.170, result.171, result.172, result.173, result.174, 
+    result.175, result.176, result.177, result.178, result.179, 
+    result.180, result.181, result.182, result.183, result.184, 
+    result.185, result.186, result.187, result.188, result.189, 
+    result.190, result.191, result.192, result.193, result.194, 
+    result.195, result.196, result.197, result.198)
+returning status FALSE
+got results for task 199
+numValues: 1000, numResults: 199, stopped: TRUE
+returning status FALSE
+got results for task 200
+numValues: 1000, numResults: 200, stopped: TRUE
+returning status FALSE
+got results for task 201
+numValues: 1000, numResults: 201, stopped: TRUE
+returning status FALSE
+got results for task 202
+numValues: 1000, numResults: 202, stopped: TRUE
+returning status FALSE
+got results for task 203
+numValues: 1000, numResults: 203, stopped: TRUE
+returning status FALSE
+got results for task 204
+numValues: 1000, numResults: 204, stopped: TRUE
+returning status FALSE
+got results for task 205
+numValues: 1000, numResults: 205, stopped: TRUE
+returning status FALSE
+got results for task 206
+numValues: 1000, numResults: 206, stopped: TRUE
+returning status FALSE
+got results for task 207
+numValues: 1000, numResults: 207, stopped: TRUE
+returning status FALSE
+got results for task 208
+numValues: 1000, numResults: 208, stopped: TRUE
+returning status FALSE
+got results for task 209
+numValues: 1000, numResults: 209, stopped: TRUE
+returning status FALSE
+got results for task 210
+numValues: 1000, numResults: 210, stopped: TRUE
+returning status FALSE
+got results for task 211
+numValues: 1000, numResults: 211, stopped: TRUE
+returning status FALSE
+got results for task 212
+numValues: 1000, numResults: 212, stopped: TRUE
+returning status FALSE
+got results for task 213
+numValues: 1000, numResults: 213, stopped: TRUE
+returning status FALSE
+got results for task 214
+numValues: 1000, numResults: 214, stopped: TRUE
+returning status FALSE
+got results for task 215
+numValues: 1000, numResults: 215, stopped: TRUE
+returning status FALSE
+got results for task 216
+numValues: 1000, numResults: 216, stopped: TRUE
+returning status FALSE
+got results for task 217
+numValues: 1000, numResults: 217, stopped: TRUE
+returning status FALSE
+got results for task 218
+numValues: 1000, numResults: 218, stopped: TRUE
+returning status FALSE
+got results for task 219
+numValues: 1000, numResults: 219, stopped: TRUE
+returning status FALSE
+got results for task 220
+numValues: 1000, numResults: 220, stopped: TRUE
+returning status FALSE
+got results for task 221
+numValues: 1000, numResults: 221, stopped: TRUE
+returning status FALSE
+got results for task 222
+numValues: 1000, numResults: 222, stopped: TRUE
+returning status FALSE
+got results for task 223
+numValues: 1000, numResults: 223, stopped: TRUE
+returning status FALSE
+got results for task 224
+numValues: 1000, numResults: 224, stopped: TRUE
+returning status FALSE
+got results for task 225
+numValues: 1000, numResults: 225, stopped: TRUE
+returning status FALSE
+got results for task 226
+numValues: 1000, numResults: 226, stopped: TRUE
+returning status FALSE
+got results for task 227
+numValues: 1000, numResults: 227, stopped: TRUE
+returning status FALSE
+got results for task 228
+numValues: 1000, numResults: 228, stopped: TRUE
+returning status FALSE
+got results for task 229
+numValues: 1000, numResults: 229, stopped: TRUE
+returning status FALSE
+got results for task 230
+numValues: 1000, numResults: 230, stopped: TRUE
+returning status FALSE
+got results for task 231
+numValues: 1000, numResults: 231, stopped: TRUE
+returning status FALSE
+got results for task 232
+numValues: 1000, numResults: 232, stopped: TRUE
+returning status FALSE
+got results for task 233
+numValues: 1000, numResults: 233, stopped: TRUE
+returning status FALSE
+got results for task 234
+numValues: 1000, numResults: 234, stopped: TRUE
+returning status FALSE
+got results for task 235
+numValues: 1000, numResults: 235, stopped: TRUE
+returning status FALSE
+got results for task 236
+numValues: 1000, numResults: 236, stopped: TRUE
+returning status FALSE
+got results for task 237
+numValues: 1000, numResults: 237, stopped: TRUE
+returning status FALSE
+got results for task 238
+numValues: 1000, numResults: 238, stopped: TRUE
+returning status FALSE
+got results for task 239
+numValues: 1000, numResults: 239, stopped: TRUE
+returning status FALSE
+got results for task 240
+numValues: 1000, numResults: 240, stopped: TRUE
+returning status FALSE
+got results for task 241
+numValues: 1000, numResults: 241, stopped: TRUE
+returning status FALSE
+got results for task 242
+numValues: 1000, numResults: 242, stopped: TRUE
+returning status FALSE
+got results for task 243
+numValues: 1000, numResults: 243, stopped: TRUE
+returning status FALSE
+got results for task 244
+numValues: 1000, numResults: 244, stopped: TRUE
+returning status FALSE
+got results for task 245
+numValues: 1000, numResults: 245, stopped: TRUE
+returning status FALSE
+got results for task 246
+numValues: 1000, numResults: 246, stopped: TRUE
+returning status FALSE
+got results for task 247
+numValues: 1000, numResults: 247, stopped: TRUE
+returning status FALSE
+got results for task 248
+numValues: 1000, numResults: 248, stopped: TRUE
+returning status FALSE
+got results for task 249
+numValues: 1000, numResults: 249, stopped: TRUE
+returning status FALSE
+got results for task 250
+numValues: 1000, numResults: 250, stopped: TRUE
+returning status FALSE
+got results for task 251
+numValues: 1000, numResults: 251, stopped: TRUE
+returning status FALSE
+got results for task 252
+numValues: 1000, numResults: 252, stopped: TRUE
+returning status FALSE
+got results for task 253
+numValues: 1000, numResults: 253, stopped: TRUE
+returning status FALSE
+got results for task 254
+numValues: 1000, numResults: 254, stopped: TRUE
+returning status FALSE
+got results for task 255
+numValues: 1000, numResults: 255, stopped: TRUE
+returning status FALSE
+got results for task 256
+numValues: 1000, numResults: 256, stopped: TRUE
+returning status FALSE
+got results for task 257
+numValues: 1000, numResults: 257, stopped: TRUE
+returning status FALSE
+got results for task 258
+numValues: 1000, numResults: 258, stopped: TRUE
+returning status FALSE
+got results for task 259
+numValues: 1000, numResults: 259, stopped: TRUE
+returning status FALSE
+got results for task 260
+numValues: 1000, numResults: 260, stopped: TRUE
+returning status FALSE
+got results for task 261
+numValues: 1000, numResults: 261, stopped: TRUE
+returning status FALSE
+got results for task 262
+numValues: 1000, numResults: 262, stopped: TRUE
+returning status FALSE
+got results for task 263
+numValues: 1000, numResults: 263, stopped: TRUE
+returning status FALSE
+got results for task 264
+numValues: 1000, numResults: 264, stopped: TRUE
+returning status FALSE
+got results for task 265
+numValues: 1000, numResults: 265, stopped: TRUE
+returning status FALSE
+got results for task 266
+numValues: 1000, numResults: 266, stopped: TRUE
+returning status FALSE
+got results for task 267
+numValues: 1000, numResults: 267, stopped: TRUE
+returning status FALSE
+got results for task 268
+numValues: 1000, numResults: 268, stopped: TRUE
+returning status FALSE
+got results for task 269
+numValues: 1000, numResults: 269, stopped: TRUE
+returning status FALSE
+got results for task 270
+numValues: 1000, numResults: 270, stopped: TRUE
+returning status FALSE
+got results for task 271
+numValues: 1000, numResults: 271, stopped: TRUE
+returning status FALSE
+got results for task 272
+numValues: 1000, numResults: 272, stopped: TRUE
+returning status FALSE
+got results for task 273
+numValues: 1000, numResults: 273, stopped: TRUE
+returning status FALSE
+got results for task 274
+numValues: 1000, numResults: 274, stopped: TRUE
+returning status FALSE
+got results for task 275
+numValues: 1000, numResults: 275, stopped: TRUE
+returning status FALSE
+got results for task 276
+numValues: 1000, numResults: 276, stopped: TRUE
+returning status FALSE
+got results for task 277
+numValues: 1000, numResults: 277, stopped: TRUE
+returning status FALSE
+got results for task 278
+numValues: 1000, numResults: 278, stopped: TRUE
+returning status FALSE
+got results for task 279
+numValues: 1000, numResults: 279, stopped: TRUE
+returning status FALSE
+got results for task 280
+numValues: 1000, numResults: 280, stopped: TRUE
+returning status FALSE
+got results for task 281
+numValues: 1000, numResults: 281, stopped: TRUE
+returning status FALSE
+got results for task 282
+numValues: 1000, numResults: 282, stopped: TRUE
+returning status FALSE
+got results for task 283
+numValues: 1000, numResults: 283, stopped: TRUE
+returning status FALSE
+got results for task 284
+numValues: 1000, numResults: 284, stopped: TRUE
+returning status FALSE
+got results for task 285
+numValues: 1000, numResults: 285, stopped: TRUE
+returning status FALSE
+got results for task 286
+numValues: 1000, numResults: 286, stopped: TRUE
+returning status FALSE
+got results for task 287
+numValues: 1000, numResults: 287, stopped: TRUE
+returning status FALSE
+got results for task 288
+numValues: 1000, numResults: 288, stopped: TRUE
+returning status FALSE
+got results for task 289
+numValues: 1000, numResults: 289, stopped: TRUE
+returning status FALSE
+got results for task 290
+numValues: 1000, numResults: 290, stopped: TRUE
+returning status FALSE
+got results for task 291
+numValues: 1000, numResults: 291, stopped: TRUE
+returning status FALSE
+got results for task 292
+numValues: 1000, numResults: 292, stopped: TRUE
+returning status FALSE
+got results for task 293
+numValues: 1000, numResults: 293, stopped: TRUE
+returning status FALSE
+got results for task 294
+numValues: 1000, numResults: 294, stopped: TRUE
+returning status FALSE
+got results for task 295
+numValues: 1000, numResults: 295, stopped: TRUE
+returning status FALSE
+got results for task 296
+numValues: 1000, numResults: 296, stopped: TRUE
+returning status FALSE
+got results for task 297
+numValues: 1000, numResults: 297, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.199, result.200, result.201, result.202, result.203, 
+    result.204, result.205, result.206, result.207, result.208, 
+    result.209, result.210, result.211, result.212, result.213, 
+    result.214, result.215, result.216, result.217, result.218, 
+    result.219, result.220, result.221, result.222, result.223, 
+    result.224, result.225, result.226, result.227, result.228, 
+    result.229, result.230, result.231, result.232, result.233, 
+    result.234, result.235, result.236, result.237, result.238, 
+    result.239, result.240, result.241, result.242, result.243, 
+    result.244, result.245, result.246, result.247, result.248, 
+    result.249, result.250, result.251, result.252, result.253, 
+    result.254, result.255, result.256, result.257, result.258, 
+    result.259, result.260, result.261, result.262, result.263, 
+    result.264, result.265, result.266, result.267, result.268, 
+    result.269, result.270, result.271, result.272, result.273, 
+    result.274, result.275, result.276, result.277, result.278, 
+    result.279, result.280, result.281, result.282, result.283, 
+    result.284, result.285, result.286, result.287, result.288, 
+    result.289, result.290, result.291, result.292, result.293, 
+    result.294, result.295, result.296, result.297)
+returning status FALSE
+got results for task 298
+numValues: 1000, numResults: 298, stopped: TRUE
+returning status FALSE
+got results for task 299
+numValues: 1000, numResults: 299, stopped: TRUE
+returning status FALSE
+got results for task 300
+numValues: 1000, numResults: 300, stopped: TRUE
+returning status FALSE
+got results for task 301
+numValues: 1000, numResults: 301, stopped: TRUE
+returning status FALSE
+got results for task 302
+numValues: 1000, numResults: 302, stopped: TRUE
+returning status FALSE
+got results for task 303
+numValues: 1000, numResults: 303, stopped: TRUE
+returning status FALSE
+got results for task 304
+numValues: 1000, numResults: 304, stopped: TRUE
+returning status FALSE
+got results for task 305
+numValues: 1000, numResults: 305, stopped: TRUE
+returning status FALSE
+got results for task 306
+numValues: 1000, numResults: 306, stopped: TRUE
+returning status FALSE
+got results for task 307
+numValues: 1000, numResults: 307, stopped: TRUE
+returning status FALSE
+got results for task 308
+numValues: 1000, numResults: 308, stopped: TRUE
+returning status FALSE
+got results for task 309
+numValues: 1000, numResults: 309, stopped: TRUE
+returning status FALSE
+got results for task 310
+numValues: 1000, numResults: 310, stopped: TRUE
+returning status FALSE
+got results for task 311
+numValues: 1000, numResults: 311, stopped: TRUE
+returning status FALSE
+got results for task 312
+numValues: 1000, numResults: 312, stopped: TRUE
+returning status FALSE
+got results for task 313
+numValues: 1000, numResults: 313, stopped: TRUE
+returning status FALSE
+got results for task 314
+numValues: 1000, numResults: 314, stopped: TRUE
+returning status FALSE
+got results for task 315
+numValues: 1000, numResults: 315, stopped: TRUE
+returning status FALSE
+got results for task 316
+numValues: 1000, numResults: 316, stopped: TRUE
+returning status FALSE
+got results for task 317
+numValues: 1000, numResults: 317, stopped: TRUE
+returning status FALSE
+got results for task 318
+numValues: 1000, numResults: 318, stopped: TRUE
+returning status FALSE
+got results for task 319
+numValues: 1000, numResults: 319, stopped: TRUE
+returning status FALSE
+got results for task 320
+numValues: 1000, numResults: 320, stopped: TRUE
+returning status FALSE
+got results for task 321
+numValues: 1000, numResults: 321, stopped: TRUE
+returning status FALSE
+got results for task 322
+numValues: 1000, numResults: 322, stopped: TRUE
+returning status FALSE
+got results for task 323
+numValues: 1000, numResults: 323, stopped: TRUE
+returning status FALSE
+got results for task 324
+numValues: 1000, numResults: 324, stopped: TRUE
+returning status FALSE
+got results for task 325
+numValues: 1000, numResults: 325, stopped: TRUE
+returning status FALSE
+got results for task 326
+numValues: 1000, numResults: 326, stopped: TRUE
+returning status FALSE
+got results for task 327
+numValues: 1000, numResults: 327, stopped: TRUE
+returning status FALSE
+got results for task 328
+numValues: 1000, numResults: 328, stopped: TRUE
+returning status FALSE
+got results for task 329
+numValues: 1000, numResults: 329, stopped: TRUE
+returning status FALSE
+got results for task 330
+numValues: 1000, numResults: 330, stopped: TRUE
+returning status FALSE
+got results for task 331
+numValues: 1000, numResults: 331, stopped: TRUE
+returning status FALSE
+got results for task 332
+numValues: 1000, numResults: 332, stopped: TRUE
+returning status FALSE
+got results for task 333
+numValues: 1000, numResults: 333, stopped: TRUE
+returning status FALSE
+got results for task 334
+numValues: 1000, numResults: 334, stopped: TRUE
+returning status FALSE
+got results for task 335
+numValues: 1000, numResults: 335, stopped: TRUE
+returning status FALSE
+got results for task 336
+numValues: 1000, numResults: 336, stopped: TRUE
+returning status FALSE
+got results for task 337
+numValues: 1000, numResults: 337, stopped: TRUE
+returning status FALSE
+got results for task 338
+numValues: 1000, numResults: 338, stopped: TRUE
+returning status FALSE
+got results for task 339
+numValues: 1000, numResults: 339, stopped: TRUE
+returning status FALSE
+got results for task 340
+numValues: 1000, numResults: 340, stopped: TRUE
+returning status FALSE
+got results for task 341
+numValues: 1000, numResults: 341, stopped: TRUE
+returning status FALSE
+got results for task 342
+numValues: 1000, numResults: 342, stopped: TRUE
+returning status FALSE
+got results for task 343
+numValues: 1000, numResults: 343, stopped: TRUE
+returning status FALSE
+got results for task 344
+numValues: 1000, numResults: 344, stopped: TRUE
+returning status FALSE
+got results for task 345
+numValues: 1000, numResults: 345, stopped: TRUE
+returning status FALSE
+got results for task 346
+numValues: 1000, numResults: 346, stopped: TRUE
+returning status FALSE
+got results for task 347
+numValues: 1000, numResults: 347, stopped: TRUE
+returning status FALSE
+got results for task 348
+numValues: 1000, numResults: 348, stopped: TRUE
+returning status FALSE
+got results for task 349
+numValues: 1000, numResults: 349, stopped: TRUE
+returning status FALSE
+got results for task 350
+numValues: 1000, numResults: 350, stopped: TRUE
+returning status FALSE
+got results for task 351
+numValues: 1000, numResults: 351, stopped: TRUE
+returning status FALSE
+got results for task 352
+numValues: 1000, numResults: 352, stopped: TRUE
+returning status FALSE
+got results for task 353
+numValues: 1000, numResults: 353, stopped: TRUE
+returning status FALSE
+got results for task 354
+numValues: 1000, numResults: 354, stopped: TRUE
+returning status FALSE
+got results for task 355
+numValues: 1000, numResults: 355, stopped: TRUE
+returning status FALSE
+got results for task 356
+numValues: 1000, numResults: 356, stopped: TRUE
+returning status FALSE
+got results for task 357
+numValues: 1000, numResults: 357, stopped: TRUE
+returning status FALSE
+got results for task 358
+numValues: 1000, numResults: 358, stopped: TRUE
+returning status FALSE
+got results for task 359
+numValues: 1000, numResults: 359, stopped: TRUE
+returning status FALSE
+got results for task 360
+numValues: 1000, numResults: 360, stopped: TRUE
+returning status FALSE
+got results for task 361
+numValues: 1000, numResults: 361, stopped: TRUE
+returning status FALSE
+got results for task 362
+numValues: 1000, numResults: 362, stopped: TRUE
+returning status FALSE
+got results for task 363
+numValues: 1000, numResults: 363, stopped: TRUE
+returning status FALSE
+got results for task 364
+numValues: 1000, numResults: 364, stopped: TRUE
+returning status FALSE
+got results for task 365
+numValues: 1000, numResults: 365, stopped: TRUE
+returning status FALSE
+got results for task 366
+numValues: 1000, numResults: 366, stopped: TRUE
+returning status FALSE
+got results for task 367
+numValues: 1000, numResults: 367, stopped: TRUE
+returning status FALSE
+got results for task 368
+numValues: 1000, numResults: 368, stopped: TRUE
+returning status FALSE
+got results for task 369
+numValues: 1000, numResults: 369, stopped: TRUE
+returning status FALSE
+got results for task 370
+numValues: 1000, numResults: 370, stopped: TRUE
+returning status FALSE
+got results for task 371
+numValues: 1000, numResults: 371, stopped: TRUE
+returning status FALSE
+got results for task 372
+numValues: 1000, numResults: 372, stopped: TRUE
+returning status FALSE
+got results for task 373
+numValues: 1000, numResults: 373, stopped: TRUE
+returning status FALSE
+got results for task 374
+numValues: 1000, numResults: 374, stopped: TRUE
+returning status FALSE
+got results for task 375
+numValues: 1000, numResults: 375, stopped: TRUE
+returning status FALSE
+got results for task 376
+numValues: 1000, numResults: 376, stopped: TRUE
+returning status FALSE
+got results for task 377
+numValues: 1000, numResults: 377, stopped: TRUE
+returning status FALSE
+got results for task 378
+numValues: 1000, numResults: 378, stopped: TRUE
+returning status FALSE
+got results for task 379
+numValues: 1000, numResults: 379, stopped: TRUE
+returning status FALSE
+got results for task 380
+numValues: 1000, numResults: 380, stopped: TRUE
+returning status FALSE
+got results for task 381
+numValues: 1000, numResults: 381, stopped: TRUE
+returning status FALSE
+got results for task 382
+numValues: 1000, numResults: 382, stopped: TRUE
+returning status FALSE
+got results for task 383
+numValues: 1000, numResults: 383, stopped: TRUE
+returning status FALSE
+got results for task 384
+numValues: 1000, numResults: 384, stopped: TRUE
+returning status FALSE
+got results for task 385
+numValues: 1000, numResults: 385, stopped: TRUE
+returning status FALSE
+got results for task 386
+numValues: 1000, numResults: 386, stopped: TRUE
+returning status FALSE
+got results for task 387
+numValues: 1000, numResults: 387, stopped: TRUE
+returning status FALSE
+got results for task 388
+numValues: 1000, numResults: 388, stopped: TRUE
+returning status FALSE
+got results for task 389
+numValues: 1000, numResults: 389, stopped: TRUE
+returning status FALSE
+got results for task 390
+numValues: 1000, numResults: 390, stopped: TRUE
+returning status FALSE
+got results for task 391
+numValues: 1000, numResults: 391, stopped: TRUE
+returning status FALSE
+got results for task 392
+numValues: 1000, numResults: 392, stopped: TRUE
+returning status FALSE
+got results for task 393
+numValues: 1000, numResults: 393, stopped: TRUE
+returning status FALSE
+got results for task 394
+numValues: 1000, numResults: 394, stopped: TRUE
+returning status FALSE
+got results for task 395
+numValues: 1000, numResults: 395, stopped: TRUE
+returning status FALSE
+got results for task 396
+numValues: 1000, numResults: 396, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.298, result.299, result.300, result.301, result.302, 
+    result.303, result.304, result.305, result.306, result.307, 
+    result.308, result.309, result.310, result.311, result.312, 
+    result.313, result.314, result.315, result.316, result.317, 
+    result.318, result.319, result.320, result.321, result.322, 
+    result.323, result.324, result.325, result.326, result.327, 
+    result.328, result.329, result.330, result.331, result.332, 
+    result.333, result.334, result.335, result.336, result.337, 
+    result.338, result.339, result.340, result.341, result.342, 
+    result.343, result.344, result.345, result.346, result.347, 
+    result.348, result.349, result.350, result.351, result.352, 
+    result.353, result.354, result.355, result.356, result.357, 
+    result.358, result.359, result.360, result.361, result.362, 
+    result.363, result.364, result.365, result.366, result.367, 
+    result.368, result.369, result.370, result.371, result.372, 
+    result.373, result.374, result.375, result.376, result.377, 
+    result.378, result.379, result.380, result.381, result.382, 
+    result.383, result.384, result.385, result.386, result.387, 
+    result.388, result.389, result.390, result.391, result.392, 
+    result.393, result.394, result.395, result.396)
+returning status FALSE
+got results for task 397
+numValues: 1000, numResults: 397, stopped: TRUE
+returning status FALSE
+got results for task 398
+numValues: 1000, numResults: 398, stopped: TRUE
+returning status FALSE
+got results for task 399
+numValues: 1000, numResults: 399, stopped: TRUE
+returning status FALSE
+got results for task 400
+numValues: 1000, numResults: 400, stopped: TRUE
+returning status FALSE
+got results for task 401
+numValues: 1000, numResults: 401, stopped: TRUE
+returning status FALSE
+got results for task 402
+numValues: 1000, numResults: 402, stopped: TRUE
+returning status FALSE
+got results for task 403
+numValues: 1000, numResults: 403, stopped: TRUE
+returning status FALSE
+got results for task 404
+numValues: 1000, numResults: 404, stopped: TRUE
+returning status FALSE
+got results for task 405
+numValues: 1000, numResults: 405, stopped: TRUE
+returning status FALSE
+got results for task 406
+numValues: 1000, numResults: 406, stopped: TRUE
+returning status FALSE
+got results for task 407
+numValues: 1000, numResults: 407, stopped: TRUE
+returning status FALSE
+got results for task 408
+numValues: 1000, numResults: 408, stopped: TRUE
+returning status FALSE
+got results for task 409
+numValues: 1000, numResults: 409, stopped: TRUE
+returning status FALSE
+got results for task 410
+numValues: 1000, numResults: 410, stopped: TRUE
+returning status FALSE
+got results for task 411
+numValues: 1000, numResults: 411, stopped: TRUE
+returning status FALSE
+got results for task 412
+numValues: 1000, numResults: 412, stopped: TRUE
+returning status FALSE
+got results for task 413
+numValues: 1000, numResults: 413, stopped: TRUE
+returning status FALSE
+got results for task 414
+numValues: 1000, numResults: 414, stopped: TRUE
+returning status FALSE
+got results for task 415
+numValues: 1000, numResults: 415, stopped: TRUE
+returning status FALSE
+got results for task 416
+numValues: 1000, numResults: 416, stopped: TRUE
+returning status FALSE
+got results for task 417
+numValues: 1000, numResults: 417, stopped: TRUE
+returning status FALSE
+got results for task 418
+numValues: 1000, numResults: 418, stopped: TRUE
+returning status FALSE
+got results for task 419
+numValues: 1000, numResults: 419, stopped: TRUE
+returning status FALSE
+got results for task 420
+numValues: 1000, numResults: 420, stopped: TRUE
+returning status FALSE
+got results for task 421
+numValues: 1000, numResults: 421, stopped: TRUE
+returning status FALSE
+got results for task 422
+numValues: 1000, numResults: 422, stopped: TRUE
+returning status FALSE
+got results for task 423
+numValues: 1000, numResults: 423, stopped: TRUE
+returning status FALSE
+got results for task 424
+numValues: 1000, numResults: 424, stopped: TRUE
+returning status FALSE
+got results for task 425
+numValues: 1000, numResults: 425, stopped: TRUE
+returning status FALSE
+got results for task 426
+numValues: 1000, numResults: 426, stopped: TRUE
+returning status FALSE
+got results for task 427
+numValues: 1000, numResults: 427, stopped: TRUE
+returning status FALSE
+got results for task 428
+numValues: 1000, numResults: 428, stopped: TRUE
+returning status FALSE
+got results for task 429
+numValues: 1000, numResults: 429, stopped: TRUE
+returning status FALSE
+got results for task 430
+numValues: 1000, numResults: 430, stopped: TRUE
+returning status FALSE
+got results for task 431
+numValues: 1000, numResults: 431, stopped: TRUE
+returning status FALSE
+got results for task 432
+numValues: 1000, numResults: 432, stopped: TRUE
+returning status FALSE
+got results for task 433
+numValues: 1000, numResults: 433, stopped: TRUE
+returning status FALSE
+got results for task 434
+numValues: 1000, numResults: 434, stopped: TRUE
+returning status FALSE
+got results for task 435
+numValues: 1000, numResults: 435, stopped: TRUE
+returning status FALSE
+got results for task 436
+numValues: 1000, numResults: 436, stopped: TRUE
+returning status FALSE
+got results for task 437
+numValues: 1000, numResults: 437, stopped: TRUE
+returning status FALSE
+got results for task 438
+numValues: 1000, numResults: 438, stopped: TRUE
+returning status FALSE
+got results for task 439
+numValues: 1000, numResults: 439, stopped: TRUE
+returning status FALSE
+got results for task 440
+numValues: 1000, numResults: 440, stopped: TRUE
+returning status FALSE
+got results for task 441
+numValues: 1000, numResults: 441, stopped: TRUE
+returning status FALSE
+got results for task 442
+numValues: 1000, numResults: 442, stopped: TRUE
+returning status FALSE
+got results for task 443
+numValues: 1000, numResults: 443, stopped: TRUE
+returning status FALSE
+got results for task 444
+numValues: 1000, numResults: 444, stopped: TRUE
+returning status FALSE
+got results for task 445
+numValues: 1000, numResults: 445, stopped: TRUE
+returning status FALSE
+got results for task 446
+numValues: 1000, numResults: 446, stopped: TRUE
+returning status FALSE
+got results for task 447
+numValues: 1000, numResults: 447, stopped: TRUE
+returning status FALSE
+got results for task 448
+numValues: 1000, numResults: 448, stopped: TRUE
+returning status FALSE
+got results for task 449
+numValues: 1000, numResults: 449, stopped: TRUE
+returning status FALSE
+got results for task 450
+numValues: 1000, numResults: 450, stopped: TRUE
+returning status FALSE
+got results for task 451
+numValues: 1000, numResults: 451, stopped: TRUE
+returning status FALSE
+got results for task 452
+numValues: 1000, numResults: 452, stopped: TRUE
+returning status FALSE
+got results for task 453
+numValues: 1000, numResults: 453, stopped: TRUE
+returning status FALSE
+got results for task 454
+numValues: 1000, numResults: 454, stopped: TRUE
+returning status FALSE
+got results for task 455
+numValues: 1000, numResults: 455, stopped: TRUE
+returning status FALSE
+got results for task 456
+numValues: 1000, numResults: 456, stopped: TRUE
+returning status FALSE
+got results for task 457
+numValues: 1000, numResults: 457, stopped: TRUE
+returning status FALSE
+got results for task 458
+numValues: 1000, numResults: 458, stopped: TRUE
+returning status FALSE
+got results for task 459
+numValues: 1000, numResults: 459, stopped: TRUE
+returning status FALSE
+got results for task 460
+numValues: 1000, numResults: 460, stopped: TRUE
+returning status FALSE
+got results for task 461
+numValues: 1000, numResults: 461, stopped: TRUE
+returning status FALSE
+got results for task 462
+numValues: 1000, numResults: 462, stopped: TRUE
+returning status FALSE
+got results for task 463
+numValues: 1000, numResults: 463, stopped: TRUE
+returning status FALSE
+got results for task 464
+numValues: 1000, numResults: 464, stopped: TRUE
+returning status FALSE
+got results for task 465
+numValues: 1000, numResults: 465, stopped: TRUE
+returning status FALSE
+got results for task 466
+numValues: 1000, numResults: 466, stopped: TRUE
+returning status FALSE
+got results for task 467
+numValues: 1000, numResults: 467, stopped: TRUE
+returning status FALSE
+got results for task 468
+numValues: 1000, numResults: 468, stopped: TRUE
+returning status FALSE
+got results for task 469
+numValues: 1000, numResults: 469, stopped: TRUE
+returning status FALSE
+got results for task 470
+numValues: 1000, numResults: 470, stopped: TRUE
+returning status FALSE
+got results for task 471
+numValues: 1000, numResults: 471, stopped: TRUE
+returning status FALSE
+got results for task 472
+numValues: 1000, numResults: 472, stopped: TRUE
+returning status FALSE
+got results for task 473
+numValues: 1000, numResults: 473, stopped: TRUE
+returning status FALSE
+got results for task 474
+numValues: 1000, numResults: 474, stopped: TRUE
+returning status FALSE
+got results for task 475
+numValues: 1000, numResults: 475, stopped: TRUE
+returning status FALSE
+got results for task 476
+numValues: 1000, numResults: 476, stopped: TRUE
+returning status FALSE
+got results for task 477
+numValues: 1000, numResults: 477, stopped: TRUE
+returning status FALSE
+got results for task 478
+numValues: 1000, numResults: 478, stopped: TRUE
+returning status FALSE
+got results for task 479
+numValues: 1000, numResults: 479, stopped: TRUE
+returning status FALSE
+got results for task 480
+numValues: 1000, numResults: 480, stopped: TRUE
+returning status FALSE
+got results for task 481
+numValues: 1000, numResults: 481, stopped: TRUE
+returning status FALSE
+got results for task 482
+numValues: 1000, numResults: 482, stopped: TRUE
+returning status FALSE
+got results for task 483
+numValues: 1000, numResults: 483, stopped: TRUE
+returning status FALSE
+got results for task 484
+numValues: 1000, numResults: 484, stopped: TRUE
+returning status FALSE
+got results for task 485
+numValues: 1000, numResults: 485, stopped: TRUE
+returning status FALSE
+got results for task 486
+numValues: 1000, numResults: 486, stopped: TRUE
+returning status FALSE
+got results for task 487
+numValues: 1000, numResults: 487, stopped: TRUE
+returning status FALSE
+got results for task 488
+numValues: 1000, numResults: 488, stopped: TRUE
+returning status FALSE
+got results for task 489
+numValues: 1000, numResults: 489, stopped: TRUE
+returning status FALSE
+got results for task 490
+numValues: 1000, numResults: 490, stopped: TRUE
+returning status FALSE
+got results for task 491
+numValues: 1000, numResults: 491, stopped: TRUE
+returning status FALSE
+got results for task 492
+numValues: 1000, numResults: 492, stopped: TRUE
+returning status FALSE
+got results for task 493
+numValues: 1000, numResults: 493, stopped: TRUE
+returning status FALSE
+got results for task 494
+numValues: 1000, numResults: 494, stopped: TRUE
+returning status FALSE
+got results for task 495
+numValues: 1000, numResults: 495, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.397, result.398, result.399, result.400, result.401, 
+    result.402, result.403, result.404, result.405, result.406, 
+    result.407, result.408, result.409, result.410, result.411, 
+    result.412, result.413, result.414, result.415, result.416, 
+    result.417, result.418, result.419, result.420, result.421, 
+    result.422, result.423, result.424, result.425, result.426, 
+    result.427, result.428, result.429, result.430, result.431, 
+    result.432, result.433, result.434, result.435, result.436, 
+    result.437, result.438, result.439, result.440, result.441, 
+    result.442, result.443, result.444, result.445, result.446, 
+    result.447, result.448, result.449, result.450, result.451, 
+    result.452, result.453, result.454, result.455, result.456, 
+    result.457, result.458, result.459, result.460, result.461, 
+    result.462, result.463, result.464, result.465, result.466, 
+    result.467, result.468, result.469, result.470, result.471, 
+    result.472, result.473, result.474, result.475, result.476, 
+    result.477, result.478, result.479, result.480, result.481, 
+    result.482, result.483, result.484, result.485, result.486, 
+    result.487, result.488, result.489, result.490, result.491, 
+    result.492, result.493, result.494, result.495)
+returning status FALSE
+got results for task 496
+numValues: 1000, numResults: 496, stopped: TRUE
+returning status FALSE
+got results for task 497
+numValues: 1000, numResults: 497, stopped: TRUE
+returning status FALSE
+got results for task 498
+numValues: 1000, numResults: 498, stopped: TRUE
+returning status FALSE
+got results for task 499
+numValues: 1000, numResults: 499, stopped: TRUE
+returning status FALSE
+got results for task 500
+numValues: 1000, numResults: 500, stopped: TRUE
+returning status FALSE
+got results for task 501
+numValues: 1000, numResults: 501, stopped: TRUE
+returning status FALSE
+got results for task 502
+numValues: 1000, numResults: 502, stopped: TRUE
+returning status FALSE
+got results for task 503
+numValues: 1000, numResults: 503, stopped: TRUE
+returning status FALSE
+got results for task 504
+numValues: 1000, numResults: 504, stopped: TRUE
+returning status FALSE
+got results for task 505
+numValues: 1000, numResults: 505, stopped: TRUE
+returning status FALSE
+got results for task 506
+numValues: 1000, numResults: 506, stopped: TRUE
+returning status FALSE
+got results for task 507
+numValues: 1000, numResults: 507, stopped: TRUE
+returning status FALSE
+got results for task 508
+numValues: 1000, numResults: 508, stopped: TRUE
+returning status FALSE
+got results for task 509
+numValues: 1000, numResults: 509, stopped: TRUE
+returning status FALSE
+got results for task 510
+numValues: 1000, numResults: 510, stopped: TRUE
+returning status FALSE
+got results for task 511
+numValues: 1000, numResults: 511, stopped: TRUE
+returning status FALSE
+got results for task 512
+numValues: 1000, numResults: 512, stopped: TRUE
+returning status FALSE
+got results for task 513
+numValues: 1000, numResults: 513, stopped: TRUE
+returning status FALSE
+got results for task 514
+numValues: 1000, numResults: 514, stopped: TRUE
+returning status FALSE
+got results for task 515
+numValues: 1000, numResults: 515, stopped: TRUE
+returning status FALSE
+got results for task 516
+numValues: 1000, numResults: 516, stopped: TRUE
+returning status FALSE
+got results for task 517
+numValues: 1000, numResults: 517, stopped: TRUE
+returning status FALSE
+got results for task 518
+numValues: 1000, numResults: 518, stopped: TRUE
+returning status FALSE
+got results for task 519
+numValues: 1000, numResults: 519, stopped: TRUE
+returning status FALSE
+got results for task 520
+numValues: 1000, numResults: 520, stopped: TRUE
+returning status FALSE
+got results for task 521
+numValues: 1000, numResults: 521, stopped: TRUE
+returning status FALSE
+got results for task 522
+numValues: 1000, numResults: 522, stopped: TRUE
+returning status FALSE
+got results for task 523
+numValues: 1000, numResults: 523, stopped: TRUE
+returning status FALSE
+got results for task 524
+numValues: 1000, numResults: 524, stopped: TRUE
+returning status FALSE
+got results for task 525
+numValues: 1000, numResults: 525, stopped: TRUE
+returning status FALSE
+got results for task 526
+numValues: 1000, numResults: 526, stopped: TRUE
+returning status FALSE
+got results for task 527
+numValues: 1000, numResults: 527, stopped: TRUE
+returning status FALSE
+got results for task 528
+numValues: 1000, numResults: 528, stopped: TRUE
+returning status FALSE
+got results for task 529
+numValues: 1000, numResults: 529, stopped: TRUE
+returning status FALSE
+got results for task 530
+numValues: 1000, numResults: 530, stopped: TRUE
+returning status FALSE
+got results for task 531
+numValues: 1000, numResults: 531, stopped: TRUE
+returning status FALSE
+got results for task 532
+numValues: 1000, numResults: 532, stopped: TRUE
+returning status FALSE
+got results for task 533
+numValues: 1000, numResults: 533, stopped: TRUE
+returning status FALSE
+got results for task 534
+numValues: 1000, numResults: 534, stopped: TRUE
+returning status FALSE
+got results for task 535
+numValues: 1000, numResults: 535, stopped: TRUE
+returning status FALSE
+got results for task 536
+numValues: 1000, numResults: 536, stopped: TRUE
+returning status FALSE
+got results for task 537
+numValues: 1000, numResults: 537, stopped: TRUE
+returning status FALSE
+got results for task 538
+numValues: 1000, numResults: 538, stopped: TRUE
+returning status FALSE
+got results for task 539
+numValues: 1000, numResults: 539, stopped: TRUE
+returning status FALSE
+got results for task 540
+numValues: 1000, numResults: 540, stopped: TRUE
+returning status FALSE
+got results for task 541
+numValues: 1000, numResults: 541, stopped: TRUE
+returning status FALSE
+got results for task 542
+numValues: 1000, numResults: 542, stopped: TRUE
+returning status FALSE
+got results for task 543
+numValues: 1000, numResults: 543, stopped: TRUE
+returning status FALSE
+got results for task 544
+numValues: 1000, numResults: 544, stopped: TRUE
+returning status FALSE
+got results for task 545
+numValues: 1000, numResults: 545, stopped: TRUE
+returning status FALSE
+got results for task 546
+numValues: 1000, numResults: 546, stopped: TRUE
+returning status FALSE
+got results for task 547
+numValues: 1000, numResults: 547, stopped: TRUE
+returning status FALSE
+got results for task 548
+numValues: 1000, numResults: 548, stopped: TRUE
+returning status FALSE
+got results for task 549
+numValues: 1000, numResults: 549, stopped: TRUE
+returning status FALSE
+got results for task 550
+numValues: 1000, numResults: 550, stopped: TRUE
+returning status FALSE
+got results for task 551
+numValues: 1000, numResults: 551, stopped: TRUE
+returning status FALSE
+got results for task 552
+numValues: 1000, numResults: 552, stopped: TRUE
+returning status FALSE
+got results for task 553
+numValues: 1000, numResults: 553, stopped: TRUE
+returning status FALSE
+got results for task 554
+numValues: 1000, numResults: 554, stopped: TRUE
+returning status FALSE
+got results for task 555
+numValues: 1000, numResults: 555, stopped: TRUE
+returning status FALSE
+got results for task 556
+numValues: 1000, numResults: 556, stopped: TRUE
+returning status FALSE
+got results for task 557
+numValues: 1000, numResults: 557, stopped: TRUE
+returning status FALSE
+got results for task 558
+numValues: 1000, numResults: 558, stopped: TRUE
+returning status FALSE
+got results for task 559
+numValues: 1000, numResults: 559, stopped: TRUE
+returning status FALSE
+got results for task 560
+numValues: 1000, numResults: 560, stopped: TRUE
+returning status FALSE
+got results for task 561
+numValues: 1000, numResults: 561, stopped: TRUE
+returning status FALSE
+got results for task 562
+numValues: 1000, numResults: 562, stopped: TRUE
+returning status FALSE
+got results for task 563
+numValues: 1000, numResults: 563, stopped: TRUE
+returning status FALSE
+got results for task 564
+numValues: 1000, numResults: 564, stopped: TRUE
+returning status FALSE
+got results for task 565
+numValues: 1000, numResults: 565, stopped: TRUE
+returning status FALSE
+got results for task 566
+numValues: 1000, numResults: 566, stopped: TRUE
+returning status FALSE
+got results for task 567
+numValues: 1000, numResults: 567, stopped: TRUE
+returning status FALSE
+got results for task 568
+numValues: 1000, numResults: 568, stopped: TRUE
+returning status FALSE
+got results for task 569
+numValues: 1000, numResults: 569, stopped: TRUE
+returning status FALSE
+got results for task 570
+numValues: 1000, numResults: 570, stopped: TRUE
+returning status FALSE
+got results for task 571
+numValues: 1000, numResults: 571, stopped: TRUE
+returning status FALSE
+got results for task 572
+numValues: 1000, numResults: 572, stopped: TRUE
+returning status FALSE
+got results for task 573
+numValues: 1000, numResults: 573, stopped: TRUE
+returning status FALSE
+got results for task 574
+numValues: 1000, numResults: 574, stopped: TRUE
+returning status FALSE
+got results for task 575
+numValues: 1000, numResults: 575, stopped: TRUE
+returning status FALSE
+got results for task 576
+numValues: 1000, numResults: 576, stopped: TRUE
+returning status FALSE
+got results for task 577
+numValues: 1000, numResults: 577, stopped: TRUE
+returning status FALSE
+got results for task 578
+numValues: 1000, numResults: 578, stopped: TRUE
+returning status FALSE
+got results for task 579
+numValues: 1000, numResults: 579, stopped: TRUE
+returning status FALSE
+got results for task 580
+numValues: 1000, numResults: 580, stopped: TRUE
+returning status FALSE
+got results for task 581
+numValues: 1000, numResults: 581, stopped: TRUE
+returning status FALSE
+got results for task 582
+numValues: 1000, numResults: 582, stopped: TRUE
+returning status FALSE
+got results for task 583
+numValues: 1000, numResults: 583, stopped: TRUE
+returning status FALSE
+got results for task 584
+numValues: 1000, numResults: 584, stopped: TRUE
+returning status FALSE
+got results for task 585
+numValues: 1000, numResults: 585, stopped: TRUE
+returning status FALSE
+got results for task 586
+numValues: 1000, numResults: 586, stopped: TRUE
+returning status FALSE
+got results for task 587
+numValues: 1000, numResults: 587, stopped: TRUE
+returning status FALSE
+got results for task 588
+numValues: 1000, numResults: 588, stopped: TRUE
+returning status FALSE
+got results for task 589
+numValues: 1000, numResults: 589, stopped: TRUE
+returning status FALSE
+got results for task 590
+numValues: 1000, numResults: 590, stopped: TRUE
+returning status FALSE
+got results for task 591
+numValues: 1000, numResults: 591, stopped: TRUE
+returning status FALSE
+got results for task 592
+numValues: 1000, numResults: 592, stopped: TRUE
+returning status FALSE
+got results for task 593
+numValues: 1000, numResults: 593, stopped: TRUE
+returning status FALSE
+got results for task 594
+numValues: 1000, numResults: 594, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.496, result.497, result.498, result.499, result.500, 
+    result.501, result.502, result.503, result.504, result.505, 
+    result.506, result.507, result.508, result.509, result.510, 
+    result.511, result.512, result.513, result.514, result.515, 
+    result.516, result.517, result.518, result.519, result.520, 
+    result.521, result.522, result.523, result.524, result.525, 
+    result.526, result.527, result.528, result.529, result.530, 
+    result.531, result.532, result.533, result.534, result.535, 
+    result.536, result.537, result.538, result.539, result.540, 
+    result.541, result.542, result.543, result.544, result.545, 
+    result.546, result.547, result.548, result.549, result.550, 
+    result.551, result.552, result.553, result.554, result.555, 
+    result.556, result.557, result.558, result.559, result.560, 
+    result.561, result.562, result.563, result.564, result.565, 
+    result.566, result.567, result.568, result.569, result.570, 
+    result.571, result.572, result.573, result.574, result.575, 
+    result.576, result.577, result.578, result.579, result.580, 
+    result.581, result.582, result.583, result.584, result.585, 
+    result.586, result.587, result.588, result.589, result.590, 
+    result.591, result.592, result.593, result.594)
+returning status FALSE
+got results for task 595
+numValues: 1000, numResults: 595, stopped: TRUE
+returning status FALSE
+got results for task 596
+numValues: 1000, numResults: 596, stopped: TRUE
+returning status FALSE
+got results for task 597
+numValues: 1000, numResults: 597, stopped: TRUE
+returning status FALSE
+got results for task 598
+numValues: 1000, numResults: 598, stopped: TRUE
+returning status FALSE
+got results for task 599
+numValues: 1000, numResults: 599, stopped: TRUE
+returning status FALSE
+got results for task 600
+numValues: 1000, numResults: 600, stopped: TRUE
+returning status FALSE
+got results for task 601
+numValues: 1000, numResults: 601, stopped: TRUE
+returning status FALSE
+got results for task 602
+numValues: 1000, numResults: 602, stopped: TRUE
+returning status FALSE
+got results for task 603
+numValues: 1000, numResults: 603, stopped: TRUE
+returning status FALSE
+got results for task 604
+numValues: 1000, numResults: 604, stopped: TRUE
+returning status FALSE
+got results for task 605
+numValues: 1000, numResults: 605, stopped: TRUE
+returning status FALSE
+got results for task 606
+numValues: 1000, numResults: 606, stopped: TRUE
+returning status FALSE
+got results for task 607
+numValues: 1000, numResults: 607, stopped: TRUE
+returning status FALSE
+got results for task 608
+numValues: 1000, numResults: 608, stopped: TRUE
+returning status FALSE
+got results for task 609
+numValues: 1000, numResults: 609, stopped: TRUE
+returning status FALSE
+got results for task 610
+numValues: 1000, numResults: 610, stopped: TRUE
+returning status FALSE
+got results for task 611
+numValues: 1000, numResults: 611, stopped: TRUE
+returning status FALSE
+got results for task 612
+numValues: 1000, numResults: 612, stopped: TRUE
+returning status FALSE
+got results for task 613
+numValues: 1000, numResults: 613, stopped: TRUE
+returning status FALSE
+got results for task 614
+numValues: 1000, numResults: 614, stopped: TRUE
+returning status FALSE
+got results for task 615
+numValues: 1000, numResults: 615, stopped: TRUE
+returning status FALSE
+got results for task 616
+numValues: 1000, numResults: 616, stopped: TRUE
+returning status FALSE
+got results for task 617
+numValues: 1000, numResults: 617, stopped: TRUE
+returning status FALSE
+got results for task 618
+numValues: 1000, numResults: 618, stopped: TRUE
+returning status FALSE
+got results for task 619
+numValues: 1000, numResults: 619, stopped: TRUE
+returning status FALSE
+got results for task 620
+numValues: 1000, numResults: 620, stopped: TRUE
+returning status FALSE
+got results for task 621
+numValues: 1000, numResults: 621, stopped: TRUE
+returning status FALSE
+got results for task 622
+numValues: 1000, numResults: 622, stopped: TRUE
+returning status FALSE
+got results for task 623
+numValues: 1000, numResults: 623, stopped: TRUE
+returning status FALSE
+got results for task 624
+numValues: 1000, numResults: 624, stopped: TRUE
+returning status FALSE
+got results for task 625
+numValues: 1000, numResults: 625, stopped: TRUE
+returning status FALSE
+got results for task 626
+numValues: 1000, numResults: 626, stopped: TRUE
+returning status FALSE
+got results for task 627
+numValues: 1000, numResults: 627, stopped: TRUE
+returning status FALSE
+got results for task 628
+numValues: 1000, numResults: 628, stopped: TRUE
+returning status FALSE
+got results for task 629
+numValues: 1000, numResults: 629, stopped: TRUE
+returning status FALSE
+got results for task 630
+numValues: 1000, numResults: 630, stopped: TRUE
+returning status FALSE
+got results for task 631
+numValues: 1000, numResults: 631, stopped: TRUE
+returning status FALSE
+got results for task 632
+numValues: 1000, numResults: 632, stopped: TRUE
+returning status FALSE
+got results for task 633
+numValues: 1000, numResults: 633, stopped: TRUE
+returning status FALSE
+got results for task 634
+numValues: 1000, numResults: 634, stopped: TRUE
+returning status FALSE
+got results for task 635
+numValues: 1000, numResults: 635, stopped: TRUE
+returning status FALSE
+got results for task 636
+numValues: 1000, numResults: 636, stopped: TRUE
+returning status FALSE
+got results for task 637
+numValues: 1000, numResults: 637, stopped: TRUE
+returning status FALSE
+got results for task 638
+numValues: 1000, numResults: 638, stopped: TRUE
+returning status FALSE
+got results for task 639
+numValues: 1000, numResults: 639, stopped: TRUE
+returning status FALSE
+got results for task 640
+numValues: 1000, numResults: 640, stopped: TRUE
+returning status FALSE
+got results for task 641
+numValues: 1000, numResults: 641, stopped: TRUE
+returning status FALSE
+got results for task 642
+numValues: 1000, numResults: 642, stopped: TRUE
+returning status FALSE
+got results for task 643
+numValues: 1000, numResults: 643, stopped: TRUE
+returning status FALSE
+got results for task 644
+numValues: 1000, numResults: 644, stopped: TRUE
+returning status FALSE
+got results for task 645
+numValues: 1000, numResults: 645, stopped: TRUE
+returning status FALSE
+got results for task 646
+numValues: 1000, numResults: 646, stopped: TRUE
+returning status FALSE
+got results for task 647
+numValues: 1000, numResults: 647, stopped: TRUE
+returning status FALSE
+got results for task 648
+numValues: 1000, numResults: 648, stopped: TRUE
+returning status FALSE
+got results for task 649
+numValues: 1000, numResults: 649, stopped: TRUE
+returning status FALSE
+got results for task 650
+numValues: 1000, numResults: 650, stopped: TRUE
+returning status FALSE
+got results for task 651
+numValues: 1000, numResults: 651, stopped: TRUE
+returning status FALSE
+got results for task 652
+numValues: 1000, numResults: 652, stopped: TRUE
+returning status FALSE
+got results for task 653
+numValues: 1000, numResults: 653, stopped: TRUE
+returning status FALSE
+got results for task 654
+numValues: 1000, numResults: 654, stopped: TRUE
+returning status FALSE
+got results for task 655
+numValues: 1000, numResults: 655, stopped: TRUE
+returning status FALSE
+got results for task 656
+numValues: 1000, numResults: 656, stopped: TRUE
+returning status FALSE
+got results for task 657
+numValues: 1000, numResults: 657, stopped: TRUE
+returning status FALSE
+got results for task 658
+numValues: 1000, numResults: 658, stopped: TRUE
+returning status FALSE
+got results for task 659
+numValues: 1000, numResults: 659, stopped: TRUE
+returning status FALSE
+got results for task 660
+numValues: 1000, numResults: 660, stopped: TRUE
+returning status FALSE
+got results for task 661
+numValues: 1000, numResults: 661, stopped: TRUE
+returning status FALSE
+got results for task 662
+numValues: 1000, numResults: 662, stopped: TRUE
+returning status FALSE
+got results for task 663
+numValues: 1000, numResults: 663, stopped: TRUE
+returning status FALSE
+got results for task 664
+numValues: 1000, numResults: 664, stopped: TRUE
+returning status FALSE
+got results for task 665
+numValues: 1000, numResults: 665, stopped: TRUE
+returning status FALSE
+got results for task 666
+numValues: 1000, numResults: 666, stopped: TRUE
+returning status FALSE
+got results for task 667
+numValues: 1000, numResults: 667, stopped: TRUE
+returning status FALSE
+got results for task 668
+numValues: 1000, numResults: 668, stopped: TRUE
+returning status FALSE
+got results for task 669
+numValues: 1000, numResults: 669, stopped: TRUE
+returning status FALSE
+got results for task 670
+numValues: 1000, numResults: 670, stopped: TRUE
+returning status FALSE
+got results for task 671
+numValues: 1000, numResults: 671, stopped: TRUE
+returning status FALSE
+got results for task 672
+numValues: 1000, numResults: 672, stopped: TRUE
+returning status FALSE
+got results for task 673
+numValues: 1000, numResults: 673, stopped: TRUE
+returning status FALSE
+got results for task 674
+numValues: 1000, numResults: 674, stopped: TRUE
+returning status FALSE
+got results for task 675
+numValues: 1000, numResults: 675, stopped: TRUE
+returning status FALSE
+got results for task 676
+numValues: 1000, numResults: 676, stopped: TRUE
+returning status FALSE
+got results for task 677
+numValues: 1000, numResults: 677, stopped: TRUE
+returning status FALSE
+got results for task 678
+numValues: 1000, numResults: 678, stopped: TRUE
+returning status FALSE
+got results for task 679
+numValues: 1000, numResults: 679, stopped: TRUE
+returning status FALSE
+got results for task 680
+numValues: 1000, numResults: 680, stopped: TRUE
+returning status FALSE
+got results for task 681
+numValues: 1000, numResults: 681, stopped: TRUE
+returning status FALSE
+got results for task 682
+numValues: 1000, numResults: 682, stopped: TRUE
+returning status FALSE
+got results for task 683
+numValues: 1000, numResults: 683, stopped: TRUE
+returning status FALSE
+got results for task 684
+numValues: 1000, numResults: 684, stopped: TRUE
+returning status FALSE
+got results for task 685
+numValues: 1000, numResults: 685, stopped: TRUE
+returning status FALSE
+got results for task 686
+numValues: 1000, numResults: 686, stopped: TRUE
+returning status FALSE
+got results for task 687
+numValues: 1000, numResults: 687, stopped: TRUE
+returning status FALSE
+got results for task 688
+numValues: 1000, numResults: 688, stopped: TRUE
+returning status FALSE
+got results for task 689
+numValues: 1000, numResults: 689, stopped: TRUE
+returning status FALSE
+got results for task 690
+numValues: 1000, numResults: 690, stopped: TRUE
+returning status FALSE
+got results for task 691
+numValues: 1000, numResults: 691, stopped: TRUE
+returning status FALSE
+got results for task 692
+numValues: 1000, numResults: 692, stopped: TRUE
+returning status FALSE
+got results for task 693
+numValues: 1000, numResults: 693, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.595, result.596, result.597, result.598, result.599, 
+    result.600, result.601, result.602, result.603, result.604, 
+    result.605, result.606, result.607, result.608, result.609, 
+    result.610, result.611, result.612, result.613, result.614, 
+    result.615, result.616, result.617, result.618, result.619, 
+    result.620, result.621, result.622, result.623, result.624, 
+    result.625, result.626, result.627, result.628, result.629, 
+    result.630, result.631, result.632, result.633, result.634, 
+    result.635, result.636, result.637, result.638, result.639, 
+    result.640, result.641, result.642, result.643, result.644, 
+    result.645, result.646, result.647, result.648, result.649, 
+    result.650, result.651, result.652, result.653, result.654, 
+    result.655, result.656, result.657, result.658, result.659, 
+    result.660, result.661, result.662, result.663, result.664, 
+    result.665, result.666, result.667, result.668, result.669, 
+    result.670, result.671, result.672, result.673, result.674, 
+    result.675, result.676, result.677, result.678, result.679, 
+    result.680, result.681, result.682, result.683, result.684, 
+    result.685, result.686, result.687, result.688, result.689, 
+    result.690, result.691, result.692, result.693)
+returning status FALSE
+got results for task 694
+numValues: 1000, numResults: 694, stopped: TRUE
+returning status FALSE
+got results for task 695
+numValues: 1000, numResults: 695, stopped: TRUE
+returning status FALSE
+got results for task 696
+numValues: 1000, numResults: 696, stopped: TRUE
+returning status FALSE
+got results for task 697
+numValues: 1000, numResults: 697, stopped: TRUE
+returning status FALSE
+got results for task 698
+numValues: 1000, numResults: 698, stopped: TRUE
+returning status FALSE
+got results for task 699
+numValues: 1000, numResults: 699, stopped: TRUE
+returning status FALSE
+got results for task 700
+numValues: 1000, numResults: 700, stopped: TRUE
+returning status FALSE
+got results for task 701
+numValues: 1000, numResults: 701, stopped: TRUE
+returning status FALSE
+got results for task 702
+numValues: 1000, numResults: 702, stopped: TRUE
+returning status FALSE
+got results for task 703
+numValues: 1000, numResults: 703, stopped: TRUE
+returning status FALSE
+got results for task 704
+numValues: 1000, numResults: 704, stopped: TRUE
+returning status FALSE
+got results for task 705
+numValues: 1000, numResults: 705, stopped: TRUE
+returning status FALSE
+got results for task 706
+numValues: 1000, numResults: 706, stopped: TRUE
+returning status FALSE
+got results for task 707
+numValues: 1000, numResults: 707, stopped: TRUE
+returning status FALSE
+got results for task 708
+numValues: 1000, numResults: 708, stopped: TRUE
+returning status FALSE
+got results for task 709
+numValues: 1000, numResults: 709, stopped: TRUE
+returning status FALSE
+got results for task 710
+numValues: 1000, numResults: 710, stopped: TRUE
+returning status FALSE
+got results for task 711
+numValues: 1000, numResults: 711, stopped: TRUE
+returning status FALSE
+got results for task 712
+numValues: 1000, numResults: 712, stopped: TRUE
+returning status FALSE
+got results for task 713
+numValues: 1000, numResults: 713, stopped: TRUE
+returning status FALSE
+got results for task 714
+numValues: 1000, numResults: 714, stopped: TRUE
+returning status FALSE
+got results for task 715
+numValues: 1000, numResults: 715, stopped: TRUE
+returning status FALSE
+got results for task 716
+numValues: 1000, numResults: 716, stopped: TRUE
+returning status FALSE
+got results for task 717
+numValues: 1000, numResults: 717, stopped: TRUE
+returning status FALSE
+got results for task 718
+numValues: 1000, numResults: 718, stopped: TRUE
+returning status FALSE
+got results for task 719
+numValues: 1000, numResults: 719, stopped: TRUE
+returning status FALSE
+got results for task 720
+numValues: 1000, numResults: 720, stopped: TRUE
+returning status FALSE
+got results for task 721
+numValues: 1000, numResults: 721, stopped: TRUE
+returning status FALSE
+got results for task 722
+numValues: 1000, numResults: 722, stopped: TRUE
+returning status FALSE
+got results for task 723
+numValues: 1000, numResults: 723, stopped: TRUE
+returning status FALSE
+got results for task 724
+numValues: 1000, numResults: 724, stopped: TRUE
+returning status FALSE
+got results for task 725
+numValues: 1000, numResults: 725, stopped: TRUE
+returning status FALSE
+got results for task 726
+numValues: 1000, numResults: 726, stopped: TRUE
+returning status FALSE
+got results for task 727
+numValues: 1000, numResults: 727, stopped: TRUE
+returning status FALSE
+got results for task 728
+numValues: 1000, numResults: 728, stopped: TRUE
+returning status FALSE
+got results for task 729
+numValues: 1000, numResults: 729, stopped: TRUE
+returning status FALSE
+got results for task 730
+numValues: 1000, numResults: 730, stopped: TRUE
+returning status FALSE
+got results for task 731
+numValues: 1000, numResults: 731, stopped: TRUE
+returning status FALSE
+got results for task 732
+numValues: 1000, numResults: 732, stopped: TRUE
+returning status FALSE
+got results for task 733
+numValues: 1000, numResults: 733, stopped: TRUE
+returning status FALSE
+got results for task 734
+numValues: 1000, numResults: 734, stopped: TRUE
+returning status FALSE
+got results for task 735
+numValues: 1000, numResults: 735, stopped: TRUE
+returning status FALSE
+got results for task 736
+numValues: 1000, numResults: 736, stopped: TRUE
+returning status FALSE
+got results for task 737
+numValues: 1000, numResults: 737, stopped: TRUE
+returning status FALSE
+got results for task 738
+numValues: 1000, numResults: 738, stopped: TRUE
+returning status FALSE
+got results for task 739
+numValues: 1000, numResults: 739, stopped: TRUE
+returning status FALSE
+got results for task 740
+numValues: 1000, numResults: 740, stopped: TRUE
+returning status FALSE
+got results for task 741
+numValues: 1000, numResults: 741, stopped: TRUE
+returning status FALSE
+got results for task 742
+numValues: 1000, numResults: 742, stopped: TRUE
+returning status FALSE
+got results for task 743
+numValues: 1000, numResults: 743, stopped: TRUE
+returning status FALSE
+got results for task 744
+numValues: 1000, numResults: 744, stopped: TRUE
+returning status FALSE
+got results for task 745
+numValues: 1000, numResults: 745, stopped: TRUE
+returning status FALSE
+got results for task 746
+numValues: 1000, numResults: 746, stopped: TRUE
+returning status FALSE
+got results for task 747
+numValues: 1000, numResults: 747, stopped: TRUE
+returning status FALSE
+got results for task 748
+numValues: 1000, numResults: 748, stopped: TRUE
+returning status FALSE
+got results for task 749
+numValues: 1000, numResults: 749, stopped: TRUE
+returning status FALSE
+got results for task 750
+numValues: 1000, numResults: 750, stopped: TRUE
+returning status FALSE
+got results for task 751
+numValues: 1000, numResults: 751, stopped: TRUE
+returning status FALSE
+got results for task 752
+numValues: 1000, numResults: 752, stopped: TRUE
+returning status FALSE
+got results for task 753
+numValues: 1000, numResults: 753, stopped: TRUE
+returning status FALSE
+got results for task 754
+numValues: 1000, numResults: 754, stopped: TRUE
+returning status FALSE
+got results for task 755
+numValues: 1000, numResults: 755, stopped: TRUE
+returning status FALSE
+got results for task 756
+numValues: 1000, numResults: 756, stopped: TRUE
+returning status FALSE
+got results for task 757
+numValues: 1000, numResults: 757, stopped: TRUE
+returning status FALSE
+got results for task 758
+numValues: 1000, numResults: 758, stopped: TRUE
+returning status FALSE
+got results for task 759
+numValues: 1000, numResults: 759, stopped: TRUE
+returning status FALSE
+got results for task 760
+numValues: 1000, numResults: 760, stopped: TRUE
+returning status FALSE
+got results for task 761
+numValues: 1000, numResults: 761, stopped: TRUE
+returning status FALSE
+got results for task 762
+numValues: 1000, numResults: 762, stopped: TRUE
+returning status FALSE
+got results for task 763
+numValues: 1000, numResults: 763, stopped: TRUE
+returning status FALSE
+got results for task 764
+numValues: 1000, numResults: 764, stopped: TRUE
+returning status FALSE
+got results for task 765
+numValues: 1000, numResults: 765, stopped: TRUE
+returning status FALSE
+got results for task 766
+numValues: 1000, numResults: 766, stopped: TRUE
+returning status FALSE
+got results for task 767
+numValues: 1000, numResults: 767, stopped: TRUE
+returning status FALSE
+got results for task 768
+numValues: 1000, numResults: 768, stopped: TRUE
+returning status FALSE
+got results for task 769
+numValues: 1000, numResults: 769, stopped: TRUE
+returning status FALSE
+got results for task 770
+numValues: 1000, numResults: 770, stopped: TRUE
+returning status FALSE
+got results for task 771
+numValues: 1000, numResults: 771, stopped: TRUE
+returning status FALSE
+got results for task 772
+numValues: 1000, numResults: 772, stopped: TRUE
+returning status FALSE
+got results for task 773
+numValues: 1000, numResults: 773, stopped: TRUE
+returning status FALSE
+got results for task 774
+numValues: 1000, numResults: 774, stopped: TRUE
+returning status FALSE
+got results for task 775
+numValues: 1000, numResults: 775, stopped: TRUE
+returning status FALSE
+got results for task 776
+numValues: 1000, numResults: 776, stopped: TRUE
+returning status FALSE
+got results for task 777
+numValues: 1000, numResults: 777, stopped: TRUE
+returning status FALSE
+got results for task 778
+numValues: 1000, numResults: 778, stopped: TRUE
+returning status FALSE
+got results for task 779
+numValues: 1000, numResults: 779, stopped: TRUE
+returning status FALSE
+got results for task 780
+numValues: 1000, numResults: 780, stopped: TRUE
+returning status FALSE
+got results for task 781
+numValues: 1000, numResults: 781, stopped: TRUE
+returning status FALSE
+got results for task 782
+numValues: 1000, numResults: 782, stopped: TRUE
+returning status FALSE
+got results for task 783
+numValues: 1000, numResults: 783, stopped: TRUE
+returning status FALSE
+got results for task 784
+numValues: 1000, numResults: 784, stopped: TRUE
+returning status FALSE
+got results for task 785
+numValues: 1000, numResults: 785, stopped: TRUE
+returning status FALSE
+got results for task 786
+numValues: 1000, numResults: 786, stopped: TRUE
+returning status FALSE
+got results for task 787
+numValues: 1000, numResults: 787, stopped: TRUE
+returning status FALSE
+got results for task 788
+numValues: 1000, numResults: 788, stopped: TRUE
+returning status FALSE
+got results for task 789
+numValues: 1000, numResults: 789, stopped: TRUE
+returning status FALSE
+got results for task 790
+numValues: 1000, numResults: 790, stopped: TRUE
+returning status FALSE
+got results for task 791
+numValues: 1000, numResults: 791, stopped: TRUE
+returning status FALSE
+got results for task 792
+numValues: 1000, numResults: 792, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.694, result.695, result.696, result.697, result.698, 
+    result.699, result.700, result.701, result.702, result.703, 
+    result.704, result.705, result.706, result.707, result.708, 
+    result.709, result.710, result.711, result.712, result.713, 
+    result.714, result.715, result.716, result.717, result.718, 
+    result.719, result.720, result.721, result.722, result.723, 
+    result.724, result.725, result.726, result.727, result.728, 
+    result.729, result.730, result.731, result.732, result.733, 
+    result.734, result.735, result.736, result.737, result.738, 
+    result.739, result.740, result.741, result.742, result.743, 
+    result.744, result.745, result.746, result.747, result.748, 
+    result.749, result.750, result.751, result.752, result.753, 
+    result.754, result.755, result.756, result.757, result.758, 
+    result.759, result.760, result.761, result.762, result.763, 
+    result.764, result.765, result.766, result.767, result.768, 
+    result.769, result.770, result.771, result.772, result.773, 
+    result.774, result.775, result.776, result.777, result.778, 
+    result.779, result.780, result.781, result.782, result.783, 
+    result.784, result.785, result.786, result.787, result.788, 
+    result.789, result.790, result.791, result.792)
+returning status FALSE
+got results for task 793
+numValues: 1000, numResults: 793, stopped: TRUE
+returning status FALSE
+got results for task 794
+numValues: 1000, numResults: 794, stopped: TRUE
+returning status FALSE
+got results for task 795
+numValues: 1000, numResults: 795, stopped: TRUE
+returning status FALSE
+got results for task 796
+numValues: 1000, numResults: 796, stopped: TRUE
+returning status FALSE
+got results for task 797
+numValues: 1000, numResults: 797, stopped: TRUE
+returning status FALSE
+got results for task 798
+numValues: 1000, numResults: 798, stopped: TRUE
+returning status FALSE
+got results for task 799
+numValues: 1000, numResults: 799, stopped: TRUE
+returning status FALSE
+got results for task 800
+numValues: 1000, numResults: 800, stopped: TRUE
+returning status FALSE
+got results for task 801
+numValues: 1000, numResults: 801, stopped: TRUE
+returning status FALSE
+got results for task 802
+numValues: 1000, numResults: 802, stopped: TRUE
+returning status FALSE
+got results for task 803
+numValues: 1000, numResults: 803, stopped: TRUE
+returning status FALSE
+got results for task 804
+numValues: 1000, numResults: 804, stopped: TRUE
+returning status FALSE
+got results for task 805
+numValues: 1000, numResults: 805, stopped: TRUE
+returning status FALSE
+got results for task 806
+numValues: 1000, numResults: 806, stopped: TRUE
+returning status FALSE
+got results for task 807
+numValues: 1000, numResults: 807, stopped: TRUE
+returning status FALSE
+got results for task 808
+numValues: 1000, numResults: 808, stopped: TRUE
+returning status FALSE
+got results for task 809
+numValues: 1000, numResults: 809, stopped: TRUE
+returning status FALSE
+got results for task 810
+numValues: 1000, numResults: 810, stopped: TRUE
+returning status FALSE
+got results for task 811
+numValues: 1000, numResults: 811, stopped: TRUE
+returning status FALSE
+got results for task 812
+numValues: 1000, numResults: 812, stopped: TRUE
+returning status FALSE
+got results for task 813
+numValues: 1000, numResults: 813, stopped: TRUE
+returning status FALSE
+got results for task 814
+numValues: 1000, numResults: 814, stopped: TRUE
+returning status FALSE
+got results for task 815
+numValues: 1000, numResults: 815, stopped: TRUE
+returning status FALSE
+got results for task 816
+numValues: 1000, numResults: 816, stopped: TRUE
+returning status FALSE
+got results for task 817
+numValues: 1000, numResults: 817, stopped: TRUE
+returning status FALSE
+got results for task 818
+numValues: 1000, numResults: 818, stopped: TRUE
+returning status FALSE
+got results for task 819
+numValues: 1000, numResults: 819, stopped: TRUE
+returning status FALSE
+got results for task 820
+numValues: 1000, numResults: 820, stopped: TRUE
+returning status FALSE
+got results for task 821
+numValues: 1000, numResults: 821, stopped: TRUE
+returning status FALSE
+got results for task 822
+numValues: 1000, numResults: 822, stopped: TRUE
+returning status FALSE
+got results for task 823
+numValues: 1000, numResults: 823, stopped: TRUE
+returning status FALSE
+got results for task 824
+numValues: 1000, numResults: 824, stopped: TRUE
+returning status FALSE
+got results for task 825
+numValues: 1000, numResults: 825, stopped: TRUE
+returning status FALSE
+got results for task 826
+numValues: 1000, numResults: 826, stopped: TRUE
+returning status FALSE
+got results for task 827
+numValues: 1000, numResults: 827, stopped: TRUE
+returning status FALSE
+got results for task 828
+numValues: 1000, numResults: 828, stopped: TRUE
+returning status FALSE
+got results for task 829
+numValues: 1000, numResults: 829, stopped: TRUE
+returning status FALSE
+got results for task 830
+numValues: 1000, numResults: 830, stopped: TRUE
+returning status FALSE
+got results for task 831
+numValues: 1000, numResults: 831, stopped: TRUE
+returning status FALSE
+got results for task 832
+numValues: 1000, numResults: 832, stopped: TRUE
+returning status FALSE
+got results for task 833
+numValues: 1000, numResults: 833, stopped: TRUE
+returning status FALSE
+got results for task 834
+numValues: 1000, numResults: 834, stopped: TRUE
+returning status FALSE
+got results for task 835
+numValues: 1000, numResults: 835, stopped: TRUE
+returning status FALSE
+got results for task 836
+numValues: 1000, numResults: 836, stopped: TRUE
+returning status FALSE
+got results for task 837
+numValues: 1000, numResults: 837, stopped: TRUE
+returning status FALSE
+got results for task 838
+numValues: 1000, numResults: 838, stopped: TRUE
+returning status FALSE
+got results for task 839
+numValues: 1000, numResults: 839, stopped: TRUE
+returning status FALSE
+got results for task 840
+numValues: 1000, numResults: 840, stopped: TRUE
+returning status FALSE
+got results for task 841
+numValues: 1000, numResults: 841, stopped: TRUE
+returning status FALSE
+got results for task 842
+numValues: 1000, numResults: 842, stopped: TRUE
+returning status FALSE
+got results for task 843
+numValues: 1000, numResults: 843, stopped: TRUE
+returning status FALSE
+got results for task 844
+numValues: 1000, numResults: 844, stopped: TRUE
+returning status FALSE
+got results for task 845
+numValues: 1000, numResults: 845, stopped: TRUE
+returning status FALSE
+got results for task 846
+numValues: 1000, numResults: 846, stopped: TRUE
+returning status FALSE
+got results for task 847
+numValues: 1000, numResults: 847, stopped: TRUE
+returning status FALSE
+got results for task 848
+numValues: 1000, numResults: 848, stopped: TRUE
+returning status FALSE
+got results for task 849
+numValues: 1000, numResults: 849, stopped: TRUE
+returning status FALSE
+got results for task 850
+numValues: 1000, numResults: 850, stopped: TRUE
+returning status FALSE
+got results for task 851
+numValues: 1000, numResults: 851, stopped: TRUE
+returning status FALSE
+got results for task 852
+numValues: 1000, numResults: 852, stopped: TRUE
+returning status FALSE
+got results for task 853
+numValues: 1000, numResults: 853, stopped: TRUE
+returning status FALSE
+got results for task 854
+numValues: 1000, numResults: 854, stopped: TRUE
+returning status FALSE
+got results for task 855
+numValues: 1000, numResults: 855, stopped: TRUE
+returning status FALSE
+got results for task 856
+numValues: 1000, numResults: 856, stopped: TRUE
+returning status FALSE
+got results for task 857
+numValues: 1000, numResults: 857, stopped: TRUE
+returning status FALSE
+got results for task 858
+numValues: 1000, numResults: 858, stopped: TRUE
+returning status FALSE
+got results for task 859
+numValues: 1000, numResults: 859, stopped: TRUE
+returning status FALSE
+got results for task 860
+numValues: 1000, numResults: 860, stopped: TRUE
+returning status FALSE
+got results for task 861
+numValues: 1000, numResults: 861, stopped: TRUE
+returning status FALSE
+got results for task 862
+numValues: 1000, numResults: 862, stopped: TRUE
+returning status FALSE
+got results for task 863
+numValues: 1000, numResults: 863, stopped: TRUE
+returning status FALSE
+got results for task 864
+numValues: 1000, numResults: 864, stopped: TRUE
+returning status FALSE
+got results for task 865
+numValues: 1000, numResults: 865, stopped: TRUE
+returning status FALSE
+got results for task 866
+numValues: 1000, numResults: 866, stopped: TRUE
+returning status FALSE
+got results for task 867
+numValues: 1000, numResults: 867, stopped: TRUE
+returning status FALSE
+got results for task 868
+numValues: 1000, numResults: 868, stopped: TRUE
+returning status FALSE
+got results for task 869
+numValues: 1000, numResults: 869, stopped: TRUE
+returning status FALSE
+got results for task 870
+numValues: 1000, numResults: 870, stopped: TRUE
+returning status FALSE
+got results for task 871
+numValues: 1000, numResults: 871, stopped: TRUE
+returning status FALSE
+got results for task 872
+numValues: 1000, numResults: 872, stopped: TRUE
+returning status FALSE
+got results for task 873
+numValues: 1000, numResults: 873, stopped: TRUE
+returning status FALSE
+got results for task 874
+numValues: 1000, numResults: 874, stopped: TRUE
+returning status FALSE
+got results for task 875
+numValues: 1000, numResults: 875, stopped: TRUE
+returning status FALSE
+got results for task 876
+numValues: 1000, numResults: 876, stopped: TRUE
+returning status FALSE
+got results for task 877
+numValues: 1000, numResults: 877, stopped: TRUE
+returning status FALSE
+got results for task 878
+numValues: 1000, numResults: 878, stopped: TRUE
+returning status FALSE
+got results for task 879
+numValues: 1000, numResults: 879, stopped: TRUE
+returning status FALSE
+got results for task 880
+numValues: 1000, numResults: 880, stopped: TRUE
+returning status FALSE
+got results for task 881
+numValues: 1000, numResults: 881, stopped: TRUE
+returning status FALSE
+got results for task 882
+numValues: 1000, numResults: 882, stopped: TRUE
+returning status FALSE
+got results for task 883
+numValues: 1000, numResults: 883, stopped: TRUE
+returning status FALSE
+got results for task 884
+numValues: 1000, numResults: 884, stopped: TRUE
+returning status FALSE
+got results for task 885
+numValues: 1000, numResults: 885, stopped: TRUE
+returning status FALSE
+got results for task 886
+numValues: 1000, numResults: 886, stopped: TRUE
+returning status FALSE
+got results for task 887
+numValues: 1000, numResults: 887, stopped: TRUE
+returning status FALSE
+got results for task 888
+numValues: 1000, numResults: 888, stopped: TRUE
+returning status FALSE
+got results for task 889
+numValues: 1000, numResults: 889, stopped: TRUE
+returning status FALSE
+got results for task 890
+numValues: 1000, numResults: 890, stopped: TRUE
+returning status FALSE
+got results for task 891
+numValues: 1000, numResults: 891, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.793, result.794, result.795, result.796, result.797, 
+    result.798, result.799, result.800, result.801, result.802, 
+    result.803, result.804, result.805, result.806, result.807, 
+    result.808, result.809, result.810, result.811, result.812, 
+    result.813, result.814, result.815, result.816, result.817, 
+    result.818, result.819, result.820, result.821, result.822, 
+    result.823, result.824, result.825, result.826, result.827, 
+    result.828, result.829, result.830, result.831, result.832, 
+    result.833, result.834, result.835, result.836, result.837, 
+    result.838, result.839, result.840, result.841, result.842, 
+    result.843, result.844, result.845, result.846, result.847, 
+    result.848, result.849, result.850, result.851, result.852, 
+    result.853, result.854, result.855, result.856, result.857, 
+    result.858, result.859, result.860, result.861, result.862, 
+    result.863, result.864, result.865, result.866, result.867, 
+    result.868, result.869, result.870, result.871, result.872, 
+    result.873, result.874, result.875, result.876, result.877, 
+    result.878, result.879, result.880, result.881, result.882, 
+    result.883, result.884, result.885, result.886, result.887, 
+    result.888, result.889, result.890, result.891)
+returning status FALSE
+got results for task 892
+numValues: 1000, numResults: 892, stopped: TRUE
+returning status FALSE
+got results for task 893
+numValues: 1000, numResults: 893, stopped: TRUE
+returning status FALSE
+got results for task 894
+numValues: 1000, numResults: 894, stopped: TRUE
+returning status FALSE
+got results for task 895
+numValues: 1000, numResults: 895, stopped: TRUE
+returning status FALSE
+got results for task 896
+numValues: 1000, numResults: 896, stopped: TRUE
+returning status FALSE
+got results for task 897
+numValues: 1000, numResults: 897, stopped: TRUE
+returning status FALSE
+got results for task 898
+numValues: 1000, numResults: 898, stopped: TRUE
+returning status FALSE
+got results for task 899
+numValues: 1000, numResults: 899, stopped: TRUE
+returning status FALSE
+got results for task 900
+numValues: 1000, numResults: 900, stopped: TRUE
+returning status FALSE
+got results for task 901
+numValues: 1000, numResults: 901, stopped: TRUE
+returning status FALSE
+got results for task 902
+numValues: 1000, numResults: 902, stopped: TRUE
+returning status FALSE
+got results for task 903
+numValues: 1000, numResults: 903, stopped: TRUE
+returning status FALSE
+got results for task 904
+numValues: 1000, numResults: 904, stopped: TRUE
+returning status FALSE
+got results for task 905
+numValues: 1000, numResults: 905, stopped: TRUE
+returning status FALSE
+got results for task 906
+numValues: 1000, numResults: 906, stopped: TRUE
+returning status FALSE
+got results for task 907
+numValues: 1000, numResults: 907, stopped: TRUE
+returning status FALSE
+got results for task 908
+numValues: 1000, numResults: 908, stopped: TRUE
+returning status FALSE
+got results for task 909
+numValues: 1000, numResults: 909, stopped: TRUE
+returning status FALSE
+got results for task 910
+numValues: 1000, numResults: 910, stopped: TRUE
+returning status FALSE
+got results for task 911
+numValues: 1000, numResults: 911, stopped: TRUE
+returning status FALSE
+got results for task 912
+numValues: 1000, numResults: 912, stopped: TRUE
+returning status FALSE
+got results for task 913
+numValues: 1000, numResults: 913, stopped: TRUE
+returning status FALSE
+got results for task 914
+numValues: 1000, numResults: 914, stopped: TRUE
+returning status FALSE
+got results for task 915
+numValues: 1000, numResults: 915, stopped: TRUE
+returning status FALSE
+got results for task 916
+numValues: 1000, numResults: 916, stopped: TRUE
+returning status FALSE
+got results for task 917
+numValues: 1000, numResults: 917, stopped: TRUE
+returning status FALSE
+got results for task 918
+numValues: 1000, numResults: 918, stopped: TRUE
+returning status FALSE
+got results for task 919
+numValues: 1000, numResults: 919, stopped: TRUE
+returning status FALSE
+got results for task 920
+numValues: 1000, numResults: 920, stopped: TRUE
+returning status FALSE
+got results for task 921
+numValues: 1000, numResults: 921, stopped: TRUE
+returning status FALSE
+got results for task 922
+numValues: 1000, numResults: 922, stopped: TRUE
+returning status FALSE
+got results for task 923
+numValues: 1000, numResults: 923, stopped: TRUE
+returning status FALSE
+got results for task 924
+numValues: 1000, numResults: 924, stopped: TRUE
+returning status FALSE
+got results for task 925
+numValues: 1000, numResults: 925, stopped: TRUE
+returning status FALSE
+got results for task 926
+numValues: 1000, numResults: 926, stopped: TRUE
+returning status FALSE
+got results for task 927
+numValues: 1000, numResults: 927, stopped: TRUE
+returning status FALSE
+got results for task 928
+numValues: 1000, numResults: 928, stopped: TRUE
+returning status FALSE
+got results for task 929
+numValues: 1000, numResults: 929, stopped: TRUE
+returning status FALSE
+got results for task 930
+numValues: 1000, numResults: 930, stopped: TRUE
+returning status FALSE
+got results for task 931
+numValues: 1000, numResults: 931, stopped: TRUE
+returning status FALSE
+got results for task 932
+numValues: 1000, numResults: 932, stopped: TRUE
+returning status FALSE
+got results for task 933
+numValues: 1000, numResults: 933, stopped: TRUE
+returning status FALSE
+got results for task 934
+numValues: 1000, numResults: 934, stopped: TRUE
+returning status FALSE
+got results for task 935
+numValues: 1000, numResults: 935, stopped: TRUE
+returning status FALSE
+got results for task 936
+numValues: 1000, numResults: 936, stopped: TRUE
+returning status FALSE
+got results for task 937
+numValues: 1000, numResults: 937, stopped: TRUE
+returning status FALSE
+got results for task 938
+numValues: 1000, numResults: 938, stopped: TRUE
+returning status FALSE
+got results for task 939
+numValues: 1000, numResults: 939, stopped: TRUE
+returning status FALSE
+got results for task 940
+numValues: 1000, numResults: 940, stopped: TRUE
+returning status FALSE
+got results for task 941
+numValues: 1000, numResults: 941, stopped: TRUE
+returning status FALSE
+got results for task 942
+numValues: 1000, numResults: 942, stopped: TRUE
+returning status FALSE
+got results for task 943
+numValues: 1000, numResults: 943, stopped: TRUE
+returning status FALSE
+got results for task 944
+numValues: 1000, numResults: 944, stopped: TRUE
+returning status FALSE
+got results for task 945
+numValues: 1000, numResults: 945, stopped: TRUE
+returning status FALSE
+got results for task 946
+numValues: 1000, numResults: 946, stopped: TRUE
+returning status FALSE
+got results for task 947
+numValues: 1000, numResults: 947, stopped: TRUE
+returning status FALSE
+got results for task 948
+numValues: 1000, numResults: 948, stopped: TRUE
+returning status FALSE
+got results for task 949
+numValues: 1000, numResults: 949, stopped: TRUE
+returning status FALSE
+got results for task 950
+numValues: 1000, numResults: 950, stopped: TRUE
+returning status FALSE
+got results for task 951
+numValues: 1000, numResults: 951, stopped: TRUE
+returning status FALSE
+got results for task 952
+numValues: 1000, numResults: 952, stopped: TRUE
+returning status FALSE
+got results for task 953
+numValues: 1000, numResults: 953, stopped: TRUE
+returning status FALSE
+got results for task 954
+numValues: 1000, numResults: 954, stopped: TRUE
+returning status FALSE
+got results for task 955
+numValues: 1000, numResults: 955, stopped: TRUE
+returning status FALSE
+got results for task 956
+numValues: 1000, numResults: 956, stopped: TRUE
+returning status FALSE
+got results for task 957
+numValues: 1000, numResults: 957, stopped: TRUE
+returning status FALSE
+got results for task 958
+numValues: 1000, numResults: 958, stopped: TRUE
+returning status FALSE
+got results for task 959
+numValues: 1000, numResults: 959, stopped: TRUE
+returning status FALSE
+got results for task 960
+numValues: 1000, numResults: 960, stopped: TRUE
+returning status FALSE
+got results for task 961
+numValues: 1000, numResults: 961, stopped: TRUE
+returning status FALSE
+got results for task 962
+numValues: 1000, numResults: 962, stopped: TRUE
+returning status FALSE
+got results for task 963
+numValues: 1000, numResults: 963, stopped: TRUE
+returning status FALSE
+got results for task 964
+numValues: 1000, numResults: 964, stopped: TRUE
+returning status FALSE
+got results for task 965
+numValues: 1000, numResults: 965, stopped: TRUE
+returning status FALSE
+got results for task 966
+numValues: 1000, numResults: 966, stopped: TRUE
+returning status FALSE
+got results for task 967
+numValues: 1000, numResults: 967, stopped: TRUE
+returning status FALSE
+got results for task 968
+numValues: 1000, numResults: 968, stopped: TRUE
+returning status FALSE
+got results for task 969
+numValues: 1000, numResults: 969, stopped: TRUE
+returning status FALSE
+got results for task 970
+numValues: 1000, numResults: 970, stopped: TRUE
+returning status FALSE
+got results for task 971
+numValues: 1000, numResults: 971, stopped: TRUE
+returning status FALSE
+got results for task 972
+numValues: 1000, numResults: 972, stopped: TRUE
+returning status FALSE
+got results for task 973
+numValues: 1000, numResults: 973, stopped: TRUE
+returning status FALSE
+got results for task 974
+numValues: 1000, numResults: 974, stopped: TRUE
+returning status FALSE
+got results for task 975
+numValues: 1000, numResults: 975, stopped: TRUE
+returning status FALSE
+got results for task 976
+numValues: 1000, numResults: 976, stopped: TRUE
+returning status FALSE
+got results for task 977
+numValues: 1000, numResults: 977, stopped: TRUE
+returning status FALSE
+got results for task 978
+numValues: 1000, numResults: 978, stopped: TRUE
+returning status FALSE
+got results for task 979
+numValues: 1000, numResults: 979, stopped: TRUE
+returning status FALSE
+got results for task 980
+numValues: 1000, numResults: 980, stopped: TRUE
+returning status FALSE
+got results for task 981
+numValues: 1000, numResults: 981, stopped: TRUE
+returning status FALSE
+got results for task 982
+numValues: 1000, numResults: 982, stopped: TRUE
+returning status FALSE
+got results for task 983
+numValues: 1000, numResults: 983, stopped: TRUE
+returning status FALSE
+got results for task 984
+numValues: 1000, numResults: 984, stopped: TRUE
+returning status FALSE
+got results for task 985
+numValues: 1000, numResults: 985, stopped: TRUE
+returning status FALSE
+got results for task 986
+numValues: 1000, numResults: 986, stopped: TRUE
+returning status FALSE
+got results for task 987
+numValues: 1000, numResults: 987, stopped: TRUE
+returning status FALSE
+got results for task 988
+numValues: 1000, numResults: 988, stopped: TRUE
+returning status FALSE
+got results for task 989
+numValues: 1000, numResults: 989, stopped: TRUE
+returning status FALSE
+got results for task 990
+numValues: 1000, numResults: 990, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.892, result.893, result.894, result.895, result.896, 
+    result.897, result.898, result.899, result.900, result.901, 
+    result.902, result.903, result.904, result.905, result.906, 
+    result.907, result.908, result.909, result.910, result.911, 
+    result.912, result.913, result.914, result.915, result.916, 
+    result.917, result.918, result.919, result.920, result.921, 
+    result.922, result.923, result.924, result.925, result.926, 
+    result.927, result.928, result.929, result.930, result.931, 
+    result.932, result.933, result.934, result.935, result.936, 
+    result.937, result.938, result.939, result.940, result.941, 
+    result.942, result.943, result.944, result.945, result.946, 
+    result.947, result.948, result.949, result.950, result.951, 
+    result.952, result.953, result.954, result.955, result.956, 
+    result.957, result.958, result.959, result.960, result.961, 
+    result.962, result.963, result.964, result.965, result.966, 
+    result.967, result.968, result.969, result.970, result.971, 
+    result.972, result.973, result.974, result.975, result.976, 
+    result.977, result.978, result.979, result.980, result.981, 
+    result.982, result.983, result.984, result.985, result.986, 
+    result.987, result.988, result.989, result.990)
+returning status FALSE
+got results for task 991
+numValues: 1000, numResults: 991, stopped: TRUE
+returning status FALSE
+got results for task 992
+numValues: 1000, numResults: 992, stopped: TRUE
+returning status FALSE
+got results for task 993
+numValues: 1000, numResults: 993, stopped: TRUE
+returning status FALSE
+got results for task 994
+numValues: 1000, numResults: 994, stopped: TRUE
+returning status FALSE
+got results for task 995
+numValues: 1000, numResults: 995, stopped: TRUE
+returning status FALSE
+got results for task 996
+numValues: 1000, numResults: 996, stopped: TRUE
+returning status FALSE
+got results for task 997
+numValues: 1000, numResults: 997, stopped: TRUE
+returning status FALSE
+got results for task 998
+numValues: 1000, numResults: 998, stopped: TRUE
+returning status FALSE
+got results for task 999
+numValues: 1000, numResults: 999, stopped: TRUE
+returning status FALSE
+got results for task 1000
+numValues: 1000, numResults: 1000, stopped: TRUE
+calling combine function
+evaluating call object to combine results:
+  fun(accum, result.991, result.992, result.993, result.994, result.995, 
+    result.996, result.997, result.998, result.999, result.1000)
+returning status TRUE

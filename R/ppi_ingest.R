@@ -11,26 +11,30 @@
 #' @export
 
 prep_stringdb <- function(cache = NULL,
-                          edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79,
+                          edb = "default",
                           min_score = NULL){
-  withr::defer(gc())
-
+  #if they didn't provide an edb object
+  if(edb == "default") {
+    edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+  }
   if(!file.exists(paste0("./", cache, "/stringdb.Rda"))) {
     message("Downloading stringdb Homo Sapiens v11.0")
     df <- readr::read_delim("https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz",
                             delim = " ")
 
+    message("converting ensemble_ids to gene_ids")
     #Lets convert the ensemble_ids to gene_ids.
     df <- dplyr::mutate(df,
-                        protein1 = as_gene_symbol(.data$protein1, edb = edb),
-                        protein2 = as_gene_symbol(.data$protein2, edb = edb))
+                        protein1 = as_gene_symbol(x = .data$protein1, edb = edb),
+                        protein2 = as_gene_symbol(x = .data$protein2, edb = edb))
 
+    message("filtering proteins with a certain min_score")
     #filter out nodes below a given min score
     if(is.numeric(min_score)) {
       df <- dplyr::filter(df, .data$combined_score > min_score)
     }
 
-
+    message("converting to igraph object")
     #Convert to igraph object
     g  <- igraph::graph_from_data_frame(df, directed = FALSE)
     g <-

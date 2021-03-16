@@ -7,7 +7,7 @@
 #' @return vector of gene symbols
 #' @export
 
-as_gene_symbol <- function(x, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79) {
+as_gene_symbol <- function(x, edb) {
 
   #in case the input is a list - this will coerce to a vector
   if(is.list(x)) {
