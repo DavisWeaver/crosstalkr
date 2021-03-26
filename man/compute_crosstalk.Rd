@@ -15,7 +15,7 @@ compute_crosstalk(
   tmax = 1000,
   norm = TRUE,
   set_seed,
-  cache,
+  cache = NULL,
   min_score = 400,
   seed_name = NULL,
   ncores = 1,

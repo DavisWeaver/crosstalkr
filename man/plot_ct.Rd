@@ -4,7 +4,7 @@
 \alias{plot_ct}
 \title{Plot subnetwork identified using the compute_crosstalk function}
 \usage{
-plot_ct(crosstalk_df, g, label_prop = 0.1)
+plot_ct(crosstalk_df, g, label_prop = 0.1, prop_keep = 0.4)
 }
 \arguments{
 \item{crosstalk_df}{a dataframe containing the results of \code{compute_crosstalk}}
@@ -12,6 +12,9 @@ plot_ct(crosstalk_df, g, label_prop = 0.1)
 \item{g}{igraph network object.}
 
 \item{label_prop}{Proportion of nodes to label - based on degree}
+
+\item{prop_keep}{How many proteins do we want to keep in the visualization (as a proportion of total) -
+subsets on top x proteins ranked by affinity score}
 }
 \description{
 Convenience function for plotting crosstalkers - if you want to make more

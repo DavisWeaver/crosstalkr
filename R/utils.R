@@ -7,8 +7,13 @@
 #' @return vector of gene symbols
 #' @export
 
-as_gene_symbol <- function(x, edb) {
+as_gene_symbol <- function(x, edb = "default") {
 
+  #this is gross but when EDB is not default it returns an error rather than the logical "false"
+  #of course this won't work if the logical doesn't break and instead returns "false" so... oh well.
+  if(!inherits(try(edb == "default", silent = TRUE), "try-error")) {
+    edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+  }
   #in case the input is a list - this will coerce to a vector
   if(is.list(x)) {
     x <- unlist(x, use.names = FALSE)

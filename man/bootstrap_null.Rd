@@ -13,7 +13,7 @@ bootstrap_null(
   tmax = 1000,
   norm = TRUE,
   set_seed,
-  cache,
+  cache = NULL,
   seed_name = NULL,
   ncores = 1
 )

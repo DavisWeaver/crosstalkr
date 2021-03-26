@@ -55,7 +55,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
   w <- igraph::as_adjacency_matrix(g) #sparse adjacency matrix.
 
   #Compute p given seed proteins
-  p_seed <- sparseRWR(w = w, seed_proteins = seed_proteins, gamma = gamma,
+  p_seed <- sparseRWR(seed_proteins = seed_proteins, w = w, gamma = gamma,
                       eps = eps, tmax = tmax, norm = norm)
   p_vec <- p_seed[[1]]
   p_df <- tibble::as_tibble(p_vec, rownames = "gene_id")

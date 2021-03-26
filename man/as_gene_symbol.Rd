@@ -4,7 +4,7 @@
 \alias{as_gene_symbol}
 \title{Convert from ensembl.gene to gene.symbol}
 \usage{
-as_gene_symbol(x, edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79)
+as_gene_symbol(x, edb = "default")
 }
 \arguments{
 \item{x}{vector of ensemble.gene ids, ensemble.peptide ids, ensemble.transcript

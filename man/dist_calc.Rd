@@ -4,12 +4,10 @@
 \alias{dist_calc}
 \title{Internal function that computes the mean/stdev for each gene from a wide-format data frame.}
 \usage{
-dist_calc(df, ncores, seed_proteins)
+dist_calc(df, seed_proteins)
 }
 \arguments{
 \item{df}{: numeric vector}
-
-\item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
 
 \item{seed_proteins}{user defined seed proteins}
 }

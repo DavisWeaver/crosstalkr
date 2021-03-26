@@ -11,7 +11,8 @@
 #' @param norm if True, w is normalized by dividing each value by the column sum.
 #' @param tmax the maximum number of iterations for the RWR
 #'
-sparseRWR <- function(w, seed_proteins, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE) {
+
+sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE) {
 
   # divide the values in each column by the within-column sum
   if(norm == TRUE) {
@@ -46,8 +47,17 @@ sparseRWR <- function(w, seed_proteins, gamma = 0.6, eps = 1e-10, tmax = 1000, n
 #' @inheritParams sparseRWR
 #' @export
 norm_colsum <- function(w) {
-  withr::defer(gc())
-  w <- Matrix::t(Matrix::t(w)/Matrix::colSums(w))
+  sums <- Matrix::colSums(w)
+  zeros <- sums[sums==0]
+
+  #it was crashing big time when I had zeros on the wrong side of the divider.
+  if(length(zeros) > 0) {
+    w <- w[!(rownames(w) %in% names(zeros)), !(colnames(w) %in% names(zeros))]
+    sums <- Matrix::colSums(w)
+  }
+
+  w <- Matrix::t(Matrix::t(w)/ sums) #tried splitting this into 2 lines so it didn't crash my shit.
+
   return(w)
 }
 

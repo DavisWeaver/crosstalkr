@@ -9,13 +9,16 @@ utils::globalVariables(c("from", "."))
 #'
 #' @param crosstalk_df a dataframe containing the results of \code{compute_crosstalk}
 #' @param label_prop Proportion of nodes to label - based on degree
+#' @param prop_keep How many proteins do we want to keep in the visualization (as a proportion of total) -
+#'      subsets on top x proteins ranked by affinity score
 #' @inheritParams compute_crosstalk
 #'
 #' @importFrom rlang .data
 #'
 #' @export
 
-plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
+plot_ct <- function(crosstalk_df, g, label_prop = 0.1,
+                    prop_keep = 0.4) {
 
   #make sure g is an igraph object
   if(!igraph::is.igraph(g)) {
@@ -24,6 +27,10 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1) {
 
   #make sure input is valid compute_crosstalk output
   check_crosstalk(crosstalk_df = crosstalk_df)
+
+  crosstalk_df <- dplyr::slice_max(crosstalk_df,
+                                   order_by = .data$affinity_score,
+                                   prop = prop_keep)
 
   #generate vector of seeds
   seeds_df <- dplyr::filter(crosstalk_df, .data$seed == "yes")
@@ -88,14 +95,16 @@ crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {
   #if g isn't an igraph object this will fly an error.
   g <- igraph::induced_subgraph(g, v = crosstalk_df$gene_id)
 
-  #we only want to keep edges that attach to a seed protein
-  seed_edges <- igraph::E(g)[ from(seed_proteins)]
+  #we only want to keep edges that attach to a seed protein - is this really true?
+  #seed_edges <- igraph::E(g)[ from(seed_proteins)]
 
-  g <- igraph::subgraph.edges(g, eids = seed_edges) %>%
-    tidygraph::as_tbl_graph() %>%
+  #igraph::subgraph.edges(g, eids = seed_edges) %>%
+  g <-  g %>% tidygraph::as_tbl_graph() %>%
     tidygraph::mutate(
       degree = igraph::degree(.),
       degree_rank = dplyr::percent_rank(.data$degree),
       seed_label = ifelse(.data$name %in% seed_proteins, "seed", "crosstalker"))
 
 }
+
+

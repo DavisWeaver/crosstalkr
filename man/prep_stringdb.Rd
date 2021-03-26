@@ -4,11 +4,7 @@
 \alias{prep_stringdb}
 \title{Prepare Stringdb for use in analyses}
 \usage{
-prep_stringdb(
-  cache = NULL,
-  edb = EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79,
-  min_score = NULL
-)
+prep_stringdb(cache = NULL, edb = "default", min_score = NULL)
 }
 \arguments{
 \item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}

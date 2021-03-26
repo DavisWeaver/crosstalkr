@@ -4,12 +4,12 @@
 \alias{sparseRWR}
 \title{Perform random walk with repeats on a sparse matrix}
 \usage{
-sparseRWR(w, seed_proteins, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE)
+sparseRWR(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE)
 }
 \arguments{
-\item{w}{The adjacency matrix of a given graph in sparse format - dgCMatrix}
-
 \item{seed_proteins}{user defined seed proteins}
+
+\item{w}{The adjacency matrix of a given graph in sparse format - dgCMatrix}
 
 \item{gamma}{restart probability}
 

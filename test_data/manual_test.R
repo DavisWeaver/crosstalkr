@@ -1,9 +1,10 @@
-g <- prep_stringdb(cache = "test_data", min_score = 200)
+g <- prep_stringdb(cache = "test_data", min_score = 600)
 load("./test_data/seed_proteins.Rda")
 
+g2 <- prep_stringdb(cache = NULL, min_score = 400)
 #Test with multiple cores
 time1 <- Sys.time()
-test1 <- bootstrap_null(g = g, ncores = 6, seed_proteins = seed_proteins,
+test1 <- bootstrap_null(g = g, ncores = 4, seed_proteins = seed_proteins,
                        cache = "test_data", seed_name = "angiogenesis", n = 1000)
 
 time2 <- Sys.time()
@@ -26,7 +27,7 @@ test3 <- compute_crosstalk(seed_proteins = seed_proteins, ppi = "stringdb",
 
 #see if the graph function works
 
-plot_ct(test3, g = g)
+plot_ct(test3, g = g, prop_keep = 0.2, label_prop = 0.2)
 
 
 #test whether we can actually run biogrid - we cannot

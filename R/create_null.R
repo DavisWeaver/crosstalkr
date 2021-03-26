@@ -45,19 +45,19 @@ bootstrap_null <- function(seed_proteins, g, n = 1000,
     null_dist <-
       foreach::foreach(i = 1:n, .errorhandling = 'pass', .packages = "Matrix") %dopar% {
         seeds_i <- unlist(seeds[[i]])
-        crosstalkr::sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]] #norm=FALSE because we already did it.
+        crosstalkr::sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]] #norm=FALSE because we already did it.
       }
     parallel::stopCluster(cl)
   } else {
     null_dist <- list()
     for(i in 1:n) {
       seeds_i <- unlist(seeds[[i]])
-      null_dist[[i]] <- sparseRWR(w = w, seed_proteins = seeds_i, norm = FALSE)[[1]]
+      null_dist[[i]] <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
     }
   }
 
   null_dist <- dplyr::bind_rows(null_dist)
-  null_dist <- dist_calc(null_dist, ncores = ncores,
+  null_dist <- dist_calc(null_dist,
                          seed_proteins = seed_proteins)
 
   out <- list(null_dist, seed_proteins)
@@ -135,12 +135,13 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
+#' @importFrom stats var
 #'
 #' @param df : numeric vector
 #' @inheritParams bootstrap_null
 #' @return a 3-column dataframe (gene, )
 
-dist_calc <- function(df, ncores, seed_proteins) {
+dist_calc <- function(df, seed_proteins) {
 
   #pivot longer to prep for summarise
   null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "gene_id", values_to = "p")
@@ -148,8 +149,9 @@ dist_calc <- function(df, ncores, seed_proteins) {
   null_dist <- null_dist %>%
     dplyr::group_by(.data$gene_id) %>%
     dplyr::summarise(mean_p = mean(.data$p),
-                     stdev_p = sd(.data$p),
+                     var_p = var(.data$p),
                      nobs = dplyr::n()) %>%
     dplyr::mutate(seed = ifelse(.data$gene_id %in% seed_proteins, "yes", "no"))
   return(null_dist)
+
 }
