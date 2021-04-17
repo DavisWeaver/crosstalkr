@@ -4,9 +4,11 @@ v3 = c(1,1,1,0)
 v4 = c(0,0,0,1)
 
 w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
-
+w = Matrix::Matrix(w, sparse = TRUE)
+rownames = c("A", "B", "C", "D")
+seed_proteins = c("A", "C")
 seed = 1
-p <- sparseRWR(seed, w)
+p <- sparseRWR(c(1,3), w)
 
 test_that("sparseRWR returns a list of 3 ouputs of the correct types and lengths", {
   expect_true(is.double(p[[1]]))

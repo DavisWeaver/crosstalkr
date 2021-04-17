@@ -1,11 +1,18 @@
+
+#lets benchmark cpp_RWR  compared to sparse_RWR
 g <- prep_stringdb(cache = "test_data", min_score = 600)
 load("./test_data/seed_proteins.Rda")
+w <- igraph::as_adjacency_matrix(g)
+rownames <- rownames(w)
+w <- norm_colsum(w)
 
+microbenchmark::microbenchmark(cpp_RWR(w =w, rownames = rownames, seed_proteins = seed_proteins),
+                               sparseRWR(seed_proteins = seed_proteins, w = w))
 g2 <- prep_stringdb(cache = NULL, min_score = 400)
 #Test with multiple cores
 time1 <- Sys.time()
 test1 <- bootstrap_null(g = g, ncores = 4, seed_proteins = seed_proteins,
-                       cache = "test_data", seed_name = "angiogenesis", n = 1000)
+                       cache = "test_data", n = 10000)
 
 time2 <- Sys.time()
 diff1 <- time2-time1
@@ -13,8 +20,8 @@ diff1 <- time2-time1
 
 #Test with one core.l
 time1 <- Sys.time()
-test2 <- bootstrap_null(g = g, ncores = 1, seed_proteins = seed_proteins,
-                        cache = "test_data", n = 1000)
+profvis::profvis(expr = bootstrap_null(g = g, ncores = 1, seed_proteins = seed_proteins,
+                                       cache = "test_data", n = 10000))
 
 time2 <- Sys.time()
 diff2 <- time2-time1

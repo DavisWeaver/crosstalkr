@@ -12,7 +12,11 @@
 #' @param tmax the maximum number of iterations for the RWR
 #'
 
-sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE) {
+sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
+                      norm = FALSE) {
+
+  #coerce to a sparse matrix
+  w <- Matrix::Matrix(w, sparse = TRUE)
 
   # divide the values in each column by the within-column sum
   if(norm == TRUE) {
@@ -31,7 +35,7 @@ sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, n
   for (t in 1:tmax) {
     # pi+1 = (1 − d)Wpi + dr
     pold <- p
-    p <- ((1-gamma) * as.vector(pold %*% w)) + gamma * p0
+    p <- ((1-gamma) * as.vector(Matrix::t(w) %*% pold)) + gamma * p0
 
     #check if the exit condition has been met.
     if (norm1(p-pold) < eps) {
@@ -46,6 +50,7 @@ sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, n
 #'
 #' @inheritParams sparseRWR
 #' @export
+
 norm_colsum <- function(w) {
   sums <- Matrix::colSums(w)
   zeros <- sums[sums==0]
