@@ -31,11 +31,12 @@ sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
   num_seeds <- length(seed_proteins)
   p0[seed_proteins] <- 1/num_seeds
   p <- p0
+  w = Matrix::t(w) #moving this out of the loop so we don't have to do it multiple times
 
   for (t in 1:tmax) {
     # pi+1 = (1 − d)Wpi + dr
     pold <- p
-    p <- ((1-gamma) * as.vector(Matrix::t(w) %*% pold)) + gamma * p0
+    p <- ((1-gamma) * as.vector(w %*% pold)) + gamma * p0
 
     #check if the exit condition has been met.
     if (norm1(p-pold) < eps) {

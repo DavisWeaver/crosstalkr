@@ -23,6 +23,7 @@ arma::mat init_p(arma::mat p, CharacterVector seed_proteins,
 //helper function to check if the diff between p and pold is < eps
 
 double check_p(arma::mat p, arma::mat pold) {
+
   arma::mat p_diff = p - pold;
 
   //prep to sum the absolute value of p_diff
@@ -38,9 +39,6 @@ double check_p(arma::mat p, arma::mat pold) {
 
 }
 
-arma::sp_mat norm_colsum(arma::sp_mat w) {
-
-}
 // main function to perform random walk with restarts on a sparse matrix
 // [[Rcpp::export]]
 
@@ -57,29 +55,24 @@ Rcpp::List cpp_RWR(arma::sp_mat w, CharacterVector rownames,
   //initialize p0
   arma::mat p0 = p;
 
-  double p_diff; //initialize p_diff so we don't have to do it every loop
-  int t_current; //same with a counter of the current t
   arma::mat pold; // initialize pold
   w = w.t(); // transpose w for calculations
+
+  int t; //initialize iterator
   //loop through tmax
-  for(int t = 0; t < tmax; ++t) {
+  for(t = 0; t < tmax; ++t) {
     pold = p; //reset pold to p of the previous iteration
 
     //do calculation for a given iteration
     p = ((1 - gamma) * (w * pold)) + gamma * p0;
 
-    //calculate
-    p_diff = check_p(p = p, pold = pold);
-
     //check if exit condition has been met.
-    if(p_diff < eps) {break;}
-
-    t_current = t;
+    if(check_p(p = p, pold = pold) < eps) {break;}
   }
 
   return Rcpp::List::create(Rcpp::Named("p") = p,
                             Rcpp::Named("seed_proteins") = seed_proteins,
-                            Rcpp::Named("n.iter") = t_current);
+                            Rcpp::Named("n.iter") = t);
 }
 
 

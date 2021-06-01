@@ -56,7 +56,7 @@ prep_stringdb <- function(cache = NULL,
 #'
 #' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
 #'
-#'
+#' @export
 
 prep_biogrid <- function(cache = NULL) {
 

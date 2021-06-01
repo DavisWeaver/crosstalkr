@@ -8,6 +8,7 @@ w <- norm_colsum(w)
 
 microbenchmark::microbenchmark(cpp_RWR(w =w, rownames = rownames, seed_proteins = seed_proteins),
                                sparseRWR(seed_proteins = seed_proteins, w = w))
+
 g2 <- prep_stringdb(cache = NULL, min_score = 400)
 #Test with multiple cores
 time1 <- Sys.time()

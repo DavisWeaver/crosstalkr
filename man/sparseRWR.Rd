@@ -4,7 +4,14 @@
 \alias{sparseRWR}
 \title{Perform random walk with repeats on a sparse matrix}
 \usage{
-sparseRWR(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE)
+sparseRWR(
+  seed_proteins,
+  w,
+  gamma = 0.6,
+  eps = 1e-10,
+  tmax = 1000,
+  norm = FALSE
+)
 }
 \arguments{
 \item{seed_proteins}{user defined seed proteins}
