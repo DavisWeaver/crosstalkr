@@ -25,7 +25,6 @@ Imports:
     doParallel,
     ggplot2,
     EnsDb.Hsapiens.v79,
-    ggraph,
     tidygraph,
     Rcpp
 Depends: RcppArmadillo
