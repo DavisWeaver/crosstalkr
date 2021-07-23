@@ -72,7 +72,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
   #compute the Z-score and p-value
   df <- dplyr::mutate(df,
-                      Z = (.data$affinity_score - .data$mean_p)/ .data$stdev_p,
+                      Z = (.data$affinity_score - .data$mean_p)/ sqrt(.data$var_p),
                       p_value = 2*pnorm(-abs(.data$Z)),
                       adj_p_value = p.adjust(.data$p_value, method = p_adjust))
   df <- dplyr::filter(df, .data$adj_p_value < 1-significance_level)

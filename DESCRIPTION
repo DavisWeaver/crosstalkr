@@ -25,9 +25,7 @@ Imports:
     doParallel,
     ggplot2,
     EnsDb.Hsapiens.v79,
-    tidygraph,
-    Rcpp
-Depends: RcppArmadillo
+    tidygraph
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -38,6 +36,3 @@ Suggests:
     rmarkdown
 Config/testthat/edition: 2
 VignetteBuilder: knitr
-LinkingTo: 
-    Rcpp, 
-    RcppArmadillo
