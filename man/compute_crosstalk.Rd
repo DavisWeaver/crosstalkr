@@ -20,7 +20,8 @@ compute_crosstalk(
   seed_name = NULL,
   ncores = 1,
   significance_level = 0.95,
-  p_adjust = "bonferroni"
+  p_adjust = "bonferroni",
+  agg_int = 100
 )
 }
 \arguments{
@@ -58,6 +59,8 @@ false, user must provide an igraph object in \code{g}}
 \item{p_adjust}{adjustment method to correct for multiple hypothesis testing:
 defaults to "bonferroni". see \code{\link{p.adjust.methods}} for other potential
 adjustment methods.}
+
+\item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}
 }
 \description{
 \code{compute_crosstalk} returns a dataframe of proteins that are significantly

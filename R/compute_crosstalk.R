@@ -35,7 +35,8 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                               norm = TRUE, set_seed,
                               cache = NULL, min_score = 400, seed_name = NULL,
                               ncores = 1, significance_level = 0.95,
-                              p_adjust = "bonferroni")  {
+                              p_adjust = "bonferroni",
+                              agg_int = 100)  {
 
   #check inputs
   if(use_ppi == TRUE){
@@ -65,7 +66,8 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
   null_dist <- bootstrap_null(seed_proteins = seed_proteins, g = g, n = n,
                               gamma = gamma, eps = eps, tmax = tmax,
                               norm = norm, set_seed = set_seed, cache = cache,
-                              seed_name = seed_name, ncores = ncores)
+                              seed_name = seed_name, ncores = ncores,
+                              agg_int = agg_int)
   null_df <- null_dist[[1]]
 
   df <- dplyr::left_join(null_df, p_df)

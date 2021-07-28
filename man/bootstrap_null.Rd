@@ -8,11 +8,12 @@ bootstrap_null(
   seed_proteins,
   g,
   n = 1000,
+  agg_int = 100,
   gamma = 0.6,
   eps = 1e-10,
   tmax = 1000,
   norm = TRUE,
-  set_seed,
+  set_seed = NULL,
   cache = NULL,
   seed_name = NULL,
   ncores = 1
@@ -24,6 +25,8 @@ bootstrap_null(
 \item{g}{igraph object}
 
 \item{n}{number of random walks with repeats to create null distribution}
+
+\item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}
 
 \item{gamma}{restart probability}
 

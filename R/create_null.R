@@ -12,16 +12,17 @@
 #' @param n number of random walks with repeats to create null distribution
 #' @param set_seed integer to set random number seed - for reproducibility
 #' @param ncores Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.
-#' @param seed_name Name to give the cached null distribution - must be a character string
+#' @param seed_name Name to give the cached ngull distribution - must be a character string
+#' @param agg_int number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.
 #'
 #' @inheritParams sparseRWR
 #' @inheritParams setup_init
 #'
 #' @export
 
-bootstrap_null <- function(seed_proteins, g, n = 1000,
+bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
                            gamma=0.6, eps = 1e-10, tmax = 1000,
-                           norm = TRUE, set_seed,
+                           norm = TRUE, set_seed = NULL,
                            cache = NULL, seed_name = NULL,
                            ncores = 1) {
 
@@ -38,27 +39,31 @@ bootstrap_null <- function(seed_proteins, g, n = 1000,
 
   #generate list of degree-similar seed protein vectors.
   seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
+  cl <- parallel::makeCluster(ncores)
+  doParallel::registerDoParallel(cl)
+  null_dist <-
+    foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
+                     .packages = "Matrix") %dopar%
+    {
+      agg_df <- list()
+      for(j in 1:agg_int) {
+        counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
+        seeds_i <- unlist(seeds[[counter]])
+        agg_df[[j]] <- crosstalkr::sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+        #norm=FALSE because we already did it.
 
-  if(ncores > 1) {
-    cl <- parallel::makeCluster(ncores)
-    doParallel::registerDoParallel(cl)
-    null_dist <-
-      foreach::foreach(i = 1:n, .errorhandling = 'pass', .packages = "Matrix") %dopar% {
-        seeds_i <- unlist(seeds[[i]])
-        crosstalkr::sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]] #norm=FALSE because we already did it.
+        if(j == agg_int) {
+          agg_df <- dplyr::bind_rows(agg_df)
+          agg_df <- crosstalkr::dist_calc(agg_df, seed_proteins = seed_proteins)
+          agg_df$run <- i
+        }
+
       }
-    parallel::stopCluster(cl)
-  } else {
-    null_dist <- list()
-    for(i in 1:n) {
-      seeds_i <- unlist(seeds[[i]])
-      null_dist[[i]] <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+      return(agg_df)
     }
-  }
+  parallel::stopCluster(cl)
 
-  null_dist <- dplyr::bind_rows(null_dist)
-  null_dist <- dist_calc(null_dist,
-                         seed_proteins = seed_proteins)
+  null_dist <- final_dist_calc(null_dist)
 
   out <- list(null_dist, seed_proteins)
 
@@ -140,6 +145,7 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' @param df : numeric vector
 #' @inheritParams bootstrap_null
 #' @return a 3-column dataframe (gene, )
+#' @export
 
 dist_calc <- function(df, seed_proteins) {
 
@@ -155,3 +161,25 @@ dist_calc <- function(df, seed_proteins) {
   return(null_dist)
 
 }
+
+#' Internal function that computes the mean/stdev for each gene from a wide-format data frame.
+#'
+#' This function is called by the high-level function "bootstrap_null".
+#'
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#' @importFrom stats var
+#'
+#' @param df : list of dataframes
+#' @inheritParams bootstrap_null
+#' @return a dataframe
+final_dist_calc <- function(df_list) {
+  df <- df_list %>% dplyr::bind_rows() %>%
+    dplyr::group_by(.data$gene_id) %>%
+    dplyr::summarise(mean_p = mean(.data$mean_p),
+                     var_p = mean(.data$var_p),
+                     nobs = sum(.data$nobs),
+                     seed = unique(seed))
+  return(df)
+}
+

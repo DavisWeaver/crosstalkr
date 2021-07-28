@@ -25,7 +25,8 @@ Imports:
     doParallel,
     ggplot2,
     EnsDb.Hsapiens.v79,
-    tidygraph
+    tidygraph,
+    ggraph
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
