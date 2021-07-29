@@ -50,7 +50,7 @@ false, user must provide an igraph object in \code{g}}
 
 \item{min_score}{minimum connectivity score for each edge in the network.}
 
-\item{seed_name}{Name to give the cached null distribution - must be a character string}
+\item{seed_name}{Name to give the cached ngull distribution - must be a character string}
 
 \item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
 

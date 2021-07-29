@@ -7,7 +7,7 @@
 final_dist_calc(df_list)
 }
 \arguments{
-\item{df}{: list of dataframes}
+\item{df_list}{: list of dataframes from foreach loop in bootstrap_null}
 }
 \value{
 a dataframe

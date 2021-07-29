@@ -8,7 +8,7 @@ w = Matrix::Matrix(w, sparse = TRUE)
 rownames = c("A", "B", "C", "D")
 seed_proteins = c("A", "C")
 seed = 1
-p <- sparseRWR(c(1,3), w)
+p <- sparseRWR(seed, w, norm = TRUE)
 
 test_that("sparseRWR returns a list of 3 ouputs of the correct types and lengths", {
   expect_true(is.double(p[[1]]))
@@ -24,12 +24,12 @@ test_that("sparseRWR completes in < 1000 iterations", {
 })
 
 test_that("sparseRWR output equals expected", {
-  expect_equal(sparseRWR(1,w)[[1]], c(0.709, 0, 0.109, 0), tolerance = 0.001)
-  expect_equal(sparseRWR(2,w)[[1]], c(0.1090909, 0.6, 0.1090909, 0), tolerance = 0.001)
-  expect_equal(sparseRWR(3,w)[[1]], c(0.1090909, 0, 0.7090909, 0), tolerance = 0.001)
-  expect_equal(sparseRWR(4,w)[[1]], c(0.07272, 0.4, 0.07272, 1), tolerance = 0.001)
-  expect_equal(sparseRWR(c(1,2), w)[[1]],  c(0.40909, 0.3, 0.10909, 0), tolerance = 0.001)
-  expect_lte(sum(sparseRWR(c(1,3), w)[[1]]), 1)
+  expect_equal(sparseRWR(1,w, norm = TRUE)[[1]], c(0.709, 0, 0.109, 0), tolerance = 0.001)
+  expect_equal(sparseRWR(2,w, norm = TRUE)[[1]], c(0.1090909, 0.6, 0.1090909, 0), tolerance = 0.001)
+  expect_equal(sparseRWR(3,w, norm = TRUE)[[1]], c(0.1090909, 0, 0.7090909, 0), tolerance = 0.001)
+  expect_equal(sparseRWR(4,w, norm = TRUE)[[1]], c(0.07272, 0.4, 0.07272, 1), tolerance = 0.001)
+  expect_equal(sparseRWR(c(1,2), w, norm = TRUE)[[1]],  c(0.40909, 0.3, 0.10909, 0), tolerance = 0.001)
+  expect_lte(sum(sparseRWR(c(1,3), w, norm = TRUE)[[1]]), 1)
 })
 
 

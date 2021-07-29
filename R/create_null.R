@@ -170,7 +170,7 @@ dist_calc <- function(df, seed_proteins) {
 #' @importFrom rlang .data
 #' @importFrom stats var
 #'
-#' @param df : list of dataframes
+#' @param df_list : list of dataframes from foreach loop in bootstrap_null
 #' @inheritParams bootstrap_null
 #' @return a dataframe
 final_dist_calc <- function(df_list) {

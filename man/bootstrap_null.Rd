@@ -40,7 +40,7 @@ bootstrap_null(
 
 \item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
 
-\item{seed_name}{Name to give the cached null distribution - must be a character string}
+\item{seed_name}{Name to give the cached ngull distribution - must be a character string}
 
 \item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
 }
