@@ -6,3 +6,4 @@
 ^vignettes/articles$
 ^LICENSE\.md$
 ^test_data$
+^\.github$

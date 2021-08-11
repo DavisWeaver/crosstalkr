@@ -1,6 +1,10 @@
 # crosstalkr
 R package for the identification of functionally important subnetworks 
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/DavisWeaver/crosstalkr/workflows/R-CMD-check/badge.svg)](https://github.com/DavisWeaver/crosstalkr/actions)
+<!-- badges: end -->
+
 Crosstalkr is an extension of the crosstalker webapp developed by Neoproteomics and Case Western Reserve University School of Medicine. 
 It is a free, open-source R package designed to provide the same functionality as the crosstalker webapp in a modular fashion that can be incorporated into existing bioinformatic pipelines. 
 
@@ -16,3 +20,5 @@ More detailed methodology can be found here: "Nibbe et al., An Integrative -omic
 # Contact
 
 Please feel free to submit issues here. You can also contact me at davis.weaver@case.edu if you have any questions. 
+
+
