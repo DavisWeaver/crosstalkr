@@ -62,6 +62,10 @@ adjustment methods.}
 
 \item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}
 }
+\value{
+data frame containing affinity score, p-value, for all "crosstalkers"
+related to a given set of seeds
+}
 \description{
 \code{compute_crosstalk} returns a dataframe of proteins that are significantly
 associated with user-defined seed proteins. These identified "crosstalkers"
@@ -70,4 +74,15 @@ relevant subnetworks. Affinity scores for every protein in the network are
 calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
 determined by comparing these affinity scores to a bootstrapped null distribution
 (see \code{bootstrap_null}).
+}
+\examples{
+\dontrun{
+#1) easy to use for querying biological networks
+compute_crosstalk(c("EGFR", "KRAS"))
+}
+#2) Also works for any other kind of graph- just specify g (must be igraph formatted as of now)
+g <- igraph::sample_gnp(n = 1000, p = 10/1000)
+compute_crosstalk(c(1,3,5,8,10), g = g, use_ppi = FALSE, n = 100)
+
+
 }

@@ -15,6 +15,10 @@ match_seeds(g, seed_proteins, n, set_seed = NULL)
 
 \item{set_seed}{integer to set random number seed - for reproducibility}
 }
+\value{
+list of character vectors: randomly generated seed proteins with a similar
+degree distribution to parent seed proteins
+}
 \description{
 This function will generate n character vectors of seeds to be passed to sparseRWR
 as part of the construction of a boostrapped null distribution for significance testing.

@@ -27,6 +27,19 @@
 #' @importFrom utils download.file read.delim unzip
 #' @importFrom rlang .data
 #'
+#' @return data frame containing affinity score, p-value, for all "crosstalkers"
+#'         related to a given set of seeds
+#'
+#' @examples
+#' \dontrun{
+#' #1) easy to use for querying biological networks
+#' compute_crosstalk(c("EGFR", "KRAS"))
+#' }
+#' #2) Also works for any other kind of graph- just specify g (must be igraph formatted as of now)
+#' g <- igraph::sample_gnp(n = 1000, p = 10/1000)
+#' compute_crosstalk(c(1,3,5,8,10), g = g, use_ppi = FALSE, n = 100)
+#'
+#'
 #' @export
 
 compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
@@ -59,7 +72,10 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
   p_seed <- sparseRWR(seed_proteins = seed_proteins, w = w, gamma = gamma,
                       eps = eps, tmax = tmax, norm = norm)
   p_vec <- p_seed[[1]]
-  p_df <- tibble::as_tibble(p_vec, rownames = "gene_id")
+  p_df <- tibble::as_tibble(p_vec, rownames = "node")
+  if(all(stringr::str_detect(p_df$node, "\\d"))) { #if the node names are numeric lets make it so
+    p_df$node <- as.numeric(p_df$node)
+  }
   colnames(p_df)[colnames(p_df) == "value"] <- "affinity_score"
 
   #compute null distribution

@@ -44,9 +44,18 @@ bootstrap_null(
 
 \item{ncores}{Number of cores to use - defaults to 1. Significant speedup can be achieved by using multiple cores for computation.}
 }
+\value{
+data frame containing mean/ standard deviation for null distribution
+}
 \description{
 This function will generate a bootstrapped null distribution to identify
 signficant vertices in a PPI given a set of user-defined seed proteins.
 Bootstrapping is done by performing random walk with repeats repeatedly over "random"
 sets of seed proteins. Degree distribution of user-provided seeds is used to inform sampling.
+}
+\examples{
+\dontrun{
+g <- prep_biogrid()
+bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 4)
+}
 }

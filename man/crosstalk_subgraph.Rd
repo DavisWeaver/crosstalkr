@@ -19,3 +19,10 @@ a tidygraph structure containing information about the crosstalkr subgraph
 \description{
 Useful if the user wants to carry out further analysis or design custom visualizations.
 }
+\examples{
+\dontrun{
+ct_df <- compute_crosstalk(c("EGFR", "KRAS"))
+g <- prep_biogrid()
+crosstalk_subgraph(ct_df, g = g, seed_proteins = c("EGFR", "KRAS"))
+}
+}

@@ -2,9 +2,9 @@
 % Please edit documentation in R/utils.R
 \name{as_gene_symbol}
 \alias{as_gene_symbol}
-\title{Convert from ensembl.gene to gene.symbol}
+\title{Convert from most other representations of gene name to gene.symbol}
 \usage{
-as_gene_symbol(x, edb = "default")
+as_gene_symbol(x, edb = NULL)
 }
 \arguments{
 \item{x}{vector of ensemble.gene ids, ensemble.peptide ids, ensemble.transcript
@@ -16,5 +16,17 @@ ids or entrez gene ids}
 vector of gene symbols
 }
 \description{
-Convert from ensembl.gene to gene.symbol
+Convert from most other representations of gene name to gene.symbol
+}
+\examples{
+\dontrun{
+#1) from numeric formatted entrez id
+as_gene_symbol(1956)
+#2) from character formatted entrez id
+as_gene_symbol("1956")
+#3) from ensemble gene id
+as_gene_symbol("ENSG00000146648")
+#4) From a vector of entrez ids
+as_gene_symbol(c("123", "1956", "2012"))
+}
 }

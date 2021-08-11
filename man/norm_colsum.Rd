@@ -9,6 +9,19 @@ norm_colsum(w)
 \arguments{
 \item{w}{The adjacency matrix of a given graph in sparse format - dgCMatrix}
 }
+\value{
+input matrix, normalized by column sums
+}
 \description{
 Function to normalize adjacency matrix by dividing each value by the colsum.
+}
+\examples{
+# 1) Normalize by column sum on a simple matrix
+v1 = (c(1,1,1,0))
+v2 = c(0,0,0,1)
+v3 = c(1,1,1,0)
+v4 = c(0,0,0,1)
+w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
+norm_colsum(w)
+
 }

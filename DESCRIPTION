@@ -1,16 +1,22 @@
 Package: crosstalkr
-Title: A package for the identification of functionally relevant subnetworks from high-dimensional omics data
-Version: 0.1.0
+Title: Identification of Functionally Relevant Sub-Graphs 
+Version: 0.7.0
 Authors@R: 
     person(given = "Davis",
            family = "Weaver",
            role = c("aut", "cre"),
-           email = "davis.weaver@case.edu")
-Description: crosstalkr provides a key user function, \code{compute_crosstalk} 
-    as well as several additional functions that assist in setup and visualization. 
+           email = "davis.weaver@case.edu", 
+           comment = c(orcid = "0000-0003-3086-497X"))
+Description: Provides a general framework for the identification of nodes that 
+             are functionally related to a set of seeds in graph structured data. 
+             In addition to being optimized for use with generic graphs, 
+             We also provides support to analyze protein-protein 
+             interactions networks from online repositories. Our methods are similar to 
+             those described in Nibbe et.al (2010). <doi:10.1371/journal.pcbi.1000639>.
 License: GPL (>= 3)
 Imports: 
     rlang,
+    stats,
     magrittr,
     withr,
     readr,
@@ -28,7 +34,6 @@ Imports:
     tidygraph,
     ggraph
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 

@@ -15,6 +15,15 @@ utils::globalVariables(c("from", ".", "i", "seed"))
 #'
 #' @importFrom rlang .data
 #'
+#' @return NULL, draws the identified subgraph to device\
+#'
+#' @examples
+#' \dontrun{
+#' ct_df <- compute_crosstalk(c("EGFR", "KRAS"))
+#' g <- prep_biogrid()
+#' plot_ct(ct_df, g = g)
+#' }
+#'
 #' @export
 
 plot_ct <- function(crosstalk_df, g, label_prop = 0.1,
@@ -58,6 +67,8 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1,
 #' @inheritParams plot_ct
 #' @inheritParams compute_crosstalk
 #'
+#' @return message if not correct object type, null otherwise
+#'
 
 check_crosstalk <- function(crosstalk_df) {
   #make sure it is a dataframe
@@ -66,7 +77,7 @@ check_crosstalk <- function(crosstalk_df) {
   }
 
   #make sure columns match up
-  target_cols = c("gene_id", "mean_p", "var_p", "nobs", "seed",
+  target_cols = c("node", "mean_p", "var_p", "nobs", "seed",
                   "affinity_score", "Z", "p_value", "adj_p_value")
 
   if(!all(target_cols %in% colnames(crosstalk_df))) {
@@ -86,6 +97,12 @@ check_crosstalk <- function(crosstalk_df) {
 #'
 #' @return a tidygraph structure containing information about the crosstalkr subgraph
 #'
+#' @examples
+#' \dontrun{
+#' ct_df <- compute_crosstalk(c("EGFR", "KRAS"))
+#' g <- prep_biogrid()
+#' crosstalk_subgraph(ct_df, g = g, seed_proteins = c("EGFR", "KRAS"))
+#' }
 #' @export
 
 crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {

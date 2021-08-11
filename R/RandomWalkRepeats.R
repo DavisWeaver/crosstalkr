@@ -11,6 +11,31 @@
 #' @param norm if True, w is normalized by dividing each value by the column sum.
 #' @param tmax the maximum number of iterations for the RWR
 #'
+#' @examples
+#'# 1) Run Random walk with restarts on a simple matrix
+#'v1 = (c(1,1,1,0))
+#'v2 = c(0,0,0,1)
+#'v3 = c(1,1,1,0)
+#'v4 = c(0,0,0,1)
+#'w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
+#'sparseRWR(seed_proteins = c(1,3), w = w, norm = TRUE)
+#'
+#'# 2) Works just as well on a sparse matrix
+#'v1 = (c(1,1,1,0))
+#'v2 = c(0,0,0,1)
+#'v3 = c(1,1,1,0)
+#'v4 = c(0,0,0,1)
+#'w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
+#'w = Matrix::Matrix(w, sparse = TRUE)
+#'sparseRWR(seed_proteins = c(1,4), w = w, norm = TRUE)
+#'\dontrun{
+#'#3) Sample workflow for use with human protein-protein interaction network
+#'g <- prep_biogrid()
+#'w <- igraph::as_adjacency_matrix(g)
+#'sparseRWR(seed_proteins = c("EGFR", "KRAS"), w = w)
+#'}
+#' @return numeric vector, affinity scores for all nodes in graph relative to provided seeds
+#'
 
 sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
                       norm = FALSE) {
@@ -50,6 +75,17 @@ sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
 #' Function to normalize adjacency matrix by dividing each value by the colsum.
 #'
 #' @inheritParams sparseRWR
+#'
+#' @return input matrix, normalized by column sums
+#' @examples
+#'# 1) Normalize by column sum on a simple matrix
+#'v1 = (c(1,1,1,0))
+#'v2 = c(0,0,0,1)
+#'v3 = c(1,1,1,0)
+#'v4 = c(0,0,0,1)
+#'w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
+#'norm_colsum(w)
+#'
 #' @export
 
 norm_colsum <- function(w) {

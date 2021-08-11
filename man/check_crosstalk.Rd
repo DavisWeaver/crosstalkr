@@ -9,6 +9,9 @@ check_crosstalk(crosstalk_df)
 \arguments{
 \item{crosstalk_df}{a dataframe containing the results of \code{compute_crosstalk}}
 }
+\value{
+message if not correct object type, null otherwise
+}
 \description{
 This function is a helper function for \code{plot_ct} that verifies the input is a valid output of compute_crosstalk
 }

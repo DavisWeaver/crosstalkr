@@ -16,8 +16,19 @@ plot_ct(crosstalk_df, g, label_prop = 0.1, prop_keep = 0.4)
 \item{prop_keep}{How many proteins do we want to keep in the visualization (as a proportion of total) -
 subsets on top x proteins ranked by affinity score}
 }
+\value{
+NULL, draws the identified subgraph to device\
+}
 \description{
 Convenience function for plotting crosstalkers - if you want to make more
 customized/dynamic figures, there are lots of packages that can facilitate that,
 including: \code{visnetwork}, \code{ggraph}, and even the base R plotting library
+}
+\examples{
+\dontrun{
+ct_df <- compute_crosstalk(c("EGFR", "KRAS"))
+g <- prep_biogrid()
+plot_ct(ct_df, g = g)
+}
+
 }

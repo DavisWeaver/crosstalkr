@@ -1,17 +1,28 @@
-#' Convert from ensembl.gene to gene.symbol
+#' Convert from most other representations of gene name to gene.symbol
 #'
 #' @param x vector of ensemble.gene ids, ensemble.peptide ids, ensemble.transcript
 #'      ids or entrez gene ids
 #' @param edb ensemble database object
 #'
 #' @return vector of gene symbols
+#'
+#' @examples
+#'\dontrun{
+#' #1) from numeric formatted entrez id
+#' as_gene_symbol(1956)
+#' #2) from character formatted entrez id
+#' as_gene_symbol("1956")
+#' #3) from ensemble gene id
+#' as_gene_symbol("ENSG00000146648")
+#' #4) From a vector of entrez ids
+#' as_gene_symbol(c("123", "1956", "2012"))
+#'}
 #' @export
 
-as_gene_symbol <- function(x, edb = "default") {
+as_gene_symbol <- function(x, edb = NULL) {
 
-  #this is gross but when EDB is not default it returns an error rather than the logical "false"
-  #of course this won't work if the logical doesn't break and instead returns "false" so... oh well.
-  if(!inherits(try(edb == "default", silent = TRUE), "try-error")) {
+#users can pass an edb object. If they don't - it uses the one below
+  if(is.null(edb)) {
     edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
   }
   #in case the input is a list - this will coerce to a vector
@@ -103,6 +114,7 @@ ensembl_type <- function(x) {
 #' @param x vector or single gene symbol
 #'
 #' @return logical
+
 is_entrez <- function(x) {
 
   if(is.character(x)){
@@ -114,6 +126,7 @@ is_entrez <- function(x) {
     return(FALSE)
   }
 }
+
 
 
 

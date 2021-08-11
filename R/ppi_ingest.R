@@ -69,10 +69,10 @@ prep_biogrid <- function(cache = NULL) {
                   destfile = paste0(tmp, "/biogrid.zip"))
 
     #Unzip only the homosapiens portion of the biogrid zip file and delete big zip file
-    unzip(paste0(tmp, './biogrid.zip'),
+    unzip(paste0(tmp, '/biogrid.zip'),
           files = c("BIOGRID-ORGANISM-Homo_sapiens-3.5.171.tab2.txt"),
           exdir = paste0(tmp, "/unzip"))
-    file.remove(paste0(tmp, "./biogrid.zip"))
+    file.remove(paste0(tmp, "/biogrid.zip"))
 
     #Read in biogrid file from temp directory.
     biogrid <-

@@ -18,7 +18,15 @@
 #' @inheritParams sparseRWR
 #' @inheritParams setup_init
 #'
+#' @importFrom magrittr %>%
+#' @return data frame containing mean/ standard deviation for null distribution
+#' @examples
+#' \dontrun{
+#' g <- prep_biogrid()
+#' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 4)
+#' }
 #' @export
+#'
 
 bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
                            gamma=0.6, eps = 1e-10, tmax = 1000,
@@ -26,6 +34,10 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
                            cache = NULL, seed_name = NULL,
                            ncores = 1) {
 
+  #agg_int must be <= n
+  if(agg_int > n) {
+    agg_int <- n
+  }
   #If file was cached from a previous run - use that- else go through the whole calculation
   if(!is.null(cache)) {
     if(file.exists(paste0(cache, "/", seed_name, "null_dist.Rda"))) {
@@ -49,9 +61,12 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
       for(j in 1:agg_int) {
         counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
         seeds_i <- unlist(seeds[[counter]])
-        agg_df[[j]] <- crosstalkr::sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+        p_i <- crosstalkr::sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+        if(is.null(names(p_i))) {
+          names(p_i) <- as.character(1:length(p_i))
+        }
         #norm=FALSE because we already did it.
-
+        agg_df[[j]] <- p_i
         if(j == agg_int) {
           agg_df <- dplyr::bind_rows(agg_df)
           agg_df <- crosstalkr::dist_calc(agg_df, seed_proteins = seed_proteins)
@@ -63,8 +78,11 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
     }
   parallel::stopCluster(cl)
 
-  null_dist <- final_dist_calc(null_dist)
-
+  if(length(null_dist) == 1) {
+    null_dist <- null_dist[[1]]
+  } else {
+    null_dist <- final_dist_calc(null_dist)
+  }
   out <- list(null_dist, seed_proteins)
 
   if(is.character(cache) & is.character(seed_name)) {
@@ -84,6 +102,8 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
 #'
 #' @inheritParams bootstrap_null
 #'
+#' @return list of character vectors: randomly generated seed proteins with a similar
+#'         degree distribution to parent seed proteins
 
 match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 
@@ -115,19 +135,53 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
   breaks <- base::as.numeric(stringr::str_extract(bins, "(?<=\\().*(?=\\,)|(?<=\\[).*(?=\\,)"))
   degree_all <- igraph::degree(g)
 
-  degree_all <- tibble::tibble(gene = names(degree_all),
-                               degree = degree_all,
-                               degree_bins = cut(degree_all, breaks = breaks))
+  #need some kind of dependency where if its not a certain number of nodes then you just randomly select seeds
+  if(length(breaks > 1)) {
+
+    degree_df <- tibble::tibble(
+      degree = degree_all,
+      degree_bins =  cut(degree_all, breaks = breaks))
+
+  } else {
+    if(num_seeds == 1) {
+      degree_df <- tibble::tibble(
+        degree = degree_all,
+        degree_bins =  cut(degree_all, breaks = 2))
+    } else {
+      #if there is only one break - you end up with cut selecting equidistant breaks w/ the value you give for break determing the number.
+      degree_df <- tibble::tibble(
+        degree = degree_all,
+        degree_bins =  cut(degree_all, breaks = num_seeds))
+    }
+
+  }
+
+  if(is.null(names(igraph::degree(g)))) {
+    degree_df$node <- 1:nrow(degree_df)
+
+  } else {
+    degree_df$node <- names(igraph::degree(g))
+  }
 
 
   #group by breaks
-  degree_grouped <- dplyr::group_by(degree_all, degree_bins)
+  degree_grouped <- dplyr::group_by(degree_df, degree_bins)
 
   sample_seeds <- list()
 
   for(i in 1:n) {
-    samp <- dplyr::slice_sample(degree_grouped, n = 1) #n = 1 because the number of groups will always be equal to the number of seeds
-    sample_seeds[[i]] <- samp$gene
+    if(igraph::vcount(g) < 50) {
+      sample_seeds[[i]] <- sample(degree_grouped$node, size = num_seeds)
+      #so we want to make sure that similar degree distribution is chosen even if the number of seeds is small (lots of errors can occur in that situation)
+    } else if (num_seeds == 1 | length(levels(degree_df$degree_bins)) != num_seeds) {
+      sample_vec <- degree_df %>%
+        dplyr::filter(.data$degree %in% degree_all[seed_proteins]) %>%
+        dplyr::select(.data$node) %>% unlist()
+      sample_seeds[[i]] <- sample(sample_vec, size = num_seeds)
+    } else {
+      samp <- dplyr::slice_sample(degree_grouped, n = 1) #n = 1 because the number of groups will always be equal to the number of seeds
+      sample_seeds[[i]] <- samp$node
+    }
   }
 
   return(sample_seeds)
@@ -137,6 +191,8 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' Internal function that computes the mean/stdev for each gene from a wide-format data frame.
 #'
 #' This function is called by the high-level function "bootstrap_null".
+#' Not expected to be used by end-users - we only export it so that environments
+#' inside foreach loops can find it.
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
@@ -144,20 +200,25 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #'
 #' @param df : numeric vector
 #' @inheritParams bootstrap_null
-#' @return a 3-column dataframe (gene, )
+#' @return a data frame containing summary statistics for the computed null distribution
+#'
 #' @export
 
 dist_calc <- function(df, seed_proteins) {
 
   #pivot longer to prep for summarise
-  null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "gene_id", values_to = "p")
+  null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "node", values_to = "p")
+
+  if(all(stringr::str_detect(null_dist$node, "\\d"))) {
+    null_dist$node <- as.numeric(null_dist$node)
+  }
 
   null_dist <- null_dist %>%
-    dplyr::group_by(.data$gene_id) %>%
+    dplyr::group_by(.data$node) %>%
     dplyr::summarise(mean_p = mean(.data$p),
                      var_p = var(.data$p),
                      nobs = dplyr::n()) %>%
-    dplyr::mutate(seed = ifelse(.data$gene_id %in% seed_proteins, "yes", "no"))
+    dplyr::mutate(seed = ifelse(.data$node %in% seed_proteins, "yes", "no"))
   return(null_dist)
 
 }
@@ -171,11 +232,11 @@ dist_calc <- function(df, seed_proteins) {
 #' @importFrom stats var
 #'
 #' @param df_list : list of dataframes from foreach loop in bootstrap_null
-#' @inheritParams bootstrap_null
 #' @return a dataframe
+
 final_dist_calc <- function(df_list) {
   df <- df_list %>% dplyr::bind_rows() %>%
-    dplyr::group_by(.data$gene_id) %>%
+    dplyr::group_by(.data$node) %>%
     dplyr::summarise(mean_p = mean(.data$mean_p),
                      var_p = mean(.data$var_p),
                      nobs = sum(.data$nobs),
