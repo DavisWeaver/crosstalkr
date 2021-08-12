@@ -40,6 +40,12 @@
 sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
                       norm = TRUE) {
 
+  #limit to only seed proteins that are actually in g
+  if(is.null(rownames(w))) {
+    seed_proteins <-seed_proteins[seed_proteins %in% 1:nrow(w)]
+  } else {
+    seed_proteins <- seed_proteins[seed_proteins %in% rownames(w)]
+  }
   #coerce to a sparse matrix
   w <- Matrix::Matrix(w, sparse = TRUE)
 
