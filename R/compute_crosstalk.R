@@ -32,8 +32,8 @@
 #'
 #' @examples
 #' \donttest{
-#' #1) easy to use for querying biological networks
-#' compute_crosstalk(c("EGFR", "KRAS"))
+#' #1) easy to use for querying biological networks - n = 10000 is more appropriate for actual analyses
+#' compute_crosstalk(c("EGFR", "KRAS"), n =10)
 #' }
 #' #2) Also works for any other kind of graph- just specify g (must be igraph formatted as of now)
 #' g <- igraph::sample_gnp(n = 1000, p = 10/1000)

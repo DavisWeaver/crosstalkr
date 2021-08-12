@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/DavisWeaver/crosstalkr/workflows/R-CMD-check/badge.svg)](https://github.com/DavisWeaver/crosstalkr/actions)
+[![Codecov test coverage](https://codecov.io/gh/DavisWeaver/crosstalkr/branch/main/graph/badge.svg)](https://codecov.io/gh/DavisWeaver/crosstalkr?branch=main)
 <!-- badges: end -->
 
 R package for the identification of functionally important subnetworks 

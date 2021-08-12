@@ -56,6 +56,6 @@ sets of seed proteins. Degree distribution of user-provided seeds is used to inf
 \examples{
 \donttest{
 g <- prep_biogrid()
-bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1)
+bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1, n = 10)
 }
 }

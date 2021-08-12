@@ -5,7 +5,7 @@
 #' Bootstrapping is done by performing random walk with repeats repeatedly over "random"
 #' sets of seed proteins. Degree distribution of user-provided seeds is used to inform sampling.
 #'
-#' @importFrom foreach %dopar%
+#' @importFrom foreach %dopar% %do%
 #'
 #'
 #' @param g igraph object
@@ -23,7 +23,7 @@
 #' @examples
 #' \donttest{
 #' g <- prep_biogrid()
-#' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1)
+#' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1, n = 10)
 #' }
 #' @export
 #'
@@ -51,34 +51,65 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
 
   #generate list of degree-similar seed protein vectors.
   seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
-  cl <- parallel::makeCluster(ncores)
-  doParallel::registerDoParallel(cl)
-  null_dist <-
-    foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
-                     .packages = c("Matrix", "magrittr"),
-                     .export = c("sparseRWR", "dist_calc",
-                                 "norm_colsum")) %dopar%
-    {
-      agg_df <- list()
-      for(j in 1:agg_int) {
-        counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
-        seeds_i <- unlist(seeds[[counter]])
-        p_i <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
-        if(is.null(names(p_i))) {
-          names(p_i) <- as.character(1:length(p_i))
-        }
-        #norm=FALSE because we already did it.
-        agg_df[[j]] <- p_i
-        if(j == agg_int) {
-          agg_df <- dplyr::bind_rows(agg_df)
-          agg_df <- dist_calc(agg_df, seed_proteins = seed_proteins)
-          agg_df$run <- i
-        }
 
+
+  if(ncores == 1) {
+    null_dist <-
+      foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
+                       .packages = c("Matrix"),
+                       .export = c("sparseRWR", "dist_calc",
+                                   "norm_colsum")) %do%
+      {
+        agg_df <- list()
+        for(j in 1:agg_int) {
+          counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
+          seeds_i <- unlist(seeds[[counter]])
+          p_i <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+          if(is.null(names(p_i))) {
+            names(p_i) <- as.character(1:length(p_i))
+          }
+          #norm=FALSE because we already did it.
+          agg_df[[j]] <- p_i
+          if(j == agg_int) {
+            agg_df <- dplyr::bind_rows(agg_df)
+            agg_df <- dist_calc(agg_df, seed_proteins = seed_proteins)
+            agg_df$run <- i
+          }
+
+        }
+        return(agg_df)
       }
-      return(agg_df)
-    }
-  parallel::stopCluster(cl)
+  } else {
+    cl <- parallel::makeCluster(ncores)
+    doParallel::registerDoParallel(cl)
+    null_dist <-
+      foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
+                       .packages = c("Matrix", "magrittr"),
+                       .export = c("sparseRWR", "dist_calc",
+                                   "norm_colsum")) %dopar%
+      {
+        agg_df <- list()
+        for(j in 1:agg_int) {
+          counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
+          seeds_i <- unlist(seeds[[counter]])
+          p_i <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+          if(is.null(names(p_i))) {
+            names(p_i) <- as.character(1:length(p_i))
+          }
+          #norm=FALSE because we already did it.
+          agg_df[[j]] <- p_i
+          if(j == agg_int) {
+            agg_df <- dplyr::bind_rows(agg_df)
+            agg_df <- dist_calc(agg_df, seed_proteins = seed_proteins)
+            agg_df$run <- i
+          }
+
+        }
+        return(agg_df)
+      }
+    parallel::stopCluster(cl)
+  }
+
 
   if(length(null_dist) == 1) {
     null_dist <- null_dist[[1]]

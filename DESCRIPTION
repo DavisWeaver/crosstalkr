@@ -38,9 +38,10 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     tidygraph,
-    ggraph, 
+    ggraph,
     testthat (>= 2.0.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 Config/testthat/edition: 2
 VignetteBuilder: knitr

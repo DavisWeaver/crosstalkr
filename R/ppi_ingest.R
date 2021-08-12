@@ -19,8 +19,12 @@ prep_stringdb <- function(cache = NULL,
   }
   if(!file.exists(paste0(cache, "/stringdb.Rda"))) {
     message("Downloading stringdb Homo Sapiens v11.0")
-    df <- readr::read_delim("https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz",
-                            delim = " ")
+    df <-try(readr::read_delim("https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz",
+                            delim = " "))
+
+    if(inherits(df, "try-error")) {
+      stop("unable to download stringdb, please try again later")
+    }
 
     message("converting ensemble_ids to gene_ids")
     #Lets convert the ensemble_ids to gene_ids.
@@ -76,10 +80,13 @@ prep_biogrid <- function(cache = NULL) {
 
     #Read in biogrid file from temp directory.
     biogrid <-
-      read.delim(
+      try(read.delim(
         paste0(tmp, "/unzip/BIOGRID-ORGANISM-Homo_sapiens-3.5.171.tab2.txt"),
         header = TRUE
-      )
+      ))
+    if(inherits(biogrid, "try-error")) {
+      stop("error downloading the biogrid protein-protein interaction database. Please try again later. ")
+    }
     biogrid <-
       biogrid[, 8:9] # isolate Official Symbol Interactor A & B columns
 
