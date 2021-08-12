@@ -55,7 +55,7 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
   doParallel::registerDoParallel(cl)
   null_dist <-
     foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
-                     .packages = "Matrix") %dopar%
+                     .packages = c("Matrix", "crosstalkr")) %dopar%
     {
       agg_df <- list()
       for(j in 1:agg_int) {

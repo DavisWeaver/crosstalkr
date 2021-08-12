@@ -15,6 +15,7 @@ Description: Provides a general framework for the identification of nodes that
              those described in Nibbe et.al (2010). <doi:10.1371/journal.pcbi.1000639>.
 License: GPL (>= 3)
 Imports: 
+    curl (>= 4.2), 
     rlang,
     stats,
     magrittr,
@@ -30,13 +31,13 @@ Imports:
     foreach,
     doParallel,
     ggplot2,
-    EnsDb.Hsapiens.v79,
-    tidygraph,
-    ggraph
+    EnsDb.Hsapiens.v79
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
+    tidygraph,
+    ggraph, 
     testthat (>= 2.0.0),
     knitr,
     rmarkdown
