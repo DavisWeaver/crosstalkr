@@ -55,8 +55,9 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
   doParallel::registerDoParallel(cl)
   null_dist <-
     foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
-                     .packages = c("Matrix"),
-                     .export = c("sparseRWR", "dist_calc")) %dopar%
+                     .packages = c("Matrix", "magrittr"),
+                     .export = c("sparseRWR", "dist_calc",
+                                 "norm_colsum")) %dopar%
     {
       agg_df <- list()
       for(j in 1:agg_int) {
@@ -202,7 +203,7 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' @param df : numeric vector
 #' @inheritParams bootstrap_null
 #' @return a data frame containing summary statistics for the computed null distribution
-#'
+#' @export
 
 dist_calc <- function(df, seed_proteins) {
 

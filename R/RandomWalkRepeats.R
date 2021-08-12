@@ -70,7 +70,7 @@ sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
     p <- ((1-gamma) * as.vector(w %*% pold)) + gamma * p0
 
     #check if the exit condition has been met.
-    if (norm1(p-pold) < eps) {
+    if (sum(abs(p-pold)) < eps) {
       break
     }
   }
@@ -107,18 +107,6 @@ norm_colsum <- function(w) {
   w <- Matrix::t(Matrix::t(w)/ sums) #tried splitting this into 2 lines so it didn't crash my shit.
 
   return(w)
-}
-
-
-#' Function that computes the norm 1 of a numeric vector
-#'
-#' This function is reproduced from the source code of the RANKS package (not exported).
-#'
-#' @param x : numeric vector
-#' @return a single real value (the norm1 of the input vector)
-#'
-norm1 <- function(x) {
-  return(sum(abs(x)));
 }
 
 
