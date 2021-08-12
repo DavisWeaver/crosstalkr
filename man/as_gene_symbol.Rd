@@ -19,7 +19,7 @@ vector of gene symbols
 Convert from most other representations of gene name to gene.symbol
 }
 \examples{
-\dontrun{
+\donttest{
 #1) from numeric formatted entrez id
 as_gene_symbol(1956)
 #2) from character formatted entrez id

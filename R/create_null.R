@@ -21,9 +21,9 @@
 #' @importFrom magrittr %>%
 #' @return data frame containing mean/ standard deviation for null distribution
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' g <- prep_biogrid()
-#' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 4)
+#' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1)
 #' }
 #' @export
 #'
@@ -61,7 +61,7 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
       for(j in 1:agg_int) {
         counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
         seeds_i <- unlist(seeds[[counter]])
-        p_i <- crosstalkr::sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
+        p_i <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
         if(is.null(names(p_i))) {
           names(p_i) <- as.character(1:length(p_i))
         }
@@ -69,7 +69,7 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
         agg_df[[j]] <- p_i
         if(j == agg_int) {
           agg_df <- dplyr::bind_rows(agg_df)
-          agg_df <- crosstalkr::dist_calc(agg_df, seed_proteins = seed_proteins)
+          agg_df <- dist_calc(agg_df, seed_proteins = seed_proteins)
           agg_df$run <- i
         }
 
@@ -202,7 +202,6 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 #' @inheritParams bootstrap_null
 #' @return a data frame containing summary statistics for the computed null distribution
 #'
-#' @export
 
 dist_calc <- function(df, seed_proteins) {
 

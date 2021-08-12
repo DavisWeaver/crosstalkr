@@ -7,7 +7,7 @@
 #' @return vector of gene symbols
 #'
 #' @examples
-#'\dontrun{
+#'\donttest{
 #' #1) from numeric formatted entrez id
 #' as_gene_symbol(1956)
 #' #2) from character formatted entrez id

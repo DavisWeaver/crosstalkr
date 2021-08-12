@@ -31,7 +31,7 @@
 #'         related to a given set of seeds
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #1) easy to use for querying biological networks
 #' compute_crosstalk(c("EGFR", "KRAS"))
 #' }

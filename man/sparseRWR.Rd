@@ -4,14 +4,7 @@
 \alias{sparseRWR}
 \title{Perform random walk with repeats on a sparse matrix}
 \usage{
-sparseRWR(
-  seed_proteins,
-  w,
-  gamma = 0.6,
-  eps = 1e-10,
-  tmax = 1000,
-  norm = FALSE
-)
+sparseRWR(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000, norm = TRUE)
 }
 \arguments{
 \item{seed_proteins}{user defined seed proteins}
@@ -49,10 +42,10 @@ v4 = c(0,0,0,1)
 w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
 w = Matrix::Matrix(w, sparse = TRUE)
 sparseRWR(seed_proteins = c(1,4), w = w, norm = TRUE)
-\dontrun{
+\donttest{
 #3) Sample workflow for use with human protein-protein interaction network
 g <- prep_biogrid()
 w <- igraph::as_adjacency_matrix(g)
-sparseRWR(seed_proteins = c("EGFR", "KRAS"), w = w)
+sparseRWR(seed_proteins = c("EGFR", "KRAS"), w = w, norm = TRUE)
 }
 }

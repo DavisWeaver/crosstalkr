@@ -76,7 +76,7 @@ determined by comparing these affinity scores to a bootstrapped null distributio
 (see \code{bootstrap_null}).
 }
 \examples{
-\dontrun{
+\donttest{
 #1) easy to use for querying biological networks
 compute_crosstalk(c("EGFR", "KRAS"))
 }
