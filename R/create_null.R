@@ -56,7 +56,7 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
   if(ncores == 1) {
     null_dist <-
       foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
-                       .packages = c("Matrix"),
+                       .packages = c("Matrix", "magrittr"),
                        .export = c("sparseRWR", "dist_calc",
                                    "norm_colsum")) %do%
       {
