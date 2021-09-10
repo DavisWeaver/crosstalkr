@@ -106,6 +106,10 @@ prep_biogrid <- function(cache = NULL) {
   return(g)
 }
 
+#' Function to allow users to choose the union of stringdb and biogrid
+#'
+#'
+
 #' Helper function for first-time use of crosstalkr package
 #'
 #' @inheritParams prep_stringdb

@@ -18,14 +18,14 @@ test_that("Matched seeds are the same length as input seeds", {
 
 test_seeds <- unlist(match_seeds(g=g, seed_proteins = seeds, n =1000))
 test_that("Matched seeds are randomly selected if igraph::vcount(g) < 50", {
-  expect_equal(sum(test_seeds == 1)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 2)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 3)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 4)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 5)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 6)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 7)/ length(test_seeds), 1/8, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 8)/ length(test_seeds), 1/8, tolerance = 0.05)
+  expect_equal(sum(test_seeds == 1)/ length(test_seeds), 0, tolerance = 0)
+  expect_equal(sum(test_seeds == 2)/ length(test_seeds), 1/5, tolerance = 0.05)
+  expect_equal(sum(test_seeds == 3)/ length(test_seeds), 0, tolerance = 0)
+  expect_equal(sum(test_seeds == 4)/ length(test_seeds), 1/5, tolerance = 0.05)
+  expect_equal(sum(test_seeds == 5)/ length(test_seeds), 0, tolerance = 0)
+  expect_equal(sum(test_seeds == 6)/ length(test_seeds), 1/5, tolerance = 0.05)
+  expect_equal(sum(test_seeds == 7)/ length(test_seeds), 1/5, tolerance = 0.05)
+  expect_equal(sum(test_seeds == 8)/ length(test_seeds), 1/5, tolerance = 0.05)
 })
 
 #lets take a look at what happens on larger graphs - this is a weird case where the degree is pretty
@@ -36,7 +36,7 @@ g <- igraph::sample_gnp(n = 1000, p = 10/1000)
 test_that("Matched seeds are the same length as input seeds", {
   expect_equal(length(match_seeds(g = g, seed_proteins = c(1,3,5), n = 1)[[1]]), 3)
   expect_equal(length(match_seeds(g = g, seed_proteins = c(12,14), n = 1)[[1]]), 2)
-  expect_equal(length(match_seeds(g = g, seed_proteins = 50, n = 1)[[1]]), 1) #this one breaks still
+  expect_equal(length(match_seeds(g = g, seed_proteins = 50, n = 1)[[1]]), 1)
   expect_equal(length(match_seeds(g = g, seed_proteins = c(21,22,23,24,25), n = 1)[[1]]), 5)
 })
 
@@ -59,11 +59,15 @@ test_that("matched seeds actually track the input distribution", {
 
 
 #Lets test the parent function
-bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 10)
+#bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 10)
 test_that("bootstrap_null runs without errors",  {
   expect_true(is.data.frame(bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 10)[[1]]))
   expect_message(bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 10))
   expect_true(is.data.frame(bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 100, agg_int = 10)[[1]]))
+})
+
+test_that("bootstrap_null runs when you provide invalid vertex ids", {
+  expect_true(is.data.frame(bootstrap_null(seed_proteins = c(1,3,5,9,12,15,1002), g = g, n = 10)[[1]]))
 })
 
 

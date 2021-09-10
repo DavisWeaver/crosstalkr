@@ -2,7 +2,7 @@
 % Please edit documentation in R/ppi_ingest.R
 \name{setup_init}
 \alias{setup_init}
-\title{Helper function for first-time use of crosstalkr package}
+\title{Function to allow users to choose the union of stringdb and biogrid}
 \usage{
 setup_init(cache = NULL, min_score)
 }

@@ -50,6 +50,13 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
   w <- norm_colsum(w)
 
   #generate list of degree-similar seed protein vectors.
+  #limit to only seed proteins that are actually in g
+  if(is.null(rownames(w))) {
+    seed_proteins <-seed_proteins[seed_proteins %in% 1:nrow(w)]
+  } else {
+    seed_proteins <- seed_proteins[seed_proteins %in% rownames(w)]
+  }
+
   seeds <- match_seeds(g = g, seed_proteins = seed_proteins, n = n)
 
 
@@ -198,7 +205,9 @@ match_seeds <- function(g, seed_proteins, n, set_seed = NULL) {
 
 
   #group by breaks
-  degree_grouped <- dplyr::group_by(degree_df, degree_bins)
+  #make sure we don't have node in the bit we are going to sample from
+  degree_grouped <- dplyr::group_by(degree_df, degree_bins) %>%
+      dplyr::filter(!(.data$node %in% seed_proteins))
 
   sample_seeds <- list()
 

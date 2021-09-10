@@ -26,4 +26,8 @@ test_that("compute_crosstalk identifies crosstalkers for larger graphs", {
   expect_message(compute_crosstalk(c(1,3), g = g, use_ppi=FALSE))
 })
 
+test_that("compute_crosstalk doesn't break when you provide invalid vertez names", {
+  expect_true(is.data.frame(compute_crosstalk(c(1,3,5,8,10, 1002), g = g, use_ppi = FALSE, n = 100)))
+})
+
 
