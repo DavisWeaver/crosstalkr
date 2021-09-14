@@ -16,16 +16,18 @@ test_that("Matched seeds are the same length as input seeds", {
   expect_equal(length(match_seeds(g = g, seed_proteins = seeds, n = 1)[[1]]), 3)
 })
 
-test_seeds <- unlist(match_seeds(g=g, seed_proteins = seeds, n =1000))
-test_that("Matched seeds are randomly selected if igraph::vcount(g) < 50", {
-  expect_equal(sum(test_seeds == 1)/ length(test_seeds), 0, tolerance = 0)
-  expect_equal(sum(test_seeds == 2)/ length(test_seeds), 1/5, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 3)/ length(test_seeds), 0, tolerance = 0)
-  expect_equal(sum(test_seeds == 4)/ length(test_seeds), 1/5, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 5)/ length(test_seeds), 0, tolerance = 0)
-  expect_equal(sum(test_seeds == 6)/ length(test_seeds), 1/5, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 7)/ length(test_seeds), 1/5, tolerance = 0.05)
-  expect_equal(sum(test_seeds == 8)/ length(test_seeds), 1/5, tolerance = 0.05)
+#setup test to compare distribution of seeds to what we expect
+t1 = unlist(match_seeds(g = g, seed_proteins = c(1), n = 10000))
+
+#seeds 2 3 5 6 and 7 should have been possible selections - each with a uniform chance of being selected, all others 0
+test_that("Matched seeds are within 2 degree of a given seed", {
+  for(i in 1:igraph::vcount(g)) {
+    if(i %in% c(1,4,8)) {
+      expect_equal(sum(t1 == i)/ length(t1), 0, tolerance = 0)
+    } else {
+      expect_equal(sum(t1== i)/ length(t1), 0.2, tolerance = 0.02)
+    }
+  }
 })
 
 #lets take a look at what happens on larger graphs - this is a weird case where the degree is pretty
@@ -40,24 +42,6 @@ test_that("Matched seeds are the same length as input seeds", {
   expect_equal(length(match_seeds(g = g, seed_proteins = c(21,22,23,24,25), n = 1)[[1]]), 5)
 })
 
-seeds <- 20:40
-ds <- igraph::degree_distribution(g, v = seeds)
-t1 <- match_seeds(g, seed_proteins = seeds, n = 100)
-# this code will compute a degree distribution from the computed seeds
-t2 <- list()
-for(i in 1:length(t1)) {
-  t2[[i]] <- igraph::degree(g=g,v = t1[[i]])
-}
-seeds_props <- table(unlist(t2))/ length(unlist(t2))
-
-
-test_that("matched seeds actually track the input distribution", {
-  expect_equal(min(igraph::degree(g, seeds)), as.numeric(names(seeds_props[1])))
-  expect_equal(max(igraph::degree(g, seeds)), as.numeric(names(seeds_props[length(seeds_props)])))
-
-})
-
-
 #Lets test the parent function
 #bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 10)
 test_that("bootstrap_null runs without errors",  {
@@ -70,6 +54,18 @@ test_that("bootstrap_null runs when you provide invalid vertex ids", {
   expect_true(is.data.frame(bootstrap_null(seed_proteins = c(1,3,5,9,12,15,1002), g = g, n = 10)[[1]]))
 })
 
+#Lets see what happens when you use an actual ppi (albeit a tiny one)
 
+# load(system.file("test_data/toy_graph.Rda", package = "crosstalkr"))
+# vertices <- names(igraph::V(g))
+# seeds <- vertices[c(1,6,12)]
+#
+# test_seeds <- unlist(match_seeds(g=g, seed_proteins = seeds, n =1000))
+#
+# test_that("matched seeds have zero probability of being the original seeds", {
+#   for(i in seeds) {
+#     expect_equal(sum(test_seeds == i)/ length(test_seeds), 0, tolerance = 0)
+#   }
+# })
 
 
