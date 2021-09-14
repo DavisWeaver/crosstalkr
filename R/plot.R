@@ -43,7 +43,7 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1,
 
   #generate vector of seeds
   seeds_df <- dplyr::filter(crosstalk_df, .data$seed == "yes")
-  seed_proteins <- seeds_df$gene_id
+  seed_proteins <- seeds_df$node
 
   #make subgraph of g for a given crosstalk_df
   g_ct <- crosstalk_subgraph(crosstalk_df = crosstalk_df, g = g,
@@ -110,7 +110,7 @@ crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {
   check_crosstalk(crosstalk_df = crosstalk_df)
 
   #if g isn't an igraph object this will fly an error.
-  g <- igraph::induced_subgraph(g, v = crosstalk_df$gene_id)
+  g <- igraph::induced_subgraph(g, v = crosstalk_df$node)
 
   #we only want to keep edges that attach to a seed protein - is this really true?
   #seed_edges <- igraph::E(g)[ from(seed_proteins)]
