@@ -10,7 +10,7 @@
 #'
 #' @param significance_level user-defined signficance level for hypothesis testing
 #' @param p_adjust adjustment method to correct for multiple hypothesis testing:
-#'     defaults to "bonferroni". see \code{\link{p.adjust.methods}} for other potential
+#'     defaults to "holm". see \code{\link{p.adjust.methods}} for other potential
 #'     adjustment methods.
 #' @param use_ppi should g be the human protein-protein interaction network. If
 #'     false, user must provide an igraph object in \code{g}
@@ -46,7 +46,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                               ppi = "stringdb", n = 1000,
                               gamma=0.6, eps = 1e-10, tmax = 1000,
                               norm = TRUE, set_seed,
-                              cache = NULL, min_score = 400, seed_name = NULL,
+                              cache = NULL, min_score = 700, seed_name = NULL,
                               ncores = 1, significance_level = 0.95,
                               p_adjust = "bonferroni",
                               agg_int = 100)  {

@@ -32,6 +32,9 @@ prep_stringdb <- function(cache = NULL,
                         protein1 = as_gene_symbol(x = .data$protein1, edb = edb),
                         protein2 = as_gene_symbol(x = .data$protein2, edb = edb))
 
+    #depending on the EDB used you end up with some NAs that you need to clear out
+    df <- dplyr::filter(df, !is.na(.data$protein1), !is.na(.data$protein2))
+
     message("filtering proteins with a certain min_score")
     #filter out nodes below a given min score
     if(is.numeric(min_score)) {
