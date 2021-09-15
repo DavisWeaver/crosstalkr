@@ -16,7 +16,7 @@ compute_crosstalk(
   norm = TRUE,
   set_seed,
   cache = NULL,
-  min_score = 400,
+  min_score = 700,
   seed_name = NULL,
   ncores = 1,
   significance_level = 0.95,
@@ -57,7 +57,7 @@ false, user must provide an igraph object in \code{g}}
 \item{significance_level}{user-defined signficance level for hypothesis testing}
 
 \item{p_adjust}{adjustment method to correct for multiple hypothesis testing:
-defaults to "bonferroni". see \code{\link{p.adjust.methods}} for other potential
+defaults to "holm". see \code{\link{p.adjust.methods}} for other potential
 adjustment methods.}
 
 \item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}
