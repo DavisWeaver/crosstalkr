@@ -30,4 +30,9 @@ test_that("compute_crosstalk doesn't break when you provide invalid vertez names
   expect_true(is.data.frame(compute_crosstalk(c(1,3,5,8,10, 1002), g = g, use_ppi = FALSE, n = 100)))
 })
 
+test_that("compute crosstalk works for non-human vertices", {
+  skip_if_offline()
+  expect_true(is.data.frame(compute_crosstalk("511145.b0003", species = 511145)))
+})
+
 

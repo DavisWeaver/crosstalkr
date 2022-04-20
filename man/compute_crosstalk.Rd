@@ -9,6 +9,7 @@ compute_crosstalk(
   g = NULL,
   use_ppi = TRUE,
   ppi = "stringdb",
+  species = "homo sapiens",
   n = 1000,
   gamma = 0.6,
   eps = 1e-10,
@@ -29,10 +30,14 @@ compute_crosstalk(
 
 \item{g}{igraph network object.}
 
-\item{use_ppi}{should g be the human protein-protein interaction network. If
+\item{use_ppi}{should g be a protein-protein interaction network? If
 false, user must provide an igraph object in \code{g}}
 
 \item{ppi}{character string describing the ppi to use: currently only "stringdb" is supported.}
+
+\item{species}{character string describing the species of interest.
+For a list of supported species, see \code\link{supported_species()}.
+Non human species are only compatible with "stringdb"}
 
 \item{n}{number of random walks with repeats to create null distribution}
 
@@ -46,7 +51,7 @@ false, user must provide an igraph object in \code{g}}
 
 \item{set_seed}{integer to set random number seed - for reproducibility}
 
-\item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
+\item{cache}{A filepath to a folder downloaded files should be stored}
 
 \item{min_score}{minimum connectivity score for each edge in the network.}
 
@@ -57,7 +62,7 @@ false, user must provide an igraph object in \code{g}}
 \item{significance_level}{user-defined signficance level for hypothesis testing}
 
 \item{p_adjust}{adjustment method to correct for multiple hypothesis testing:
-defaults to "holm". see \code{\link{p.adjust.methods}} for other potential
+defaults to "holm". see \code\link{p.adjust.methods} for other potential
 adjustment methods.}
 
 \item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}
@@ -73,7 +78,8 @@ can be combined with the user-defined seed proteins to identify functionally
 relevant subnetworks. Affinity scores for every protein in the network are
 calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
 determined by comparing these affinity scores to a bootstrapped null distribution
-(see \code{bootstrap_null}).
+(see \code{bootstrap_null}). If using non-human PPI from string, refer to the stringdb documentation
+for how to specify proteins
 }
 \examples{
 \donttest{

@@ -1,58 +1,71 @@
 #' Prepare Stringdb for use in analyses
 #'
+#' Basically a wrapper around the get_graph method from the stringdb package
 #'
-#'
-#' @param cache A filepath to a folder downloaded files should be stored, inherits from user-available functions
+#' @param cache A filepath to a folder downloaded files should be stored
 #' @param edb ensemble database object
 #' @param min_score minimum connectivity score for each edge in the network.
-#' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+#' @return igraph object built from the adjacency matrix downloaded from stringdb.
 #'
 #' @importFrom rlang .data
 #' @export
 
 prep_stringdb <- function(cache = NULL,
                           edb = "default",
-                          min_score = NULL){
-  #if they didn't provide an edb object
-  if(edb == "default") {
-    edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
-  }
-  if(!file.exists(paste0(cache, "/stringdb.Rda"))) {
-    message("Downloading stringdb Homo Sapiens v11.0")
-    df <-try(readr::read_delim("https://stringdb-static.org/download/protein.links.v11.0/9606.protein.links.v11.0.txt.gz",
-                            delim = " "))
+                          min_score = 0,
+                          version = "11", species = "homo sapiens"){
 
+  if(!file.exists(paste0(cache, species, "/stringdb.Rda"))) {
+
+    if(is.numeric(version)) {version <- as.character(version)}
+    #if they provide a character version of taxon id just convert to numeric
+    if(is.character(species) & !grepl("\\D", species)) {species <- as.numeric(species)}
+    #if they didn't provide an edb object
+    if(edb == "default") {
+      edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+    }
+
+    message(paste0("Downloading stringdb ", species, " v", version))
+
+    if(!is.numeric(species)) {
+      species = to_taxon_id(species)
+    }
+
+    df <- STRINGdb::STRINGdb$new(version = version, species = species,
+                                 score_threshold = min_score)
+    g <- try(df$get_graph())
     if(inherits(df, "try-error")) {
       stop("unable to download stringdb, please try again later")
     }
 
-    message("converting ensemble_ids to gene_ids")
-    #Lets convert the ensemble_ids to gene_ids.
-    df <- dplyr::mutate(df,
-                        protein1 = as_gene_symbol(x = .data$protein1, edb = edb),
-                        protein2 = as_gene_symbol(x = .data$protein2, edb = edb))
 
-    #depending on the EDB used you end up with some NAs that you need to clear out
-    df <- dplyr::filter(df, !is.na(.data$protein1), !is.na(.data$protein2))
+    #If messing about with humans convert ensemble_ids to gene_ids and then re-converting to graph
+    if(species == "homo sapiens" | species == 9606) {
+      df <- as.data.frame(igraph::get.edgelist(g))
+      colnames(df) <- c("protein1", "protein2")
+      message("converting ensemble_ids to gene_ids")
+      #Lets convert the ensemble_ids to gene_ids.
+      df <- dplyr::mutate(df,
+                          protein1 = as_gene_symbol(x = .data$protein1, edb = edb),
+                          protein2 = as_gene_symbol(x = .data$protein2, edb = edb))
+      #depending on the EDB used you end up with some NAs that you need to clear out
+      df <- dplyr::filter(df, !is.na(.data$protein1), !is.na(.data$protein2))
 
-    message("filtering proteins with a certain min_score")
-    #filter out nodes below a given min score
-    if(is.numeric(min_score)) {
-      df <- dplyr::filter(df, .data$combined_score > min_score)
+      message("converting to igraph object")
+      #Convert to igraph object
+      g  <- igraph::graph_from_data_frame(df, directed = FALSE)
+      g <-
+        igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
+
     }
 
-    message("converting to igraph object")
-    #Convert to igraph object
-    g  <- igraph::graph_from_data_frame(df, directed = FALSE)
-    g <-
-      igraph::simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
 
     if(!is.null(cache)) {
-      save(g, file = paste0(cache, "/stringdb.Rda"))
+      save(g, file = paste0(cache, "/", species, "stringdb.Rda"))
     }
   } else {
     message("using cached version of stringdb Homo Sapeins v11.0")
-    load(file = paste0(cache, "/stringdb.Rda"))
+    load(file = paste0(cache, "/", species, "stringdb.Rda"))
   }
   return(g)
 }
@@ -61,7 +74,7 @@ prep_stringdb <- function(cache = NULL,
 #'
 #' @inheritParams prep_stringdb
 #'
-#' @return list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+#' @return igraph object built from the adjacency matrix downloaded from thebiogrid.org.
 #'
 #' @export
 
@@ -111,21 +124,56 @@ prep_biogrid <- function(cache = NULL) {
 
 #' Function to allow users to choose the union of stringdb and biogrid
 #'
-#'
-
-#' Helper function for first-time use of crosstalkr package
-#'
 #' @inheritParams prep_stringdb
 #'
-#' @return directory on users computer containing the different adjacency matrices for future use.
+#' @export
+
+ppi_union <- function(cache = NULL, min_score = NULL, edb = "default") {
+  g_biogrid <- prep_biogrid(cache = cache)
+  g_string <- prep_stringdb(cache = cache, edb = edb, min_score = min_score)
+}
+
+#' helper to convert user-inputs to ncbi reference taxonomy.
+#'
+#' @param species user-inputted species
+#'
+#' @importFrom magrittr %>%
+#' @export
+
+to_taxon_id <- function(species) {
+
+  species <- stringr::str_to_lower(species) #keep it consistent
+
+  #download reference data from string
+  load(system.file("species_reference.Rda", package = "crosstalkr"))
+
+  #select the taxon id for that species.
+  taxon_id <- dplyr::filter(reference_df,
+                            .data$string_name == species |
+                              .data$ncbi_name == species) %>%
+    dplyr::rename(taxon_id = "#taxon_id") %>%
+    dplyr::select(.data$taxon_id) %>%
+    unlist()
+  if(is.na(taxon_id[1])) {
+    stop("Invalid species specification, for a list of supported species, call crosstalkr::supported_species()")
+  }
+  return(unname(taxon_id))
+
+}
+
+
+#' returns a dataframe with information on supported species
+#'
+#' @return dataframe
 #'
 #' @export
-#'
-setup_init <- function(cache = NULL, min_score) {
 
-  #Functons are written to return a tibble - this use will ensure a df is not printed
-  tmp_var1 <- prep_biogrid(cache = cache)
-  tmp_var2 <- prep_stringdb(cache = cache, min_score = min_score)
+supported_species <- function() {
+  load(system.file("species_reference.Rda", package = "crosstalkr"))
+  return(reference_df)
 }
+
+
+
 
 

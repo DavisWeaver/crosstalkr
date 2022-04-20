@@ -7,10 +7,10 @@
 prep_biogrid(cache = NULL)
 }
 \arguments{
-\item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
+\item{cache}{A filepath to a folder downloaded files should be stored}
 }
 \value{
-list containing Adjacency matrix from stringdb dataset and igraph object built from the adjacency matrix.
+igraph object built from the adjacency matrix downloaded from thebiogrid.org.
 }
 \description{
 Prepare biogrid for use in analyses

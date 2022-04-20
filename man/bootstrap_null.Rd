@@ -38,7 +38,7 @@ bootstrap_null(
 
 \item{set_seed}{integer to set random number seed - for reproducibility}
 
-\item{cache}{A filepath to a folder downloaded files should be stored, inherits from user-available functions}
+\item{cache}{A filepath to a folder downloaded files should be stored}
 
 \item{seed_name}{Name to give the cached ngull distribution - must be a character string}
 

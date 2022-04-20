@@ -6,22 +6,26 @@
 #'     relevant subnetworks. Affinity scores for every protein in the network are
 #'     calculated using a random-walk with repeats (\code{sparseRWR}). Significance is
 #'     determined by comparing these affinity scores to a bootstrapped null distribution
-#'     (see \code{bootstrap_null}).
+#'     (see \code{bootstrap_null}). If using non-human PPI from string, refer to the stringdb documentation
+#'     for how to specify proteins
 #'
 #' @param significance_level user-defined signficance level for hypothesis testing
 #' @param p_adjust adjustment method to correct for multiple hypothesis testing:
-#'     defaults to "holm". see \code{\link{p.adjust.methods}} for other potential
+#'     defaults to "holm". see \code\link{p.adjust.methods} for other potential
 #'     adjustment methods.
-#' @param use_ppi should g be the human protein-protein interaction network. If
+#' @param use_ppi should g be a protein-protein interaction network? If
 #'     false, user must provide an igraph object in \code{g}
 #' @param ppi character string describing the ppi to use: currently only "stringdb" is supported.
+#' @param species character string describing the species of interest.
+#'     For a list of supported species, see \code\link{supported_species()}.
+#'     Non human species are only compatible with "stringdb"
 #' @param g igraph network object.
 #'
 #' @inheritParams bootstrap_null
 #'
 #' @inheritParams sparseRWR
 #'
-#' @inheritParams setup_init
+#' @inheritParams prep_stringdb
 #'
 #' @importFrom stats p.adjust pnorm sd
 #' @importFrom utils download.file read.delim unzip
@@ -43,7 +47,8 @@
 #' @export
 
 compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
-                              ppi = "stringdb", n = 1000,
+                              ppi = "stringdb", species = "homo sapiens",
+                              n = 1000,
                               gamma=0.6, eps = 1e-10, tmax = 1000,
                               norm = TRUE, set_seed,
                               cache = NULL, min_score = 700, seed_name = NULL,
@@ -56,7 +61,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
     if(ppi == "biogrid") {
       g <- prep_biogrid(cache = cache)
     } else if (ppi == "stringdb") {
-      g <- prep_stringdb(cache = cache, min_score = min_score)
+      g <- prep_stringdb(cache = cache, min_score = min_score, species = species)
     } else {
       stop("ppi must be either 'biogrid' or 'stringdb'")
     }
@@ -73,7 +78,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                       eps = eps, tmax = tmax, norm = norm)
   p_vec <- p_seed[[1]]
   p_df <- tibble::as_tibble(p_vec, rownames = "node")
-  if(all(stringr::str_detect(p_df$node, "\\d"))) { #if the node names are numeric lets make it so
+  if(!all(stringr::str_detect(p_df$node, "\\D"))) { #if the node names are numeric lets make it so
     p_df$node <- as.numeric(p_df$node)
   }
   colnames(p_df)[colnames(p_df) == "value"] <- "affinity_score"

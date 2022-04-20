@@ -16,7 +16,7 @@
 #' @param agg_int number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.
 #'
 #' @inheritParams sparseRWR
-#' @inheritParams setup_init
+#' @inheritParams prep_stringdb
 #'
 #' @importFrom magrittr %>%
 #' @return data frame containing mean/ standard deviation for null distribution
@@ -61,18 +61,15 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
 
 
   if(ncores == 1) {
-    null_dist <-
-      foreach::foreach(i = 1:(n/agg_int), .errorhandling = 'pass',
-                       .packages = c("Matrix", "magrittr"),
-                       .export = c("sparseRWR", "dist_calc",
-                                   "norm_colsum")) %do%
-      {
+    null_dist <- list()
+    for(i in 1:(n/agg_int)) {
         agg_df <- list()
         for(j in 1:agg_int) {
           counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
           seeds_i <- unlist(seeds[[counter]])
 
-          if(!is.na(as.numeric(seeds_i[1]))) { #coerce the seeds to numbers if possible
+
+          if(all(!grepl("\\D", seeds_i))) { #coerce the seeds to numbers if possible
             seeds_i <- as.numeric(seeds_i)
           }
           p_i <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
@@ -88,7 +85,7 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
           }
 
         }
-        return(agg_df)
+        null_dist[[i]] <- agg_df
       }
   } else {
     cl <- parallel::makeCluster(ncores)
@@ -103,6 +100,10 @@ bootstrap_null <- function(seed_proteins, g, n = 1000, agg_int = 100,
         for(j in 1:agg_int) {
           counter <- (i-1)*agg_int + j #this keeps us in line with the number of entries in the "seeds" list
           seeds_i <- unlist(seeds[[counter]])
+
+          if(all(!grepl("\\D", seeds_i))) { #coerce the seeds to numbers if possible
+            seeds_i <- as.numeric(seeds_i)
+          }
           p_i <- sparseRWR(seed_proteins = seeds_i, w = w, norm = FALSE)[[1]]
           if(is.null(names(p_i))) {
             names(p_i) <- as.character(1:length(p_i))
@@ -223,7 +224,7 @@ dist_calc <- function(df, seed_proteins) {
   #pivot longer to prep for summarise
   null_dist <- tidyr::pivot_longer(df, cols = tidyr::everything(), names_to = "node", values_to = "p")
 
-  if(all(stringr::str_detect(null_dist$node, "\\d"))) {
+  if(!all(stringr::str_detect(null_dist$node, "\\D"))) {
     null_dist$node <- as.numeric(null_dist$node)
   }
 
