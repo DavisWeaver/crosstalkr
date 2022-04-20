@@ -12,8 +12,10 @@ test_that("prep_biogrid returns an igraph", {
   expect_true(igraph::is.igraph(prep_biogrid()))
 })
 
+
+#have to skip on CI because CI can't find installed files
 test_that("prep_stringdb works for multiple species", {
-  #skip("skipping due to long download times")
+  skip_on_ci()
   expect_true(igraph::is.igraph(prep_stringdb(species = "pseudomonas aeruginsa")))
   expect_true(igraph::is.igraph(prep_stringdb(species = "burkholderia cepacia")))
   expect_true(igraph::is.igraph(prep_stringdb(species = "xanthomonas campestris")))
@@ -26,7 +28,7 @@ test_that("prep_stringdb works when providing taxon id directly", {
 })
 
 test_that("prep_stringdb breaks when provided an unsupported species", {
-  #skip("skipping due to long download times")
+  skip_on_ci()
   expect_error(prep_stringdb(species = "fluffy bunnies"))
   expect_error(prep_stringdb(species = "dinodinodino"))
   expect_error(prep_stringdb(species = "unicorn dragons"))

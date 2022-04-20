@@ -11,9 +11,11 @@ Crosstalkr provides a general implementation of a random-walk with restarts on g
 We also provide user-friendly implementations of the common use-case of using random-walk with restarts to identify subnetworks of biological protein-protein interaction databases. 
 Given a user-defined set of seed proteins, the main `compute_crosstalk` function will compute affinity scores for all other proteins in the network. 
 It will then compute a null distribution using a permutation test and compare the computed affinity scores to the null distribution to identify proteins with a statistically signficant association to the user-defined seed-proteins.
-This user-friendly implementation currently only supports human protein-protein interaction networks. 
-Soon, users will be able to select from a list of additional supported species. 
+Thanks to integration with stringdb, users can evaluate biological networks from 1540 different species. For a list of supported species - just call:
 
+```
+crosstalkr::supported_species()
+```
 
 # Use
 
