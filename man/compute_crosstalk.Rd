@@ -36,7 +36,7 @@ false, user must provide an igraph object in \code{g}}
 \item{ppi}{character string describing the ppi to use: currently only "stringdb" is supported.}
 
 \item{species}{character string describing the species of interest.
-For a list of supported species, see \code\link{supported_species()}.
+For a list of supported species, see \code{supported_species}.
 Non human species are only compatible with "stringdb"}
 
 \item{n}{number of random walks with repeats to create null distribution}
@@ -62,7 +62,7 @@ Non human species are only compatible with "stringdb"}
 \item{significance_level}{user-defined signficance level for hypothesis testing}
 
 \item{p_adjust}{adjustment method to correct for multiple hypothesis testing:
-defaults to "holm". see \code\link{p.adjust.methods} for other potential
+defaults to "holm". see \code{p.adjust.methods} for other potential
 adjustment methods.}
 
 \item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}

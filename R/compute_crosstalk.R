@@ -1,4 +1,4 @@
-4#' Identify proteins with a statistically significant relationship to user-provided seeds.
+#' Identify proteins with a statistically significant relationship to user-provided seeds.
 #'
 #' \code{compute_crosstalk} returns a dataframe of proteins that are significantly
 #'     associated with user-defined seed proteins. These identified "crosstalkers"
@@ -11,13 +11,13 @@
 #'
 #' @param significance_level user-defined signficance level for hypothesis testing
 #' @param p_adjust adjustment method to correct for multiple hypothesis testing:
-#'     defaults to "holm". see \code\link{p.adjust.methods} for other potential
+#'     defaults to "holm". see \code{p.adjust.methods} for other potential
 #'     adjustment methods.
 #' @param use_ppi should g be a protein-protein interaction network? If
 #'     false, user must provide an igraph object in \code{g}
 #' @param ppi character string describing the ppi to use: currently only "stringdb" is supported.
 #' @param species character string describing the species of interest.
-#'     For a list of supported species, see \code\link{supported_species()}.
+#'     For a list of supported species, see \code{supported_species}.
 #'     Non human species are only compatible with "stringdb"
 #' @param g igraph network object.
 #'

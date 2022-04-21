@@ -8,7 +8,7 @@ prep_stringdb(
   cache = NULL,
   edb = "default",
   min_score = 0,
-  version = "11",
+  version = "11.5",
   species = "homo sapiens"
 )
 }
@@ -18,6 +18,10 @@ prep_stringdb(
 \item{edb}{ensemble database object}
 
 \item{min_score}{minimum connectivity score for each edge in the network.}
+
+\item{version}{stringdb version}
+
+\item{species}{species code either using latin species name or taxon id}
 }
 \value{
 igraph object built from the adjacency matrix downloaded from stringdb.

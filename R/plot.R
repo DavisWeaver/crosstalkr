@@ -1,5 +1,5 @@
 #I hate this but we're gonna make a call to globalVariables here to satisfy R cmd check.
-utils::globalVariables(c("from", ".", "i", "seed"))
+utils::globalVariables(c("from", ".", "i", "seed", "reference_df"))
 
 #' Plot subnetwork identified using the compute_crosstalk function
 #'

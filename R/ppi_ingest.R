@@ -5,6 +5,8 @@
 #' @param cache A filepath to a folder downloaded files should be stored
 #' @param edb ensemble database object
 #' @param min_score minimum connectivity score for each edge in the network.
+#' @param version stringdb version
+#' @param species species code either using latin species name or taxon id
 #' @return igraph object built from the adjacency matrix downloaded from stringdb.
 #'
 #' @importFrom rlang .data
@@ -13,7 +15,7 @@
 prep_stringdb <- function(cache = NULL,
                           edb = "default",
                           min_score = 0,
-                          version = "11", species = "homo sapiens"){
+                          version = "11.5", species = "homo sapiens"){
 
   if(!file.exists(paste0(cache, species, "/stringdb.Rda"))) {
 
@@ -145,7 +147,7 @@ to_taxon_id <- function(species) {
   species <- stringr::str_to_lower(species) #keep it consistent
 
   #download reference data from string
-  load(system.file("species_reference.Rda", package = "crosstalkr"))
+  reference_df <- supported_species()
 
   #select the taxon id for that species.
   taxon_id <- dplyr::filter(reference_df,
@@ -154,6 +156,7 @@ to_taxon_id <- function(species) {
     dplyr::rename(taxon_id = "#taxon_id") %>%
     dplyr::select(.data$taxon_id) %>%
     unlist()
+
   if(is.na(taxon_id[1])) {
     stop("Invalid species specification, for a list of supported species, call crosstalkr::supported_species()")
   }
@@ -165,12 +168,25 @@ to_taxon_id <- function(species) {
 #' returns a dataframe with information on supported species
 #'
 #' @return dataframe
+#' @importFrom magrittr %>%
 #'
 #' @export
 
 supported_species <- function() {
-  load(system.file("species_reference.Rda", package = "crosstalkr"))
+
+  if(file.exists(system.file("species_reference.Rda", package = "crosstalkr"))) {
+    load(system.file("species_reference.Rda", package = "crosstalkr"))
+  } else {
+    df <- readr::read_tsv(file = "https://stringdb-static.org/download/species.v11.5.txt")
+    df <- dplyr::filter(df, .data$STRING_type == "core")
+    reference_df <- dplyr::rename(df, string_name = .data$STRING_name_compact,
+                                  ncbi_name = .data$official_name_NCBI) %>%
+      dplyr::mutate(string_name = stringr::str_to_lower(.data$string_name),
+                    ncbi_name = stringr::str_to_lower(.data$ncbi_name))
+  }
+
   return(reference_df)
+
 }
 
 
