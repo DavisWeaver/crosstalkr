@@ -15,7 +15,6 @@ Description: Provides a general framework for the identification of nodes that
              those described in Nibbe et.al (2010). <doi:10.1371/journal.pcbi.1000639>.
 License: GPL (>= 3)
 biocViews:
-Depends:	R
 Imports: 
     curl (>= 4.2), 
     rlang,
@@ -43,7 +42,6 @@ Suggests:
     ggraph,
     testthat (>= 2.0.0),
     knitr,
-    rmarkdown,
-    covr
+    rmarkdown
 Config/testthat/edition: 2
 VignetteBuilder: knitr
