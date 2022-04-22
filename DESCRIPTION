@@ -26,7 +26,7 @@ Imports:
     stringr,
     tidyr,
     tibble,
-    igraph (<= 1.3.0),
+    igraph (>= 1.2.0),
     Matrix,
     ensembldb,
     foreach,
