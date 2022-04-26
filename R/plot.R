@@ -35,7 +35,11 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1,
   }
 
   #make sure input is valid compute_crosstalk output
-  check_crosstalk(crosstalk_df = crosstalk_df)
+  is_ct <- check_crosstalk(crosstalk_df = crosstalk_df)
+
+  if(!is_ct) {
+    stop("Please provide the output of the compute_crosstalk function for crosstalk_df")
+  }
 
   crosstalk_df <- dplyr::slice_max(crosstalk_df,
                                    order_by = .data$affinity_score,
@@ -71,18 +75,15 @@ plot_ct <- function(crosstalk_df, g, label_prop = 0.1,
 #'
 
 check_crosstalk <- function(crosstalk_df) {
-  #make sure it is a dataframe
-  if(!is.data.frame(crosstalk_df)) {
-    stop("crosstalk_df must be a valid output of compute_crosstalk")
-  }
-
   #make sure columns match up
   target_cols = c("node", "mean_p", "var_p", "nobs", "seed",
                   "affinity_score", "Z", "p_value", "adj_p_value")
-
-  if(!all(target_cols %in% colnames(crosstalk_df))) {
-    stop("column names do not match what is expected")
+  #make sure it is a dataframe
+  if(!is.data.frame(crosstalk_df) & !all(target_cols %in% colnames(crosstalk_df))) {
+    return(FALSE)
   }
+
+  return(TRUE)
 
 }
 
