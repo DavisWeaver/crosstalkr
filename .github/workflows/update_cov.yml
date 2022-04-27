@@ -21,7 +21,7 @@ jobs:
     - name: install package
       run: |
         install.packages("devtools")
-        devtools::install()
+        devtools::install(pkg = ".")
     - name: Generate coverage report
       run: |
         install.packages("covr")
