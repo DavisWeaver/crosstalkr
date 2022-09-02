@@ -133,7 +133,6 @@ prep_biogrid <- function(cache = NULL) {
 ppi_union <- function(cache = NULL, min_score = 0, edb = "default") {
   g_biogrid <- prep_biogrid(cache = cache)
   g_string <- prep_stringdb(cache = cache, edb = edb, min_score = min_score)
-
   g <- igraph::union(g_biogrid, g_string)
   return(g)
 }
@@ -149,7 +148,6 @@ ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
   g_string <- prep_stringdb(cache = cache, edb = edb, min_score = min_score)
   g <- igraph::intersection(g_biogrid, g_string)
   return(g)
-
 }
 
 

@@ -16,7 +16,6 @@ Description: Provides a general framework for the identification of nodes that
 License: GPL (>= 3)
 biocViews:
 Imports: 
-    curl (>= 4.2), 
     rlang,
     stats,
     magrittr,
