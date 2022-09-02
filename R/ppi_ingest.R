@@ -130,10 +130,28 @@ prep_biogrid <- function(cache = NULL) {
 #'
 #' @export
 
-ppi_union <- function(cache = NULL, min_score = NULL, edb = "default") {
+ppi_union <- function(cache = NULL, min_score = 0, edb = "default") {
   g_biogrid <- prep_biogrid(cache = cache)
   g_string <- prep_stringdb(cache = cache, edb = edb, min_score = min_score)
+
+  g <- igraph::union(g_biogrid, g_string)
+  return(g)
 }
+
+#' Function to allow users to choose the intersection of stringdb and biogrid
+#'
+#' @inheritParams prep_stringdb
+#'
+#' @export
+
+ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
+  g_biogrid <- prep_biogrid(cache = cache)
+  g_string <- prep_stringdb(cache = cache, edb = edb, min_score = min_score)
+  g <- igraph::intersection(g_biogrid, g_string)
+  return(g)
+
+}
+
 
 #' helper to convert user-inputs to ncbi reference taxonomy.
 #'
