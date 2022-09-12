@@ -16,11 +16,11 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(crosstalkr)
-library(dnet)
+#library(dnet)
 ```
 
 ```{r load_data}
-g <- prep_stringdb(cache = NULL, min_score = 100)
+#g <- prep_stringdb(cache = NULL, min_score = 100)
 #dnet::
 ```
 
