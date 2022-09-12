@@ -26,7 +26,7 @@ journal: JOSS
 
 # Summary
 
-Crosstalkr is eesigned to facilitate the identification of functional subnetworks in human or non-human interactomes. 
+Crosstalkr is designed to facilitate the identification of functional subnetworks in human or non-human interactomes. 
 Given a set of user-provided set of seed proteins, crosstalkr will identify enriched subnetworks of proteins that have a high affinity for the provided seeds. 
 It is a free, open-source R package designed to allow users to integrate functional analysis using the protein-protein interaction network into existing bioinformatic pipelines. 
 This is accomplished using random walks with restarts, starting at the user-provided seed proteins. 
