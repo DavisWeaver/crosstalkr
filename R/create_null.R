@@ -23,8 +23,8 @@
 #' @examples
 #' \dontrun{
 #' g <- prep_biogrid()
-#' }
 #' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1, n = 10)
+#' }
 #' @export
 #'
 
