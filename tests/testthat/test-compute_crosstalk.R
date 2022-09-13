@@ -1,3 +1,5 @@
+for(i in 1:1000) {
+
 v1 = c(1,1,1,0,0,0,0,0)
 v2 = c(0,0,0,1,1,0,0,0)
 v3 = c(1,1,1,0,1,0,0,1)
@@ -16,7 +18,7 @@ test_that("compute_crosstalk doesn't break for very small graphs", {
   expect_true(is.data.frame(compute_crosstalk(c(1), g = g, use_ppi=FALSE, n = 100)))
 })
 
-g <- igraph::sample_gnp(n = 1000, p = 10/1000)
+g <- igraph::sample_gnp(n = 1000, p = 300/1000)
 
 test_that("compute_crosstalk identifies crosstalkers for larger graphs", {
   expect_true(is.data.frame(compute_crosstalk(c(1,3,5,8,10), g = g, use_ppi = FALSE, n = 100)))
@@ -28,6 +30,7 @@ test_that("compute_crosstalk doesn't break when you provide invalid vertez names
   expect_true(is.data.frame(compute_crosstalk(c(1,3,5,8,10, 1002), g = g, use_ppi = FALSE, n = 100)))
 })
 
+}
 test_that("compute crosstalk works for non-human vertices", {
   skip_if_offline()
   expect_true(is.data.frame(compute_crosstalk("511145.b0003", species = 511145)))

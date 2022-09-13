@@ -36,4 +36,11 @@ test_that("sparseRWR doesn't break if you give seeds that don't exist in the dat
   expect_equal(sparseRWR(c(1,6),w, norm = TRUE)[[1]], c(0.709, 0, 0.109, 0), tolerance = 0.001)
 })
 
+g <- igraph::sample_gnp(n = 1000, p = 0/1000)
+w <- igraph::as_adjacency_matrix(g)
+
+test_that("sparseRWR breaks for really sparse graphs", {
+  expect_error(sparseRWR(c(1,2,3,4), w = w))
+})
+
 
