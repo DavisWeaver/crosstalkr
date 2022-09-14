@@ -1,6 +1,6 @@
 Package: crosstalkr
 Title: Identification of Functionally Relevant Sub-Graphs 
-Version: 0.7.0
+Version: 0.8.0
 Authors@R: 
     person(given = "Davis",
            family = "Weaver",
