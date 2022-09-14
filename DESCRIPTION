@@ -1,5 +1,5 @@
 Package: crosstalkr
-Title: Identification of Functionally Relevant Sub-Graphs 
+Title: Identification of Functionally Relevant Sub-Graphs using  
 Version: 0.8.0
 Authors@R: 
     person(given = "Davis",
@@ -12,7 +12,7 @@ Description: Provides a general framework for the identification of nodes that
              In addition to being optimized for use with generic graphs, 
              We also provides support to analyze protein-protein 
              interactions networks from online repositories. Our methods are similar to 
-             those described in Nibbe et.al (2010). <doi:10.1371/journal.pcbi.1000639>.
+             those described in <doi:10.1371/journal.pcbi.1000639>.
 License: GPL (>= 3)
 biocViews:
 Imports: 
