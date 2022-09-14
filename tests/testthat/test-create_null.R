@@ -33,7 +33,7 @@ test_that("Matched seeds are within 2 degree of a given seed", {
 #lets take a look at what happens on larger graphs - this is a weird case where the degree is pretty
 #much always the same- turns out to be kind of challenging.
 
-g <- igraph::sample_gnp(n = 1000, p = 10/1000)
+g <- igraph::sample_gnp(n = 1000, p = 100/1000)
 
 test_that("Matched seeds are the same length as input seeds", {
   expect_equal(length(match_seeds(g = g, seed_proteins = c(1,3,5), n = 1)[[1]]), 3)

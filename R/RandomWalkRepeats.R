@@ -66,13 +66,15 @@ sparseRWR <- function(seed_proteins, w, gamma = 0.6, eps = 1e-10, tmax = 1000,
   w = Matrix::t(w) #moving this out of the loop so we don't have to do it multiple times
 
   #Automated check to see if n is the same length as p
-  if(n != length(p)) {
-    stop("p not the same length as w, input graph may be too sparse")
-  }
+
 
   for (t in 1:tmax) {
     # pi+1 = (1 − d)Wpi + dr
     pold <- p
+
+    if(n != length(p)) {
+      stop("p not the same length as w, input graph may be too sparse")
+    }
 
     #check if the exit condition has been met
     p <- ((1-gamma) * as.vector(w %*% pold)) + gamma * p0
