@@ -11,7 +11,7 @@ w = matrix(data = c(v1,v2,v3,v4,v5,v6,v7,v8), ncol = 8, nrow = 8)
 g <- igraph::graph_from_adjacency_matrix(w)
 
 df_true <- compute_crosstalk(c(1,3), g = g, use_ppi=FALSE)
-g <- igraph::sample_gnp(n = 1000, p = 10/1000)
+g <- igraph::sample_gnp(n = 1000, p = 300/1000)
 
 test_that("check_crosstalk identifies crosstalk dfs as true", {
   expect_true(check_crosstalk(df_true))
