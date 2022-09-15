@@ -13,6 +13,9 @@ ppi_union(cache = NULL, min_score = 0, edb = "default")
 
 \item{edb}{ensemble database object}
 }
+\value{
+igraph object corresponding to PPI following union
+}
 \description{
 Function to allow users to choose the union of stringdb and biogrid
 }

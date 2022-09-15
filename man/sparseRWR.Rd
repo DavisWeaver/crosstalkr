@@ -42,7 +42,7 @@ v4 = c(0,0,0,1)
 w = matrix(data = c(v1,v2,v3,v4), ncol = 4, nrow = 4)
 w = Matrix::Matrix(w, sparse = TRUE)
 sparseRWR(seed_proteins = c(1,4), w = w, norm = TRUE)
-\dontrun{
+\donttest{
 #3) Sample workflow for use with human protein-protein interaction network
 g <- prep_biogrid()
 w <- igraph::as_adjacency_matrix(g)

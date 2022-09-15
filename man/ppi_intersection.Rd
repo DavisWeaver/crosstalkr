@@ -13,6 +13,9 @@ ppi_intersection(cache = NULL, min_score = 0, edb = "default")
 
 \item{edb}{ensemble database object}
 }
+\value{
+igraph object corresponding to PPI following intersection
+}
 \description{
 Function to allow users to choose the intersection of stringdb and biogrid
 }

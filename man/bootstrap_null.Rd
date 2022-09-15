@@ -54,7 +54,7 @@ Bootstrapping is done by performing random walk with repeats repeatedly over "ra
 sets of seed proteins. Degree distribution of user-provided seeds is used to inform sampling.
 }
 \examples{
-\dontrun{
+\donttest{
 g <- prep_biogrid()
 bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1, n = 10)
 }

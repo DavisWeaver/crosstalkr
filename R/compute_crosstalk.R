@@ -35,7 +35,7 @@
 #'         related to a given set of seeds
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #1) easy to use for querying biological networks - n = 10000 is more appropriate for actual analyses
 #' compute_crosstalk(c("EGFR", "KRAS"), n =10)
 #' }

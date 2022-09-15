@@ -128,6 +128,7 @@ prep_biogrid <- function(cache = NULL) {
 #'
 #' @inheritParams prep_stringdb
 #'
+#' @return igraph object corresponding to PPI following union
 #' @export
 
 ppi_union <- function(cache = NULL, min_score = 0, edb = "default") {
@@ -140,6 +141,8 @@ ppi_union <- function(cache = NULL, min_score = 0, edb = "default") {
 #' Function to allow users to choose the intersection of stringdb and biogrid
 #'
 #' @inheritParams prep_stringdb
+#'
+#' @return igraph object corresponding to PPI following intersection
 #'
 #' @export
 
@@ -156,6 +159,7 @@ ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
 #' @param species user-inputted species
 #'
 #' @importFrom magrittr %>%
+#' @return string corresponding to taxon id
 #' @export
 
 to_taxon_id <- function(species) {

@@ -1,5 +1,5 @@
 Package: crosstalkr
-Title: Identification of Functionally Relevant Sub-Graphs using  
+Title: Tools for analysis of graph-structured data with a focus on protein-protein interaction networks
 Version: 0.8.0
 Authors@R: 
     person(given = "Davis",
@@ -7,12 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "davis.weaver@case.edu", 
            comment = c(orcid = "0000-0003-3086-497X"))
-Description: Provides a general framework for the identification of nodes that 
-             are functionally related to a set of seeds in graph structured data. 
-             In addition to being optimized for use with generic graphs, 
-             We also provides support to analyze protein-protein 
-             interactions networks from online repositories. Our methods are similar to 
-             those described in <doi:10.1371/journal.pcbi.1000639>.
+Description: Provides a general framework for the identification of nodes that are functionally related to a set of seeds in graph structured data. In addition to being optimized for use with generic graphs, we also provides support to analyze protein-protein interactions networks from online repositories.
 License: GPL (>= 3)
 biocViews:
 Imports: 

@@ -82,7 +82,7 @@ determined by comparing these affinity scores to a bootstrapped null distributio
 for how to specify proteins
 }
 \examples{
-\dontrun{
+\donttest{
 #1) easy to use for querying biological networks - n = 10000 is more appropriate for actual analyses
 compute_crosstalk(c("EGFR", "KRAS"), n =10)
 }

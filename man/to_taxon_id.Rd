@@ -9,6 +9,9 @@ to_taxon_id(species)
 \arguments{
 \item{species}{user-inputted species}
 }
+\value{
+string corresponding to taxon id
+}
 \description{
 helper to convert user-inputs to ncbi reference taxonomy.
 }
