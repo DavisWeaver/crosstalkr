@@ -5,6 +5,8 @@
 [![Codecov test coverage](https://codecov.io/gh/DavisWeaver/crosstalkr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/DavisWeaver/crosstalkr?branch=main)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CRAN version](http://www.r-pkg.org/badges/version/crosstalkr)](https://CRAN.R-project.org/package=crosstalkr)
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/crosstalkr)](https://CRAN.R-project.org/package=crosstalkr)
 <!-- badges: end -->
 
 R package for the identification of functionally important subnetworks 
