@@ -30,9 +30,9 @@
 #'sparseRWR(seed_proteins = c(1,4), w = w, norm = TRUE)
 #'\donttest{
 #'#3) Sample workflow for use with human protein-protein interaction network
-#'g <- prep_biogrid()
-#'w <- igraph::as_adjacency_matrix(g)
-#'sparseRWR(seed_proteins = c("EGFR", "KRAS"), w = w, norm = TRUE)
+#'#g <- prep_biogrid()
+#'#w <- igraph::as_adjacency_matrix(g)
+#'#sparseRWR(seed_proteins = c("EGFR", "KRAS"), w = w, norm = TRUE)
 #'}
 #' @return numeric vector, affinity scores for all nodes in graph relative to provided seeds
 #'

@@ -22,8 +22,8 @@
 #' @return data frame containing mean/ standard deviation for null distribution
 #' @examples
 #' \donttest{
-#' g <- prep_biogrid()
-#' bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1, n = 10)
+#' #g <- prep_biogrid()
+#' #bootstrap_null(seed_proteins = c("EGFR", "KRAS"), g= g, ncores = 1, n = 10)
 #' }
 #' @export
 #'
