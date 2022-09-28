@@ -24,11 +24,17 @@ crosstalkr::supported_species()
 To install, use the following code: 
 
 ```
+install.packages("crosstalkr")
+
+```
+
+For the latest development version:
+```
 install.packages("remotes") #can skip if already installed 
 remotes::install_github("https://github.com/DavisWeaver/crosstalkr")
 ```
 
-Given a set of user-provided set of seed proteins, crosstalkr will identify enriched subnetworks of genes that have a high affinity for the provided seeds. 
+Given a set of user-provided set of seeds, crosstalkr will identify enriched an enriched subgraph where all nodes have a high affinity for the provided seeds. 
 
 crosstalkr is optimized for use with the human cell signaling network. For example, running the code below will return a dataframe containing the user-provided seeds as well as all other proteins in the human protein-protein interaction network with a statistically significant association to these genes.
 
@@ -38,10 +44,10 @@ compute_crosstalk(c("EGFR", "KRAS"))
 
 Users can use any other kind of graph-structured data, provided they are stored in an igraph object. For example:
 
+
 ```
 g <- igraph::sample_gnp(n = 1000, p = 10/1000)
 compute_crosstalk(c(1,3,5,8,10), g = g, use_ppi = FALSE)
-
 ```
 
 We also provide rudimentary plotting functions to allow users to quickly assess the identified subnetworks: 
