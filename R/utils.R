@@ -56,7 +56,7 @@ as_gene_symbol <- function(x, edb = NULL) {
   }
 
 
-  gene_ids<- dplyr::left_join(x_tibble, geneIDs)
+  gene_ids<- dplyr::left_join(x_tibble, geneIDs, by = key_type)
   y = gene_ids$SYMBOL #grab vector
   return(y)
 }

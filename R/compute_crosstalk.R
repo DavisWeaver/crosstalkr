@@ -13,13 +13,15 @@
 #' @param p_adjust adjustment method to correct for multiple hypothesis testing:
 #'     defaults to "holm". see \code{p.adjust.methods} for other potential
 #'     adjustment methods.
-#' @param use_ppi should g be a protein-protein interaction network? If
+#' @param use_ppi bool, should g be a protein-protein interaction network? If
 #'     false, user must provide an igraph object in \code{g}
-#' @param ppi character string describing the ppi to use: currently only "stringdb" is supported.
+#' @param ppi character string describing the ppi to use: currently only "stringdb" and "biogrid" are supported.
 #' @param species character string describing the species of interest.
 #'     For a list of supported species, see \code{supported_species}.
 #'     Non human species are only compatible with "stringdb"
 #' @param g igraph network object.
+#' @param union bool, should we take the union of string db and biogrid to compute the PPI? Only applicable for the human PPI
+#' @param intersection bool, should we take the intersection of string db and biogrid to compute the PPI? Only applicable for the human PPI
 #'
 #' @inheritParams bootstrap_null
 #'
@@ -48,7 +50,7 @@
 
 compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                               ppi = "stringdb", species = "homo sapiens",
-                              n = 1000,
+                              n = 1000, union = FALSE, intersection = FALSE,
                               gamma=0.6, eps = 1e-10, tmax = 1000,
                               norm = TRUE, set_seed,
                               cache = NULL, min_score = 700, seed_name = NULL,
@@ -58,7 +60,11 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
   #check inputs
   if(use_ppi == TRUE){
-    if(ppi == "biogrid") {
+    if(union & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
+      g <- ppi_union(cache = cache, min_score = min_score)
+    } else if(intersection & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
+      g <- ppi_intersection(cache = cache, min_score = min_score)
+    } else if(ppi == "biogrid" & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) { #first 3 options are only feasible if the species is human
       g <- prep_biogrid(cache = cache)
     } else if (ppi == "stringdb") {
       g <- prep_stringdb(cache = cache, min_score = min_score, species = species)

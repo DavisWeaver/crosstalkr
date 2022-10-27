@@ -2,7 +2,8 @@
 % Please edit documentation in R/ppi_ingest.R
 \name{ppi_union}
 \alias{ppi_union}
-\title{Function to allow users to choose the union of stringdb and biogrid}
+\title{Function to allow users to choose the union of stringdb and biogrid
+Only works with the human PPI. min_score parameter only applies to strindb}
 \usage{
 ppi_union(cache = NULL, min_score = 0, edb = "default")
 }
@@ -18,4 +19,5 @@ igraph object corresponding to PPI following union
 }
 \description{
 Function to allow users to choose the union of stringdb and biogrid
+Only works with the human PPI. min_score parameter only applies to strindb
 }

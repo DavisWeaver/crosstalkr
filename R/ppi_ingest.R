@@ -16,22 +16,22 @@ prep_stringdb <- function(cache = NULL,
                           edb = "default",
                           min_score = 0,
                           version = "11.5", species = "homo sapiens"){
+  #clean up params
+  if(is.numeric(version)) {version <- as.character(version)}
+  #if they provide a character version of taxon id just convert to numeric
+  if(is.character(species) & !grepl("\\D", species)) {species <- as.numeric(species)}
+  #if they didn't provide an edb object
+  if(edb == "default") {
+    edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+  }
+  if(!is.numeric(species)) {
+    species = to_taxon_id(species)
+  }
 
-  if(!file.exists(paste0(cache, species, "/stringdb.Rda"))) {
-
-    if(is.numeric(version)) {version <- as.character(version)}
-    #if they provide a character version of taxon id just convert to numeric
-    if(is.character(species) & !grepl("\\D", species)) {species <- as.numeric(species)}
-    #if they didn't provide an edb object
-    if(edb == "default") {
-      edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
-    }
+  if(!file.exists(paste0(cache, "/", species, "stringdb.Rda")) &
+     !file.exists(paste0(cache, species, "stringdb.Rda"))) {
 
     message(paste0("Downloading stringdb ", species, " v", version))
-
-    if(!is.numeric(species)) {
-      species = to_taxon_id(species)
-    }
 
     df <- STRINGdb::STRINGdb$new(version = version, species = species,
                                  score_threshold = min_score)
@@ -125,6 +125,7 @@ prep_biogrid <- function(cache = NULL) {
 }
 
 #' Function to allow users to choose the union of stringdb and biogrid
+#' Only works with the human PPI. min_score parameter only applies to strindb
 #'
 #' @inheritParams prep_stringdb
 #'
@@ -139,6 +140,7 @@ ppi_union <- function(cache = NULL, min_score = 0, edb = "default") {
 }
 
 #' Function to allow users to choose the intersection of stringdb and biogrid
+#' Only works with the human PPI. min_score parameter only applies to strindb
 #'
 #' @inheritParams prep_stringdb
 #'
