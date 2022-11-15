@@ -1,6 +1,6 @@
 Package: crosstalkr
 Title: Analysis of Graph-Structured Data with a Focus on Protein-Protein Interaction Networks
-Version: 0.8.0
+Version: 0.9.0
 Authors@R: 
     person(given = "Davis",
            family = "Weaver",
