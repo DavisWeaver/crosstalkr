@@ -96,7 +96,7 @@ We also provide a convenience function to quickly plot the returned subgraph. Us
 g <- prep_stringdb(cache = "./data")
 png(filename = 'ct_plot_ex.png')
 crosstalkr::plot_ct(df, g=g, prop_keep = 0.4, label_prop = 0.2)
-dev.off
+dev.off()
 ```
 
 ## Other Features
