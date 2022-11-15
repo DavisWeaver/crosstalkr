@@ -1,27 +1,24 @@
 ---
-# Example from https://joss.readthedocs.io/en/latest/submitting.html
-title: 'crosstalkr: an R package for the identification of related nodes in biological networks'
+title: 'crosstalkr: an R package for the identification of related nodes in biological
+  networks'
 tags:
-  - R
-  - Graph Theory
-  - Interactomics
-authors:
-  - name: Davis T. Weaver
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
-  - name: Jacob Scott
-    affiliation: "1,2"
-affiliations:
- - name: Case Western Reserve University School of Medicine
-   index: 1
- - name: Cleveland Clinic Foundation
-   index: 2
+- R
+- Graph Theory
+- Interactomics
+date: "15 November 2022"
+output: pdf_document
 citation_author: Weaver et. al.
-date: "November, 15"
-year: "2022"
+authors:
+- name: Davis T. Weaver
+  affiliation: 1, 2
+- name: Jacob Scott
+  affiliation: '1,2'
 bibliography: paper.bib
-output: rticles::joss_article
-csl: apa.csl
-journal: JOSS
+affiliations:
+- name: Case Western Reserve University School of Medicine
+  index: 1
+- name: Cleveland Clinic Foundation
+  index: 2
 ---
 
 # Summary
@@ -35,7 +32,6 @@ Random walks are implemented using sparse matrix multiplication to facilitate fa
 The default behavior evaluates the human interactome.
 However, users can also provide a different graph, allowing for flexible evaluation of graph or network-structured data. 
 Further, users can evaluate more than 1000 non-human protein-protein interaction networks thanks to integration with StringDB.
-
 
 
 # Statement of Need
@@ -75,36 +71,31 @@ A sample workflow demonstrating the ease of use is provided below.
 Here, we attempt to determine proteins that are functionally related to EGFR, KRAS, PI3K, and STAT3; proteins that are involved in growth signaling in cancer cells. 
 
 
-
 ```r
 df <- compute_crosstalk(seed_proteins = c("EGFR", "KRAS","STAT3"), 
-                        cache = "./data", seed_name = "joss_ex", n = 10000, 
+                        cache = "./data", seed_name = "joss_ex", n = 1000, 
                         significance_level = 0.99)
 df %>%
   select(-c(Z,mean_p, var_p, nobs)) %>%
-  slice_max(order_by = affinity_score, n = 5) %>% 
-  knitr::kable(digits = 4)
+  slice_max(order_by = affinity_score, n = 5) 
 ```
 
+|node     | seed | affinity_score | p_value | adj_p_value | 
+| :---    |  :----:| :----: | :----: | :----: | ---: |
+| STAT3      | yes       | 0.200   | 0 | 0 |
+| EGFR   | yes        | 0.200      | 0 | 0 |
+| KRAS |  yes    |  0.200    | 0 | 0 |
+| C2orf72 | no   |  0.004 | 0 | 0 |
+| CCDC87 | no    |  0.003 | 0 | 0 |
 
-
-|node    |seed | affinity_score| p_value| adj_p_value|
-|:-------|:----|--------------:|-------:|-----------:|
-|STAT3   |yes  |         0.2002|       0|       0e+00|
-|EGFR    |yes  |         0.2001|       0|       0e+00|
-|KRAS    |yes  |         0.2001|       0|       0e+00|
-|C2orf72 |no   |         0.0041|       0|       1e-04|
-|CCDC87  |no   |         0.0029|       0|       0e+00|
-
-We also provide a convenience function to quickly plot the returned subgraph. Users can specify `prop_keep` to improve readability by only plotting the top x% of identified proteins, ranked by affinity score. 
-
+We also provide a convenience function to quickly plot the returned subgraph (Figure \autoref{fig:ct_plot}). Users can specify `prop_keep` to improve readability by only plotting the top x% of identified proteins, ranked by affinity score. 
 
 ```r
 g <- prep_stringdb(cache = "./data")
 crosstalkr::plot_ct(df, g=g, prop_keep = 0.4, label_prop = 0.2)
 ```
 
-![Protein-protein interaction subnetwork for EGFR, KRAS, and STAT3. ](crosstalkr_joss_files/figure-latex/unnamed-chunk-2-1.pdf) 
+![Protein-protein interaction subnetwork for EGFR, KRAS, and STAT3. CMTM6 was identified as a highly connected hub in the computed subnetwork.\label{fig:ct_plot}](ct_plot_ex.png)
 
 ## Other Features
 
