@@ -3,7 +3,6 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/DavisWeaver/crosstalkr/workflows/R-CMD-check/badge.svg)](https://github.com/DavisWeaver/crosstalkr/actions)
 [![Codecov test coverage](https://codecov.io/gh/DavisWeaver/crosstalkr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/DavisWeaver/crosstalkr?branch=main)
-
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CRAN version](http://www.r-pkg.org/badges/version/crosstalkr)](https://CRAN.R-project.org/package=crosstalkr)
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/crosstalkr)](https://CRAN.R-project.org/package=crosstalkr)
@@ -66,8 +65,7 @@ A more detailed overview of the available functionality is provided in the intro
 vignette(package = "crosstalkr")
 ```
 
-
-More detailed methodology can be found here: "Nibbe et al., An Integrative -omics Approach to Identify Functional Sub-Networks in Human Colorectal Cancer, Comput Biol 6(1): e1000639. doi:10.1371/journal.pcbi.1000639"
+Please use the provided Zenodo DOI to cite. 
 
 # Contact
 
