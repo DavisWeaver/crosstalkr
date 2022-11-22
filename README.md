@@ -5,6 +5,7 @@
 [![Codecov test coverage](https://codecov.io/gh/DavisWeaver/crosstalkr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/DavisWeaver/crosstalkr?branch=main)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7347687.svg)](https://doi.org/10.5281/zenodo.7347687)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 [![CRAN version](http://www.r-pkg.org/badges/version/crosstalkr)](https://CRAN.R-project.org/package=crosstalkr)
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/crosstalkr)](https://CRAN.R-project.org/package=crosstalkr)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FDavisWeaver%2Fcrosstalkr&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
