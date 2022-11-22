@@ -155,6 +155,30 @@ ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
   return(g)
 }
 
+#' Helper function to load requested PPI w/ parameters
+#'
+#' @inheritParams prep_stringdb
+#'
+#' @param union bool
+#' @param intersection bool
+#'
+
+load_ppi <- function(cache, union, intersection, species, min_score, ppi) {
+  if(union & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
+    g <- ppi_union(cache = cache, min_score = min_score)
+  } else if(intersection & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
+    g <- ppi_intersection(cache = cache, min_score = min_score)
+  } else if(ppi == "biogrid" & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) { #first 3 options are only feasible if the species is human
+    g <- prep_biogrid(cache = cache)
+  } else if (ppi == "stringdb") {
+    g <- prep_stringdb(cache = cache, min_score = min_score, species = species)
+  } else {
+    stop("ppi must be either 'biogrid' or 'stringdb'")
+  }
+  return(g)
+}
+
+
 
 #' helper to convert user-inputs to ncbi reference taxonomy.
 #'

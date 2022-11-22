@@ -60,17 +60,8 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
   #check inputs
   if(use_ppi == TRUE){
-    if(union & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
-      g <- ppi_union(cache = cache, min_score = min_score)
-    } else if(intersection & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
-      g <- ppi_intersection(cache = cache, min_score = min_score)
-    } else if(ppi == "biogrid" & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) { #first 3 options are only feasible if the species is human
-      g <- prep_biogrid(cache = cache)
-    } else if (ppi == "stringdb") {
-      g <- prep_stringdb(cache = cache, min_score = min_score, species = species)
-    } else {
-      stop("ppi must be either 'biogrid' or 'stringdb'")
-    }
+    g <- load_ppi(ppi = ppi, species = species, min_score = min_score,
+                  union = union, intersection = intersection)
   } else {
     if(!igraph::is.igraph(g)){
       stop("g must be an igraph object")
@@ -108,4 +99,5 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
   return(df)
 }
+
 

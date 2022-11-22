@@ -25,9 +25,13 @@ Imports:
     ensembldb,
     foreach,
     doParallel,
+    Rcpp,
+    iterators,
     ggplot2,
     EnsDb.Hsapiens.v79, 
     STRINGdb
+LinkingTo: 
+    Rcpp
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
@@ -36,6 +40,10 @@ Suggests:
     ggraph,
     testthat (>= 2.0.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    here,
+    msigdbr
 Config/testthat/edition: 2
 VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)

@@ -10,7 +10,7 @@ final_dist_calc(df_list)
 \item{df_list}{: list of dataframes from foreach loop in bootstrap_null}
 }
 \value{
-a dataframe
+data.frame
 }
 \description{
 This function is called by the high-level function "bootstrap_null".

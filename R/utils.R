@@ -127,6 +127,43 @@ is_entrez <- function(x) {
   }
 }
 
+###Utils for manipulating graph-structured data
+
+#' attach expression values from user-provided expression vector to graph.
+#'
+#' @inheritParams calc_np_all
+#'
+#' @return subgraph of g containing only shared keys with exp and with expression attached.
+
+add_expression <- function(exp, g) {
+  #subset exp and g so they contain the same index values
+  vertices <- as.character(names(igraph::V(g)))
+  keep_vertices <- vertices[vertices %in% names(exp)]
+  exp <- exp[keep_vertices]
+
+  #create new subgraph
+  g <- igraph::induced_subgraph(g, keep_vertices)
+
+  #attach expression as an attribute of that subgraph
+  g <- igraph::set_vertex_attr(g, name = "expression",value = exp)
+
+  return(g)
+}
+
+#' function to get graph neighbors (along with their expression values) for a given gene in a given network g
+#'
+#' just a wrapper around [igraph::neighbors()] for convenience
+#'
+#' @param gene gene to grab neighbors from.
+#' @inheritParams calc_np_all
+#'
+#' @return named numeric vector.
+
+get_neighbors <- function(gene, g) {
+  neighborGenes <- as.vector(igraph::neighbors(g, gene))
+  return(unique(neighborGenes))
+}
+
 
 
 
