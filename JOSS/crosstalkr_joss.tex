@@ -1,0 +1,473 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{lmodern}        % https://github.com/rstudio/rticles/issues/343
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{graphicx}
+
+\title{crosstalkr: an R package for the identification of related nodes
+in biological networks}
+
+\author{
+    Davis T. Weaver
+   \\
+    1, 2 \\
+   \\
+  \texttt{} \\
+   \And
+    Jacob Scott
+   \\
+    1,2 \\
+   \\
+  \texttt{} \\
+  }
+
+% Pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+
+\end{abstract}
+
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+Crosstalkr is designed to facilitate the identification of functional
+subnetworks in graph-structured data. It is a free, open-source R
+package designed to allow users to integrate functional analysis using
+the protein-protein interaction network into existing bioinformatic
+pipelines. Given a set of user-provided seed proteins, crosstalkr will
+identify a group of proteins that have a high affinity for the provided
+seeds. This is accomplished using random walks with restarts, starting
+at the user-provided seed proteins. Affinity scores from a given random
+walk with restarts are compared to a bootstrapped null distribution to
+assess statistical significance. Random walks are implemented using
+sparse matrix multiplication to facilitate fast execution. The default
+behavior evaluates the human interactome. However, users can also
+provide a different graph, allowing for flexible evaluation of graph or
+network-structured data. Further, users can evaluate more than 1000
+non-human protein-protein interaction networks thanks to integration
+with StringDB.
+
+\hypertarget{statement-of-need}{%
+\section{Statement of Need}\label{statement-of-need}}
+
+In the last few decades, interest in graph-based analysis of biological
+networks has grown substantially. Protein-protein interaction networks
+are one of the most common biological networks, and represent the
+molecular relationships between every known protein and every other
+known protein.
+
+Researchers have applied graph search and graph clustering algorithms to
+biological networks in an effort to derive disease-specific subgraphs
+(Nibbe, Koyutürk, and Chance 2010; Chitra, Park, and Raphael 2022;
+Pfeifer et al. 2022) or identify potential drug targets (Weaver et al.
+2021; Martínez et al. 2015). One of the most well-studied algorithms in
+this context is the random walk with restarts. Random walks with
+restarts (RWR) have been used and adapted across disciplines and
+industries for applications ranging from internet search engines to drug
+target identification. (Tong, Faloutsos, and Pan 2006; Bianchini, Gori,
+and Scarselli 2005; Navarro et al. 2017)
+
+There is a growing suite of tools available in R for analyzing
+graph-structured data (details 2022; Gatto and Christoforou 2014),
+including a few R packages that implement RWR (Fang and Gough 2014;
+Valentini 2022). These include the RANKS package, which provides tools
+for performing many graph-based node scoring algorithms.(Valentini
+(2022)). These tools require some understanding of graph data structures
+and ask the user to find, download, and manipulate the relevant
+biological networks into adjacency matrices or igraph objects.
+Crosstalkr compromises some of the flexibility of RANKS to provide an
+optimized, streamlined interface to allow users to integrate
+interactomic analyses into their workflow. While users can interact
+directly with crosstalkr to perform RWR on any graph, the package is
+optimized to facilitate one-line implementation of an algorithm designed
+to identify functional subgraphs of protein-protein interaction networks
+(PPI).
+
+\hypertarget{design-and-data-sources}{%
+\section{Design and Data Sources}\label{design-and-data-sources}}
+
+\hypertarget{compute_crosstalk}{%
+\subsection{compute\_crosstalk}\label{compute_crosstalk}}
+
+The main entrypoint for most users will be the compute\_crosstalk
+function. If users plan to search a supported protein protein
+interaction network, they are only required to provide a vector of seed
+proteins. In this situation, compute\_crosstalk will:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download the requested PPI (or load it from the provided cache)
+\item
+  Process the requested PPI into a sparse adjacency matrix.
+\item
+  Perform a random walk with restart using the user provided seeds to
+  generate affinity scores for every protein in the PPI.
+\item
+  Perform many random walks with restarts from n random seeds with a
+  matching degree distribution to generate a null distribution of
+  affinity score.
+\item
+  Compare the affinity scores to the null distribution to compute an
+  adjusted p-value (using the method specified in p\_adjust)
+\item
+  Remove proteins with an adjusted p-value \textless{}
+  significance\_level
+\end{enumerate}
+
+Users can make use of caching to store processed PPIs and speed up
+future analyses substantially. Users can also make use of parallel
+computing by setting the ncores parameter \textgreater{} 1 A sample
+workflow demonstrating the ease of use is provided below. Here, we
+attempt to determine proteins that are functionally related to EGFR,
+KRAS, PI3K, and STAT3; proteins that are involved in growth signaling in
+cancer cells.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{compute\_crosstalk}\NormalTok{(}\AttributeTok{seed\_proteins =} \FunctionTok{c}\NormalTok{(}\StringTok{"EGFR"}\NormalTok{, }\StringTok{"KRAS"}\NormalTok{,}\StringTok{"STAT3"}\NormalTok{), }
+                        \AttributeTok{cache =} \StringTok{"./data"}\NormalTok{, }\AttributeTok{seed\_name =} \StringTok{"joss\_ex"}\NormalTok{, }\AttributeTok{n =} \DecValTok{1000}\NormalTok{, }
+                        \AttributeTok{significance\_level =} \FloatTok{0.99}\NormalTok{)}
+\NormalTok{df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Z,mean\_p, var\_p, nobs)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice\_max}\NormalTok{(}\AttributeTok{order\_by =}\NormalTok{ affinity\_score, }\AttributeTok{n =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrrr@{}}
+\toprule
+node & seed & affinity\_score & p\_value & adj\_p\_value \\
+\midrule
+\endhead
+STAT3 & yes & 0.2002 & 0 & 0e+00 \\
+EGFR & yes & 0.2001 & 0 & 0e+00 \\
+KRAS & yes & 0.2001 & 0 & 0e+00 \\
+C2orf72 & no & 0.0041 & 0 & 1e-04 \\
+CCDC87 & no & 0.0029 & 0 & 0e+00 \\
+\bottomrule
+\end{longtable}
+
+We also provide a convenience function to quickly plot the returned
+subgraph. Users can specify \texttt{prop\_keep} to improve readability
+by only plotting the top x\% of identified proteins, ranked by affinity
+score.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{prep\_stringdb}\NormalTok{(}\AttributeTok{cache =} \StringTok{"./data"}\NormalTok{)}
+\FunctionTok{png}\NormalTok{(}\AttributeTok{filename =} \StringTok{\textquotesingle{}ct\_plot\_ex.png\textquotesingle{}}\NormalTok{)}
+\NormalTok{crosstalkr}\SpecialCharTok{::}\FunctionTok{plot\_ct}\NormalTok{(df, }\AttributeTok{g=}\NormalTok{g, }\AttributeTok{prop\_keep =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{label\_prop =} \FloatTok{0.2}\NormalTok{)}
+\FunctionTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
+\hypertarget{other-features}{%
+\subsection{Other Features}\label{other-features}}
+
+In pursuit of a one-line interactomic analysis pipeline, we developed
+several convencience functions that users will likely find useful in
+other analyses. For example, the human protein-protein interaction
+network crosstalkr is able to detect and convert between entrez ids,
+uniprot names, and ensemble ids. Users can make use of the
+as\_gene\_symbol function to convert any common representation of gene
+identity into human-readable gene names. In addition, users can make use
+of single-line functions that download and clean PPIs from either
+StringDB or Biogrid. Crosstalkr also ships with a highly optimized
+implementation of the random-walk with restarts algorithm (sparseRWR),
+which users can apply to any graph-structured data.
+
+\hypertarget{data-sources}{%
+\subsection{Data sources}\label{data-sources}}
+
+Users can leverage two high quality PPIs through crosstalkr; StringDB
+and Biogrid (Oughtred et al. 2021; Szklarczyk et al. 2021). Users can
+run their analysis using either of these resources individually or they
+can take the union or intersection of these networks. While Biogrid only
+supports the human PPI, StringDB provides high quality PPIs for more
+than 1500 species (Szklarczyk et al. 2021). Crosstalkr provides a
+user-friendly interface for all of these species.
+
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
+
+We acknowledge contributions from Mark Chance and Mehmet Koyuturk. We
+would also like to acknowledge the dependencies that enable crosstalkr
+(Wickham, François, et al. 2022; details 2022; magrittr) et al. 2022;
+Hester et al. 2022; Bates et al. 2022; Wickham, Hester, et al. 2022;
+Wickham, Girlich, and RStudio 2022; Daniel, Ooi, et al. 2022; Daniel,
+Corporation, et al. 2022; Rainer, Gatto, and Weichenberger 2019) and
+this paper (Xie {[}aut et al. 2022; Wickham, Chang, et al. 2022)
+
+\hypertarget{citations}{%
+\section*{Citations}\label{citations}}
+\addcontentsline{toc}{section}{Citations}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-bates_matrix_2022}{}}%
+Bates, Douglas, Martin Maechler, Mikael Jagan, Timothy A. Davis
+(SuiteSparse and 'cs' C. libraries, notably CHOLMOD AMD, collaborators
+listed in and dir(pattern="\^{}+txt\$", full.names=TRUE, et al. 2022.
+{``Matrix: {Sparse} and {Dense} {Matrix} {Classes} and {Methods}.''}
+\url{https://CRAN.R-project.org/package=Matrix}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-bianchini_inside_2005}{}}%
+Bianchini, Monica, Marco Gori, and Franco Scarselli. 2005. {``Inside
+{PageRank}.''} \emph{ACM Transactions on Internet Technology} 5 (1):
+92--128. \url{https://doi.org/10.1145/1052934.1052938}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-chitra_netmix2_2022}{}}%
+Chitra, Uthsav, Tae Yoon Park, and Benjamin J. Raphael. 2022.
+{``{NetMix2}: {Unifying} {Network} {Propagation} and {Altered}
+{Subnetworks}.''} In \emph{Research in {Computational} {Molecular}
+{Biology}}, 193--208.
+\url{https://doi.org/10.1007/978-3-031-04749-7_12}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-daniel_doparallel_2022}{}}%
+Daniel, Folashade, Microsoft Corporation, Steve Weston, and Dan
+Tenenbaum. 2022. {``{doParallel}: {Foreach} {Parallel} {Adaptor} for the
+'Parallel' {Package}.''}
+\url{https://CRAN.R-project.org/package=doParallel}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-daniel_foreach_2022}{}}%
+Daniel, Folashade, Hong Ooi, Rich Calaway, Microsoft, and Steve Weston.
+2022. {``Foreach: {Provides} {Foreach} {Looping} {Construct}.''}
+\url{https://CRAN.R-project.org/package=foreach}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-details_igraph_2022}{}}%
+details, See AUTHORS file igraph author. 2022. {``Igraph: {Network}
+{Analysis} and {Visualization}.''}
+\url{https://CRAN.R-project.org/package=igraph}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-fang_dnet_2014}{}}%
+Fang, Hai, and Julian Gough. 2014. {``The `Dnet' Approach Promotes
+Emerging Research on Cancer Patient Survival.''} \emph{Genome Medicine}
+6 (8): 64. \url{https://doi.org/10.1186/s13073-014-0064-8}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-gatto_using_2014}{}}%
+Gatto, Laurent, and Andy Christoforou. 2014. {``Using {R} and
+{Bioconductor} for Proteomics Data Analysis.''} \emph{Biochimica Et
+Biophysica Acta (BBA) - Proteins and Proteomics} 1844 (1): 42--51.
+\url{https://doi.org/10.1016/j.bbapap.2013.04.032}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hester_withr_2022}{}}%
+Hester, Jim, Lionel Henry, Kirill Müller, Kevin Ushey, Hadley Wickham,
+Winston Chang, Jennifer Bryan, Richard Cotton, and RStudio. 2022.
+{``Withr: {Run} {Code} '{With}' {Temporarily} {Modified} {Global}
+{State}.''} \url{https://CRAN.R-project.org/package=withr}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-magrittr_magrittr_2022}{}}%
+magrittr), Stefan Milton Bache (Original author and creator of, Hadley
+Wickham, Lionel Henry, and RStudio. 2022. {``Magrittr: {A}
+{Forward}-{Pipe} {Operator} for {R}.''}
+\url{https://CRAN.R-project.org/package=magrittr}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-martinez_drugnet_2015}{}}%
+Martínez, Víctor, Carmen Navarro, Carlos Cano, Waldo Fajardo, and
+Armando Blanco. 2015. {``{DrugNet}: {Network}-Based Drug--Disease
+Prioritization by Integrating Heterogeneous Data.''} \emph{Artificial
+Intelligence in Medicine} 63 (1): 41--49.
+\url{https://doi.org/10.1016/j.artmed.2014.11.003}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-navarro_prophtools_2017}{}}%
+Navarro, Carmen, Victor Martínez, Armando Blanco, and Carlos Cano. 2017.
+{``{ProphTools}: General Prioritization Tools for Heterogeneous
+Biological Networks.''} \emph{GigaScience} 6 (12): 1--8.
+\url{https://doi.org/10.1093/gigascience/gix111}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nibbe_integrative_2010}{}}%
+Nibbe, Rod K., Mehmet Koyutürk, and Mark R. Chance. 2010. {``An
+{Integrative} -Omics {Approach} to {Identify} {Functional}
+{Sub}-{Networks} in {Human} {Colorectal} {Cancer}.''} \emph{PLOS
+Computational Biology} 6 (1): e1000639.
+\url{https://doi.org/10.1371/journal.pcbi.1000639}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-oughtred_biogrid_2021}{}}%
+Oughtred, Rose, Jennifer Rust, Christie Chang, Bobby‐Joe Breitkreutz,
+Chris Stark, Andrew Willems, Lorrie Boucher, et al. 2021. {``The
+{BioGRID} Database: {A} Comprehensive Biomedical Resource of Curated
+Protein, Genetic, and Chemical Interactions.''} \emph{Protein Science :
+A Publication of the Protein Society} 30 (1): 187--200.
+\url{https://doi.org/10.1002/pro.3978}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-pfeifer_gnn-subnet_2022}{}}%
+Pfeifer, Bastian, Afan Secic, Anna Saranti, and Andreas Holzinger. 2022.
+{``{GNN}-{SubNet}: Disease Subnetwork Detection with Explainable {Graph}
+{Neural} {Networks}.''} \emph{bioRxiv}, 2022.01.12.475995.
+\url{https://doi.org/10.1101/2022.01.12.475995}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-rainer_ensembldb_2019}{}}%
+Rainer, Johannes, Laurent Gatto, and Christian X Weichenberger. 2019.
+{``Ensembldb: An {R} Package to Create and Use {Ensembl}-Based
+Annotation Resources.''} \emph{Bioinformatics} 35 (17): 3151--53.
+\url{https://doi.org/10.1093/bioinformatics/btz031}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-szklarczyk_string_2021}{}}%
+Szklarczyk, Damian, Annika L. Gable, Katerina C. Nastou, David Lyon,
+Rebecca Kirsch, Sampo Pyysalo, Nadezhda T. Doncheva, et al. 2021. {``The
+{STRING} Database in 2021: Customizable Protein-Protein Networks, and
+Functional Characterization of User-Uploaded Gene/Measurement Sets.''}
+\emph{Nucleic Acids Research} 49 (D1): D605--12.
+\url{https://doi.org/10.1093/nar/gkaa1074}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-tong_fast_2006}{}}%
+Tong, Hanghang, Christos Faloutsos, and Jia-yu Pan. 2006. {``Fast
+{Random} {Walk} with {Restart} and {Its} {Applications}.''} In
+\emph{Sixth {International} {Conference} on {Data} {Mining}
+({ICDM}'06)}, 613--22. \url{https://doi.org/10.1109/ICDM.2006.70}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-valentini_ranks_2022}{}}%
+Valentini, Giorgio. 2022. {``{RANKS}: {Ranking} of {Nodes} with
+{Kernelized} {Score} {Functions}.''}
+\url{https://CRAN.R-project.org/package=RANKS}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-weaver_network_2021}{}}%
+Weaver, Davis T., Kathleen I. Pishas, Drew Williamson, Jessica
+Scarborough, Stephen L. Lessnick, Andrew Dhawan, and Jacob G. Scott.
+2021. {``Network Potential Identifies Therapeutic {miRNA} Cocktails in
+{Ewing} Sarcoma.''} \emph{PLOS Computational Biology} 17 (10): e1008755.
+\url{https://doi.org/10.1371/journal.pcbi.1008755}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wickham_ggplot2_2022}{}}%
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen,
+Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey
+Dunnington, and RStudio. 2022. {``Ggplot2: {Create} {Elegant} {Data}
+{Visualisations} {Using} the {Grammar} of {Graphics}.''}
+\url{https://CRAN.R-project.org/package=ggplot2}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wickham_dplyr_2022}{}}%
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and
+RStudio. 2022. {``Dplyr: {A} {Grammar} of {Data} {Manipulation}.''}
+\url{https://CRAN.R-project.org/package=dplyr}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wickham_tidyr_2022}{}}%
+Wickham, Hadley, Maximilian Girlich, and RStudio. 2022. {``Tidyr: {Tidy}
+{Messy} {Data}.''} \url{https://CRAN.R-project.org/package=tidyr}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wickham_readr_2022}{}}%
+Wickham, Hadley, Jim Hester, Romain Francois, Jennifer Bryan, Shelby
+Bearrows, RStudio, https://github com/mandreyel/ (mio library), Jukka
+Jylänki (grisu3 implementation), and Mikkel Jørgensen (grisu3
+implementation). 2022. {``Readr: {Read} {Rectangular} {Text} {Data}.''}
+\url{https://CRAN.R-project.org/package=readr}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-xie__aut_knitr_2022}{}}%
+Xie {[}aut, Yihui, cre, Abhraneel Sarma, Adam Vogt, Alastair Andrew,
+Alex Zvoleff, Amar Al-Zubaidi, et al. 2022. {``Knitr: {A}
+{General}-{Purpose} {Package} for {Dynamic} {Report} {Generation} in
+{R}.''} \url{https://CRAN.R-project.org/package=knitr}.
+
+\end{CSLReferences}
+
+\bibliographystyle{unsrt}
+\bibliography{paper.bib}
+
+
+\end{document}
