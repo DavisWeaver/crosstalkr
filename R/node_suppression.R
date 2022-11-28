@@ -13,7 +13,6 @@
 node_repression <- function(g, v_rm, exp, state_function = calc_np_all,
                             neighbors_only = TRUE, ...) {
 
-
   #add expression now to fix indexing
   g <- add_expression(exp=exp, g=g)
   #grab all vertices of g

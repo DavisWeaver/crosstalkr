@@ -11,13 +11,25 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FDavisWeaver%2Fcrosstalkr&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 <!-- badges: end -->
 
-R package for the identification of functionally important subnetworks 
+# R package for the analysis of biological networks. 
+
+Crosstalkr provides a unified toolkit for drug target and disease subnetwork identification. Crosstalkr enables users to download and leverage high-quality protein-protein interaction networks from online repositories. 
+Users can then filter these large networks into manageable subnetworks. 
+Finally, users can perform in-silico repression experiments to assess the relative importance of nodes in their network.
+
+## PPI ingestion and customization
+
+## Graph Filtering Methods
 
 Crosstalkr provides a general implementation of a random-walk with restarts on graph structured data. 
 We also provide user-friendly implementations of the common use-case of using random-walk with restarts to identify subnetworks of biological protein-protein interaction databases. 
 Given a user-defined set of seed proteins, the main `compute_crosstalk` function will compute affinity scores for all other proteins in the network. 
 It will then compute a null distribution using a permutation test and compare the computed affinity scores to the null distribution to identify proteins with a statistically significant association to the user-defined seed-proteins.
 Thanks to integration with stringdb, users can evaluate biological networks from 1540 different species. For a list of supported species - just call:
+
+## Node ranking via in-silico repression
+
+## Other functionality
 
 ```
 crosstalkr::supported_species()

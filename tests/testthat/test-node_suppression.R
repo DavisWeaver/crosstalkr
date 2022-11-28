@@ -1,4 +1,4 @@
-load(system.file("test_data/toy_graph.Rda", package = "disruptr"))
+load(system.file("test_data/toy_graph.Rda", package = "crosstalkr"))
 #np_all
 seeds <- c("OLR1", "APP", "VAV2", "ITGAV", "JAG1", "APOH")
 toy_exp <- c(4.9, 9.9, 1.0, 0.2, 7.5, 8.4)
