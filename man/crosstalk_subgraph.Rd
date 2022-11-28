@@ -4,7 +4,7 @@
 \alias{crosstalk_subgraph}
 \title{Helper function to generate subgraph from crosstalk_df output of \code{compute_crosstalk}}
 \usage{
-crosstalk_subgraph(crosstalk_df, g, seed_proteins)
+crosstalk_subgraph(crosstalk_df, g, seed_proteins, tg = TRUE)
 }
 \arguments{
 \item{crosstalk_df}{a dataframe containing the results of \code{compute_crosstalk}}
@@ -12,6 +12,8 @@ crosstalk_subgraph(crosstalk_df, g, seed_proteins)
 \item{g}{igraph network object.}
 
 \item{seed_proteins}{user defined seed proteins}
+
+\item{tg}{bool do we want to tidy the graph for plotting?}
 }
 \value{
 a tidygraph structure containing information about the crosstalkr subgraph

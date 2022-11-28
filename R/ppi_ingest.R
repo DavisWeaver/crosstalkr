@@ -161,6 +161,7 @@ ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
 #'
 #' @param union bool
 #' @param intersection bool
+#' @param ppi str
 #'
 
 load_ppi <- function(cache, union, intersection, species, min_score, ppi) {

@@ -16,6 +16,8 @@ load_ppi(cache, union, intersection, species, min_score, ppi)
 \item{species}{species code either using latin species name or taxon id}
 
 \item{min_score}{minimum connectivity score for each edge in the network.}
+
+\item{ppi}{str}
 }
 \description{
 Helper function to load requested PPI w/ parameters

@@ -95,6 +95,7 @@ check_crosstalk <- function(crosstalk_df) {
 #'
 #' @inheritParams plot_ct
 #' @inheritParams compute_crosstalk
+#' @param tg bool do we want to tidy the graph for plotting?
 #'
 #' @return a tidygraph structure containing information about the crosstalkr subgraph
 #'
@@ -106,22 +107,25 @@ check_crosstalk <- function(crosstalk_df) {
 #' }
 #' @export
 
-crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins) {
+crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins, tg= TRUE) {
   #verify that crosstalk_df is a valid compute_crosstalk output
   check_crosstalk(crosstalk_df = crosstalk_df)
 
   #if g isn't an igraph object this will fly an error.
   g <- igraph::induced_subgraph(g, v = crosstalk_df$node)
 
+  if(tg) {
+    g <- g %>% tidygraph::as_tbl_graph() %>%
+      tidygraph::mutate(
+        degree = igraph::degree(.),
+        degree_rank = dplyr::percent_rank(.data$degree),
+        seed_label = ifelse(.data$name %in% seed_proteins, "seed", "crosstalker"))
+  }
   #we only want to keep edges that attach to a seed protein - is this really true?
   #seed_edges <- igraph::E(g)[ from(seed_proteins)]
 
   #igraph::subgraph.edges(g, eids = seed_edges) %>%
-  g <-  g %>% tidygraph::as_tbl_graph() %>%
-    tidygraph::mutate(
-      degree = igraph::degree(.),
-      degree_rank = dplyr::percent_rank(.data$degree),
-      seed_label = ifelse(.data$name %in% seed_proteins, "seed", "crosstalker"))
+  return(g)
 
 }
 

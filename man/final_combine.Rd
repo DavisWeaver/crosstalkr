@@ -8,9 +8,6 @@ final_combine(x)
 }
 \arguments{
 \item{x}{aggregated info}
-
-\item{...}{arbitrary number of tasks returned by the inner foreach loop of
-compute_null_dnp}
 }
 \value{
 data.frame

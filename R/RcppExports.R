@@ -2,7 +2,7 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 fcalc_np <- function(c_i, c_j) {
-    .Call('_crosstalkr_fcalc_np', PACKAGE = 'crosstalkr', c_i, c_j)
+    .Call(`_crosstalkr_fcalc_np`, c_i, c_j)
 }
 
 #' Function to calculate the network potential for vertices v
@@ -13,6 +13,6 @@ fcalc_np <- function(c_i, c_j) {
 #' @param exp named vector of expression for each node in vertices
 #'
 fcalc_np_all <- function(neighbors, vertices, v, exp) {
-    .Call('_crosstalkr_fcalc_np_all', PACKAGE = 'crosstalkr', neighbors, vertices, v, exp)
+    .Call(`_crosstalkr_fcalc_np_all`, neighbors, vertices, v, exp)
 }
 

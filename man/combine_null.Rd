@@ -8,11 +8,6 @@ combine_null(x)
 }
 \arguments{
 \item{x}{aggregated data structure}
-
-\item{y}{task returned by inner foreach loop of compute_null}
-
-\item{...}{arbitrary number of tasks returned by the inner foreach loop of
-compute_null_dnp}
 }
 \value{
 data.frame

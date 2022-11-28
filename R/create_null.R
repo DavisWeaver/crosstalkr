@@ -320,7 +320,7 @@ compute_null_dnp <- function(cache = NULL, df, ppi = "biogrid", n,
   doParallel::registerDoParallel(cl)
   null_df <-
     foreach::foreach(j = iterators::iter(df_list),
-                     .packages = "disruptr",
+                     .packages = "crosstalkr",
                      .combine = "rbind"
     ) %dopar% {
 
@@ -404,10 +404,6 @@ get_topn <- function(df, n_genes) {
 #' .combine function for compute_null foreach looping structure
 #'
 #' @param x aggregated data structure
-#' @param y task returned by inner foreach loop of compute_null
-#'
-#' @param ... arbitrary number of tasks returned by the inner foreach loop of
-#'            compute_null_dnp
 #' @importFrom magrittr %>%
 #' @export
 #' @returns data.frame
@@ -427,8 +423,6 @@ combine_null <- function(x) {
 #' final .combine function to run in compute_null_dnp foreach looping structure
 #'
 #' @param x aggregated info
-#' @param ... arbitrary number of tasks returned by the inner foreach loop of
-#'            compute_null_dnp
 #' @importFrom magrittr %>%
 #' @export
 #'

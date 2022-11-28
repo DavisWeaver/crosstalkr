@@ -1,3 +1,4 @@
+skip("relies on system file")
 load(system.file("test_data/toy_graph.Rda", package = "crosstalkr"))
 
 #np_all

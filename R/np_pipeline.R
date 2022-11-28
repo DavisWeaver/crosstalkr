@@ -56,7 +56,7 @@ compute_np <- function(cache = NULL, experiment_name, ppi = "biogrid", min_score
 
 
       #add np to df_i for that cell line
-      disruptr::calc_np_i(df_i, g = g)
+      crosstalkr::calc_np_i(df_i, g = g)
 
     }
   #close out parallel execution
@@ -112,7 +112,7 @@ compute_dnp <- function(cache = NULL, df, experiment_name, ppi, ncores = 1,
         dplyr::filter(.data$sample_name == samples[i])
 
       #add dnp to df_i for that cell line
-      disruptr::calc_dnp_i(df_i, g = g)
+      crosstalkr::calc_dnp_i(df_i, g = g)
 
     }
   #close out parallel execution
