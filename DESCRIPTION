@@ -26,7 +26,6 @@ Imports:
     foreach,
     doParallel,
     ggplot2,
-    EnsDb.Hsapiens.v79, 
     STRINGdb
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -36,6 +35,7 @@ Suggests:
     ggraph,
     testthat (>= 2.0.0),
     knitr,
-    rmarkdown
+    rmarkdown, 
+    EnsDb.Hsapiens.v79
 Config/testthat/edition: 2
 VignetteBuilder: knitr
