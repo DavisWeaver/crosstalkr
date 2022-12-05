@@ -25,15 +25,17 @@ output: rticles::arxiv_article
 
 # Summary
 
-Crosstalkr is designed to facilitate the identification of functional subnetworks in graph-structured data. 
-It is a free, open-source R package designed to allow users to integrate functional analysis using the protein-protein interaction network into existing bioinformatic pipelines. 
-Given a set of user-provided seed proteins, crosstalkr will identify a group of proteins that have a high affinity for the provided seeds. 
-This is accomplished using random walks with restarts, starting at the user-provided seed proteins. 
+Crosstalkr provides a unified toolkit for drug target and disease subnetwork identification. 
+First, Crosstalkr enables users to download and leverage high-quality protein-protein interaction networks from online repositories. 
+Users can then filter these large networks into manageable subnetworks using a variety of methods.  
+For example, network filtration can be done using random walks with restarts, starting at the user-provided seed proteins. 
 Affinity scores from a given random walk with restarts are compared to a bootstrapped null distribution to assess statistical significance. 
 Random walks are implemented using sparse matrix multiplication to facilitate fast execution. 
+Next, users can perform in-silico repression experiments to assess the relative importance of nodes in their network. 
+At this step, users can supply protein or gene expression data to make node rankings more meaningful. 
 The default behavior evaluates the human interactome.
-However, users can also provide a different graph, allowing for flexible evaluation of graph or network-structured data. 
-Further, users can evaluate more than 1000 non-human protein-protein interaction networks thanks to integration with StringDB.
+However, users can evaluate more than 1000 non-human protein-protein interaction networks thanks to integration with StringDB.
+It is a free, open-source R package designed to allow users to integrate functional analysis using the protein-protein interaction network into existing bioinformatic pipelines. 
 
 ```{r setup, include=FALSE}
 library(crosstalkr)
