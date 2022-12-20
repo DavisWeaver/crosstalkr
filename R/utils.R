@@ -129,6 +129,33 @@ is_entrez <- function(x) {
 
 ###Utils for manipulating graph-structured data
 
+#' Attach a generic user-provided value to graph
+#'
+#' @inheritParams calc_np_all
+#' @param val named numeric vector where the names correspond to vertices in g
+#' @param val_name str key for val
+#' @return subgraph of g containing only shared keys with val and val attached
+#'
+#' @export
+
+add_value <- function(val, g, val_name = "value") {
+  vertices <- as.character(names(igraph::V(g)))
+  if(length(vertices) < 1) {
+    vertices <- as.character(1:length(igraph::V(g)))
+  }
+  keep_vertices <- vertices[vertices %in% names(val)]
+  val <- val[keep_vertices]
+
+  #create new subgraph
+  g <- igraph::induced_subgraph(g, keep_vertices)
+
+  #attach expression as an attribute of that subgraph
+  g <- igraph::set_vertex_attr(g, name = val_name,value = val)
+  return(g)
+}
+
+
+
 #' attach expression values from user-provided expression vector to graph.
 #'
 #' @inheritParams calc_np_all
@@ -137,15 +164,7 @@ is_entrez <- function(x) {
 
 add_expression <- function(exp, g) {
   #subset exp and g so they contain the same index values
-  vertices <- as.character(names(igraph::V(g)))
-  keep_vertices <- vertices[vertices %in% names(exp)]
-  exp <- exp[keep_vertices]
-
-  #create new subgraph
-  g <- igraph::induced_subgraph(g, keep_vertices)
-
-  #attach expression as an attribute of that subgraph
-  g <- igraph::set_vertex_attr(g, name = "expression",value = exp)
+  g <-add_value(val = exp, g = g, val_name = "expression")
 
   return(g)
 }

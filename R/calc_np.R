@@ -61,13 +61,28 @@ calc_np_all_legacy <- function(exp, g, v = as.character(names(igraph::V(g))), ne
 #'
 #' @export
 
-calc_np_all <- function(exp, g, v = as.character(names(igraph::V(g))),
+calc_np_all <- function(exp, g, v ="default",
                          neighbors = NULL) {
+  #define list of vertices to calculate np for.
+  if(v == "default") {
+    v <- as.character(names(igraph::V(g)))
+    if(length(v) < 1) {
+      v <- as.character(1:length(igraph::V(g)))
+    }
+  }
+
+  if(is.null(names(exp))) {
+    names(exp) <- as.character(1:length(exp))
+  }
+
+  #Define the total list of vertices
+  vertices <- as.character(names(igraph::V(g)))
+  if(length(vertices) < 1) {
+    vertices <- as.character(1:length(igraph::V(g)))
+  }
 
   #first add expression to the subgraph.
   g <- add_expression(exp = exp, g = g)
-
-  vertices <- as.character(names(igraph::V(g))) #in most cases this will be the same as `v`
 
   # remove any names of exp that are not in the graph.
   exp <- exp[names(exp) %in% vertices]

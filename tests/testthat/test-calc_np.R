@@ -48,6 +48,3 @@ test_that("calc_np returns expected output", {
   expect_true(is.infinite(calc_np(c_i = 1, c_j = 0)))
 })
 
-
-
-

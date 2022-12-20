@@ -2,7 +2,7 @@
 % Please edit documentation in R/filter.R
 \name{gfilter.ct}
 \alias{gfilter.ct}
-\title{method to filter the graph based on parameters passed to compute_crosstalk}
+\title{Method to filter the graph based on parameters passed to compute_crosstalk}
 \usage{
 gfilter.ct(seeds, ...)
 }
@@ -13,5 +13,5 @@ gfilter.ct(seeds, ...)
 igraph object
 }
 \description{
-method to filter the graph based on parameters passed to compute_crosstalk
+Method to filter the graph based on parameters passed to compute_crosstalk
 }

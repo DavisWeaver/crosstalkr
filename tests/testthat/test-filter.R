@@ -34,4 +34,33 @@ test_that("compute crosstalk works for non-human vertices", {
   expect_true(is.data.frame(compute_crosstalk("511145.b0003", species = 511145)))
 })
 
+test_that("gfilter.ct returns the expected subnetwork", {
+  g <- gfilter.ct(seeds=c(1,3,5,8,10), g=g, use_ppi=FALSE, n =100)
+  expect_true(length(igraph::V(g)) < 1000)
+  expect_true(length(igraph::V(g)) >= 5) #at least the seeds should have come up as significant
+})
+
+g <- igraph::sample_gnp(n = 1000, p = 300/1000)
+val <- sample.int(500, size = 1000, replace = TRUE)
+names(val) <- 1:1000
+test_that("gfilter.value returns the expected number of vertices", {
+  obj = gfilter.value(g=g, val=val, n = 100, ppi = FALSE, desc = TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  obj = gfilter.value(g=g, val = 1:1000, n=100, ppi = FALSE, desc=TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "value")
+  expect_true(all(val >= 900))
+})
+
+nps <- abs(calc_np_all(exp=val, g = g))
+nps <- sort(nps, decreasing=TRUE)
+min <- min(nps[1:100])
+test_that("gfilter.np returns the expected number of vertices", {
+  obj = gfilter.np(g=g,  use_ppi = FALSE, val=val, n = 100, desc = TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  obj = gfilter.np(g=g, val = 1:1000, n=100, use_ppi = FALSE, desc=TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "np")
+  expect_true(all(val >= min))
+})
 

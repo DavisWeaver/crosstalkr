@@ -108,7 +108,30 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 }
 
 
-#'method to filter the graph based on parameters passed to compute_crosstalk
+#' Generic function to filter either an igraph object or a PPI network
+#'
+#' @param method str, supported methods can be found by calling [crosstalkr::supported_filter_methods()]
+#' @param g igraph object
+#' @param val named numeric vector - some measure of node state (i.e. gene expression in the case of a PPI)
+#' @param use_ppi bool - should we use a ppi from online repository?
+#' @param igraph_method bool - is the user-provided method an igraph node scoring function?
+#' @param n int - number of nodes to include in the returned subgraph
+#' @param desc bool - do we want the top or bottom examples of the provided metri
+#' @param ... additional params passed to [load_ppi()]
+#' @export
+#' @returns igraph
+#' @seealso [gfilter.ct], [gfilter.np], [gfilter.igraph_method]
+gfilter <- function(method, g, val, use_ppi, igraph_method, n, desc, ...) {
+  select_method <- function(method) {
+
+  }
+  func = select_method(method)
+
+  g <- func(val = val, use_ppi=use_ppi, g=g, igraph_method=igraph_method,n=n, desc=desc, ...)
+  return(g)
+
+}
+#' Method to filter the graph based on parameters passed to compute_crosstalk
 #'
 #' @inheritParams compute_crosstalk
 #' @param ... additional arguments passed to [compute_crosstalk()]
@@ -117,12 +140,74 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 #' @export
 gfilter.ct <- function(seeds, ...) {
   out <- compute_crosstalk(seed_proteins = seeds, return_g = TRUE, ...)
-  g <- crosstalk_subgraph(out[[1]], g=out[[2]], seed_proteins = seeds)
+  g <- crosstalk_subgraph(out[[1]], g=out[[2]], seed_proteins = seeds,tg = FALSE)
   return(g)
 }
 
-#' Method to filter graph based on expression network
-gfilter.expression <- function() {
+#' Method to filter graph based on user provided value
+#' @inheritParams gfilter
+#' @param val_name str
+#' @returns igraph
+#' @export
+
+gfilter.value <- function(g, val, use_ppi = TRUE, n = 500, val_name = "value", desc, ...) {
+  if(use_ppi) {
+    g <- load_ppi(...)
+  }
+
+  if(is.null(names(val))) {
+    names(val) <- 1:length(val)
+  }
+
+  #k
+  val = sort(val, decreasing=desc)
+  if(n > length(val)) {
+    val_keep = val
+  } else {
+    val_keep = val[1:n]
+  }
+
+  #This function actually does the filtering
+  g <- add_value(val = val_keep, val_name = val_name, g = g)
+
+  return(g)
+
+}
+
+#' Method to filter graph based on network potential values.
+#'
+#' convenience function - it just calls gfilter.value after computing np
+#'
+#' For more information on network potential, see \href{https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1008755}{related paper}
+#' @inheritParams gfilter
+#' @returns igraph
+#' @export
+gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
+  if(use_ppi) {
+    g <- load_ppi(...)
+  }
+  np <- abs(calc_np_all(g=g, exp=val))
+  g <- gfilter.value(g=g, val = np, val_name = "np", use_ppi=use_ppi, n=n, desc=desc)
+  return(g)
+}
+
+#' Method to filter graph based on an igraph method that scores verticies.
+#'
+#' Tested methods include: [igraph::betweenness()],
+#' @inheritParams gfilter
+#'
+#' @returns igraph
+#' @export
+gfilter.igraph_method <- function(g, ppi = TRUE, method, n = 500, desc, ...) {
+  if(ppi) {
+    g <- load_ppi(...)
+  }
+}
+
+#' return all supported filter methods with their descriptions
+#' @export
+#' @returns data.frame
+supported_filter_methods <- function() {
 
 }
 
