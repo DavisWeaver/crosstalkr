@@ -12,7 +12,7 @@ dist_calc(df, seed_proteins)
 \item{seed_proteins}{user defined seed proteins}
 }
 \value{
-a data frame containing summary statistics for the computed null distribution
+data.frame containing summary statistics for the computed null distribution
 }
 \description{
 This function is called by the high-level function "bootstrap_null".

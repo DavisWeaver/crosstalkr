@@ -67,5 +67,3 @@ test_that("bootstrap_null runs when you provide invalid vertex ids", {
 #     expect_equal(sum(test_seeds == i)/ length(test_seeds), 0, tolerance = 0)
 #   }
 # })
-
-

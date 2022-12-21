@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_null.R
 \name{bootstrap_null}
 \alias{bootstrap_null}
-\title{Bootstrap null distribution for significance testing}
+\title{Bootstrap null distribution for RWR}
 \usage{
 bootstrap_null(
   seed_proteins,
