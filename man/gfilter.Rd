@@ -19,9 +19,11 @@ gfilter(method, g, val, use_ppi, igraph_method, n, desc, ...)
 
 \item{n}{int - number of nodes to include in the returned subgraph}
 
-\item{desc}{bool - do we want the top or bottom examples of the provided metri}
+\item{desc}{bool - do we want the top or bottom examples of the provided metric}
 
 \item{...}{additional params passed to \code{\link[=load_ppi]{load_ppi()}}}
+
+\item{val_name}{str}
 }
 \value{
 igraph

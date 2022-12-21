@@ -188,7 +188,7 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
     g <- load_ppi(...)
   }
   np <- abs(calc_np_all(g=g, exp=val))
-  g <- gfilter.value(g=g, val = np, val_name = "np", use_ppi=use_ppi, n=n, desc=desc, use_ppi = FALSE) #we've already loaded the ppi if use_ppi = TRUE
+  g <- gfilter.value(g=g, val = np, val_name = "np", n=n, desc=desc, use_ppi = FALSE) #we've already loaded the ppi if use_ppi = TRUE
   return(g)
 }
 

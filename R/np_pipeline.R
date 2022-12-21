@@ -148,7 +148,7 @@ tidy_expression <- function(df) {
   }
 
   #pivot longer
-  df <- df %>% tidyr::pivot_longer(-.data$gene_name,
+  df <- df %>% tidyr::pivot_longer(-"gene_name",
                                    names_to = "sample_name",
                                    values_to = "expression")
 

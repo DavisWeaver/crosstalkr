@@ -68,7 +68,7 @@ test_that("gfilter.np returns the expected number of vertices", {
 
 ##Starting with igraph::degree
 degree <- igraph::degree(g)
-degree <- sort(degree, descreasing=TRUE)
+degree <- sort(degree, decreasing=TRUE)
 min <- min(degree[1:100])
 test_that("gfilter.igraph_method works for degree", {
   obj = gfilter.igraph_method(g=g,  use_ppi = FALSE, method=igraph::degree,

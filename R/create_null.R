@@ -311,7 +311,7 @@ compute_null_dnp <- function(cache = NULL, df, ppi = "biogrid", n,
   v_df = get_topn(df =df, n_genes = n_genes)
 
   #get rid of dnp
-  df <- df %>% dplyr::select(-.data$dnp)
+  df <- df %>% dplyr::select(-"dnp")
   #do we want to do a grouped split on sample and then iterate directly through the list? probably
   df_list <- df %>% dplyr::group_by(.data$sample_name) %>%
     dplyr::group_split()
@@ -396,9 +396,9 @@ get_random_graph <- function(g) {
 get_topn <- function(df, n_genes) {
   df %>% dplyr::group_by(.data$sample_name) %>%
     dplyr::slice_max(order_by = .data$dnp, n = n_genes) %>%
-    dplyr::select(.data$gene_name, .data$sample_name) %>%
-    tidyr::pivot_wider(names_from = .data$sample_name,
-                       values_from = .data$gene_name,
+    dplyr::select("gene_name", "sample_name") %>%
+    tidyr::pivot_wider(names_from = "sample_name",
+                       values_from = "gene_name",
                        values_fn = list)
 }
 #' .combine function for compute_null foreach looping structure

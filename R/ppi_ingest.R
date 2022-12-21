@@ -201,7 +201,7 @@ to_taxon_id <- function(species) {
                             .data$string_name == species |
                               .data$ncbi_name == species) %>%
     dplyr::rename(taxon_id = "#taxon_id") %>%
-    dplyr::select(.data$taxon_id) %>%
+    dplyr::select("taxon_id") %>%
     unlist()
 
   if(is.na(taxon_id[1])) {

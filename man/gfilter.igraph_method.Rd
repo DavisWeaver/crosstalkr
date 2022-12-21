@@ -2,9 +2,9 @@
 % Please edit documentation in R/filter.R
 \name{gfilter.igraph_method}
 \alias{gfilter.igraph_method}
-\title{Method to filter graph based on an igraph method that scores verticies.}
+\title{Method to filter graph based on any igraph method that scores verticies.}
 \usage{
-gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, ...)
+gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, val_name, ...)
 }
 \arguments{
 \item{g}{igraph object}
@@ -15,13 +15,15 @@ gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, ...)
 
 \item{n}{int - number of nodes to include in the returned subgraph}
 
-\item{desc}{bool - do we want the top or bottom examples of the provided metri}
+\item{desc}{bool - do we want the top or bottom examples of the provided metric}
 
-\item{...}{additional params passed to \code{\link[=load_ppi]{load_ppi()}}}
+\item{val_name}{str}
+
+\item{...}{additional parameters passed to load_ppi or the provided igraph method}
 }
 \value{
 igraph
 }
 \description{
-For a list of supported methods, see \link{(supported_filter_methods)}
+Method to filter graph based on any igraph method that scores verticies.
 }
