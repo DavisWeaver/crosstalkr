@@ -23,5 +23,5 @@ gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, ...)
 igraph
 }
 \description{
-Tested methods include: \code{\link[igraph:betweenness]{igraph::betweenness()}},
+For a list of supported methods, see \link{(supported_filter_methods)}
 }

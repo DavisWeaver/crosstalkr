@@ -116,11 +116,13 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 #' @param use_ppi bool - should we use a ppi from online repository?
 #' @param igraph_method bool - is the user-provided method an igraph node scoring function?
 #' @param n int - number of nodes to include in the returned subgraph
-#' @param desc bool - do we want the top or bottom examples of the provided metri
+#' @param desc bool - do we want the top or bottom examples of the provided metric
+#' @param val_name str
 #' @param ... additional params passed to [load_ppi()]
 #' @export
 #' @returns igraph
 #' @seealso [gfilter.ct], [gfilter.np], [gfilter.igraph_method]
+#'
 gfilter <- function(method, g, val, use_ppi, igraph_method, n, desc, ...) {
   select_method <- function(method) {
 
@@ -146,7 +148,6 @@ gfilter.ct <- function(seeds, ...) {
 
 #' Method to filter graph based on user provided value
 #' @inheritParams gfilter
-#' @param val_name str
 #' @returns igraph
 #' @export
 
@@ -187,30 +188,23 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
     g <- load_ppi(...)
   }
   np <- abs(calc_np_all(g=g, exp=val))
-  g <- gfilter.value(g=g, val = np, val_name = "np", use_ppi=use_ppi, n=n, desc=desc)
+  g <- gfilter.value(g=g, val = np, val_name = "np", use_ppi=use_ppi, n=n, desc=desc, use_ppi = FALSE) #we've already loaded the ppi if use_ppi = TRUE
   return(g)
 }
 
-#' Method to filter graph based on an igraph method that scores verticies.
+#' Method to filter graph based on any igraph method that scores verticies.
 #'
-#' For a list of supported methods, see [(supported_filter_methods)]
 #' @inheritParams gfilter
-#'
+#' @param ... additional parameters passed to load_ppi or the provided igraph method
 #' @returns igraph
 #' @export
-gfilter.igraph_method <- function(g, use_ppi = TRUE, method, n = 500, desc, ...) {
+gfilter.igraph_method <- function(g, use_ppi = TRUE, method, n = 500, desc, val_name, ...) {
   if(use_ppi) {
     g <- load_ppi(...)
   }
   val <- method(g, ...)
-
-}
-
-#' return all supported filter methods with their descriptions
-#' @export
-#' @returns data.frame
-supported_filter_methods <- function() {
-
+  g <- gfilter.value(g=g, val=val, val_name = val_name, n=n, use_ppi = FALSE, desc = desc) #we've already loaded the ppi if use_ppi = TRUE
+  return(g)
 }
 
 

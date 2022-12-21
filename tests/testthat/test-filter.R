@@ -64,9 +64,30 @@ test_that("gfilter.np returns the expected number of vertices", {
   expect_true(all(val >= min))
 })
 
-
 ####Now we'll repeat the trick above for various node ranking igraph methods###
 
 ##Starting with igraph::degree
+degree <- igraph::degree(g)
+degree <- sort(degree, descreasing=TRUE)
+min <- min(degree[1:100])
+test_that("gfilter.igraph_method works for degree", {
+  obj = gfilter.igraph_method(g=g,  use_ppi = FALSE, method=igraph::degree,
+                              n = 100, desc = TRUE, val_name = "degree")
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "degree")
+  expect_true(all(val >= min))
+})
 
+##now igraph::betweenness
+between <- igraph::betweenness(g)
+between <- rev(sort(between))
+min <- min(between[1:100])
+test_that("gfilter.igraph_method works for degree", {
+  obj = gfilter.igraph_method(g=g,  use_ppi = FALSE, method=igraph::betweenness,
+                              n = 100, desc = TRUE, val_name = "betweenness")
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "betweenness")
+  expect_true(all(val >= min))
+})
 
+##now igraph::
