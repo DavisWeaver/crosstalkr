@@ -4,14 +4,14 @@
 \alias{gfilter.np}
 \title{Method to filter graph based on network potential values.}
 \usage{
-gfilter.np(g, val, ppi = TRUE, n = 500, desc, ...)
+gfilter.np(g, val, use_ppi = TRUE, n = 500, desc, ...)
 }
 \arguments{
 \item{g}{igraph object}
 
 \item{val}{named numeric vector - some measure of node state (i.e. gene expression in the case of a PPI)}
 
-\item{ppi}{bool - should we use a ppi from online repository?}
+\item{use_ppi}{bool - should we use a ppi from online repository?}
 
 \item{n}{int - number of nodes to include in the returned subgraph}
 

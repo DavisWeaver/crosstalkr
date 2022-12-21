@@ -4,7 +4,7 @@
 \alias{calc_np_all}
 \title{function to calculate the network potential for each protein in a user-provided vector - cpp internal version}
 \usage{
-calc_np_all(exp, g, v = as.character(names(igraph::V(g))), neighbors = NULL)
+calc_np_all(exp, g, v = "default", neighbors = NULL)
 }
 \arguments{
 \item{exp}{expression vector - assumed to be a named vector where the values are expression and the names are the gene name}

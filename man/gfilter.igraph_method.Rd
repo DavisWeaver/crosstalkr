@@ -4,12 +4,12 @@
 \alias{gfilter.igraph_method}
 \title{Method to filter graph based on an igraph method that scores verticies.}
 \usage{
-gfilter.igraph_method(g, ppi = TRUE, method, n = 500, desc, ...)
+gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, ...)
 }
 \arguments{
 \item{g}{igraph object}
 
-\item{ppi}{bool - should we use a ppi from online repository?}
+\item{use_ppi}{bool - should we use a ppi from online repository?}
 
 \item{method}{str, supported methods can be found by calling \code{\link[=supported_filter_methods]{supported_filter_methods()}}}
 

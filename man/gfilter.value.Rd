@@ -4,16 +4,18 @@
 \alias{gfilter.value}
 \title{Method to filter graph based on user provided value}
 \usage{
-gfilter.value(g, val, ppi = TRUE, n = 500, desc, ...)
+gfilter.value(g, val, use_ppi = TRUE, n = 500, val_name = "value", desc, ...)
 }
 \arguments{
 \item{g}{igraph object}
 
 \item{val}{named numeric vector - some measure of node state (i.e. gene expression in the case of a PPI)}
 
-\item{ppi}{bool - should we use a ppi from online repository?}
+\item{use_ppi}{bool - should we use a ppi from online repository?}
 
 \item{n}{int - number of nodes to include in the returned subgraph}
+
+\item{val_name}{str}
 
 \item{desc}{bool - do we want the top or bottom examples of the provided metri}
 

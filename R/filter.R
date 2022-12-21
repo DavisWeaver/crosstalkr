@@ -133,7 +133,7 @@ gfilter <- function(method, g, val, use_ppi, igraph_method, n, desc, ...) {
 }
 #' Method to filter the graph based on parameters passed to compute_crosstalk
 #'
-#' @inheritParams compute_crosstalk
+#' @param seeds vector (str or numeric) user provided vertex ids to use as seeds in the random walk with restarts
 #' @param ... additional arguments passed to [compute_crosstalk()]
 #'
 #' @return igraph object
@@ -198,8 +198,8 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
 #'
 #' @returns igraph
 #' @export
-gfilter.igraph_method <- function(g, ppi = TRUE, method, n = 500, desc, ...) {
-  if(ppi) {
+gfilter.igraph_method <- function(g, use_ppi = TRUE, method, n = 500, desc, ...) {
+  if(use_ppi) {
     g <- load_ppi(...)
   }
 }

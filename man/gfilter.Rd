@@ -4,7 +4,7 @@
 \alias{gfilter}
 \title{Generic function to filter either an igraph object or a PPI network}
 \usage{
-gfilter(method, g, val, ppi, igraph_method, n, desc, ...)
+gfilter(method, g, val, use_ppi, igraph_method, n, desc, ...)
 }
 \arguments{
 \item{method}{str, supported methods can be found by calling \code{\link[=supported_filter_methods]{supported_filter_methods()}}}
@@ -13,7 +13,7 @@ gfilter(method, g, val, ppi, igraph_method, n, desc, ...)
 
 \item{val}{named numeric vector - some measure of node state (i.e. gene expression in the case of a PPI)}
 
-\item{ppi}{bool - should we use a ppi from online repository?}
+\item{use_ppi}{bool - should we use a ppi from online repository?}
 
 \item{igraph_method}{bool - is the user-provided method an igraph node scoring function?}
 

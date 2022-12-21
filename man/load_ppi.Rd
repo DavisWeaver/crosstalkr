@@ -4,7 +4,14 @@
 \alias{load_ppi}
 \title{Helper function to load requested PPI w/ parameters}
 \usage{
-load_ppi(cache, union, intersection, species, min_score, ppi)
+load_ppi(
+  cache,
+  union = FALSE,
+  intersection = FALSE,
+  species = "9606",
+  min_score,
+  ppi = "stringdb"
+)
 }
 \arguments{
 \item{cache}{A filepath to a folder downloaded files should be stored}

@@ -44,9 +44,9 @@ g <- igraph::sample_gnp(n = 1000, p = 300/1000)
 val <- sample.int(500, size = 1000, replace = TRUE)
 names(val) <- 1:1000
 test_that("gfilter.value returns the expected number of vertices", {
-  obj = gfilter.value(g=g, val=val, n = 100, ppi = FALSE, desc = TRUE)
+  obj = gfilter.value(g=g, val=val, n = 100, use_ppi = FALSE, desc = TRUE)
   expect_equal(length(igraph::V(obj)), 100)
-  obj = gfilter.value(g=g, val = 1:1000, n=100, ppi = FALSE, desc=TRUE)
+  obj = gfilter.value(g=g, val = 1:1000, n=100, use_ppi = FALSE, desc=TRUE)
   expect_equal(length(igraph::V(obj)), 100)
   val = igraph::get.vertex.attribute(obj, name = "value")
   expect_true(all(val >= 900))

@@ -7,6 +7,8 @@
 gfilter.ct(seeds, ...)
 }
 \arguments{
+\item{seeds}{vector (str or numeric) user provided vertex ids to use as seeds in the random walk with restarts}
+
 \item{...}{additional arguments passed to \code{\link[=compute_crosstalk]{compute_crosstalk()}}}
 }
 \value{
