@@ -64,3 +64,9 @@ test_that("gfilter.np returns the expected number of vertices", {
   expect_true(all(val >= min))
 })
 
+
+####Now we'll repeat the trick above for various node ranking igraph methods###
+
+##Starting with igraph::degree
+
+

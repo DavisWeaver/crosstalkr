@@ -193,7 +193,7 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
 
 #' Method to filter graph based on an igraph method that scores verticies.
 #'
-#' Tested methods include: [igraph::betweenness()],
+#' For a list of supported methods, see [(supported_filter_methods)]
 #' @inheritParams gfilter
 #'
 #' @returns igraph
@@ -202,6 +202,8 @@ gfilter.igraph_method <- function(g, use_ppi = TRUE, method, n = 500, desc, ...)
   if(use_ppi) {
     g <- load_ppi(...)
   }
+  val <- method(g, ...)
+
 }
 
 #' return all supported filter methods with their descriptions
