@@ -21,7 +21,7 @@ Imports:
     tidyr,
     tibble,
     igraph (>= 1.2.0),
-    tidyselect (<=1.1.2)
+    tidyselect (<=1.1.2),
     Matrix,
     ensembldb,
     foreach,
