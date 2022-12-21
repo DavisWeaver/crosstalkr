@@ -117,7 +117,6 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 #' @param igraph_method bool - is the user-provided method an igraph node scoring function?
 #' @param n int - number of nodes to include in the returned subgraph
 #' @param desc bool - do we want the top or bottom examples of the provided metric
-#' @param val_name str
 #' @param ... additional params passed to [load_ppi()]
 #' @export
 #' @returns igraph
@@ -148,7 +147,9 @@ gfilter.ct <- function(seeds, ...) {
 
 #' Method to filter graph based on user provided value
 #' @inheritParams gfilter
+#' @param val_name str
 #' @returns igraph
+#'
 #' @export
 
 gfilter.value <- function(g, val, use_ppi = TRUE, n = 500, val_name = "value", desc, ...) {
@@ -195,6 +196,7 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
 #' Method to filter graph based on any igraph method that scores verticies.
 #'
 #' @inheritParams gfilter
+#' @inheritParams gfilter.value
 #' @param ... additional parameters passed to load_ppi or the provided igraph method
 #' @returns igraph
 #' @export
