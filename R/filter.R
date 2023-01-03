@@ -110,7 +110,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 
 #' Generic function to filter either an igraph object or a PPI network
 #'
-#' @param method str, supported methods can be found by calling [crosstalkr::supported_filter_methods()]
+#' @param method str
 #' @param g igraph object
 #' @param val named numeric vector - some measure of node state (i.e. gene expression in the case of a PPI)
 #' @param use_ppi bool - should we use a ppi from online repository?

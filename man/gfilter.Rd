@@ -7,7 +7,7 @@
 gfilter(method, g, val, use_ppi, igraph_method, n, desc, ...)
 }
 \arguments{
-\item{method}{str, supported methods can be found by calling \code{\link[=supported_filter_methods]{supported_filter_methods()}}}
+\item{method}{str}
 
 \item{g}{igraph object}
 

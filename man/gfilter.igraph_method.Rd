@@ -11,7 +11,7 @@ gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, val_name, ...)
 
 \item{use_ppi}{bool - should we use a ppi from online repository?}
 
-\item{method}{str, supported methods can be found by calling \code{\link[=supported_filter_methods]{supported_filter_methods()}}}
+\item{method}{str}
 
 \item{n}{int - number of nodes to include in the returned subgraph}
 
