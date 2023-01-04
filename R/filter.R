@@ -122,13 +122,31 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 #' @returns igraph
 #' @seealso [gfilter.ct], [gfilter.np], [gfilter.igraph_method]
 #'
-gfilter <- function(method, g, val, use_ppi, igraph_method, n, desc, ...) {
-  select_method <- function(method) {
-
+gfilter <- function(method=NULL, g = NULL, val = NULL, use_ppi, igraph_method = NULL, n, desc, ...) {
+  select_method <- function(method, igraph_method) {
+    if(!is.null(igraph_method)) {
+      return(gfilter.igraph_method)
+    } else {
+      if (method %in% c("ct", "crosstalk", "CT", "compute_crosstalk", "rwr",
+                        "RWR")) {
+        return(gfilter.ct)
+      }
+      else if (method %in% c("np", "NP", "network_potential")) {
+        return(gfilter.np)
+      }
+      else if (method %in% c("value", "val", "exp", "expression")) {
+        return(gfilter.value)
+      }
+    }
   }
-  func = select_method(method)
+  func = select_method(method=method, igraph_method=igraph_method)
+  if(!is.null(igraph_method)) {
+    method = igraph_method
+    g <- func(use_ppi = use_ppi, g=g, method=method, n=n, desc=desc, ...)
+  } else {
+    g <- func(val = val, use_ppi=use_ppi, g=g, method=method,n=n, desc=desc, ...)
+  }
 
-  g <- func(val = val, use_ppi=use_ppi, g=g, igraph_method=igraph_method,n=n, desc=desc, ...)
   return(g)
 
 }
@@ -200,9 +218,18 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
 #' @param ... additional parameters passed to load_ppi or the provided igraph method
 #' @returns igraph
 #' @export
+
+
 gfilter.igraph_method <- function(g, use_ppi = TRUE, method, n = 500, desc, val_name, ...) {
   if(use_ppi) {
     g <- load_ppi(...)
+  }
+  if(!is.function(method)) {
+    try(attachNamespace("igraph"), silent=TRUE)
+    method = try(get(method), silent = TRUE)
+    if(inherits(method, 'try-error')) {
+      stop("Invalid method specification, please provide a valid igraph method for node scoring")
+    }
   }
   val <- method(g, ...)
   g <- gfilter.value(g=g, val=val, val_name = val_name, n=n, use_ppi = FALSE, desc = desc) #we've already loaded the ppi if use_ppi = TRUE

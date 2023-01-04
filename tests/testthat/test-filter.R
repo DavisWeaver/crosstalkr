@@ -52,6 +52,15 @@ test_that("gfilter.value returns the expected number of vertices", {
   expect_true(all(val >= 900))
 })
 
+test_that("gfilter correctly calls gfilter.value", {
+  obj = gfilter(g=g, method = "value", val=val, n = 100, use_ppi = FALSE, desc = TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  obj = gfilter(g=g, method = "value", val = 1:1000, n=100, use_ppi = FALSE, desc=TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "value")
+  expect_true(all(val >= 900))
+})
+
 nps <- abs(calc_np_all(exp=val, g = g))
 nps <- sort(nps, decreasing=TRUE)
 min <- min(nps[1:100])
@@ -59,6 +68,15 @@ test_that("gfilter.np returns the expected number of vertices", {
   obj = gfilter.np(g=g,  use_ppi = FALSE, val=val, n = 100, desc = TRUE)
   expect_equal(length(igraph::V(obj)), 100)
   obj = gfilter.np(g=g, val = 1:1000, n=100, use_ppi = FALSE, desc=TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "np")
+  expect_true(all(val >= min))
+})
+
+test_that("gfilter correctly calls gfilter.np", {
+  obj = gfilter(g=g, method = "np",  use_ppi = FALSE, val=val, n = 100, desc = TRUE)
+  expect_equal(length(igraph::V(obj)), 100)
+  obj = gfilter(g=g, method = "np", val = 1:1000, n=100, use_ppi = FALSE, desc=TRUE)
   expect_equal(length(igraph::V(obj)), 100)
   val = igraph::get.vertex.attribute(obj, name = "np")
   expect_true(all(val >= min))
@@ -78,15 +96,39 @@ test_that("gfilter.igraph_method works for degree", {
   expect_true(all(val >= min))
 })
 
+test_that("gfilter correctly calls gfilter.igraph_method for degree", {
+  obj = gfilter(g=g, use_ppi = FALSE, igraph_method=igraph::degree,
+                n = 100, desc = TRUE, val_name = "degree")
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "degree")
+  expect_true(all(val >= min))
+})
+
 ##now igraph::betweenness
 between <- igraph::betweenness(g)
 between <- rev(sort(between))
 min <- min(between[1:100])
-test_that("gfilter.igraph_method works for degree", {
+test_that("gfilter.igraph_method works for betweenness", {
   obj = gfilter.igraph_method(g=g,  use_ppi = FALSE, method=igraph::betweenness,
                               n = 100, desc = TRUE, val_name = "betweenness")
   expect_equal(length(igraph::V(obj)), 100)
   val = igraph::get.vertex.attribute(obj, name = "betweenness")
+  expect_true(all(val >= min))
+})
+
+test_that("gfilter correctly calls gfilter.igraph_method for betweenness", {
+  obj = gfilter(g=g, use_ppi = FALSE, igraph_method=igraph::betweenness,
+                n = 100, desc = TRUE, val_name = "degree")
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "degree")
+  expect_true(all(val >= min))
+})
+
+test_that("gfilter correctly calls gfilter.igraph_method for betweenness (specified as a character", {
+  obj = gfilter(g=g, use_ppi = FALSE, igraph_method="betweenness",
+                n = 100, desc = TRUE, val_name = "degree")
+  expect_equal(length(igraph::V(obj)), 100)
+  val = igraph::get.vertex.attribute(obj, name = "degree")
   expect_true(all(val >= min))
 })
 
