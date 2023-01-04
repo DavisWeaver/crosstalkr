@@ -1,5 +1,5 @@
 ---
-title: "crosstalkr_vignette"
+title: "Using crosstalkr for drug target identification"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{crosstalkr_vignette}
@@ -7,22 +7,42 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
   comment = "#>"
 )
 ```
 
+Here, We present two possible bioinformatic pipelines for drug target identification. 
+Both rely on the integration of RNA or protein expression data from a given phenotype with interactomic data from protein-protein interaction networks. 
+In the first, we execute a two-step pipeline, where the PPI network is filtered based on RNA expression data. We then rank the nodes again based on inward centrality to identify the most critical hub genes of the network. 
+In the second, we use in-silico repression to rank the nodes rather than a simple node scoring method after a filtration step. 
+
 ```{r setup}
 library(crosstalkr)
+library(dplyr)
 #library(dnet)
 ```
 
-```{r load_data}
-#g <- prep_stringdb(cache = NULL, min_score = 100)
-#dnet::
+# The Data
+
+For this example, we will rely on previously published gene expression data from a Ewing Sarcoma cell line (A673). (described in more detail [here](https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1008755)). We will first isolate the sample of interest and log2 normalize the gene expression values.
+```{r load_data, warning = FALSE, message = FALSE}
+df <- readr::read_csv(file = "https://github.com/DavisWeaver/disruptr/raw/main/inst/test_data/rld_Counts.csv")
+df <- df %>% select(X1, '5_A673_DMSO') %>% 
+  rename(expression = '5_A673_DMSO', gene_name = 'X1')
+df <- df %>% 
+  filter(expression !=0) %>%
+  mutate(expression = log2(expression)) %>% 
+  filter(!is.na(expression))
+
+print(head(df))
 ```
+
 
 ```{r benchmark}
 
