@@ -6,3 +6,5 @@
 ./test_data
 inst/doc
 ./vignettes/data
+./vignettes/data/*
+./vignettes/data$
