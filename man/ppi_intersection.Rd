@@ -5,7 +5,7 @@
 \title{Function to allow users to choose the intersection of stringdb and biogrid
 Only works with the human PPI. min_score parameter only applies to strindb}
 \usage{
-ppi_intersection(cache = NULL, min_score = 0, edb = "default")
+ppi_intersection(cache = NULL, min_score = 800, edb = "default")
 }
 \arguments{
 \item{cache}{A filepath to a folder downloaded files should be stored}

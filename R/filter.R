@@ -117,12 +117,12 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
 #' @param igraph_method bool - is the user-provided method an igraph node scoring function?
 #' @param n int - number of nodes to include in the returned subgraph
 #' @param desc bool - do we want the top or bottom examples of the provided metric
-#' @param ... additional params passed to [load_ppi()]
+#' @param ... additional params passed to [load_ppi()] or [compute_crosstalk()]
 #' @export
 #' @returns igraph
 #' @seealso [gfilter.ct], [gfilter.np], [gfilter.igraph_method]
 #'
-gfilter <- function(method=NULL, g = NULL, val = NULL, use_ppi, igraph_method = NULL, n, desc, ...) {
+gfilter <- function(method=NULL, g = NULL, val = NULL, use_ppi, igraph_method = NULL, n=100, desc=TRUE, ...) {
   select_method <- function(method, igraph_method) {
     if(!is.null(igraph_method)) {
       return(gfilter.igraph_method)
@@ -144,7 +144,7 @@ gfilter <- function(method=NULL, g = NULL, val = NULL, use_ppi, igraph_method = 
     method = igraph_method
     g <- func(use_ppi = use_ppi, g=g, method=method, n=n, desc=desc, ...)
   } else {
-    g <- func(val = val, use_ppi=use_ppi, g=g, method=method,n=n, desc=desc, ...)
+    g <- func(val = val, use_ppi=use_ppi, g=g, n=n, desc=desc, ...)
   }
 
   return(g)
@@ -152,15 +152,23 @@ gfilter <- function(method=NULL, g = NULL, val = NULL, use_ppi, igraph_method = 
 }
 #' Method to filter the graph based on parameters passed to compute_crosstalk
 #'
-#' @param seeds vector (str or numeric) user provided vertex ids to use as seeds in the random walk with restarts
+#' @param seeds vector (str or numeric) user provided vertex ids to use as seeds in the random walk with restarts'
+#' @param return_df bool should we return a list containing the filtered graph + the RWR output that was used to do the filtering?
 #' @param ... additional arguments passed to [compute_crosstalk()]
 #'
 #' @return igraph object
 #' @export
-gfilter.ct <- function(seeds, ...) {
+gfilter.ct <- function(seeds, return_df = FALSE, ...) {
   out <- compute_crosstalk(seed_proteins = seeds, return_g = TRUE, ...)
-  g <- crosstalk_subgraph(out[[1]], g=out[[2]], seed_proteins = seeds,tg = FALSE)
-  return(g)
+  df <- out[[1]]
+  g <- crosstalk_subgraph(df, g=out[[2]], seed_proteins = seeds,tg = FALSE)
+
+  if(return_df) {
+    out <- list(g, df)
+  } else {
+    out <- g
+  }
+  return(out)
 }
 
 #' Method to filter graph based on user provided value
@@ -178,8 +186,13 @@ gfilter.value <- function(g, val, use_ppi = TRUE, n = 500, val_name = "value", d
   if(is.null(names(val))) {
     names(val) <- 1:length(val)
   }
+  #only include nodes that are in both val and g
+  if(is.null(names(igraph::V(g)))) {
+    val <- val[names(val) %in% 1:length(igraph::V(g))]
+  } else {
+    val <- val[names(val) %in% names(igraph::V(g))]
+  }
 
-  #k
   val = sort(val, decreasing=desc)
   if(n > length(val)) {
     val_keep = val
@@ -215,7 +228,7 @@ gfilter.np <- function(g, val, use_ppi = TRUE, n = 500, desc, ...) {
 #'
 #' @inheritParams gfilter
 #' @inheritParams gfilter.value
-#' @param ... additional parameters passed to load_ppi or the provided igraph method
+#' @param ... additional parameters passed to [load_ppi]
 #' @returns igraph
 #' @export
 
@@ -231,7 +244,7 @@ gfilter.igraph_method <- function(g, use_ppi = TRUE, method, n = 500, desc, val_
       stop("Invalid method specification, please provide a valid igraph method for node scoring")
     }
   }
-  val <- method(g, ...)
+  val <- method(g)
   g <- gfilter.value(g=g, val=val, val_name = val_name, n=n, use_ppi = FALSE, desc = desc) #we've already loaded the ppi if use_ppi = TRUE
   return(g)
 }

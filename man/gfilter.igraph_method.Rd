@@ -19,7 +19,7 @@ gfilter.igraph_method(g, use_ppi = TRUE, method, n = 500, desc, val_name, ...)
 
 \item{val_name}{str}
 
-\item{...}{additional parameters passed to load_ppi or the provided igraph method}
+\item{...}{additional parameters passed to \link{load_ppi}}
 }
 \value{
 igraph

@@ -10,7 +10,7 @@
 #' @param ... additional parameters passed to state function.
 #' @export
 
-node_repression <- function(g, v_rm, exp, state_function = calc_np_all,
+node_repression <- function(g, v_rm = as.character(names(igraph::V(g))), exp, state_function = calc_np_all,
                             neighbors_only = TRUE, ...) {
 
   #add expression now to fix indexing

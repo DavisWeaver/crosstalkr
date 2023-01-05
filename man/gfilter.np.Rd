@@ -17,7 +17,7 @@ gfilter.np(g, val, use_ppi = TRUE, n = 500, desc, ...)
 
 \item{desc}{bool - do we want the top or bottom examples of the provided metric}
 
-\item{...}{additional params passed to \code{\link[=load_ppi]{load_ppi()}}}
+\item{...}{additional params passed to \code{\link[=load_ppi]{load_ppi()}} or \code{\link[=compute_crosstalk]{compute_crosstalk()}}}
 }
 \value{
 igraph

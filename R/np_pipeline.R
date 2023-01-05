@@ -76,7 +76,7 @@ compute_np <- function(cache = NULL, experiment_name, ppi = "biogrid", min_score
 #' Make sure to run with the same arguments for ppi and cache to maintain consistency for a given pipeline.
 #'
 #' @inheritParams compute_np
-#' @param df dataframe output of compute_np
+#' @param df dataframe output of [compute_np]
 #' @importFrom magrittr %>%
 #' @importFrom foreach %dopar%
 #' @export

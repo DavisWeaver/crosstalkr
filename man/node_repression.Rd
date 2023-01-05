@@ -6,7 +6,7 @@
 \usage{
 node_repression(
   g,
-  v_rm,
+  v_rm = as.character(names(igraph::V(g))),
   exp,
   state_function = calc_np_all,
   neighbors_only = TRUE,

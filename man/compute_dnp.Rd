@@ -16,7 +16,7 @@ compute_dnp(
 \arguments{
 \item{cache}{user-provided filepath for where to store data etc}
 
-\item{df}{dataframe output of compute_np}
+\item{df}{dataframe output of \link{compute_np}}
 
 \item{experiment_name}{name of the experiment for saving output.}
 

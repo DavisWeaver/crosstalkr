@@ -148,7 +148,7 @@ ppi_union <- function(cache = NULL, min_score = 0, edb = "default") {
 #'
 #' @export
 
-ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
+ppi_intersection <- function(cache = NULL, min_score = 800, edb = "default") {
   g_biogrid <- prep_biogrid(cache = cache)
   g_string <- prep_stringdb(cache = cache, edb = edb, min_score = min_score)
   g <- igraph::intersection(g_biogrid, g_string)
@@ -164,7 +164,7 @@ ppi_intersection <- function(cache = NULL, min_score = 0, edb = "default") {
 #' @param ppi str
 #'
 
-load_ppi <- function(cache, union = FALSE, intersection = FALSE, species = "9606", min_score, ppi= "stringdb") {
+load_ppi <- function(cache=NULL, union = FALSE, intersection = FALSE, species = "9606", min_score=0, ppi= "stringdb") {
   if(union & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {
     g <- ppi_union(cache = cache, min_score = min_score)
   } else if(intersection & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {

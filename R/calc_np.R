@@ -64,12 +64,15 @@ calc_np_all_legacy <- function(exp, g, v = as.character(names(igraph::V(g))), ne
 calc_np_all <- function(exp, g, v ="default",
                          neighbors = NULL) {
   #define list of vertices to calculate np for.
-  if(v == "default") {
-    v <- as.character(names(igraph::V(g)))
-    if(length(v) < 1) {
-      v <- as.character(1:length(igraph::V(g)))
+  if (length(v) <= 1) {
+    if(v == "default") {
+      v <- as.character(names(igraph::V(g)))
+      if(length(v) < 1) {
+        v <- as.character(1:length(igraph::V(g)))
+      }
     }
   }
+
 
   if(is.null(names(exp))) {
     names(exp) <- as.character(1:length(exp))

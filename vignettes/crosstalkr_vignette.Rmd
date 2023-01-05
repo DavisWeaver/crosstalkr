@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 Here, We present two possible bioinformatic pipelines for drug target identification. 
 Both rely on the integration of RNA or protein expression data from a given phenotype with interactomic data from protein-protein interaction networks. 
-In the first, we execute a two-step pipeline, where the PPI network is filtered based on RNA expression data. We then rank the nodes again based on inward centrality to identify the most critical hub genes of the network. 
+In the first, we execute a two-step pipeline, where the PPI network is filtered based on RNA expression data. We then rank the nodes again based on betweenness centrality to identify the most critical hub genes of the network. 
 In the second, we use in-silico repression to rank the nodes rather than a simple node scoring method after a filtration step. 
 
 ```{r setup}
@@ -30,22 +30,133 @@ library(dplyr)
 
 # The Data
 
-For this example, we will rely on previously published gene expression data from a Ewing Sarcoma cell line (A673). (described in more detail [here](https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1008755)). We will first isolate the sample of interest and log2 normalize the gene expression values.
+For this example, we will rely on previously published gene expression data from a Ewing Sarcoma cell line (A673). (described in more detail [here](https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1008755)). 
+Ewing Sarcoma is a rare bone malignancy primarily seen in pediatric and adolescent patients. 
+We will first isolate the sample of interest and log2 normalize the gene expression values.
+Then we will format the expression values into a named numeric vector, the preferred format for interacting with the crosstalkr API.
 ```{r load_data, warning = FALSE, message = FALSE}
 df <- readr::read_csv(file = "https://github.com/DavisWeaver/disruptr/raw/main/inst/test_data/rld_Counts.csv")
-df <- df %>% select(X1, '5_A673_DMSO') %>% 
-  rename(expression = '5_A673_DMSO', gene_name = 'X1')
+df <- df %>% select(1, '5_A673_DMSO') %>% 
+  rename(expression = '5_A673_DMSO')
+colnames(df)[1] <- 'gene_name'
 df <- df %>% 
   filter(expression !=0) %>%
   mutate(expression = log2(expression)) %>% 
   filter(!is.na(expression))
 
+exp <- df$expression
+names(exp) <- df$gene_name
 print(head(df))
 ```
+# Pipeline One
 
+## Graph Filtering
 
-```{r benchmark}
+First, we will use the gene expression values to reduce the size of the PPI network we need to analyze. 
+
+Under the hood, the following steps will happen:
+  
+  1. Download and modify PPI according to user-provided parameters (passed to `load_ppi`) 
+  2. Take the maximum or minimum 1000 genes according to the user provided named numeric vector (passed to the `val` parameter)
+  3. Call the `igraph::induced_subgraph` method to create a new igraph object that contains only the genes from step 2.
+  4. Add gene expression to the new graph object as an attribute to allow further manipulation. 
+  
+
+```{r filter}
+g <- gfilter(method = "value", cache = NULL, val=exp, val_name = "expression", 
+             use_ppi = TRUE, min_score= 800,desc = TRUE,n=100)
+length(igraph::V(g))
+head(igraph::get.vertex.attribute(g, name = "expression"))
+```
+## Node Scoring
+
+Next, I'll use gfilter again to score this smaller subgraph according to the betweenness centrality and return only the top 5 proteins.
+It is worth noting that there are a number of potential measures of centrality that could be used here, as well as many other potentially useful node scoring methods provided in the `igraph` package. 
+
+```{r filter again}
+g <- gfilter(g=g, igraph_method = "betweenness", n = 5, desc= TRUE, use_ppi=FALSE, val_name = "betweenness")
+igraph::V(g)
+```
+
+As you can see, our not very thoughtful attempt at identifying drug targets in Ewing Sarcoma has turned up GAPDH, HSP90AA1, EEF1A1, HNRNPC, and TPT1 as the most likely candidates. 
+
+GAPDH is a glycolytic enzyme that has also been assigned a number of other functions, and is highly expressed in normal bone marrow. 
+HSP90AA1 encodes for a heat shock protein and has been implicated in drug resistance development in cancer. EEF1A1 is involved in protein translation. HNRNPC is a ubiquitously expressed RNA binding protein. TPT1 is a regulator of cellular proliferation, and is causally implicated in cancer development. 
+
+Of our 5 candidate proteins, 4 are either ubiquitously expressed housekeeping genes or proteins involved in the generic cellular stress response. 
+Surprisingly, our very simple pipeline (applied to just a single sample) identified a potentially promising candidate in TPT1. 
+TPT1 was even recently associated with Ewing Sarcoma drug resistance development in the literature. 
+
+## Disease-Specific Subnetwork Identification
+
+If we had a compelling reason to think these 5 genes were key regulators in Ewing Sarcoma, we could use the `compute_crosstalk` function to identify a Ewing Sarcoma specific subnetwork from the full protein-protein interaction network. 
+
+```{r compute_crosstalk, fig.width = 8, fig.height=5, caption = "PPI Subnetwork defined by GAPDH, HSP90AA1, EEF1A1, HNRNPC, and TPT1. Seed proteins are highlighted blue while proteins identified to have high affinity for seeds are highlighted in orange. Example of using the plot_ct function with default settings"}
+out <- gfilter.ct(seeds = names(igraph::V(g)), use_ppi = TRUE, min_score=800, 
+                return_df=TRUE, cache = NULL, seed_name = "vignette")
+
+plot_ct(out[[2]], out[[1]])
 
 ```
+```{r crosstalk_describe}
+cdf <- out[[2]] 
+cdf %>% 
+  select(-p_value, -nobs, -mean_p, -var_p) %>% 
+  slice_max(affinity_score, n=10) %>%
+  knitr::kable(digits=3)
+```
+
+We identified 341 proteins in the subnetwork defined by GAPDH, HSP90AA1, EEF1A1, HNRNPC, and TPT1. 
+Next, we will re-analyze this data using a different combination of analytic steps to illustrate some more of crosstalkr's capabilities. 
+
+# Pipeline Two
+
+## Graph Reduction
+
+In this pipeline, we will reduce the graph two times, first using degree (number of neighbors for a given node), and then using gene expression. 
+The resulting graph has 500 nodes, all with both high connectivity in the PPI network and high expression in our Ewing Sarcoma cell line. 
+There are 9624 edges (interactions) between these 500 nodes proteins. 
+
+```{r reduction2}
+g <- gfilter(use_ppi=TRUE, cache = NULL, n = 2000, igraph_method = igraph::degree, val_name = "degree")
+g <- gfilter(g=g, use_ppi = FALSE, n = 500, method = "val", val_name = "expression", val = exp)
+igraph::gsize(g)
+```
+
+## Node Scoring 
+
+Next, we will demonstrate a method for node scoring that uses in-silico repression. 
+In our context, in-silico repression refers to a 6-step process:
+
+  1. Calculation of a node score $s$ for all nodes in the graph using some state function.
+  2. Calculation of the total network state $S =\sum\limits_is_i$
+  3. Removal of a given node $v$ from the graph.
+  4. Re-calculation of node score $s_v$ for all nodes. (In practice, we only re-calculate the node score of those nodes affected by the removal of node v)
+  5. Re-calculation of total network state $S_v = \sum\limits_is_{vi}$
+  6. Calculation of $\Delta S_v = S - S_v$ where $\Delta S_v$ is used to score and rank nodes. 
+  
+For this example, we will use network potential as the state function (described [here](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008755))  
+The resulting data structure is sparse matrix that shows the effect of removing the node in a given column on the state function value for the node represented in a given row. 
+The global effect of removing a given node is then the column sum. 
+
+```{r network_potential}
+dnp <- node_repression(g=g, v_rm = names(igraph::V(g)), exp = exp)
+dnp <- Matrix::colSums(dnp)
+dnp <- sort(dnp, decreasing = TRUE)
+names(dnp)[1:5]
+```
+Using this modified pipeline, we identified HSP90AA1, RPS27A, UBA52, CDK1, and CCNB1 as the most likely targets for therapy in this Ewing Sarcoma cell line. HSP90AA1 was also identified in the first instance. RPS27A is a ribosomal protein that is involved in RNA binding. 
+UBA52 is a paralog of RPS27A and appears to be an unlikely candidate for cancer therapy. 
+CDK1 is a cyclin dependent kinase, involved in cellular proliferation and causally associated with cancer in the literature. 
+CCNB1 is a cyclin, a cellular regulator of mitosis. 
+As with the method above, our bioinformatic pipeline identified a number of ubiquitiously expressed housekeeping genes as well as one or two proteins that are likely to be cancer-specific. 
+
+It is possible to modify these types of analysis to reduce the likelihood of finding  proteins that are involved in the generic stress response.
+For example, we could compute a null distribution for our state function of interest by generating hundreds or thousands of rewired graphs with preserved degree and then re-calculating our metric of interest. 
+We support this capability for the network potential example (see compute_null_dnp). 
+Supporting this feature for additional state functions is an area of development. 
+
+
+
 
 

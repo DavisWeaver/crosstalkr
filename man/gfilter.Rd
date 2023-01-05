@@ -4,7 +4,16 @@
 \alias{gfilter}
 \title{Generic function to filter either an igraph object or a PPI network}
 \usage{
-gfilter(method, g, val, use_ppi, igraph_method, n, desc, ...)
+gfilter(
+  method = NULL,
+  g = NULL,
+  val = NULL,
+  use_ppi,
+  igraph_method = NULL,
+  n = 100,
+  desc = TRUE,
+  ...
+)
 }
 \arguments{
 \item{method}{str}
@@ -21,7 +30,7 @@ gfilter(method, g, val, use_ppi, igraph_method, n, desc, ...)
 
 \item{desc}{bool - do we want the top or bottom examples of the provided metric}
 
-\item{...}{additional params passed to \code{\link[=load_ppi]{load_ppi()}}}
+\item{...}{additional params passed to \code{\link[=load_ppi]{load_ppi()}} or \code{\link[=compute_crosstalk]{compute_crosstalk()}}}
 }
 \value{
 igraph

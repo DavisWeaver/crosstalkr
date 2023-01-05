@@ -4,10 +4,12 @@
 \alias{gfilter.ct}
 \title{Method to filter the graph based on parameters passed to compute_crosstalk}
 \usage{
-gfilter.ct(seeds, ...)
+gfilter.ct(seeds, return_df = FALSE, ...)
 }
 \arguments{
-\item{seeds}{vector (str or numeric) user provided vertex ids to use as seeds in the random walk with restarts}
+\item{seeds}{vector (str or numeric) user provided vertex ids to use as seeds in the random walk with restarts'}
+
+\item{return_df}{bool should we return a list containing the filtered graph + the RWR output that was used to do the filtering?}
 
 \item{...}{additional arguments passed to \code{\link[=compute_crosstalk]{compute_crosstalk()}}}
 }

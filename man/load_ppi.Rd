@@ -5,11 +5,11 @@
 \title{Helper function to load requested PPI w/ parameters}
 \usage{
 load_ppi(
-  cache,
+  cache = NULL,
   union = FALSE,
   intersection = FALSE,
   species = "9606",
-  min_score,
+  min_score = 0,
   ppi = "stringdb"
 )
 }

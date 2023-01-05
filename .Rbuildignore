@@ -8,3 +8,5 @@
 ^test_data$
 ^\.github$
 ^codecov\.yml$
+^data$
+^vignettes/data$
