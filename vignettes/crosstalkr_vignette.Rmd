@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 ```
 
 Here, We present two possible bioinformatic pipelines for drug target identification. 
-Both rely on the integration of RNA or protein expression data from a given phenotype with interactomic data from protein-protein interaction networks. 
+Both rely on the integration of RNA or protein expression data from a given model system with interactomic data from protein-protein interaction networks. 
 In the first, we execute a two-step pipeline, where the PPI network is filtered based on RNA expression data. We then rank the nodes again based on betweenness centrality to identify the most critical hub genes of the network. 
 In the second, we use in-silico repression to rank the nodes rather than a simple node scoring method after a filtration step. 
 
@@ -70,7 +70,7 @@ head(igraph::get.vertex.attribute(g, name = "expression"))
 ```
 ## Node Scoring
 
-Next, I'll use gfilter again to score this smaller subgraph according to the betweenness centrality and return only the top 5 proteins.
+Next, we'll use gfilter again to score this smaller subgraph according to the betweenness centrality and return only the top 5 proteins.
 It is worth noting that there are a number of potential measures of centrality that could be used here, as well as many other potentially useful node scoring methods provided in the `igraph` package. 
 
 ```{r filter again}
@@ -107,7 +107,7 @@ cdf %>%
 ```
 
 We identified 341 proteins in the subnetwork defined by GAPDH, HSP90AA1, EEF1A1, HNRNPC, and TPT1. 
-Next, we will re-analyze this data using a different combination of analytic steps to illustrate some more of crosstalkr's capabilities. 
+Next, we will re-analyze this data using a different combination of analytic steps to illustrate more features of crosstalkr. 
 
 # Pipeline Two
 
@@ -115,7 +115,7 @@ Next, we will re-analyze this data using a different combination of analytic ste
 
 In this pipeline, we will reduce the graph two times, first using degree (number of neighbors for a given node), and then using gene expression. 
 The resulting graph has 500 nodes, all with both high connectivity in the PPI network and high expression in our Ewing Sarcoma cell line. 
-There are 9624 edges (interactions) between these 500 nodes proteins. 
+There are 9624 edges (interactions) between these 500 nodes (proteins). 
 
 ```{r reduction2}
 g <- gfilter(use_ppi=TRUE, cache = NULL, n = 2000, igraph_method = igraph::degree, val_name = "degree")
@@ -151,10 +151,12 @@ CDK1 is a cyclin dependent kinase, involved in cellular proliferation and causal
 CCNB1 is a cyclin, a cellular regulator of mitosis. 
 As with the method above, our bioinformatic pipeline identified a number of ubiquitiously expressed housekeeping genes as well as one or two proteins that are likely to be cancer-specific. 
 
-It is possible to modify these types of analysis to reduce the likelihood of finding  proteins that are involved in the generic stress response.
+It is possible to modify these types of analysis to reduce the likelihood of finding  heavily connected proteins that are involved in the generic stress response.
 For example, we could compute a null distribution for our state function of interest by generating hundreds or thousands of rewired graphs with preserved degree and then re-calculating our metric of interest. 
 We support this capability for the network potential example (see compute_null_dnp). 
 Supporting this feature for additional state functions is an area of development. 
+
+
 
 
 
