@@ -63,8 +63,10 @@ Under the hood, the following steps will happen:
   
 
 ```{r filter}
-g <- gfilter(method = "value", cache = NULL, val=exp, val_name = "expression", 
-             use_ppi = TRUE, min_score= 800,desc = TRUE,n=100)
+#start by getting the PPI since we don't want to download it twice
+g_ppi <- load_ppi(min_score = 800)
+g <- gfilter(method = "value", g=g_ppi, cache = NULL, val=exp, val_name = "expression", 
+             use_ppi = FALSE, desc = TRUE,n=100)
 length(igraph::V(g))
 head(igraph::get.vertex.attribute(g, name = "expression"))
 ```
@@ -92,7 +94,7 @@ TPT1 was even recently associated with Ewing Sarcoma drug resistance development
 If we had a compelling reason to think these 5 genes were key regulators in Ewing Sarcoma, we could use the `compute_crosstalk` function to identify a Ewing Sarcoma specific subnetwork from the full protein-protein interaction network. 
 
 ```{r compute_crosstalk, fig.width = 8, fig.height=5, caption = "PPI Subnetwork defined by GAPDH, HSP90AA1, EEF1A1, HNRNPC, and TPT1. Seed proteins are highlighted blue while proteins identified to have high affinity for seeds are highlighted in orange. Example of using the plot_ct function with default settings"}
-out <- gfilter.ct(seeds = names(igraph::V(g)), use_ppi = TRUE, min_score=800, 
+out <- gfilter.ct(seeds = names(igraph::V(g)), g = g_ppi, use_ppi = FALSE, 
                 return_df=TRUE, cache = NULL, seed_name = "vignette")
 
 plot_ct(out[[2]], out[[1]])
@@ -118,7 +120,7 @@ The resulting graph has 500 nodes, all with both high connectivity in the PPI ne
 There are 9624 edges (interactions) between these 500 nodes (proteins). 
 
 ```{r reduction2}
-g <- gfilter(use_ppi=TRUE, cache = NULL, n = 2000, igraph_method = igraph::degree, val_name = "degree")
+g <- gfilter(g = g_ppi, use_ppi=FALSE, cache = NULL, n = 2000, igraph_method = igraph::degree, val_name = "degree")
 g <- gfilter(g=g, use_ppi = FALSE, n = 500, method = "val", val_name = "expression", val = exp)
 igraph::gsize(g)
 ```

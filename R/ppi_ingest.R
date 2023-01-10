@@ -163,6 +163,9 @@ ppi_intersection <- function(cache = NULL, min_score = 800, edb = "default") {
 #' @param intersection bool
 #' @param ppi str
 #'
+#' @export
+#'
+#' @returns igraph object
 
 load_ppi <- function(cache=NULL, union = FALSE, intersection = FALSE, species = "9606", min_score=0, ppi= "stringdb") {
   if(union & (tolower(species) == "homo sapiens" | as.character(species) == "9606")) {

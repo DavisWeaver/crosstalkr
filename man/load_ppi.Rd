@@ -26,6 +26,9 @@ load_ppi(
 
 \item{ppi}{str}
 }
+\value{
+igraph object
+}
 \description{
 Helper function to load requested PPI w/ parameters
 }
