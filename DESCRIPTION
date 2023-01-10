@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "davis.weaver@case.edu", 
            comment = c(orcid = "0000-0003-3086-497X"))
-Description: Toolkit for drug target identification. Provides a general framework for the identification of nodes that are functionally related to a set of seeds in graph structured data. In addition to being optimized for use with generic graphs, we also provides support to analyze protein-protein interactions networks from online repositories. For more details on core method, refer to Nibbe et al. (2010) <doi:10.1371/journal.pcbi.1000639> and Weaver et al. (2021) <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008755>
+Description: Provides a general toolkit for drug target identification. We include functionality to reduce large graphs to subgraphs and prioritize nodes. In addition to being optimized for use with generic graphs, we also provides support to analyze protein-protein interactions networks from online repositories. For more details on core method, refer to Weaver et al. (2021) <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008755>.
 License: GPL (>= 3)
 biocViews:
 Imports: 

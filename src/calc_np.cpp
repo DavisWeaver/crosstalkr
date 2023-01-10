@@ -11,7 +11,7 @@ double fcalc_np(double &c_i, NumericVector &c_j) { //use pointers for speed
 
   // calculate the sum of c_j
   for(int i = 0; i < n; ++i) {
-    c_j_sum += c_j[i];
+    c_j_sum = c_j_sum + c_j[i];
   }
   double g_i = c_i * log(c_i / (c_j_sum));
   return g_i;
@@ -52,7 +52,7 @@ NumericVector fcalc_np_all(List &neighbors, StringVector &vertices, StringVector
 
       // need to correct for zero indexing in cpp vs 1 indexing in R
       for(int j = 0; j< neighbors_n; ++j) {
-        neighbors_i[j] -= 1;
+        neighbors_i[j] = neighbors_i[j] - 1;
       }
       //lets just used numerical indexing
       //neighbors_named_i = v[neighbors_i];
