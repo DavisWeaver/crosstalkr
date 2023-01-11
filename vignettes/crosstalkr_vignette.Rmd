@@ -101,7 +101,7 @@ If we had a compelling reason to think these 5 genes were key regulators in Ewin
 ```{r compute_crosstalk, fig.width = 8, fig.height=5, caption = "PPI Subnetwork defined by GAPDH, HSP90AA1, EEF1A1, HNRNPC, and TPT1. Seed proteins are highlighted blue while proteins identified to have high affinity for seeds are highlighted in orange. Example of using the plot_ct function with default settings"}
 out <- gfilter.ct(seeds = names(igraph::V(g)), g = g_ppi, use_ppi = FALSE, 
                   return_df=TRUE, cache = NULL, seed_name = "vignette", n = 100, 
-                  agg_int= 10, ncores = 6)
+                  agg_int= 10, ncores = 1)
 
 plot_ct(out[[2]], out[[1]], prop_keep=0.2)
 
