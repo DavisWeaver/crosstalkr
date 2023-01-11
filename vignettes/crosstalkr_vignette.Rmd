@@ -103,7 +103,7 @@ out <- gfilter.ct(seeds = names(igraph::V(g)), g = g_ppi, use_ppi = FALSE,
                   return_df=TRUE, cache = NULL, seed_name = "vignette", n = 100, 
                   agg_int= 10, ncores = 6)
 
-plot_ct(out[[2]], out[[1]], prop_keep=0.05)
+plot_ct(out[[2]], out[[1]], prop_keep=0.2)
 
 ```
 ```{r crosstalk_describe}
