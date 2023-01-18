@@ -10,7 +10,8 @@ load_ppi(
   intersection = FALSE,
   species = "9606",
   min_score = 0,
-  ppi = "stringdb"
+  ppi = "stringdb",
+  network_type = "full"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ load_ppi(
 \item{min_score}{minimum connectivity score for each edge in the network.}
 
 \item{ppi}{str}
+
+\item{network_type}{str "full" or "physical" - physical returns only interactions from protein complexes}
 }
 \value{
 igraph object

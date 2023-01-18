@@ -57,12 +57,14 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                               cache = NULL, min_score = 700, seed_name = NULL,
                               ncores = 1, significance_level = 0.95,
                               p_adjust = "bonferroni",
-                              agg_int = 100, return_g = FALSE)  {
+                              agg_int = 100, return_g = FALSE,
+                              network_type = "full")  {
 
   #check inputs
   if(use_ppi == TRUE){
     g <- load_ppi(ppi = ppi, species = species, min_score = min_score,
-                  union = union, intersection = intersection, cache = cache)
+                  union = union, intersection = intersection, cache = cache,
+                  network_type = network_type)
   } else {
     if(!igraph::is.igraph(g)){
       stop("g must be an igraph object")
