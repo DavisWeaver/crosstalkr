@@ -25,8 +25,7 @@ compute_crosstalk(
   significance_level = 0.95,
   p_adjust = "bonferroni",
   agg_int = 100,
-  return_g = FALSE,
-  network_type = "full"
+  return_g = FALSE
 )
 }
 \arguments{
@@ -76,8 +75,6 @@ adjustment methods.}
 \item{agg_int}{number of runs before we need to aggregate the results - necessary to save memory. set at lower numbers to save even more memory.}
 
 \item{return_g}{bool, should we return the graph used? mostly for internal use}
-
-\item{network_type}{str "full" or "physical" - physical returns only interactions from protein complexes}
 }
 \value{
 data frame containing affinity score, p-value, for all "crosstalkers"

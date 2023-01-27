@@ -57,8 +57,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
                               cache = NULL, min_score = 700, seed_name = NULL,
                               ncores = 1, significance_level = 0.95,
                               p_adjust = "bonferroni",
-                              agg_int = 100, return_g = FALSE,
-                              network_type = "full")  {
+                              agg_int = 100, return_g = FALSE)  {
 
   #check inputs
   if(use_ppi == TRUE){

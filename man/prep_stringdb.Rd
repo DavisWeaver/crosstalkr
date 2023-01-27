@@ -9,8 +9,7 @@ prep_stringdb(
   edb = "default",
   min_score = 200,
   version = "11.5",
-  species = "homo sapiens",
-  network_type = "full"
+  species = "homo sapiens"
 )
 }
 \arguments{
@@ -23,8 +22,6 @@ prep_stringdb(
 \item{version}{stringdb version}
 
 \item{species}{species code either using latin species name or taxon id}
-
-\item{network_type}{str "full" or "physical" - physical returns only interactions from protein complexes}
 }
 \value{
 igraph object built from the adjacency matrix downloaded from stringdb.
