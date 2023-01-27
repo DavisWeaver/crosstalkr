@@ -43,12 +43,14 @@ node_repression <- function(g, v_rm = as.character(names(igraph::V(g))), exp, st
     exp_new <- exp
     exp_new[v_rm[i]] <- 0
     #calculate state vector for original graph
-    s_old <- state_function(exp = exp, g = g, v=c(v,v_rm[i]), neighbors = neighbors_all) #calculate network potential for the deleted note in addition to the neighbors
+    s_old <- state_function(exp = exp, g = g, v=c(v,v_rm[i]),
+                            neighbors = neighbors_all, ...) #calculate network potential for the deleted note in addition to the neighbors
 
     #create a 0 value deleted node to add on
     # delete_node <- 0
     # names(delete_node) <- v_rm[i]
-    s_new <- state_function(exp = exp_new, g = g, v = v, neighbors = neighbors_all) #calc new network potential for the neighbors + 0 for the deleted node
+    s_new <- state_function(exp = exp_new, g = g, v = v,
+                            neighbors = neighbors_all, ...) #calc new network potential for the neighbors + 0 for the deleted node
 
     s_new <- s_new[names(s_old)]
     s_diff <- s_new-s_old #calculate the diff and save
