@@ -62,8 +62,7 @@ compute_crosstalk <- function(seed_proteins, g = NULL, use_ppi = TRUE,
   #check inputs
   if(use_ppi == TRUE){
     g <- load_ppi(ppi = ppi, species = species, min_score = min_score,
-                  union = union, intersection = intersection, cache = cache,
-                  network_type = network_type)
+                  union = union, intersection = intersection, cache = cache)
   } else {
     if(!igraph::is.igraph(g)){
       stop("g must be an igraph object")

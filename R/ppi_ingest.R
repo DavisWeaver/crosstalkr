@@ -86,20 +86,20 @@ prep_biogrid <- function(cache = NULL) {
     tmp <- tempdir()
 
     #Download most recent version of the biogrid
-    message("Downloading biogrid version 3.5.171")
-    download.file("https://downloads.thebiogrid.org/Download/BioGRID/Release-Archive/BIOGRID-3.5.171/BIOGRID-ORGANISM-3.5.171.tab2.zip",
+    message("Downloading biogrid version 4.4.217")
+    download.file("https://downloads.thebiogrid.org/Download/BioGRID/Release-Archive/BIOGRID-4.4.217/BIOGRID-ORGANISM-4.4.217.tab2.zip",
                   destfile = paste0(tmp, "/biogrid.zip"))
 
     #Unzip only the homosapiens portion of the biogrid zip file and delete big zip file
     unzip(paste0(tmp, '/biogrid.zip'),
-          files = c("BIOGRID-ORGANISM-Homo_sapiens-3.5.171.tab2.txt"),
+          files = c("BIOGRID-ORGANISM-Homo_sapiens-4.4.217.tab2.txt"),
           exdir = paste0(tmp, "/unzip"))
     file.remove(paste0(tmp, "/biogrid.zip"))
 
     #Read in biogrid file from temp directory.
     biogrid <-
       try(read.delim(
-        paste0(tmp, "/unzip/BIOGRID-ORGANISM-Homo_sapiens-3.5.171.tab2.txt"),
+        paste0(tmp, "/unzip/BIOGRID-ORGANISM-Homo_sapiens-4.4.217.tab2.txt"),
         header = TRUE
       ))
     if(inherits(biogrid, "try-error")) {
