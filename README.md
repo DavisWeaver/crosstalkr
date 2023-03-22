@@ -45,9 +45,6 @@ The provide state function will be applied to re-calculate network state and the
 
 See https://journals.plos.org/ploscompbiol/article/comments?id=10.1371/journal.pcbi.1008755 for more details on in-silico repression. 
 
-## Other functionality
-
-
 # Use
 
 To install, use the following code: 
