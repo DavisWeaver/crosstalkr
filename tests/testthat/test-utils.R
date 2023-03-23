@@ -47,14 +47,14 @@ test_that("ensembl_type correctly identifies the type of ensembl_id provided", {
 })
 
 test_that("we return an equal length vector for the problematic set of entrez_ids", {
-  skip()
+  skip("relies on installed data")
   load(system.file("test_data/entrez_break.Rda", package = "crosstalkr"))
   genes <- as_gene_symbol(busted_entrez_vec)
   expect_equal(length(busted_entrez_vec), length(genes))
 })
 
 test_that("we return an equal length vector for the problematic set of ensembl genes", {
-  skip()
+  skip("relies on installed data")
   load(system.file("test_data/ex_ensembl_vec.Rda", package = "crosstalkr"))
   genes <- as_gene_symbol(samples)
   expect_equal(length(samples), length(genes))
