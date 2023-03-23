@@ -49,7 +49,7 @@ as_gene_symbol <- function(x, edb = NULL) {
 
   colnames(geneIDs)[1] <- "id"
 
-  geneIDs <- geneIDs %>% dplyr::distinct("id", .keep_all=TRUE)
+  geneIDs <- geneIDs %>% dplyr::distinct(.data$id, .keep_all=TRUE)
 
 
 
