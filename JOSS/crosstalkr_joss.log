@@ -1,0 +1,46 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.7)  5 DEC 2022 12:03
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**crosstalkr_joss.tex
+(./crosstalkr_joss.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-08-30> (c:/Users/WEAVERD3/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/Users/WEAVERD3/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+
+! LaTeX Error: File `arxiv.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.4 ^^M
+        
+Here is how much of TeX's memory you used:
+ 234 strings out of 477035
+ 3120 string characters out of 5826235
+ 337700 words of memory out of 5000000
+ 21469 multiletter control sequences out of 15000+600000
+ 469259 words of font info for 28 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 34i,0n,38p,134b,36s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+!  ==> Fatal error occurred, no output PDF file produced!

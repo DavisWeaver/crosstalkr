@@ -66,7 +66,11 @@ NumericVector fcalc_np_all(List &neighbors, StringVector &vertices, StringVector
       //calculate network potential for each node and assign to new vector
       //hopefully it will be faster using numerical indexing with std::vector instead of
       //indexing based on the names of NumericVector
+<<<<<<< HEAD
       np_vec.at(i) = fcalc_np(c_i, c_j);
+=======
+      np_vec.at(i) = fcalc_np(c_i = c_i, c_j = c_j);
+>>>>>>> joss
 
     } else {np_vec.at(i) = 0;}
   }

@@ -38,10 +38,24 @@ test_that("is_entrez returns true for entrez_ids and false otherwise", {
 })
 
 
-test_that("entrez_type correctly identifies the type of entrez_id provided", {
+test_that("ensembl_type correctly identifies the type of ensembl_id provided", {
   expect_equal(ensembl_type(ensembl_test), "PROTEINID")
   expect_equal(ensembl_type("9606.ENST00000000233"), "TRANSCRIPTID")
   expect_equal(ensembl_type("9606.ENSG00000000233"), "GENEID")
   expect_error(ensembl_type("ARF5"))
   expect_error(ensembl_type(1234))
+})
+
+test_that("we return an equal length vector for the problematic set of entrez_ids", {
+  skip()
+  load(system.file("test_data/entrez_break.Rda", package = "crosstalkr"))
+  genes <- as_gene_symbol(busted_entrez_vec)
+  expect_equal(length(busted_entrez_vec), length(genes))
+})
+
+test_that("we return an equal length vector for the problematic set of ensembl genes", {
+  skip()
+  load(system.file("test_data/ex_ensembl_vec.Rda", package = "crosstalkr"))
+  genes <- as_gene_symbol(samples)
+  expect_equal(length(samples), length(genes))
 })
