@@ -39,3 +39,4 @@ Suggests:
     rmarkdown
 Config/testthat/edition: 2
 VignetteBuilder: knitr
+LinkingTo: Rcpp

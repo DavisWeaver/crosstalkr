@@ -34,6 +34,7 @@ as_gene_symbol <- function(x, edb = NULL) {
   #lets remove that
   if(is_ensembl(x)){
     x <- stringr::str_replace(x, "^[:digit:]*\\.", "")
+    x <- stringr::str_replace(x, "\\.\\d*", "") #remove any trailing digits which presumably denote some isoform of a gene
   }
 
   #If its an entrez_id it may be numeric in which case we should coerce to character
@@ -46,17 +47,24 @@ as_gene_symbol <- function(x, edb = NULL) {
                                keytype = key_type,
                                columns = c(key_type,"SYMBOL"))
 
+  colnames(geneIDs)[1] <- "id"
+
+  geneIDs <- geneIDs %>% dplyr::distinct(id, .keep_all=TRUE)
+
+
+
+
   #store user-supplied vector as a tibble to join. - this step just makes sure that the keys are in the correct order.
   x_tibble <- tibble::tibble(x)
-  colnames(x_tibble) <- key_type
+  colnames(x_tibble) <- "id"
 
   #if entrez- need to coerce back to a number for joining
   if(key_type == "ENTREZID") {
-    x_tibble$ENTREZID <- as.numeric(x_tibble$ENTREZID)
+    x_tibble$id <- as.numeric(x_tibble$id)
   }
 
 
-  gene_ids<- dplyr::left_join(x_tibble, geneIDs, by = key_type)
+  gene_ids<- dplyr::left_join(x_tibble, geneIDs, by = "id")
   y = gene_ids$SYMBOL #grab vector
   return(y)
 }
@@ -84,7 +92,7 @@ is_ensembl <- function(x) {
   if(!is.character(x)){
     return(FALSE)
   }
-  if(all(stringr::str_detect(x, "ENS.0000"))) {
+  if(any(stringr::str_detect(x, "ENS.0000"))) {
     return(TRUE)
   } else {
     return(FALSE)
