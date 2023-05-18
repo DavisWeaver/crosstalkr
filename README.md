@@ -33,7 +33,7 @@ Node values can be provided by the user (as in `gfilter.value`).
 Users can also specify any method found in the `igraph` package that generates node values (i.e. `igraph::degree` or `igraph::betweenness`).
 We also provide a custom method for node ranking that we developed in our lab, termed network potential (`gfilter.np`)
 Crosstalkr provides a general implementation of a random-walk with restarts on graph structured data. 
-We also provide user-friendly implementations of the common use-case of using random-walk with restarts to identify subnetworks of biological protein-protein interaction databases. 
+We also provide user-friendly implementations of the common use-case of using random-walk with restarts to identify subnetworks of biological protein-protein interaction databases (adapted from the method described here - https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000639). 
 Given a user-defined set of seed proteins, the main `compute_crosstalk` function will compute affinity scores for all other proteins in the network. 
 It will then compute a null distribution using a permutation test and compare the computed affinity scores to the null distribution to identify proteins with a statistically significant association to the user-defined seed-proteins.
 
