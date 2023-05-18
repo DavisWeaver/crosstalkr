@@ -8,11 +8,13 @@ entrez_test <- c(79854, 148398, 26155, 84069, 57801, 9636,
                  54991, 254173, 8784)
 
 test_that("as_gene_symbol converts ensemble ids to gene_symbol", {
+  skip_if_offline()
   expect_equal(length(as_gene_symbol(ensembl_test)), length(ensembl_test))
   expect_equal(as_gene_symbol(ensembl_test), c("ARF5", "CALM2", "GART", "ARHGEF9"))
 })
 
 test_that("as_gene_symbol converts entrez ids to gene_symbol", {
+  skip_if_offline()
   expect_equal(length(as_gene_symbol(entrez_test)), length(entrez_test))
   expect_equal(as_gene_symbol(entrez_test), c("LINC00115",
                                               "SAMD11",
