@@ -38,7 +38,7 @@ Suggests:
     ggraph,
     testthat (>= 2.0.0),
     knitr,
-    EnsDb.Hsapiens.v79,
+    EnsDb.Hsapiens.v86,
     rmarkdown,
     here,
     msigdbr

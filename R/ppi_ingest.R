@@ -22,7 +22,7 @@ prep_stringdb <- function(cache = NULL,
   if(is.character(species) & !grepl("\\D", species)) {species <- as.numeric(species)}
   #if they didn't provide an edb object
   if(edb == "default") {
-    edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+    edb <- EnsDb.Hsapiens.v86::EnsDb.Hsapiens.v86
   }
   if(!is.numeric(species)) {
     species = to_taxon_id(species)

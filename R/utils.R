@@ -23,7 +23,7 @@ as_gene_symbol <- function(x, edb = NULL) {
 
 #users can pass an edb object. If they don't - it uses the one below
   if(is.null(edb)) {
-    edb <- EnsDb.Hsapiens.v79::EnsDb.Hsapiens.v79
+    edb <- EnsDb.Hsapiens.v86::EnsDb.Hsapiens.v86
   }
   #in case the input is a list - this will coerce to a vector
   if(is.list(x)) {
