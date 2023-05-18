@@ -35,8 +35,15 @@ Ewing Sarcoma is a rare bone malignancy primarily seen in pediatric and adolesce
 We will first isolate the sample of interest and log2 normalize the gene expression values.
 Then we will format the expression values into a named numeric vector, the preferred format for interacting with the crosstalkr API.
 In the code below, we load a pre-computed PPI to save time but you can download directly from stringdb or Biogrid using the `load_ppi` method.
-```{r load_data, warning = FALSE, message = FALSE}
-df <- readr::read_csv(file = "https://github.com/DavisWeaver/disruptr/raw/main/inst/test_data/rld_Counts.csv")
+```{r load_data, warning = FALSE, message = FALSE, include = FALSE}
+
+df <- try(readr::read_csv(file = "https://github.com/DavisWeaver/disruptr/raw/main/inst/test_data/rld_Counts.csv"))
+if(inherits(df, "try-error")) {
+  knitr::knit_exit() #just put
+}
+```
+
+```{r load_more_data, warning = FALSE, message = FALSE}
 #Load PPI we will be using
 load(url("https://github.com/DavisWeaver/disruptr/blob/main/inst/test_data/stringdb.Rda?raw=true"))
 g_ppi <- g
