@@ -128,5 +128,3 @@ crosstalk_subgraph <- function(crosstalk_df, g, seed_proteins, tg= TRUE) {
   return(g)
 
 }
-
-
