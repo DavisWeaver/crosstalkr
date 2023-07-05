@@ -1,6 +1,6 @@
 Package: crosstalkr
 Title: Analysis of Graph-Structured Data with a Focus on Protein-Protein Interaction Networks
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: 
     person(given = "Davis",
            family = "Weaver",
@@ -40,8 +40,7 @@ Suggests:
     knitr,
     EnsDb.Hsapiens.v86,
     rmarkdown,
-    here,
-    msigdbr
+    here
 Config/testthat/edition: 2
 VignetteBuilder: knitr
 Depends: 
