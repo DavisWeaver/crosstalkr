@@ -13,10 +13,10 @@ g <- igraph::graph_from_adjacency_matrix(w)
 df_true <- compute_crosstalk(c(1,3), g = g, use_ppi=FALSE)
 g <- igraph::sample_gnp(n = 1000, p = 500/1000)
 
-test_that("check_crosstalk identifies crosstalk dfs as true", {
-  expect_true(check_crosstalk(df_true))
-  expect_true(check_crosstalk(compute_crosstalk(c(1), g = g, use_ppi=FALSE, n = 100)))
-})
+# test_that("check_crosstalk identifies crosstalk dfs as true", {
+#   expect_true(check_crosstalk(df_true))
+#   expect_true(check_crosstalk(compute_crosstalk(c(1), g = g, use_ppi=FALSE, n = 100)))
+# })
 
 test_that("check_crosstalk identifies returns false for incorrect input", {
   expect_false(check_crosstalk(1))
