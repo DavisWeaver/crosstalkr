@@ -30,6 +30,7 @@
 #'
 #'
 #' @docType package
+#' @aliases crosstalkr-package
 #'
 #' @name crosstalkr
 #'
