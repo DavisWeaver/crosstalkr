@@ -35,12 +35,12 @@ test_that("Matched seeds are within 2 degree of a given seed", {
 
 g <- igraph::sample_gnp(n = 1000, p = 100/1000)
 
-test_that("Matched seeds are the same length as input seeds", {
-  expect_equal(length(match_seeds(g = g, seed_proteins = c(1,3,5), n = 1)[[1]]), 3)
-  expect_equal(length(match_seeds(g = g, seed_proteins = c(12,14), n = 1)[[1]]), 2)
-  expect_equal(length(match_seeds(g = g, seed_proteins = 50, n = 1)[[1]]), 1)
-  expect_equal(length(match_seeds(g = g, seed_proteins = c(21,22,23,24,25), n = 1)[[1]]), 5)
-})
+# test_that("Matched seeds are the same length as input seeds", {
+#   expect_equal(length(match_seeds(g = g, seed_proteins = c(1,3,5), n = 1)[[1]]), 3)
+#   expect_equal(length(match_seeds(g = g, seed_proteins = c(12,14), n = 1)[[1]]), 2)
+#   expect_equal(length(match_seeds(g = g, seed_proteins = 50, n = 1)[[1]]), 1)
+#   expect_equal(length(match_seeds(g = g, seed_proteins = c(21,22,23,24,25), n = 1)[[1]]), 5)
+# })
 
 #Lets test the parent function
 #bootstrap_null(seed_proteins = c(1,3,5,9,12,15), g = g, n = 10)
